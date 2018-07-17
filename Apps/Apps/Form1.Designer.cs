@@ -34,21 +34,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.pemeliharaan_Panel1 = new Apps.Pemeliharaan_Panel();
-            this.laporan_Panel1 = new Apps.Laporan_Panel();
-            this.transaksi_Panel1 = new Apps.Transaksi_Panel();
-            this.master_Data_Panel1 = new Apps.Master_Data_Panel();
-            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.pemeliharaan_Panel1);
-            this.panel1.Controls.Add(this.laporan_Panel1);
-            this.panel1.Controls.Add(this.transaksi_Panel1);
-            this.panel1.Controls.Add(this.master_Data_Panel1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -57,7 +49,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -70,13 +62,14 @@
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(393, 3);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(128, 31);
+            this.button4.Size = new System.Drawing.Size(128, 34);
             this.button4.TabIndex = 5;
             this.button4.Text = "Pemeliharaan";
             this.button4.UseVisualStyleBackColor = false;
@@ -87,9 +80,10 @@
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(264, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(128, 31);
+            this.button3.Size = new System.Drawing.Size(128, 34);
             this.button3.TabIndex = 4;
             this.button3.Text = "Laporan";
             this.button3.UseVisualStyleBackColor = true;
@@ -100,9 +94,10 @@
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(135, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(128, 31);
+            this.button2.Size = new System.Drawing.Size(128, 34);
             this.button2.TabIndex = 3;
             this.button2.Text = "Transaksi";
             this.button2.UseVisualStyleBackColor = true;
@@ -113,58 +108,34 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(6, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(128, 31);
+            this.button1.Size = new System.Drawing.Size(128, 34);
             this.button1.TabIndex = 2;
             this.button1.Text = "Master Data";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // pemeliharaan_Panel1
+            // flowLayoutPanel1
             // 
-            this.pemeliharaan_Panel1.BackColor = System.Drawing.Color.Black;
-            this.pemeliharaan_Panel1.Location = new System.Drawing.Point(0, 0);
-            this.pemeliharaan_Panel1.Name = "pemeliharaan_Panel1";
-            this.pemeliharaan_Panel1.Size = new System.Drawing.Size(200, 429);
-            this.pemeliharaan_Panel1.TabIndex = 8;
-            // 
-            // laporan_Panel1
-            // 
-            this.laporan_Panel1.BackColor = System.Drawing.Color.Black;
-            this.laporan_Panel1.Location = new System.Drawing.Point(0, 0);
-            this.laporan_Panel1.Name = "laporan_Panel1";
-            this.laporan_Panel1.Size = new System.Drawing.Size(200, 429);
-            this.laporan_Panel1.TabIndex = 7;
-            // 
-            // transaksi_Panel1
-            // 
-            this.transaksi_Panel1.BackColor = System.Drawing.Color.Black;
-            this.transaksi_Panel1.Location = new System.Drawing.Point(0, 3);
-            this.transaksi_Panel1.Name = "transaksi_Panel1";
-            this.transaksi_Panel1.Size = new System.Drawing.Size(200, 429);
-            this.transaksi_Panel1.TabIndex = 6;
-            // 
-            // master_Data_Panel1
-            // 
-            this.master_Data_Panel1.BackColor = System.Drawing.Color.Black;
-            this.master_Data_Panel1.Location = new System.Drawing.Point(0, 3);
-            this.master_Data_Panel1.Name = "master_Data_Panel1";
-            this.master_Data_Panel1.Size = new System.Drawing.Size(200, 429);
-            this.master_Data_Panel1.TabIndex = 2;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(314, 207);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 100);
+            this.flowLayoutPanel1.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 429);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -178,10 +149,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private Master_Data_Panel master_Data_Panel1;
-        private Transaksi_Panel transaksi_Panel1;
-        private Laporan_Panel laporan_Panel1;
-        private Pemeliharaan_Panel pemeliharaan_Panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }
 
