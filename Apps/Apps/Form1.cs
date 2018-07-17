@@ -16,11 +16,10 @@ namespace Apps
         {
             InitializeComponent();
             master_Data_Panel1.BringToFront();
-            button1.BackColor = Color.FromArgb(255,80,80,80);
+            button1.BackColor = Color.FromArgb(255, 80, 80, 80);
             button2.BackColor = Color.FromArgb(255, 60, 60, 60);
             button3.BackColor = Color.FromArgb(255, 60, 60, 60);
             button4.BackColor = Color.FromArgb(255, 60, 60, 60);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -72,5 +71,11 @@ namespace Apps
             button2.BackColor = Color.FromArgb(255, 60, 60, 60);
             button3.BackColor = Color.FromArgb(255, 60, 60, 60);
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -78,10 +78,5 @@ namespace Apps
             button3.BackColor = Color.FromArgb(255, 30, 30, 30);
             button4.BackColor = Color.FromArgb(255, 30, 30, 30);
         }
-
-        private void Pemeliharaan_Panel_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

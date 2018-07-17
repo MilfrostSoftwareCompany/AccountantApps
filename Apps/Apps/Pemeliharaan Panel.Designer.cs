@@ -132,7 +132,6 @@
             this.Controls.Add(this.button1);
             this.Name = "Pemeliharaan_Panel";
             this.Size = new System.Drawing.Size(200, 429);
-            this.Load += new System.EventHandler(this.Pemeliharaan_Panel_Load);
             this.ResumeLayout(false);
 
         }

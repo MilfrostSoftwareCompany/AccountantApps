@@ -15,10 +15,8 @@ namespace Apps
         public Master_Data_Panel()
         {
             InitializeComponent();
-            //pindah penanda warna biru
             SidePanel.Height = button1.Height;
             SidePanel.Top = button1.Top;
-            //ubah warna setelah dipilih
             button1.BackColor = Color.FromArgb(255, 50, 50, 50);
             button2.BackColor = Color.FromArgb(255, 30, 30, 30);
             button3.BackColor = Color.FromArgb(255, 30, 30, 30);

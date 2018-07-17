@@ -11,12 +11,6 @@ C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj
 C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.Master_Data_Panel.resources
 C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.Pemeliharaan_Panel.resources
 C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.Transaksi_Panel.resources
+C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.add_supplier.resources
+C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.supplier.resources
 C:\Users\Jimmy\Desktop\AccountantApps-master\AccountantApps-master\Apps\Apps\obj\Debug\Apps.csprojResolveAssemblyReference.cache
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Form1.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Laporan_Panel.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Master_Data_Panel.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Pemeliharaan_Panel.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Properties.Resources.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.Transaksi_Panel.resources
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.csproj.GenerateResource.Cache
-C:\Users\Jimmy\Desktop\AccApps\AccountantApps\Apps\Apps\obj\Debug\Apps.csproj.CoreCompileInputs.cache
