@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,8 +52,44 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Laporan Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Laporan Panel.Designer.cs">
+      <DependentUpon>Laporan Panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Master Data Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Master Data Panel.Designer.cs">
+      <DependentUpon>Master Data Panel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pemeliharaan Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pemeliharaan Panel.Designer.cs">
+      <DependentUpon>Pemeliharaan Panel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Transaksi Panel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Transaksi Panel.Designer.cs">
+      <DependentUpon>Transaksi Panel.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Laporan Panel.resx">
+      <DependentUpon>Laporan Panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Master Data Panel.resx">
+      <DependentUpon>Master Data Panel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pemeliharaan Panel.resx">
+      <DependentUpon>Pemeliharaan Panel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +99,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Transaksi Panel.resx">
+      <DependentUpon>Transaksi Panel.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
