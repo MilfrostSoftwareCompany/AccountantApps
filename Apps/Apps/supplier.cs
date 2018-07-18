@@ -10,30 +10,17 @@ using System.Windows.Forms;
 
 namespace Apps
 {
-    public partial class supplier : UserControl
+    public partial class Supplier : UserControl
     {
-        public supplier()
+        public Supplier()
         {
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            add_supplier1.BringToFront();
-        }
-        private void supplier2_Load(object sender, EventArgs e)
-        {
- 
-        }
-
-        private void supplier_Load(object sender, EventArgs e)
-        {
-
+            Add_Supplier FormAddSupplier = new Add_Supplier();
+            FormAddSupplier.ShowDialog();
         }
     }
 }

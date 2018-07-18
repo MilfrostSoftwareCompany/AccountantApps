@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Apps
 {
-    public partial class Add_Supplier : Form
+    public partial class Add_Customer : Form
     {
-        public Add_Supplier()
+        public Add_Customer()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace Apps
 {
-    partial class Add_Supplier
+    partial class Add_Customer
     {
         /// <summary>
         /// Required designer variable.
@@ -47,8 +47,8 @@
             this.button1.Location = new System.Drawing.Point(399, 231);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(167, 31);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "ADD SUPPLIER";
+            this.button1.TabIndex = 34;
+            this.button1.Text = "ADD CUSTOMER";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -58,7 +58,7 @@
             this.textBox2.Location = new System.Drawing.Point(178, 189);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(388, 26);
-            this.textBox2.TabIndex = 26;
+            this.textBox2.TabIndex = 33;
             // 
             // label3
             // 
@@ -67,7 +67,7 @@
             this.label3.Location = new System.Drawing.Point(69, 190);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 20);
-            this.label3.TabIndex = 25;
+            this.label3.TabIndex = 32;
             this.label3.Text = "Telepon";
             // 
             // richTextBox1
@@ -75,7 +75,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(178, 62);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(388, 110);
-            this.richTextBox1.TabIndex = 24;
+            this.richTextBox1.TabIndex = 31;
             this.richTextBox1.Text = "";
             // 
             // textBox1
@@ -84,7 +84,7 @@
             this.textBox1.Location = new System.Drawing.Point(178, 19);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(388, 26);
-            this.textBox1.TabIndex = 23;
+            this.textBox1.TabIndex = 30;
             // 
             // label2
             // 
@@ -93,7 +93,7 @@
             this.label2.Location = new System.Drawing.Point(69, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 20);
-            this.label2.TabIndex = 22;
+            this.label2.TabIndex = 29;
             this.label2.Text = "Alamat";
             // 
             // label1
@@ -103,10 +103,10 @@
             this.label1.Location = new System.Drawing.Point(69, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 21;
+            this.label1.TabIndex = 28;
             this.label1.Text = "Nama";
             // 
-            // Add_Supplier
+            // Add_Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -118,9 +118,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Add_Supplier";
+            this.Name = "Add_Customer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add_Supplier";
+            this.Text = "Add_Customer";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,6 +1,6 @@
 ﻿namespace Apps
 {
-    partial class Supplier
+    partial class Customer
     {
         /// <summary> 
         /// Required designer variable.
@@ -87,7 +87,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(134, 33);
             this.button2.TabIndex = 10;
-            this.button2.Text = "+ ADD SUPPLIER";
+            this.button2.Text = "+ ADD CUSTOMER";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -112,7 +112,7 @@
             this.textBox1.Size = new System.Drawing.Size(131, 20);
             this.textBox1.TabIndex = 8;
             // 
-            // Supplier
+            // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,7 +120,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
-            this.Name = "Supplier";
+            this.Name = "Customer";
             this.Size = new System.Drawing.Size(701, 374);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

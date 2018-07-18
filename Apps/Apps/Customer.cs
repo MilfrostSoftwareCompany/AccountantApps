@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace Apps
 {
-    public partial class Add_Supplier : Form
+    public partial class Customer : UserControl
     {
-        public Add_Supplier()
+        public Customer()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Add_Customer FormAddCustomer = new Add_Customer();
+            FormAddCustomer.ShowDialog();
         }
     }
 }
