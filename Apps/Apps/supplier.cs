@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace Apps
 {
@@ -21,6 +22,35 @@ namespace Apps
         {
             Add_Supplier FormAddSupplier = new Add_Supplier();
             FormAddSupplier.ShowDialog();
+        }
+
+        private void Supplier_Load(object sender, EventArgs e)
+        {
+            LoadSupplierData();
+            SetColumnWidth();
+            
+        }
+
+        private void LoadSupplierData()
+        {
+            Database database = Database.getInstance();
+            DataSet read = database.getAllSupplierData();
+            dataGridView1.DataSource = read.Tables[0];
+        }
+
+        private void SetColumnWidth()
+        {
+            //set Weight percentage for each column.
+            dataGridView1.Columns[0].Width = dataGridView1.Width/10;
+            dataGridView1.Columns[1].Width = dataGridView1.Width/5;
+            dataGridView1.Columns[2].Width = dataGridView1.Width/2;
+            dataGridView1.Columns[3].Width = dataGridView1.Width/5;
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

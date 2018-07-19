@@ -1,0 +1,6 @@
+1. Supplier
+- id unique
+- Nama Toko
+- Alamat
+
+2. 
