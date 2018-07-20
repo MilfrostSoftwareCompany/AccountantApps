@@ -22,5 +22,11 @@ namespace Apps
             Add_Customer FormAddCustomer = new Add_Customer();
             FormAddCustomer.ShowDialog();
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Add_Customer FormAddCustomer = new Add_Customer();
+            FormAddCustomer.ShowDialog();
+        }
     }
 }

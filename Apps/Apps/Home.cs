@@ -82,6 +82,8 @@ namespace Apps
             button3.BackColor = Color.FromArgb(255, 30, 30, 30);
             button5.BackColor = Color.FromArgb(255, 30, 30, 30);
             button6.BackColor = Color.FromArgb(255, 30, 30, 30);
+
+            pembelian1.BringToFront();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -95,6 +97,8 @@ namespace Apps
             button3.BackColor = Color.FromArgb(255, 30, 30, 30);
             button4.BackColor = Color.FromArgb(255, 30, 30, 30);
             button6.BackColor = Color.FromArgb(255, 30, 30, 30);
+
+            penjualan1.BringToFront();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -108,6 +112,8 @@ namespace Apps
             button3.BackColor = Color.FromArgb(255, 30, 30, 30);
             button4.BackColor = Color.FromArgb(255, 30, 30, 30);
             button5.BackColor = Color.FromArgb(255, 30, 30, 30);
+
+            pengaturan1.BringToFront();
         }
 
         private void supplier1_Load(object sender, EventArgs e)

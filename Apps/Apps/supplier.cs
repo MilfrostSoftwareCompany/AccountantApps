@@ -30,7 +30,7 @@ namespace Apps
         {
             LoadSupplierData();
             SetColumnWidth();
-            
+
         }
 
         private void LoadSupplierData()
@@ -43,10 +43,10 @@ namespace Apps
         private void SetColumnWidth()
         {
             //set Weight percentage for each column.
-            dataGridView1.Columns[0].Width = dataGridView1.Width/10;
-            dataGridView1.Columns[1].Width = dataGridView1.Width/5;
-            dataGridView1.Columns[2].Width = dataGridView1.Width/2;
-            dataGridView1.Columns[3].Width = dataGridView1.Width/5;
+            dataGridView1.Columns[0].Width = dataGridView1.Width / 10;
+            dataGridView1.Columns[1].Width = dataGridView1.Width / 5;
+            dataGridView1.Columns[2].Width = dataGridView1.Width / 2;
+            dataGridView1.Columns[3].Width = dataGridView1.Width / 5;
 
         }
 
@@ -57,7 +57,8 @@ namespace Apps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length != 0) {
+            if (textBox1.Text.Length != 0)
+            {
                 DataSet ds = Database.getInstance().getSupplierQuery(textBox1.Text);
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.Update();
