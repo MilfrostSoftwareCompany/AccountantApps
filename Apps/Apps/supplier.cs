@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -13,9 +13,11 @@ namespace Apps
 {
     public partial class Supplier : UserControl
     {
+       
+
         public Supplier()
         {
-            InitializeComponent();
+			InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -51,6 +53,16 @@ namespace Apps
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length != 0) {
+                DataSet ds = Database.getInstance().getSupplierQuery(textBox1.Text);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Update();
+                dataGridView1.Refresh();
+            }
         }
     }
 }

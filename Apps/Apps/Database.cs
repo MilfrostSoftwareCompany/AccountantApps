@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.Reflection;
 using System.Data;
+using System.Windows.Forms;
+using Apps.Classes;
 
 namespace Apps
 {
@@ -41,14 +43,41 @@ namespace Apps
         }
 
         public DataSet getSupplierQuery(string query) {
+
             sqlConnection.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID CONTAINS "+query+" OR Nama CONTAINS "+query, sqlConnection);
+            Console.WriteLine("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
+            string queryString = "Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID = '" + query + "' OR Nama LIKE '%" + query+"%'";
+            
+
+
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, sqlConnection);
 
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
+            sqlConnection.Close();
             return ds;
 
         }
+
+        public void CreateNewSupplier(Apps.Models.Supplier supplier)
+        {
+            sqlConnection.Open();   
+                SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO Supplier (nama, alamat, telepon, created_by, creation_time) VALUES (?,?,?,?)", sqlConnection);
+                insertSQL.Parameters.Add(supplier.nama);
+                insertSQL.Parameters.Add(supplier.alamat);
+                insertSQL.Parameters.Add(supplier.telepon);
+                insertSQL.Parameters.Add(supplier.createdBy);
+                insertSQL.Parameters.Add(supplier.creationTime);
+                try
+                {
+                    insertSQL.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+        }
+
 
         public DataSet getAllCustomerData()
         {
@@ -57,8 +86,27 @@ namespace Apps
 
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
+            sqlConnection.Close();
             return ds;
 
+        }
+
+        public bool login(string username,string password)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select password FROM users WHERE username = '"+username.ToLower()+"'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                String pwd = ds.Tables[0].Rows[0][0].ToString();
+                return PasswordHasher.Verify(password, pwd);
+            }
         }
     }
 }
