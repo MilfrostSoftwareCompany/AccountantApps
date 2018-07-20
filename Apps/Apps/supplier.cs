@@ -13,24 +13,32 @@ namespace Apps
 {
     public partial class Supplier : UserControl
     {
-       
+
 
         public Supplier()
         {
-			InitializeComponent();
+            InitializeComponent();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Add_Supplier FormAddSupplier = new Add_Supplier();
+            Add_Supplier FormAddSupplier = new Add_Supplier(this);
             FormAddSupplier.ShowDialog();
         }
 
         private void Supplier_Load(object sender, EventArgs e)
         {
+            dataGridView1.RowHeadersVisible = false;
             LoadSupplierData();
             SetColumnWidth();
 
+        }
+
+        public void refreshData()
+        {
+            LoadSupplierData();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
         }
 
         private void LoadSupplierData()
@@ -65,5 +73,7 @@ namespace Apps
                 dataGridView1.Refresh();
             }
         }
+
+        
     }
 }
