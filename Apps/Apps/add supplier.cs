@@ -12,9 +12,12 @@ namespace Apps
 {
     public partial class Add_Supplier : Form
     {
-        public Add_Supplier()
+        Supplier supplier;
+
+        public Add_Supplier(Supplier supplier)
         {
             InitializeComponent();
+            this.supplier = supplier;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,6 +31,14 @@ namespace Apps
                 this.Close();
             }
 
+<<<<<<< HEAD
+=======
+
+            int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama, alamat, telepon));
+            supplier.refreshData();
+            MessageBox.Show(""+num);
+            //this.Close();
+>>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
         }
     }
 }

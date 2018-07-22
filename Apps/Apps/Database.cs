@@ -18,10 +18,11 @@ namespace Apps
 
         public Database()
         {
-            sqlConnection = new SQLiteConnection("Data Source = "+Environment.CurrentDirectory + "\\Database\\acc_app.sqlite");
+            sqlConnection = new SQLiteConnection("Data Source = " + Environment.CurrentDirectory + "\\Database\\acc_app.sqlite");
         }
 
-        public static Database getInstance() {
+        public static Database getInstance()
+        {
             if (database == null)
             {
                 database = new Database();
@@ -38,16 +39,18 @@ namespace Apps
 
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
+            sqlConnection.Close();
             return ds;
-            
+
         }
 
-        public DataSet getSupplierQuery(string query) {
+        public DataSet getSupplierQuery(string query)
+        {
 
             sqlConnection.Open();
             Console.WriteLine("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
-            string queryString = "Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID = '" + query + "' OR Nama LIKE '%" + query+"%'";
-            
+            string queryString = "Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'";
+
 
 
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, sqlConnection);
@@ -59,26 +62,32 @@ namespace Apps
 
         }
 
-        public void CreateNewSupplier(Apps.Models.Supplier supplier)
+        public int  CreateNewSupplier(Apps.Models.Supplier supplier)
         {
-            sqlConnection.Open();   
-                SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO Supplier (nama, alamat, telepon, created_by, creation_time) VALUES (?,?,?,?)", sqlConnection);
-                insertSQL.Parameters.Add(supplier.nama);
-                insertSQL.Parameters.Add(supplier.alamat);
-                insertSQL.Parameters.Add(supplier.telepon);
-                insertSQL.Parameters.Add(supplier.createdBy);
-                insertSQL.Parameters.Add(supplier.creationTime);
-                try
-                {
-                    insertSQL.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+            int res;
+            sqlConnection.Open();
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO suppliers (nama, alamat, telepon, created_by, creation_date) VALUES (@nama,@alamat,@telepon,@created_by,@creation_date)", sqlConnection);
+            insertSQL.CommandType = CommandType.Text;
+            insertSQL.Parameters.AddWithValue("@nama", supplier.nama);
+            insertSQL.Parameters.AddWithValue("@alamat", supplier.alamat);
+            insertSQL.Parameters.AddWithValue("@telepon", supplier.telepon);
+            insertSQL.Parameters.AddWithValue("@created_by", supplier.createdBy);
+            insertSQL.Parameters.AddWithValue("@creation_date", supplier.creationTime);
+
+            try
+            {
+                res = insertSQL.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            sqlConnection.Close();
+            return res;
         }
 
-
+        //Customer Related Functions
+       
         public DataSet getAllCustomerData()
         {
             sqlConnection.Open();
@@ -91,10 +100,34 @@ namespace Apps
 
         }
 
-        public bool login(string username,string password)
+        public int CreateNewCustomer(Apps.Models.Customer customer)
+        {
+            int res;
+            sqlConnection.Open();
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO customers (nama, alamat, telepon, created_by, creation_date) VALUES (@nama,@alamat,@telepon,@created_by,@creation_date)", sqlConnection);
+            insertSQL.CommandType = CommandType.Text;
+            insertSQL.Parameters.AddWithValue("@nama", customer.nama);
+            insertSQL.Parameters.AddWithValue("@alamat", customer.alamat);
+            insertSQL.Parameters.AddWithValue("@telepon", customer.telepon);
+            insertSQL.Parameters.AddWithValue("@created_by", customer.createdBy);
+            insertSQL.Parameters.AddWithValue("@creation_date", customer.creationTime);
+
+            try
+            {
+                res = insertSQL.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            sqlConnection.Close();
+            return res;
+        }
+
+        public bool login(string username, string password)
         {
             sqlConnection.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select password FROM users WHERE username = '"+username.ToLower()+"'", sqlConnection);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select password FROM users WHERE username = '" + username.ToLower() + "'", sqlConnection);
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
             sqlConnection.Close();
