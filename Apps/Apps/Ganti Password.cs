@@ -19,7 +19,17 @@ namespace Apps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (passLama.Text.Length == 0 || passBaru.Text.Length == 0 || konfirmasiPass.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi semua field !!");
+            }
+            else if (passBaru.Text != konfirmasiPass.Text)
+            {
+                MessageBox.Show("Password Baru dan Konfirmasi Password tidak sama !!");
+            }
+            else {
+                this.Close();
+            }
         }
     }
 }

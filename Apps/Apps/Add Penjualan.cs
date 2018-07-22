@@ -19,9 +19,18 @@ namespace Apps
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cetak_Bon_Penjualan FormCetakBonPenjualan = new Cetak_Bon_Penjualan();
-            FormCetakBonPenjualan.ShowDialog();
-            this.Close();
+            if (namaCustomer.Text.Length == 0 || alamatCustomer.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi semua field !!");
+            }
+            else
+            {
+                Cetak_Bon_Penjualan FormCetakBonPenjualan = new Cetak_Bon_Penjualan();
+                FormCetakBonPenjualan.ShowDialog();
+                this.Close();
+            }
+
+            
         }
     }
 }

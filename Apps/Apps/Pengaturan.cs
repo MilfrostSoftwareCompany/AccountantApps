@@ -22,5 +22,17 @@ namespace Apps
             Ganti_Password FormGantiPassword = new Ganti_Password();
             FormGantiPassword.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (namaToko.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi field Nama Toko !!");
+            }
+            else
+            {
+
+            }
+        }
     }
 }

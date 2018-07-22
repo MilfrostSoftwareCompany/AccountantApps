@@ -31,9 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.passLama = new System.Windows.Forms.TextBox();
+            this.passBaru = new System.Windows.Forms.TextBox();
+            this.konfirmasiPass = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -67,29 +67,29 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Konfirmasi Password :";
             // 
-            // textBox1
+            // passLama
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(202, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 26);
-            this.textBox1.TabIndex = 3;
+            this.passLama.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passLama.Location = new System.Drawing.Point(202, 26);
+            this.passLama.Name = "passLama";
+            this.passLama.Size = new System.Drawing.Size(186, 26);
+            this.passLama.TabIndex = 3;
             // 
-            // textBox2
+            // passBaru
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(202, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(186, 26);
-            this.textBox2.TabIndex = 4;
+            this.passBaru.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passBaru.Location = new System.Drawing.Point(202, 75);
+            this.passBaru.Name = "passBaru";
+            this.passBaru.Size = new System.Drawing.Size(186, 26);
+            this.passBaru.TabIndex = 4;
             // 
-            // textBox3
+            // konfirmasiPass
             // 
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(202, 124);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(186, 26);
-            this.textBox3.TabIndex = 5;
+            this.konfirmasiPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.konfirmasiPass.Location = new System.Drawing.Point(202, 124);
+            this.konfirmasiPass.Name = "konfirmasiPass";
+            this.konfirmasiPass.Size = new System.Drawing.Size(186, 26);
+            this.konfirmasiPass.TabIndex = 5;
             // 
             // button1
             // 
@@ -112,9 +112,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(415, 222);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.konfirmasiPass);
+            this.Controls.Add(this.passBaru);
+            this.Controls.Add(this.passLama);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -131,9 +131,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox passLama;
+        private System.Windows.Forms.TextBox passBaru;
+        private System.Windows.Forms.TextBox konfirmasiPass;
         private System.Windows.Forms.Button button1;
     }
 }

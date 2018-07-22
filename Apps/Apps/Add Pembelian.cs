@@ -19,7 +19,14 @@ namespace Apps
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (namaSupplier.Text.Length == 0 || alamatSupplier.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi semua field !!");
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }

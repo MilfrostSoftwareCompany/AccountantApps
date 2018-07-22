@@ -61,3 +61,4 @@ C:\Users\Jimmy\Desktop\AccountantApps\AccountantApps\Apps\Apps\obj\Release\Apps.
 C:\Users\Jimmy\Desktop\AccountantApps\AccountantApps\Apps\Apps\obj\Release\Apps.Pengaturan.resources
 C:\Users\Jimmy\Desktop\Apps\AccountantApps\Apps\Apps\obj\Release\Apps.Ganti_Password.resources
 C:\Users\Jimmy\Desktop\Apps\AccountantApps\Apps\Apps\obj\Release\Apps.Pengaturan.resources
+C:\Users\Jimmy\Desktop\AccountantApps\AccountantApps\Apps\Apps\obj\Release\Apps.csprojResolveAssemblyReference.cache

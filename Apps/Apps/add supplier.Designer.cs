@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.telp = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.alamat = new System.Windows.Forms.RichTextBox();
+            this.nama = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -52,13 +52,13 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
+            // telp
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(178, 189);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(388, 26);
-            this.textBox2.TabIndex = 26;
+            this.telp.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telp.Location = new System.Drawing.Point(178, 189);
+            this.telp.Name = "telp";
+            this.telp.Size = new System.Drawing.Size(388, 26);
+            this.telp.TabIndex = 26;
             // 
             // label3
             // 
@@ -70,21 +70,21 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Telepon";
             // 
-            // richTextBox1
+            // alamat
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(178, 62);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(388, 110);
-            this.richTextBox1.TabIndex = 24;
-            this.richTextBox1.Text = "";
+            this.alamat.Location = new System.Drawing.Point(178, 62);
+            this.alamat.Name = "alamat";
+            this.alamat.Size = new System.Drawing.Size(388, 110);
+            this.alamat.TabIndex = 24;
+            this.alamat.Text = "";
             // 
-            // textBox1
+            // nama
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(178, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(388, 26);
-            this.textBox1.TabIndex = 23;
+            this.nama.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nama.Location = new System.Drawing.Point(178, 19);
+            this.nama.Name = "nama";
+            this.nama.Size = new System.Drawing.Size(388, 26);
+            this.nama.TabIndex = 23;
             // 
             // label2
             // 
@@ -112,10 +112,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(634, 281);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.telp);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.alamat);
+            this.Controls.Add(this.nama);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -130,10 +130,10 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox telp;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.RichTextBox alamat;
+        private System.Windows.Forms.TextBox nama;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
     }

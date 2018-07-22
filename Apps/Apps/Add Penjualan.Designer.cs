@@ -57,7 +57,7 @@
             this.jatuhTempo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.alamatCustomer = new System.Windows.Forms.RichTextBox();
-            this.wilayahCustomer = new System.Windows.Forms.TextBox();
+            this.wilayah = new System.Windows.Forms.TextBox();
             this.namaCustomer = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -334,13 +334,13 @@
             this.alamatCustomer.TabIndex = 44;
             this.alamatCustomer.Text = "";
             // 
-            // wilayahCustomer
+            // wilayah
             // 
-            this.wilayahCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wilayahCustomer.Location = new System.Drawing.Point(176, 194);
-            this.wilayahCustomer.Name = "wilayahCustomer";
-            this.wilayahCustomer.Size = new System.Drawing.Size(172, 26);
-            this.wilayahCustomer.TabIndex = 43;
+            this.wilayah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wilayah.Location = new System.Drawing.Point(176, 194);
+            this.wilayah.Name = "wilayah";
+            this.wilayah.Size = new System.Drawing.Size(172, 26);
+            this.wilayah.TabIndex = 43;
             // 
             // namaCustomer
             // 
@@ -426,7 +426,7 @@
             this.Controls.Add(this.jatuhTempo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.alamatCustomer);
-            this.Controls.Add(this.wilayahCustomer);
+            this.Controls.Add(this.wilayah);
             this.Controls.Add(this.namaCustomer);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -474,7 +474,7 @@
         private System.Windows.Forms.TextBox jatuhTempo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RichTextBox alamatCustomer;
-        private System.Windows.Forms.TextBox wilayahCustomer;
+        private System.Windows.Forms.TextBox wilayah;
         private System.Windows.Forms.TextBox namaCustomer;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;

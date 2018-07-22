@@ -28,5 +28,17 @@ namespace Apps
             FormAddPenjualan.ShowDialog();
             
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (search.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi field pencarian !!");
+            }
+            else
+            {
+
+            }
+        }
     }
 }

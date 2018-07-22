@@ -28,5 +28,17 @@ namespace Apps
             Add_Customer FormAddCustomer = new Add_Customer();
             FormAddCustomer.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (search.Text.Length == 0 )
+            {
+                MessageBox.Show("Harus mengisi field pencarian !!");
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

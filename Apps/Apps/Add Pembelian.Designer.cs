@@ -56,9 +56,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.jatuhTempo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.alamatCustomer = new System.Windows.Forms.RichTextBox();
+            this.alamatSupplier = new System.Windows.Forms.RichTextBox();
             this.wilayah = new System.Windows.Forms.TextBox();
-            this.namaCustomer = new System.Windows.Forms.TextBox();
+            this.namaSupplier = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -324,13 +324,13 @@
             this.label7.TabIndex = 71;
             this.label7.Text = "Tanggal :";
             // 
-            // alamatCustomer
+            // alamatSupplier
             // 
-            this.alamatCustomer.Location = new System.Drawing.Point(175, 130);
-            this.alamatCustomer.Name = "alamatCustomer";
-            this.alamatCustomer.Size = new System.Drawing.Size(172, 53);
-            this.alamatCustomer.TabIndex = 70;
-            this.alamatCustomer.Text = "";
+            this.alamatSupplier.Location = new System.Drawing.Point(175, 130);
+            this.alamatSupplier.Name = "alamatSupplier";
+            this.alamatSupplier.Size = new System.Drawing.Size(172, 53);
+            this.alamatSupplier.TabIndex = 70;
+            this.alamatSupplier.Text = "";
             // 
             // wilayah
             // 
@@ -340,13 +340,13 @@
             this.wilayah.Size = new System.Drawing.Size(172, 26);
             this.wilayah.TabIndex = 69;
             // 
-            // namaCustomer
+            // namaSupplier
             // 
-            this.namaCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaCustomer.Location = new System.Drawing.Point(175, 97);
-            this.namaCustomer.Name = "namaCustomer";
-            this.namaCustomer.Size = new System.Drawing.Size(172, 26);
-            this.namaCustomer.TabIndex = 68;
+            this.namaSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namaSupplier.Location = new System.Drawing.Point(175, 97);
+            this.namaSupplier.Name = "namaSupplier";
+            this.namaSupplier.Size = new System.Drawing.Size(172, 26);
+            this.namaSupplier.TabIndex = 68;
             // 
             // label5
             // 
@@ -403,9 +403,9 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.jatuhTempo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.alamatCustomer);
+            this.Controls.Add(this.alamatSupplier);
             this.Controls.Add(this.wilayah);
-            this.Controls.Add(this.namaCustomer);
+            this.Controls.Add(this.namaSupplier);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -449,9 +449,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox jatuhTempo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox alamatCustomer;
+        private System.Windows.Forms.RichTextBox alamatSupplier;
         private System.Windows.Forms.TextBox wilayah;
-        private System.Windows.Forms.TextBox namaCustomer;
+        private System.Windows.Forms.TextBox namaSupplier;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

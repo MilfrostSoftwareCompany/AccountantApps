@@ -57,12 +57,24 @@ namespace Apps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length != 0)
+            if (search.Text.Length != 0)
             {
-                DataSet ds = Database.getInstance().getSupplierQuery(textBox1.Text);
+                DataSet ds = Database.getInstance().getSupplierQuery(search.Text);
                 dataGridView1.DataSource = ds.Tables[0];
                 dataGridView1.Update();
                 dataGridView1.Refresh();
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (search.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi field pencarian !!");
+            }
+            else
+            {
+
             }
         }
     }

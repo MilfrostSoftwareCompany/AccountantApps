@@ -19,13 +19,15 @@ namespace Apps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string nama = textBox1.Text;
-            string alamat = richTextBox1.Text;
-            string telepon = textBox2.Text;
+            if (nama.Text.Length == 0 || alamat.Text.Length == 0 || telp.Text.Length == 0)
+            {
+                MessageBox.Show("Harus mengisi semua field !!");
+            }
+            else
+            {
+                this.Close();
+            }
 
-            
-
-            this.Close();
         }
     }
 }
