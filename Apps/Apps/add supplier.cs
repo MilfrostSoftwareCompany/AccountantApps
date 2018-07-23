@@ -28,19 +28,21 @@ namespace Apps
             }
             else
             {
+                int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
+                supplier.refreshData();
+                if (num == 1)
+                {
+                    MessageBox.Show("Data supplier telah di tambahkan");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menambahkan data supplier");
+                }
                 this.Close();
             }
           
 
-            int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
-            supplier.refreshData();
-            if (num == 1)
-            {
-                MessageBox.Show("Data supplier telah di tambahkan");
-            }
-            else {
-                MessageBox.Show("Gagal menambahkan data supplier");
-            }
+            
         }
     }
 }

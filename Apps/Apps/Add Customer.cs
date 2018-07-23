@@ -12,9 +12,11 @@ namespace Apps
 {
     public partial class Add_Customer : Form
     {
-        public Add_Customer()
+        Customer customer;
+        public Add_Customer( Customer customer)
         {
             InitializeComponent();
+            this.customer = customer;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,6 +26,16 @@ namespace Apps
                 MessageBox.Show("Harus mengisi semua field !!");
             }
             else {
+                int num = Database.getInstance().CreateNewCustomer(new Apps.Models.Customer(nama.Text, alamat.Text, telp.Text));
+                customer.refreshData();
+                if (num == 1)
+                {
+                    MessageBox.Show("Data supplier telah di tambahkan");
+                }
+                else
+                {
+                    MessageBox.Show("Gagal menambahkan data supplier");
+                }
                 this.Close();
             }
             

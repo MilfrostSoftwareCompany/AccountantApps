@@ -19,13 +19,13 @@ namespace Apps
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Add_Customer FormAddCustomer = new Add_Customer();
+            Add_Customer FormAddCustomer = new Add_Customer(this);
             FormAddCustomer.ShowDialog();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Add_Customer FormAddCustomer = new Add_Customer();
+            Add_Customer FormAddCustomer = new Add_Customer(this);
             FormAddCustomer.ShowDialog();
         }
 
@@ -37,8 +37,43 @@ namespace Apps
             }
             else
             {
-                
+                DataSet ds = Database.getInstance().getQueryCustomer(search.Text);
+                dataGridView1.DataSource = ds.Tables[0];
+                dataGridView1.Update();
+                dataGridView1.Refresh();
             }
+        }
+
+        private void Customer_Load(object sender, EventArgs e)
+        {
+            dataGridView1.RowHeadersVisible = false;
+            LoadCustomerData();
+            SetColumnWidth();
+
+        }
+
+        public void refreshData()
+        {
+            LoadCustomerData();
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+        }
+
+        private void LoadCustomerData()
+        {
+            Database database = Database.getInstance();
+            DataSet read = database.getAllCustomerData();
+            dataGridView1.DataSource = read.Tables[0];
+        }
+
+        private void SetColumnWidth()
+        {
+            //set Weight percentage for each column.
+            dataGridView1.Columns[0].Width = dataGridView1.Width / 10;
+            dataGridView1.Columns[1].Width = dataGridView1.Width / 5;
+            dataGridView1.Columns[2].Width = dataGridView1.Width / 2;
+            dataGridView1.Columns[3].Width = dataGridView1.Width / 5;
+
         }
     }
 }

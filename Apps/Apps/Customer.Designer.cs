@@ -42,10 +42,11 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(14, 93);
+            this.dataGridView1.Location = new System.Drawing.Point(19, 114);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1121, 576);
+            this.dataGridView1.Size = new System.Drawing.Size(1495, 709);
             this.dataGridView1.TabIndex = 15;
             // 
             // button2
@@ -55,9 +56,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(939, 10);
+            this.button2.Location = new System.Drawing.Point(1252, 12);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(196, 33);
+            this.button2.Size = new System.Drawing.Size(261, 41);
             this.button2.TabIndex = 14;
             this.button2.Text = "+ ADD CUSTOMER";
             this.button2.UseVisualStyleBackColor = false;
@@ -70,9 +72,10 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(377, 10);
+            this.button1.Location = new System.Drawing.Point(503, 12);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 33);
+            this.button1.Size = new System.Drawing.Size(125, 41);
             this.button1.TabIndex = 13;
             this.button1.Text = "SEARCH";
             this.button1.UseVisualStyleBackColor = false;
@@ -81,21 +84,24 @@
             // search
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(14, 13);
+            this.search.Location = new System.Drawing.Point(19, 16);
+            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(348, 26);
+            this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 12;
             // 
             // Customer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.search);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Customer";
-            this.Size = new System.Drawing.Size(1151, 687);
+            this.Size = new System.Drawing.Size(1535, 846);
+            this.Load += new System.EventHandler(this.Customer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
