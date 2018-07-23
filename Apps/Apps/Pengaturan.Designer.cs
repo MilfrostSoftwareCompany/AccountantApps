@@ -28,53 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.Label();
+            this.gantiPassword = new System.Windows.Forms.Button();
+            this.labelNamaToko = new System.Windows.Forms.Label();
             this.namaToko = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.labelDaftarPemakai = new System.Windows.Forms.Label();
+            this.tabelPemakai = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelPemakai)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // username
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "[Username]";
+            this.username.AutoSize = true;
+            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.Location = new System.Drawing.Point(27, 17);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(165, 31);
+            this.username.TabIndex = 0;
+            this.username.Text = "[Username]";
             // 
-            // button1
+            // gantiPassword
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(33, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 36);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Ganti Password";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.gantiPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.gantiPassword.FlatAppearance.BorderSize = 0;
+            this.gantiPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gantiPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gantiPassword.ForeColor = System.Drawing.Color.White;
+            this.gantiPassword.Location = new System.Drawing.Point(33, 66);
+            this.gantiPassword.Name = "gantiPassword";
+            this.gantiPassword.Size = new System.Drawing.Size(166, 36);
+            this.gantiPassword.TabIndex = 1;
+            this.gantiPassword.Text = "Ganti Password";
+            this.gantiPassword.UseVisualStyleBackColor = false;
+            this.gantiPassword.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label2
+            // labelNamaToko
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 127);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Nama Toko";
+            this.labelNamaToko.AutoSize = true;
+            this.labelNamaToko.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNamaToko.Location = new System.Drawing.Point(27, 127);
+            this.labelNamaToko.Name = "labelNamaToko";
+            this.labelNamaToko.Size = new System.Drawing.Size(99, 20);
+            this.labelNamaToko.TabIndex = 2;
+            this.labelNamaToko.Text = "Nama Toko";
             // 
             // namaToko
             // 
@@ -84,42 +84,42 @@
             this.namaToko.Size = new System.Drawing.Size(374, 26);
             this.namaToko.TabIndex = 3;
             // 
-            // button2
+            // buttonSave
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(554, 123);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 35);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "SAVE";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.buttonSave.FlatAppearance.BorderSize = 0;
+            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSave.ForeColor = System.Drawing.Color.White;
+            this.buttonSave.Location = new System.Drawing.Point(554, 123);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 35);
+            this.buttonSave.TabIndex = 4;
+            this.buttonSave.Text = "SAVE";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label3
+            // labelDaftarPemakai
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 187);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "DAFTAR PEMAKAI";
+            this.labelDaftarPemakai.AutoSize = true;
+            this.labelDaftarPemakai.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDaftarPemakai.Location = new System.Drawing.Point(29, 187);
+            this.labelDaftarPemakai.Name = "labelDaftarPemakai";
+            this.labelDaftarPemakai.Size = new System.Drawing.Size(163, 20);
+            this.labelDaftarPemakai.TabIndex = 5;
+            this.labelDaftarPemakai.Text = "DAFTAR PEMAKAI";
             // 
-            // dataGridView1
+            // tabelPemakai
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tabelPemakai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tabelPemakai.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.Location = new System.Drawing.Point(33, 233);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(596, 229);
-            this.dataGridView1.TabIndex = 6;
+            this.tabelPemakai.Location = new System.Drawing.Point(33, 233);
+            this.tabelPemakai.Name = "tabelPemakai";
+            this.tabelPemakai.Size = new System.Drawing.Size(596, 229);
+            this.tabelPemakai.TabIndex = 6;
             // 
             // Column1
             // 
@@ -140,16 +140,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.tabelPemakai);
+            this.Controls.Add(this.labelDaftarPemakai);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.namaToko);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelNamaToko);
+            this.Controls.Add(this.gantiPassword);
+            this.Controls.Add(this.username);
             this.Name = "Pengaturan";
             this.Size = new System.Drawing.Size(1151, 687);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabelPemakai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,13 +157,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label username;
+        private System.Windows.Forms.Button gantiPassword;
+        private System.Windows.Forms.Label labelNamaToko;
         private System.Windows.Forms.TextBox namaToko;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Label labelDaftarPemakai;
+        private System.Windows.Forms.DataGridView tabelPemakai;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

@@ -433,6 +433,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.wilayahToko);
             this.Controls.Add(this.namaToko);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Add_Penjualan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
