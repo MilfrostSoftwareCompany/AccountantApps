@@ -62,7 +62,7 @@ namespace Apps
 
         }
 
-        public int  CreateNewSupplier(Apps.Models.Supplier supplier)
+        public int CreateNewSupplier(Apps.Models.Supplier supplier)
         {
             int res;
             sqlConnection.Open();
@@ -87,7 +87,7 @@ namespace Apps
         }
 
         //Customer Related Functions
-       
+
         public DataSet getAllCustomerData()
         {
             sqlConnection.Open();
@@ -123,6 +123,81 @@ namespace Apps
             sqlConnection.Close();
             return res;
         }
+
+        public DataSet getQueryCustomer(string query)
+        {
+
+            sqlConnection.Open();
+            Console.WriteLine("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From customers WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
+            string queryString = "Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From customers WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'";
+
+
+
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            return ds;
+
+        }
+
+        //Product related functions
+        public DataSet GetAllProducts()
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From produk", sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            return ds;
+
+        }
+
+        public int CreateNewProduct(Apps.Models.Product product)
+        {
+            int res;
+            sqlConnection.Open();
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO produk (nama_produk, jumlah, jenis_satuan, harga, created_by, creation_date) VALUES (@nama_produk,@jumlah,@jenis_satuan,@harga,@created_by,@creation_date)", sqlConnection);
+            insertSQL.CommandType = CommandType.Text;
+            insertSQL.Parameters.AddWithValue("@nama_produk", product.namaProduk);
+            insertSQL.Parameters.AddWithValue("@jumlah", product.jumlah);
+            insertSQL.Parameters.AddWithValue("@jenis_satuan", product.jenisSatuan);
+            insertSQL.Parameters.AddWithValue("@harga", product.harga);
+            insertSQL.Parameters.AddWithValue("@created_by", product.createdBy);
+            insertSQL.Parameters.AddWithValue("@creation_date", product.creationTime);
+
+            try
+            {
+                res = insertSQL.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            sqlConnection.Close();
+            return res;
+        }
+
+        public DataSet GetQueryProduct(string query)
+        {
+
+            sqlConnection.Open();
+            Console.WriteLine("Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From products WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
+            string queryString = "Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From products WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'";
+
+
+
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            return ds;
+
+        }
+
 
         public bool login(string username, string password)
         {

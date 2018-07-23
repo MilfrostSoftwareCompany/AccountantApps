@@ -30,15 +30,17 @@ namespace Apps
             {
                 this.Close();
             }
+          
 
-<<<<<<< HEAD
-=======
-
-            int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama, alamat, telepon));
+            int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
             supplier.refreshData();
-            MessageBox.Show(""+num);
-            //this.Close();
->>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
+            if (num == 1)
+            {
+                MessageBox.Show("Data supplier telah di tambahkan");
+            }
+            else {
+                MessageBox.Show("Gagal menambahkan data supplier");
+            }
         }
     }
 }

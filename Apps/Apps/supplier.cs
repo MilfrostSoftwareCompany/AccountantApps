@@ -73,8 +73,6 @@ namespace Apps
                 dataGridView1.Refresh();
             }
         }
-
-<<<<<<< HEAD
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (search.Text.Length == 0)
@@ -86,8 +84,5 @@ namespace Apps
 
             }
         }
-=======
-        
->>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
     }
 }

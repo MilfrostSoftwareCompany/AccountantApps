@@ -79,28 +79,20 @@ namespace Apps
             this.button1.TabIndex = 9;
             this.button1.Text = "SEARCH";
             this.button1.UseVisualStyleBackColor = false;
-<<<<<<< HEAD
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
-=======
+
             this.button1.Click += new System.EventHandler(this.button1_Click);
->>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
-            // 
-            // search
-            // 
-<<<<<<< HEAD
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(14, 13);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(348, 26);
             this.search.TabIndex = 8;
-=======
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(19, 16);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(463, 30);
-            this.textBox1.TabIndex = 8;
->>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
+            this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.search.Location = new System.Drawing.Point(19, 16);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
+            this.search.Name = "textBox1";
+            this.search.Size = new System.Drawing.Size(463, 30);
+            this.search.TabIndex = 8;
             // 
             // Supplier
             // 
@@ -109,12 +101,12 @@ namespace Apps
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-<<<<<<< HEAD
+
             this.Controls.Add(this.search);
-=======
-            this.Controls.Add(this.textBox1);
+
+            this.Controls.Add(this.search);
             this.Margin = new System.Windows.Forms.Padding(4);
->>>>>>> 013c7cee85f1178dea18e5aa8cef32099e95dd65
+
             this.Name = "Supplier";
             this.Size = new System.Drawing.Size(1535, 846);
             this.Load += new System.EventHandler(this.Supplier_Load);
