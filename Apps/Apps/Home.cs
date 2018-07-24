@@ -22,7 +22,7 @@ namespace Apps
         }
         public void InitializeDesign()
         {
-            widthPanel = Convert.ToInt32(this.Width * 0.85);
+            widthPanel = Convert.ToInt32(this.Width * 0.95);
             heightPanel = Convert.ToInt32(this.Height * 0.97);
             //sidePanel
             sidePanel.Width = Convert.ToInt32(this.Width * 0.15);
@@ -32,7 +32,7 @@ namespace Apps
             pointer.Height = supplier.Height;
             pointer.Top = supplier.Top;
             //topPanel
-            topPanel.Width = Convert.ToInt32(this.Width * 0.85);
+            topPanel.Width = Convert.ToInt32(this.Width);
             topPanel.Height = Convert.ToInt32(this.Height * 0.03);
             topPanel.Location = new Point(sidePanel.Width, 0);
             //supplier
@@ -62,7 +62,7 @@ namespace Apps
             //panel supplier
             supplier1.Location = new Point(sidePanel.Width,topPanel.Height);
             supplier1.Width = widthPanel;
-            supplier1.Height = heightPanel;
+            supplier1.Height = this.Height;
             //panel pelanggan
             customer1.Location = new Point(sidePanel.Width, topPanel.Height);
             customer1.Width = widthPanel;

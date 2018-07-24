@@ -49,9 +49,10 @@
             // pointer
             // 
             this.pointer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
-            this.pointer.Location = new System.Drawing.Point(0, 25);
+            this.pointer.Location = new System.Drawing.Point(0, 31);
+            this.pointer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pointer.Name = "pointer";
-            this.pointer.Size = new System.Drawing.Size(13, 52);
+            this.pointer.Size = new System.Drawing.Size(17, 64);
             this.pointer.TabIndex = 2;
             // 
             // pengaturan
@@ -61,9 +62,10 @@
             this.pengaturan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pengaturan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pengaturan.ForeColor = System.Drawing.Color.White;
-            this.pengaturan.Location = new System.Drawing.Point(0, 335);
+            this.pengaturan.Location = new System.Drawing.Point(0, 412);
+            this.pengaturan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pengaturan.Name = "pengaturan";
-            this.pengaturan.Size = new System.Drawing.Size(194, 52);
+            this.pengaturan.Size = new System.Drawing.Size(259, 64);
             this.pengaturan.TabIndex = 8;
             this.pengaturan.Text = "PENGATURAN";
             this.pengaturan.UseVisualStyleBackColor = false;
@@ -76,9 +78,10 @@
             this.penjualan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.penjualan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.penjualan.ForeColor = System.Drawing.Color.White;
-            this.penjualan.Location = new System.Drawing.Point(0, 273);
+            this.penjualan.Location = new System.Drawing.Point(0, 336);
+            this.penjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.penjualan.Name = "penjualan";
-            this.penjualan.Size = new System.Drawing.Size(194, 52);
+            this.penjualan.Size = new System.Drawing.Size(259, 64);
             this.penjualan.TabIndex = 7;
             this.penjualan.Text = "PENJUALAN";
             this.penjualan.UseVisualStyleBackColor = false;
@@ -91,9 +94,10 @@
             this.pembelian.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pembelian.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pembelian.ForeColor = System.Drawing.Color.White;
-            this.pembelian.Location = new System.Drawing.Point(0, 211);
+            this.pembelian.Location = new System.Drawing.Point(0, 260);
+            this.pembelian.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pembelian.Name = "pembelian";
-            this.pembelian.Size = new System.Drawing.Size(194, 52);
+            this.pembelian.Size = new System.Drawing.Size(259, 64);
             this.pembelian.TabIndex = 6;
             this.pembelian.Text = "PEMBELIAN";
             this.pembelian.UseVisualStyleBackColor = false;
@@ -106,9 +110,10 @@
             this.inventori.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.inventori.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inventori.ForeColor = System.Drawing.Color.White;
-            this.inventori.Location = new System.Drawing.Point(0, 149);
+            this.inventori.Location = new System.Drawing.Point(0, 183);
+            this.inventori.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.inventori.Name = "inventori";
-            this.inventori.Size = new System.Drawing.Size(194, 52);
+            this.inventori.Size = new System.Drawing.Size(259, 64);
             this.inventori.TabIndex = 4;
             this.inventori.Text = "INVENTORI";
             this.inventori.UseVisualStyleBackColor = false;
@@ -121,9 +126,10 @@
             this.pelanggan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pelanggan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pelanggan.ForeColor = System.Drawing.Color.White;
-            this.pelanggan.Location = new System.Drawing.Point(0, 87);
+            this.pelanggan.Location = new System.Drawing.Point(0, 107);
+            this.pelanggan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pelanggan.Name = "pelanggan";
-            this.pelanggan.Size = new System.Drawing.Size(194, 52);
+            this.pelanggan.Size = new System.Drawing.Size(259, 64);
             this.pelanggan.TabIndex = 5;
             this.pelanggan.Text = "PELANGGAN";
             this.pelanggan.UseVisualStyleBackColor = false;
@@ -136,9 +142,10 @@
             this.supplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.supplier.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplier.ForeColor = System.Drawing.Color.White;
-            this.supplier.Location = new System.Drawing.Point(0, 25);
+            this.supplier.Location = new System.Drawing.Point(0, 31);
+            this.supplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.supplier.Name = "supplier";
-            this.supplier.Size = new System.Drawing.Size(194, 52);
+            this.supplier.Size = new System.Drawing.Size(259, 64);
             this.supplier.TabIndex = 3;
             this.supplier.Text = "SUPPLIER";
             this.supplier.UseVisualStyleBackColor = false;
@@ -147,9 +154,10 @@
             // topPanel
             // 
             this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.topPanel.Location = new System.Drawing.Point(200, -1);
+            this.topPanel.Location = new System.Drawing.Point(267, -1);
+            this.topPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1172, 26);
+            this.topPanel.Size = new System.Drawing.Size(1563, 32);
             this.topPanel.TabIndex = 3;
             // 
             // sidePanel
@@ -163,58 +171,67 @@
             this.sidePanel.Controls.Add(this.pelanggan);
             this.sidePanel.Controls.Add(this.supplier);
             this.sidePanel.Location = new System.Drawing.Point(0, -1);
+            this.sidePanel.Margin = new System.Windows.Forms.Padding(0);
             this.sidePanel.Name = "sidePanel";
-            this.sidePanel.Size = new System.Drawing.Size(200, 735);
+            this.sidePanel.Size = new System.Drawing.Size(267, 905);
             this.sidePanel.TabIndex = 2;
             // 
             // customer1
             // 
-            this.customer1.Location = new System.Drawing.Point(206, 31);
+            this.customer1.Location = new System.Drawing.Point(275, 38);
+            this.customer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.customer1.Name = "customer1";
-            this.customer1.Size = new System.Drawing.Size(1151, 687);
+            this.customer1.Size = new System.Drawing.Size(1535, 846);
             this.customer1.TabIndex = 4;
             // 
             // supplier1
             // 
-            this.supplier1.Location = new System.Drawing.Point(206, 31);
+            this.supplier1.Location = new System.Drawing.Point(275, 38);
+            this.supplier1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1151, 687);
+            this.supplier1.Size = new System.Drawing.Size(1535, 846);
             this.supplier1.TabIndex = 5;
             // 
             // penjualan1
             // 
-            this.penjualan1.Location = new System.Drawing.Point(207, 31);
+            this.penjualan1.Location = new System.Drawing.Point(276, 38);
+            this.penjualan1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.penjualan1.Name = "penjualan1";
-            this.penjualan1.Size = new System.Drawing.Size(1151, 687);
+            this.penjualan1.Size = new System.Drawing.Size(1535, 846);
             this.penjualan1.TabIndex = 6;
             // 
             // pembelian1
             // 
-            this.pembelian1.Location = new System.Drawing.Point(207, 31);
+            this.pembelian1.AutoSize = true;
+            this.pembelian1.BackColor = System.Drawing.SystemColors.Control;
+            this.pembelian1.Location = new System.Drawing.Point(276, 38);
+            this.pembelian1.Margin = new System.Windows.Forms.Padding(0);
             this.pembelian1.Name = "pembelian1";
-            this.pembelian1.Size = new System.Drawing.Size(1151, 687);
+            this.pembelian1.Size = new System.Drawing.Size(1535, 846);
             this.pembelian1.TabIndex = 7;
             // 
             // pengaturan1
             // 
-            this.pengaturan1.Location = new System.Drawing.Point(207, 32);
+            this.pengaturan1.Location = new System.Drawing.Point(276, 39);
+            this.pengaturan1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.pengaturan1.Name = "pengaturan1";
-            this.pengaturan1.Size = new System.Drawing.Size(1151, 687);
+            this.pengaturan1.Size = new System.Drawing.Size(1535, 846);
             this.pengaturan1.TabIndex = 8;
             // 
             // inventori1
             // 
-            this.inventori1.Location = new System.Drawing.Point(206, 31);
+            this.inventori1.Location = new System.Drawing.Point(275, 38);
+            this.inventori1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.inventori1.Name = "inventori1";
-            this.inventori1.Size = new System.Drawing.Size(1151, 687);
+            this.inventori1.Size = new System.Drawing.Size(1535, 846);
             this.inventori1.TabIndex = 9;
             // 
             // Home
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1370, 731);
+            this.ClientSize = new System.Drawing.Size(1827, 900);
             this.Controls.Add(this.pembelian1);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.sidePanel);
@@ -223,6 +240,7 @@
             this.Controls.Add(this.supplier1);
             this.Controls.Add(this.inventori1);
             this.Controls.Add(this.pengaturan1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
@@ -230,6 +248,7 @@
             this.Load += new System.EventHandler(this.Home_Load);
             this.sidePanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
