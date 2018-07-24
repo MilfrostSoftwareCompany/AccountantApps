@@ -215,14 +215,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1370, 731);
-            this.Controls.Add(this.inventori1);
-            this.Controls.Add(this.pengaturan1);
             this.Controls.Add(this.pembelian1);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.sidePanel);
             this.Controls.Add(this.penjualan1);
             this.Controls.Add(this.customer1);
             this.Controls.Add(this.supplier1);
+            this.Controls.Add(this.inventori1);
+            this.Controls.Add(this.pengaturan1);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";

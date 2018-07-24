@@ -17,7 +17,15 @@ namespace Apps
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Cetak_Bon_Penjualan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonPrint.PerformClick(); 
+            }
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -18,13 +18,18 @@ namespace Apps
         {
             InitializeComponent();
             this.supplier = supplier;
+
+            nama.Focus();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAddSupplier_Click(object sender, EventArgs e)
         {
             if (nama.Text.Length == 0 || alamat.Text.Length == 0 || telp.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi semua field !!");
+                if (nama.Text.Length == 0) { nama.Focus(); }
+                else if (alamat.Text.Length == 0) { alamat.Focus(); }
+                else { telp.Focus(); }
             }
             else
             {
@@ -40,12 +45,31 @@ namespace Apps
                 }
                 this.Close();
             }
-<<<<<<< HEAD
-=======
-          
-
-            
->>>>>>> da2cbba3b16907ee4d47f31052f9b5d9a9f5aba3
         }
+
+        private void nama_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                alamat.Focus();
+            }
+        }
+
+        private void alamat_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                telp.Focus();
+            }
+        }
+
+        private void telp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddSupplier.PerformClick();
+            }
+        }
+
     }
 }

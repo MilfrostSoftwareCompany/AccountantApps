@@ -15,13 +15,18 @@ namespace Apps
         public Add_Penjualan()
         {
             InitializeComponent();
+            namaCustomer.Focus();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonNext_Click(object sender, EventArgs e)
         {
             if (namaCustomer.Text.Length == 0 || alamatCustomer.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi semua field !!");
+                if (namaCustomer.Text.Length == 0) { namaCustomer.Focus(); }
+                else if (alamatCustomer.Text.Length == 0) { alamatCustomer.Focus(); }
+                else if (wilayah.Text.Length == 0) { wilayah.Focus(); }
+                else { jatuhTempo.Focus(); }
             }
             else
             {
@@ -29,8 +34,38 @@ namespace Apps
                 FormCetakBonPenjualan.ShowDialog();
                 this.Close();
             }
+        }
 
-            
+        private void namaCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                alamatCustomer.Focus();
+            }
+        }
+
+        private void alamatCustomer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                wilayah.Focus();
+            }
+        }
+
+        private void wilayah_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                jatuhTempo.Focus();
+            }
+        }
+
+        private void jatuhTempo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBarang.PerformClick();
+            }
         }
     }
 }

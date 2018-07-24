@@ -24,7 +24,8 @@ namespace Apps
             InitializeDesign();
         }
 
-        public void InitializeDesign() {
+        public void InitializeDesign()
+        {
             search.Location = new Point(15, 13);
             buttonSearch.Location = new Point(Convert.ToInt32(search.Width) + 30, 10);
             buttonAddPembelian.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddPembelian.Width) - 15, 10);
@@ -32,17 +33,13 @@ namespace Apps
             tabelPembelian.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(buttonSearch.Height) - 50;
             tabelPembelian.Location = new Point(15, Convert.ToInt32(buttonSearch.Height) + 30);
         }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Add_Pembelian FormAddPembelian = new Add_Pembelian();
-            FormAddPembelian.ShowDialog();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (search.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi field pencarian !!");
+                search.Focus();
             }
             else
             {
@@ -50,11 +47,15 @@ namespace Apps
             }
         }
 
-<<<<<<< HEAD
-=======
+        private void buttonAddPembelian_Click(object sender, EventArgs e)
+        {
+            Add_Pembelian FormAddPembelian = new Add_Pembelian();
+            FormAddPembelian.ShowDialog();
+        }
+
         private void Pembelian_Load(object sender, EventArgs e)
         {
-            dataGridView1.RowHeadersVisible = false;
+            tabelPembelian.RowHeadersVisible = false;
             LoadSupplierData();
             SetColumnWidth();
 
@@ -63,16 +64,16 @@ namespace Apps
         public void refreshData()
         {
             LoadSupplierData();
-            dataGridView1.Update();
-            dataGridView1.Refresh();
+            tabelPembelian.Update();
+            tabelPembelian.Refresh();
         }
 
         private void LoadSupplierData()
         {
             Database database = Database.getInstance();
             DataSet dataSet = database.GetAllPurchase();
-            
-            dataGridView1.DataSource = dataSet.Tables[0];
+
+            tabelPembelian.DataSource = dataSet.Tables[0];
             dataSet.Tables[0].Columns.Add("Produk");
             dataSet.Tables[0].Columns.Add("Qty");
             dataSet.Tables[0].Columns.Add("Satuan");
@@ -116,39 +117,29 @@ namespace Apps
                 dataSet.Tables[0].Rows[i][8] = diskonList;
                 dataSet.Tables[0].Rows[i][9] = jlhList;
             }
-            dataGridView1.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            tabelPembelian.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            tabelPembelian.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
             DataGridViewButtonColumn col = new DataGridViewButtonColumn();
             col.UseColumnTextForButtonValue = true;
             col.Text = "View Details";
             col.Name = "Details";
-            dataGridView1.Columns.Add(col);
+            tabelPembelian.Columns.Add(col);
         }
 
         private void SetColumnWidth()
         {
-
-            dataGridView1.Columns[0].Width = dataGridView1.Width /12;
-            dataGridView1.Columns[1].Width = dataGridView1.Width /10;
-            dataGridView1.Columns[2].Width = dataGridView1.Width /10;
-            dataGridView1.Columns[3].Width = dataGridView1.Width /10;
-            dataGridView1.Columns[4].Width = dataGridView1.Width /8;
-            dataGridView1.Columns[5].Width = dataGridView1.Width /20;
-            dataGridView1.Columns[6].Width = dataGridView1.Width /20;
-            dataGridView1.Columns[7].Width = dataGridView1.Width /10;
-            dataGridView1.Columns[8].Width = dataGridView1.Width /10;
-            dataGridView1.Columns[9].Width = dataGridView1.Width / 10;
-            dataGridView1.Columns[9].Width = dataGridView1.Width / 10;
-
+            tabelPembelian.Columns[0].Width = tabelPembelian.Width /12;
+            tabelPembelian.Columns[1].Width = tabelPembelian.Width /10;
+            tabelPembelian.Columns[2].Width = tabelPembelian.Width /10;
+            tabelPembelian.Columns[3].Width = tabelPembelian.Width /10;
+            tabelPembelian.Columns[4].Width = tabelPembelian.Width /8;
+            tabelPembelian.Columns[5].Width = tabelPembelian.Width /20;
+            tabelPembelian.Columns[6].Width = tabelPembelian.Width /20;
+            tabelPembelian.Columns[7].Width = tabelPembelian.Width /10;
+            tabelPembelian.Columns[8].Width = tabelPembelian.Width /10;
+            tabelPembelian.Columns[9].Width = tabelPembelian.Width / 10;
+            tabelPembelian.Columns[9].Width = tabelPembelian.Width / 10;
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        
-
->>>>>>> da2cbba3b16907ee4d47f31052f9b5d9a9f5aba3
     }
 }

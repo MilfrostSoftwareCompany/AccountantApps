@@ -16,6 +16,7 @@ namespace Apps
         {
             InitializeComponent();
             InitializeDesign();
+            DariTgl.Focus();
         }
 
         public void InitializeDesign()
@@ -36,6 +37,8 @@ namespace Apps
             if (DariTgl.Text.Length == 0 || SampaiTgl.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi semua field !!");
+                if (DariTgl.Text.Length == 0) { DariTgl.Focus(); }
+                else { SampaiTgl.Focus(); }
             }
             else
             {

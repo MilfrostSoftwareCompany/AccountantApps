@@ -16,6 +16,7 @@ namespace Apps
         {         
             InitializeComponent();
             InitializeDesign();
+            comboBoxIdBarang.Focus();
         }
 
         public void InitializeDesign()
@@ -36,6 +37,22 @@ namespace Apps
             else
             {
                 this.Close();
+            }
+        }
+
+        private void comboBoxIdBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                StokBarang.Focus();
+            }
+        }
+
+        private void StokBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonSave.PerformClick();
             }
         }
     }

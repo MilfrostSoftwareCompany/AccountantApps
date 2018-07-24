@@ -63,6 +63,7 @@
             this.comboBoxIdBarang.Name = "comboBoxIdBarang";
             this.comboBoxIdBarang.Size = new System.Drawing.Size(163, 28);
             this.comboBoxIdBarang.TabIndex = 2;
+            this.comboBoxIdBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxIdBarang_KeyDown);
             // 
             // StokBarang
             // 
@@ -71,6 +72,7 @@
             this.StokBarang.Name = "StokBarang";
             this.StokBarang.Size = new System.Drawing.Size(163, 26);
             this.StokBarang.TabIndex = 3;
+            this.StokBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StokBarang_KeyDown);
             // 
             // buttonSave
             // 

@@ -18,6 +18,7 @@ namespace Apps
             this.Height = Home.heightPanel;
             InitializeComponent();
             InitializeDesign();
+            search.Focus();
         }
 
         public void InitializeDesign()

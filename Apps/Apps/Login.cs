@@ -18,26 +18,18 @@ namespace Apps
         public Login()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
+            textBoxUsername.Focus();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length == 0 || textBox2.Text.Length == 0)
+            if (textBoxUsername.Text.Length == 0 || textBoxPassword.Text.Length == 0)
             {
                 MessageBox.Show("Username / Password yang anda masukkan salah.");
             }
             else {
-                String username = textBox1.Text.ToLower().Trim();
-                String password = textBox2.Text;
+                String username = textBoxUsername.Text.ToLower().Trim();
+                String password = textBoxPassword.Text;
                 if (Database.getInstance().login(username, password))
                 {
                     this.Hide();
@@ -48,8 +40,22 @@ namespace Apps
                 }
                 else {
                     MessageBox.Show("Username / Password yang anda masukkan salah.");
-                }
-                
+                }               
+            }
+        }
+
+        private void textBoxUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) {
+                textBoxPassword.Focus();
+            }
+        }
+
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonLogIn.PerformClick();
             }
         }
     }
