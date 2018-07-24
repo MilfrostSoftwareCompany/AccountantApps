@@ -22,6 +22,15 @@ namespace Apps
             this.Height = Home.heightPanel;
             InitializeComponent();
             InitializeDesign();
+            initData();
+        }
+
+        private void initData()
+        {
+            refreshData();
+            tabelPembelian.RowHeadersVisible = false;
+
+            SetColumnWidth();
         }
 
         public void InitializeDesign()
@@ -38,6 +47,7 @@ namespace Apps
         {
             if (search.Text.Length == 0)
             {
+                refreshData();
                 MessageBox.Show("Harus mengisi field pencarian !!");
                 search.Focus();
             }
@@ -55,9 +65,7 @@ namespace Apps
 
         private void Pembelian_Load(object sender, EventArgs e)
         {
-            tabelPembelian.RowHeadersVisible = false;
-            LoadSupplierData();
-            SetColumnWidth();
+            
 
         }
 
@@ -70,6 +78,7 @@ namespace Apps
 
         private void LoadSupplierData()
         {
+            
             Database database = Database.getInstance();
             DataSet dataSet = database.GetAllPurchase();
 
@@ -125,6 +134,7 @@ namespace Apps
             col.Text = "View Details";
             col.Name = "Details";
             tabelPembelian.Columns.Add(col);
+           
         }
 
         private void SetColumnWidth()

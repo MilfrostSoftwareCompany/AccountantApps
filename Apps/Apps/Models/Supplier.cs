@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Apps.Models
 {
-    class Supplier : BasicServerModel
+    public class Supplier : BasicServerModel
     {
         public string nama;
         public string alamat;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Apps.Models
 {
-    class BasicServerModel
+    public class BasicServerModel
     {
         public String createdBy;
         public String creationTime;
