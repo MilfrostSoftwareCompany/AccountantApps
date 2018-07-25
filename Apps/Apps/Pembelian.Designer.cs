@@ -71,7 +71,7 @@
             this.buttonAddPembelian.TabIndex = 22;
             this.buttonAddPembelian.Text = "+ ADD PEMBELIAN";
             this.buttonAddPembelian.UseVisualStyleBackColor = false;
-            this.buttonAddPembelian.Click += new System.EventHandler(this.buttonAddPembelian_Click);
+            //this.buttonAddPembelian.Click += new System.EventHandler(this.buttonAddPembelian_Click);
             // 
             // buttonSearch
             // 
@@ -87,7 +87,7 @@
             this.buttonSearch.TabIndex = 21;
             this.buttonSearch.Text = "SEARCH";
             this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            //this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // search
             // 

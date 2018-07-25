@@ -35,22 +35,24 @@
             this.inventori = new System.Windows.Forms.Button();
             this.pelanggan = new System.Windows.Forms.Button();
             this.supplier = new System.Windows.Forms.Button();
-            this.topPanel = new System.Windows.Forms.Panel();
             this.sidePanel = new System.Windows.Forms.Panel();
             this.customer1 = new Apps.Customer();
             this.supplier1 = new Apps.Supplier();
-            this.penjualan1 = new Apps.Penjualan();
-            this.pembelian1 = new Apps.Pembelian();
             this.pengaturan1 = new Apps.Pengaturan();
             this.inventori1 = new Apps.Inventori();
+            this.penjualan1 = new Apps.Penjualan();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.beliPanel = new System.Windows.Forms.Panel();
             this.sidePanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.beliPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pointer
             // 
             this.pointer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
             this.pointer.Location = new System.Drawing.Point(0, 31);
-            this.pointer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pointer.Margin = new System.Windows.Forms.Padding(4);
             this.pointer.Name = "pointer";
             this.pointer.Size = new System.Drawing.Size(17, 64);
             this.pointer.TabIndex = 2;
@@ -63,7 +65,7 @@
             this.pengaturan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pengaturan.ForeColor = System.Drawing.Color.White;
             this.pengaturan.Location = new System.Drawing.Point(0, 412);
-            this.pengaturan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pengaturan.Margin = new System.Windows.Forms.Padding(4);
             this.pengaturan.Name = "pengaturan";
             this.pengaturan.Size = new System.Drawing.Size(259, 64);
             this.pengaturan.TabIndex = 8;
@@ -79,7 +81,7 @@
             this.penjualan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.penjualan.ForeColor = System.Drawing.Color.White;
             this.penjualan.Location = new System.Drawing.Point(0, 336);
-            this.penjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.penjualan.Margin = new System.Windows.Forms.Padding(4);
             this.penjualan.Name = "penjualan";
             this.penjualan.Size = new System.Drawing.Size(259, 64);
             this.penjualan.TabIndex = 7;
@@ -95,7 +97,7 @@
             this.pembelian.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pembelian.ForeColor = System.Drawing.Color.White;
             this.pembelian.Location = new System.Drawing.Point(0, 260);
-            this.pembelian.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pembelian.Margin = new System.Windows.Forms.Padding(4);
             this.pembelian.Name = "pembelian";
             this.pembelian.Size = new System.Drawing.Size(259, 64);
             this.pembelian.TabIndex = 6;
@@ -111,7 +113,7 @@
             this.inventori.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.inventori.ForeColor = System.Drawing.Color.White;
             this.inventori.Location = new System.Drawing.Point(0, 183);
-            this.inventori.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inventori.Margin = new System.Windows.Forms.Padding(4);
             this.inventori.Name = "inventori";
             this.inventori.Size = new System.Drawing.Size(259, 64);
             this.inventori.TabIndex = 4;
@@ -127,7 +129,7 @@
             this.pelanggan.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pelanggan.ForeColor = System.Drawing.Color.White;
             this.pelanggan.Location = new System.Drawing.Point(0, 107);
-            this.pelanggan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pelanggan.Margin = new System.Windows.Forms.Padding(4);
             this.pelanggan.Name = "pelanggan";
             this.pelanggan.Size = new System.Drawing.Size(259, 64);
             this.pelanggan.TabIndex = 5;
@@ -143,22 +145,13 @@
             this.supplier.Font = new System.Drawing.Font("Trebuchet MS", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplier.ForeColor = System.Drawing.Color.White;
             this.supplier.Location = new System.Drawing.Point(0, 31);
-            this.supplier.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supplier.Margin = new System.Windows.Forms.Padding(4);
             this.supplier.Name = "supplier";
             this.supplier.Size = new System.Drawing.Size(259, 64);
             this.supplier.TabIndex = 3;
             this.supplier.Text = "SUPPLIER";
             this.supplier.UseVisualStyleBackColor = false;
             this.supplier.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // topPanel
-            // 
-            this.topPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.topPanel.Location = new System.Drawing.Point(267, -1);
-            this.topPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.topPanel.Name = "topPanel";
-            this.topPanel.Size = new System.Drawing.Size(1563, 32);
-            this.topPanel.TabIndex = 3;
             // 
             // sidePanel
             // 
@@ -170,61 +163,86 @@
             this.sidePanel.Controls.Add(this.inventori);
             this.sidePanel.Controls.Add(this.pelanggan);
             this.sidePanel.Controls.Add(this.supplier);
-            this.sidePanel.Location = new System.Drawing.Point(0, -1);
+            this.sidePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sidePanel.Location = new System.Drawing.Point(0, 0);
             this.sidePanel.Margin = new System.Windows.Forms.Padding(0);
             this.sidePanel.Name = "sidePanel";
-            this.sidePanel.Size = new System.Drawing.Size(267, 905);
+            this.sidePanel.Size = new System.Drawing.Size(365, 900);
             this.sidePanel.TabIndex = 2;
             // 
             // customer1
             // 
-            this.customer1.Location = new System.Drawing.Point(275, 38);
-            this.customer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.customer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.customer1.Location = new System.Drawing.Point(0, 0);
+            this.customer1.Margin = new System.Windows.Forms.Padding(5);
             this.customer1.Name = "customer1";
-            this.customer1.Size = new System.Drawing.Size(1535, 846);
+            this.customer1.Size = new System.Drawing.Size(1456, 894);
             this.customer1.TabIndex = 4;
             // 
             // supplier1
             // 
-            this.supplier1.Location = new System.Drawing.Point(275, 38);
-            this.supplier1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.supplier1.BackColor = System.Drawing.SystemColors.Control;
+            this.supplier1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.supplier1.Location = new System.Drawing.Point(0, 0);
+            this.supplier1.Margin = new System.Windows.Forms.Padding(5);
             this.supplier1.Name = "supplier1";
-            this.supplier1.Size = new System.Drawing.Size(1535, 846);
+            this.supplier1.Size = new System.Drawing.Size(1456, 894);
             this.supplier1.TabIndex = 5;
-            // 
-            // penjualan1
-            // 
-            this.penjualan1.Location = new System.Drawing.Point(276, 38);
-            this.penjualan1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.penjualan1.Name = "penjualan1";
-            this.penjualan1.Size = new System.Drawing.Size(1535, 846);
-            this.penjualan1.TabIndex = 6;
-            // 
-            // pembelian1
-            // 
-            this.pembelian1.AutoSize = true;
-            this.pembelian1.BackColor = System.Drawing.SystemColors.Control;
-            this.pembelian1.Location = new System.Drawing.Point(276, 38);
-            this.pembelian1.Margin = new System.Windows.Forms.Padding(0);
-            this.pembelian1.Name = "pembelian1";
-            this.pembelian1.Size = new System.Drawing.Size(1535, 846);
-            this.pembelian1.TabIndex = 7;
             // 
             // pengaturan1
             // 
-            this.pengaturan1.Location = new System.Drawing.Point(276, 39);
-            this.pengaturan1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.pengaturan1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pengaturan1.Location = new System.Drawing.Point(0, 0);
+            this.pengaturan1.Margin = new System.Windows.Forms.Padding(5);
             this.pengaturan1.Name = "pengaturan1";
-            this.pengaturan1.Size = new System.Drawing.Size(1535, 846);
+            this.pengaturan1.Size = new System.Drawing.Size(1456, 894);
             this.pengaturan1.TabIndex = 8;
             // 
             // inventori1
             // 
-            this.inventori1.Location = new System.Drawing.Point(275, 38);
-            this.inventori1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.inventori1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.inventori1.Location = new System.Drawing.Point(0, 0);
+            this.inventori1.Margin = new System.Windows.Forms.Padding(5);
             this.inventori1.Name = "inventori1";
-            this.inventori1.Size = new System.Drawing.Size(1535, 846);
+            this.inventori1.Size = new System.Drawing.Size(1456, 894);
             this.inventori1.TabIndex = 9;
+            // 
+            // penjualan1
+            // 
+            this.penjualan1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.penjualan1.Location = new System.Drawing.Point(0, 0);
+            this.penjualan1.Margin = new System.Windows.Forms.Padding(5);
+            this.penjualan1.Name = "penjualan1";
+            this.penjualan1.Size = new System.Drawing.Size(1456, 894);
+            this.penjualan1.TabIndex = 6;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.Controls.Add(this.beliPanel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.sidePanel, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1827, 900);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // beliPanel
+            // 
+            this.beliPanel.Controls.Add(this.penjualan1);
+            this.beliPanel.Controls.Add(this.customer1);
+            this.beliPanel.Controls.Add(this.supplier1);
+            this.beliPanel.Controls.Add(this.pengaturan1);
+            this.beliPanel.Controls.Add(this.inventori1);
+            this.beliPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.beliPanel.Location = new System.Drawing.Point(368, 3);
+            this.beliPanel.Name = "beliPanel";
+            this.beliPanel.Size = new System.Drawing.Size(1456, 894);
+            this.beliPanel.TabIndex = 11;
             // 
             // Home
             // 
@@ -232,23 +250,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1827, 900);
-            this.Controls.Add(this.pembelian1);
-            this.Controls.Add(this.topPanel);
-            this.Controls.Add(this.sidePanel);
-            this.Controls.Add(this.penjualan1);
-            this.Controls.Add(this.customer1);
-            this.Controls.Add(this.supplier1);
-            this.Controls.Add(this.inventori1);
-            this.Controls.Add(this.pengaturan1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Home_Load);
             this.sidePanel.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.beliPanel.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -261,13 +273,14 @@
         private System.Windows.Forms.Button inventori;
         private System.Windows.Forms.Button pelanggan;
         private System.Windows.Forms.Button supplier;
-        private System.Windows.Forms.Panel topPanel;
         private System.Windows.Forms.Panel sidePanel;
         private Customer customer1;
         private Supplier supplier1;
-        private Penjualan penjualan1;
         private Pembelian pembelian1;
         private Pengaturan pengaturan1;
         private Inventori inventori1;
+        private Penjualan penjualan1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Panel beliPanel;
     }
 }
