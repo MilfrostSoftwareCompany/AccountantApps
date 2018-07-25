@@ -12,21 +12,37 @@ namespace Apps
 {
     public partial class Add_Penjualan : Form
     {
+
+        Apps.Models.Customer idCustomer;
+        List<Apps.Models.Product> produkList;
+        List<Apps.Models.Customer> customerList = new List<Models.Customer>();
         public Add_Penjualan()
         {
             InitializeComponent();
-            namaCustomer.Focus();
+            retrieveData();
+        }
+
+        private void retrieveData()
+        {
+            DataSet custDs = Database.getInstance().getAllSupplierData();
+            for (int i = 0; i < custDs.Tables[0].Rows.Count; i++)
+            {
+                Models.Customer supplier_ = new Models.Customer(custDs.Tables[0].Rows[i][0].ToString(), custDs.Tables[0].Rows[i][1].ToString(), custDs.Tables[0].Rows[i][2].ToString(), custDs.Tables[0].Rows[i][3].ToString());
+                customerList.Add(supplier_);
+            }
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = (customerList);
+            comboBox1.DataSource = custDs.Tables[0];
+            comboBox1.DisplayMember = "Nama";
+            comboBox1.ValueMember = "ID";
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (namaCustomer.Text.Length == 0 || alamatCustomer.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
+            if (jatuhTempo.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi semua field !!");
-                if (namaCustomer.Text.Length == 0) { namaCustomer.Focus(); }
-                else if (alamatCustomer.Text.Length == 0) { alamatCustomer.Focus(); }
-                else if (wilayah.Text.Length == 0) { wilayah.Focus(); }
-                else { jatuhTempo.Focus(); }
+                
             }
             else
             {
@@ -40,7 +56,7 @@ namespace Apps
         {
             if (e.KeyCode == Keys.Enter)
             {
-                alamatCustomer.Focus();
+                //alamatCustomer.Focus();
             }
         }
 
@@ -48,7 +64,7 @@ namespace Apps
         {
             if (e.KeyCode == Keys.Enter)
             {
-                wilayah.Focus();
+                //wilayah.Focus();
             }
         }
 

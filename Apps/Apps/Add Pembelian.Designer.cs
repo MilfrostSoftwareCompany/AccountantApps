@@ -70,7 +70,7 @@
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Location = new System.Drawing.Point(1283, 711);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(187, 38);
             this.buttonSave.TabIndex = 90;
@@ -86,12 +86,13 @@
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
             this.buttonAddBarang.Location = new System.Drawing.Point(48, 198);
-            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddBarang.Name = "buttonAddBarang";
             this.buttonAddBarang.Size = new System.Drawing.Size(187, 38);
             this.buttonAddBarang.TabIndex = 89;
             this.buttonAddBarang.Text = "+ ADD BARANG";
             this.buttonAddBarang.UseVisualStyleBackColor = false;
+            this.buttonAddBarang.Click += new System.EventHandler(this.buttonAddBarang_Click);
             // 
             // total
             // 
@@ -227,7 +228,7 @@
             this.Column7,
             this.Column8});
             this.dataGridView1.Location = new System.Drawing.Point(48, 264);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1421, 313);
             this.dataGridView1.TabIndex = 77;
@@ -303,7 +304,7 @@
             // 
             this.jatuhTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jatuhTempo.Location = new System.Drawing.Point(1242, 167);
-            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4);
             this.jatuhTempo.Name = "jatuhTempo";
             this.jatuhTempo.Size = new System.Drawing.Size(228, 30);
             this.jatuhTempo.TabIndex = 72;
@@ -327,9 +328,9 @@
             this.label4.Location = new System.Drawing.Point(46, 81);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 22);
+            this.label4.Size = new System.Drawing.Size(140, 22);
             this.label4.TabIndex = 66;
-            this.label4.Text = "Nama  Customer:";
+            this.label4.Text = "Nama  Supplier:";
             // 
             // label3
             // 
@@ -397,7 +398,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Add_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

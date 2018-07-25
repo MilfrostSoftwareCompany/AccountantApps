@@ -23,6 +23,8 @@ namespace Apps.Models
             this.tujuan = tujuan;
             this.tgl_invoice = tgl_invoice;
             this.produkList = produkList;
+            this.biaya_kirim = 0;
+            this.deskripsi = "";
         }
 
         public Transaction(string invoice_no, Supplier tujuan, string tgl_invoice, List<Product> produkList) {
@@ -30,6 +32,8 @@ namespace Apps.Models
             this.tujuan = tujuan;
             this.tgl_invoice = tgl_invoice;
             this.produkList = produkList;
+            this.biaya_kirim = 0;
+            this.deskripsi = "";
         }
     }
 }
