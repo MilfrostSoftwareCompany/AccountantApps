@@ -34,7 +34,7 @@ namespace Apps.Models
             
         }
 
-        public void setDiskon(float d) {
+        public void setDiskon(int d) {
             diskon = d;
         }
     }

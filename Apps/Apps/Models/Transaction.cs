@@ -18,21 +18,17 @@ namespace Apps.Models
         public List<Product> produkList;
 
 
-        public Transaction(Supplier tujuan, string tgl_invoice, string deskripsi, int biaya_kirim,List<Product> produkList)
+        public Transaction(Supplier tujuan, string tgl_invoice,List<Product> produkList)
         {
             this.tujuan = tujuan;
             this.tgl_invoice = tgl_invoice;
-            this.deskripsi = deskripsi;
-            this.biaya_kirim = biaya_kirim;
             this.produkList = produkList;
         }
 
-        public Transaction(string invoice_no, Supplier tujuan, string tgl_invoice, string deskripsi, int biaya_kirim, List<Product> produkList) {
+        public Transaction(string invoice_no, Supplier tujuan, string tgl_invoice, List<Product> produkList) {
             this.invoice_no = invoice_no;
             this.tujuan = tujuan;
             this.tgl_invoice = tgl_invoice;
-            this.deskripsi = deskripsi;
-            this.biaya_kirim = biaya_kirim;
             this.produkList = produkList;
         }
     }

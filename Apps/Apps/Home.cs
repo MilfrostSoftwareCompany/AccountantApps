@@ -62,7 +62,7 @@ namespace Apps
             //panel supplier
             supplier1.Location = new Point(sidePanel.Width,topPanel.Height);
             supplier1.Width = widthPanel;
-            supplier1.Height = this.Height;
+            supplier1.Height = heightPanel;
             //panel pelanggan
             customer1.Location = new Point(sidePanel.Width, topPanel.Height);
             customer1.Width = widthPanel;

@@ -17,7 +17,6 @@ namespace Apps
             this.Width = Home.widthPanel;
             this.Height = Home.heightPanel;
             InitializeComponent();
-            InitializeDesign();
         }
 
         public void InitializeDesign() {

@@ -35,12 +35,12 @@ namespace Apps
 
         public void InitializeDesign()
         {
-            search.Location = new Point(15, 13);
-            buttonSearch.Location = new Point(Convert.ToInt32(search.Width) + 30, 10);
-            buttonAddPembelian.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddPembelian.Width) - 15, 10);
-            tabelPembelian.Width = Convert.ToInt32(this.Width - 30);
-            tabelPembelian.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(buttonSearch.Height) - 50;
-            tabelPembelian.Location = new Point(15, Convert.ToInt32(buttonSearch.Height) + 30);
+            //search.Location = new Point(15, 13);
+            //buttonSearch.Location = new Point(Convert.ToInt32(search.Width) + 30, 10);
+            //buttonAddPembelian.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddPembelian.Width) - 15, 10);
+            //tabelPembelian.Width = Convert.ToInt32(this.Width - 30);
+            //tabelPembelian.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(buttonSearch.Height) - 50;
+            //tabelPembelian.Location = new Point(15, Convert.ToInt32(buttonSearch.Height) + 30);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -139,17 +139,17 @@ namespace Apps
 
         private void SetColumnWidth()
         {
-            tabelPembelian.Columns[0].Width = tabelPembelian.Width /12;
-            tabelPembelian.Columns[1].Width = tabelPembelian.Width /10;
-            tabelPembelian.Columns[2].Width = tabelPembelian.Width /10;
-            tabelPembelian.Columns[3].Width = tabelPembelian.Width /10;
-            tabelPembelian.Columns[4].Width = tabelPembelian.Width /8;
-            tabelPembelian.Columns[5].Width = tabelPembelian.Width /20;
-            tabelPembelian.Columns[6].Width = tabelPembelian.Width /20;
-            tabelPembelian.Columns[7].Width = tabelPembelian.Width /10;
-            tabelPembelian.Columns[8].Width = tabelPembelian.Width /10;
-            tabelPembelian.Columns[9].Width = tabelPembelian.Width / 10;
-            tabelPembelian.Columns[9].Width = tabelPembelian.Width / 10;
+            tabelPembelian.Columns[0].Width = Convert.ToInt32(tabelPembelian.Width * 0.08);
+            tabelPembelian.Columns[1].Width = Convert.ToInt32(tabelPembelian.Width * 0.125);
+            tabelPembelian.Columns[2].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
+            tabelPembelian.Columns[3].Width = Convert.ToInt32(tabelPembelian.Width * 0.16);
+            tabelPembelian.Columns[4].Width = Convert.ToInt32(tabelPembelian.Width * 0.18);
+            tabelPembelian.Columns[5].Width = Convert.ToInt32(tabelPembelian.Width * 0.05);
+            tabelPembelian.Columns[6].Width = Convert.ToInt32(tabelPembelian.Width * 0.05);
+            tabelPembelian.Columns[7].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
+            tabelPembelian.Columns[8].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
+            tabelPembelian.Columns[9].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
+            tabelPembelian.Columns[10].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
         }
     }
 }

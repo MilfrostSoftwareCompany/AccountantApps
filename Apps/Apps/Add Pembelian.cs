@@ -12,24 +12,28 @@ namespace Apps
 {
     public partial class Add_Pembelian : Form
     {
+
+        Apps.Models.Supplier idCustomer;
+        List<Apps.Models.Product> produkList;
         public Add_Pembelian()
         {
             InitializeComponent();
-            namaSupplier.Focus();
+            namaCustomer.Focus();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (namaSupplier.Text.Length == 0 || alamatSupplier.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
+            if (namaCustomer.Text.Length == 0 || alamatSupplier.Text.Length == 0 || wilayah.Text.Length == 0 || jatuhTempo.Text.Length == 0)
             {
                 MessageBox.Show("Harus mengisi semua field !!");
-                if (namaSupplier.Text.Length == 0) { namaSupplier.Focus(); }
+                if (namaCustomer.Text.Length == 0) { namaCustomer.Focus(); }
                 else if (alamatSupplier.Text.Length == 0) { alamatSupplier.Focus(); }
                 else if (wilayah.Text.Length == 0) { wilayah.Focus(); }
                 else { jatuhTempo.Focus(); }
             }
             else
             {
+                Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text,idCustomer,tgl.Text,produkList);
                 this.Close();
             }
         }
