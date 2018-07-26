@@ -63,6 +63,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add Barang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add Barang.Designer.cs">
+      <DependentUpon>Add Barang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Add Customer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +178,15 @@
     <Compile Include="Supplier.Designer.cs">
       <DependentUpon>Supplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="View Detail Pembelian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View Detail Pembelian.Designer.cs">
+      <DependentUpon>View Detail Pembelian.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add Barang.resx">
+      <DependentUpon>Add Barang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Add Customer.resx">
       <DependentUpon>Add Customer.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -229,6 +244,9 @@
     </Compile>
     <EmbeddedResource Include="Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View Detail Pembelian.resx">
+      <DependentUpon>View Detail Pembelian.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\acc_app.sqlite">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

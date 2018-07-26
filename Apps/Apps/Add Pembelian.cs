@@ -77,7 +77,12 @@ namespace Apps
 
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            Add_Barang FormAddBarang = new Add_Barang();
+            FormAddBarang.ShowDialog();
+=======
 
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
         }
     }
 }
