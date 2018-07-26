@@ -18,15 +18,30 @@ namespace Apps
         public Add_Pembelian()
         {
             InitializeComponent();
+            retrieveData();
         }
+
+        private void retrieveData() {
+            DataSet custDs = Database.getInstance().getAllSupplierData();
+            comboBox1.DataSource= custDs.Tables[0];
+            comboBox1.DisplayMember = "nama";
+            comboBox1.ValueMember = "id";
+        }
+
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
             
-                Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text, idCustomer, tgl.Text, produkList);
-                this.Close();
+            Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text, idCustomer, tgl.Text, produkList);
+            if (Database.getInstance().CreateNewPurchase(transaction)) {
+                MessageBox.Show("Data Pembelian telah ditambahkan");
+            }
+            this.Close();
             
         }
+
+
+      
 
         private void namaSupplier_KeyDown(object sender, KeyEventArgs e)
         {
@@ -62,8 +77,12 @@ namespace Apps
 
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Add_Barang FormAddBarang = new Add_Barang();
             FormAddBarang.ShowDialog();
+=======
+
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
         }
     }
 }

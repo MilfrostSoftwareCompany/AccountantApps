@@ -69,7 +69,12 @@
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.buttonSave.Location = new System.Drawing.Point(962, 578);
+=======
+            this.buttonSave.Location = new System.Drawing.Point(1283, 711);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(140, 31);
             this.buttonSave.TabIndex = 90;
@@ -84,7 +89,12 @@
             this.buttonAddBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
+<<<<<<< HEAD
             this.buttonAddBarang.Location = new System.Drawing.Point(36, 161);
+=======
+            this.buttonAddBarang.Location = new System.Drawing.Point(48, 198);
+            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.buttonAddBarang.Name = "buttonAddBarang";
             this.buttonAddBarang.Size = new System.Drawing.Size(140, 31);
             this.buttonAddBarang.TabIndex = 89;
@@ -214,7 +224,12 @@
             this.Column6,
             this.Column7,
             this.Column8});
+<<<<<<< HEAD
             this.dataGridView1.Location = new System.Drawing.Point(36, 214);
+=======
+            this.dataGridView1.Location = new System.Drawing.Point(48, 264);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1066, 254);
             this.dataGridView1.TabIndex = 77;
@@ -287,7 +302,12 @@
             // jatuhTempo
             // 
             this.jatuhTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+<<<<<<< HEAD
             this.jatuhTempo.Location = new System.Drawing.Point(932, 136);
+=======
+            this.jatuhTempo.Location = new System.Drawing.Point(1242, 167);
+            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.jatuhTempo.Name = "jatuhTempo";
             this.jatuhTempo.Size = new System.Drawing.Size(172, 26);
             this.jatuhTempo.TabIndex = 72;
@@ -309,9 +329,13 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(34, 66);
             this.label4.Name = "label4";
+<<<<<<< HEAD
             this.label4.Size = new System.Drawing.Size(116, 19);
+=======
+            this.label4.Size = new System.Drawing.Size(140, 22);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.label4.TabIndex = 66;
-            this.label4.Text = "Nama  Customer:";
+            this.label4.Text = "Nama  Supplier:";
             // 
             // label3
             // 
@@ -377,6 +401,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+<<<<<<< HEAD
+=======
+            this.Margin = new System.Windows.Forms.Padding(4);
+>>>>>>> a251ea4147ddc338e8c02afe013fc223de336c0c
             this.MaximizeBox = false;
             this.Name = "Add_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

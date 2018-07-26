@@ -200,24 +200,11 @@ namespace Apps
         }
 
         //Purchase related functions
-        //public DataSet GetAllPurchase()
-        //{
-        //    sqlConnection.Open();
-        //    string sqlString = "select pembelian.invoice_no as [Invoice No] , suppliers.nama as Tujuan , pembelian.tgl_invoice as Tanggal ,pembelian.deskripsi as  Deskripsi ,produk.nama_produk as Produk ,detail_pembelian.kuantitas as Qty, produk.jenis_satuan as Satuan,detail_pembelian.harga_produk as [@], detail_pembelian.diskon as Diskon, kuantitas*harga_produk*((100-diskon)/100) as harga from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier INNER JOIN detail_pembelian ON pembelian.invoice_no  = detail_pembelian.invoice_no INNER JOIN produk ON detail_pembelian.id_produk = produk.id_produk";
-        //    SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
-
-        //    DataSet ds = new DataSet();
-        //    adapter.Fill(ds, "Info");
-
-        //    DataSet newDs = new DataSet();
-        //    sqlConnection.Close();
-        //    return ds;
-        //}
 
         public DataSet GetAllPurchase()
         {
             sqlConnection.Open();
-            string sqlString = "select invoice_no as [Invoice No], tujuan as Supplier, tgl_invoice as [Tgl Pembelian],deskripsi as Deskripsi from pembelian";
+            string sqlString = "select invoice_no as [Invoice No], tujuan as Supplier, tgl_invoice as [Tgl Pembelian] from pembelian";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -241,7 +228,7 @@ namespace Apps
             return ds;
         }
 
-        public int CreateNewPurchase(Apps.Models.Transaction transaction)
+        public bool CreateNewPurchase(Apps.Models.Transaction transaction)
         {
             int res = 0;
             sqlConnection.Open();
@@ -287,7 +274,87 @@ namespace Apps
             }
 
             sqlConnection.Close();
-            return res;
+            return res==(1+transaction.produkList.Count);
+        }
+
+        //Purchase related functions
+
+        public DataSet GetAllSell()
+        {
+            sqlConnection.Open();
+            string sqlString = "select invoice_no as [Invoice No], supplier as Customer, tgl_invoice as [Tgl Penjualan] from penjualan";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public DataSet GetAllRelatedProductSell(string invoiceNo)
+        {
+            sqlConnection.Open();
+            string sqlStr = "select produk.nama_produk  as [Nama Produk], detail_penjualan.kuantitas as Qty, produk.jenis_satuan as Satuan, detail_penjualan.harga_produk as [@], detail_penjualan.diskon as Diskon,(detail_penjualan.kuantitas * detail_penjualan.harga_produk )- detail_penjualan.diskon as Jumlah from detail_penjualan  INNER JOIN produk ON detail_penjualan.id_produk = produk.id_produk WHERE detail_penjualan.invoice_no = '" + invoiceNo + "'";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlStr, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public bool CreateNewSell(Apps.Models.Transaction transaction)
+        {
+            int res = 0;
+            sqlConnection.Open();
+
+            //command to insert to table penjualan
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO penjualan (invoice_no,supplier, tgl_invoice, deskripsi, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@deskripsi,@biaya_kirim,@created_by,@creation_time)", sqlConnection);
+            insertSQL.CommandType = CommandType.Text;
+            insertSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
+            insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan);
+            insertSQL.Parameters.AddWithValue("@tgl_invoice", transaction.tgl_invoice);
+            insertSQL.Parameters.AddWithValue("@deskripsi", transaction.deskripsi);
+            insertSQL.Parameters.AddWithValue("@biaya_kirim", transaction.biaya_kirim);
+            insertSQL.Parameters.AddWithValue("@created_by", transaction.createdBy);
+            insertSQL.Parameters.AddWithValue("@creation_date", transaction.creationTime);
+
+            try
+            {
+                res += insertSQL.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            //command to insert to table detail pembelian
+            foreach (Apps.Models.Product p in transaction.produkList)
+            {
+                SQLiteCommand insertInnerSQL = new SQLiteCommand("INSERT INTO detail_penjualan (invoice_no,id_produk, harga_produk, kuantitas, diskon) VALUES (@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)", sqlConnection);
+                insertInnerSQL.CommandType = CommandType.Text;
+                insertInnerSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
+                insertInnerSQL.Parameters.AddWithValue("@id_produk", p.idProduk);
+                insertInnerSQL.Parameters.AddWithValue("@harga_produk", p.harga);
+                insertInnerSQL.Parameters.AddWithValue("@kuantitas", p.jumlah);
+                insertInnerSQL.Parameters.AddWithValue("@diskon", p.diskon);
+
+                try
+                {
+                    res += insertSQL.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+
+            }
+
+            sqlConnection.Close();
+            return res == (1 + transaction.produkList.Count);
         }
 
 
