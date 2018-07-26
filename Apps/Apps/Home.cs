@@ -24,8 +24,6 @@ namespace Apps
         {
             this.Width = Screen.PrimaryScreen.WorkingArea.Width;
             this.Height = Screen.PrimaryScreen.WorkingArea.Height;
-            //Console.WriteLine("width  = " + this.Width);
-            //Console.WriteLine("height  = " + this.Height);
             //widthPanel = Convert.ToInt32(this.Width * 0.85);
             //heightPanel = Convert.ToInt32(this.Height * 0.97);
             ////sidePanel
@@ -40,29 +38,29 @@ namespace Apps
             ////topPanel.Height = Convert.ToInt32(this.Height * 0.03);
             ////topPanel.Location = new Point(sidePanel.Width, 0);
             ////supplier
-            //supplier.Width = sidePanel.Width;
-            //supplier.BackColor = Color.FromArgb(255, 50, 50, 50);
-            //supplier.Location = new Point(0, Convert.ToInt32(this.Height * 0.03));
+            supplier.Width = sidePanel.Width;
+            supplier.BackColor = Color.FromArgb(255, 50, 50, 50);
+            supplier.Location = new Point(0, Convert.ToInt32(this.Height * 0.03));
             ////pelanggan
-            //pelanggan.Width = sidePanel.Width;
-            //pelanggan.BackColor = Color.FromArgb(255, 30, 30, 30);
-            //pelanggan.Location = new Point( 0, supplier.Top + supplier.Height + Convert.ToInt32(this.Height*0.03));
+            pelanggan.Width = sidePanel.Width;
+            pelanggan.BackColor = Color.FromArgb(255, 30, 30, 30);
+            pelanggan.Location = new Point( 0, supplier.Top + supplier.Height + Convert.ToInt32(this.Height*0.03));
             ////inventori
-            //inventori.Width = sidePanel.Width;
-            //inventori.BackColor = Color.FromArgb(255, 30, 30, 30);
-            //inventori.Location = new Point(0, pelanggan.Top + pelanggan.Height + Convert.ToInt32(this.Height * 0.03));
+            inventori.Width = sidePanel.Width;
+            inventori.BackColor = Color.FromArgb(255, 30, 30, 30);
+            inventori.Location = new Point(0, pelanggan.Top + pelanggan.Height + Convert.ToInt32(this.Height * 0.03));
             ////pembelian
-            //pembelian.Width = sidePanel.Width;
-            //pembelian.BackColor = Color.FromArgb(255, 30, 30, 30);
-            //pembelian.Location = new Point(0, inventori.Top + inventori.Height + Convert.ToInt32(this.Height * 0.03));
+            pembelian.Width = sidePanel.Width;
+            pembelian.BackColor = Color.FromArgb(255, 30, 30, 30);
+            pembelian.Location = new Point(0, inventori.Top + inventori.Height + Convert.ToInt32(this.Height * 0.03));
             ////penjualan
-            //penjualan.Width = sidePanel.Width;
-            //penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
-            //penjualan.Location = new Point(0, pembelian.Top + pembelian.Height + Convert.ToInt32(this.Height * 0.03));
+            penjualan.Width = sidePanel.Width;
+            penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
+            penjualan.Location = new Point(0, pembelian.Top + pembelian.Height + Convert.ToInt32(this.Height * 0.03));
             ////pengaturan
-            //pengaturan.Width = sidePanel.Width;
-            //pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
-            //pengaturan.Location = new Point(0, penjualan.Top + penjualan.Height + Convert.ToInt32(this.Height * 0.03));
+            pengaturan.Width = sidePanel.Width;
+            pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
+            pengaturan.Location = new Point(0, penjualan.Top + penjualan.Height + Convert.ToInt32(this.Height * 0.03));
             ////panel supplier
             //supplier1.Location = new Point(sidePanel.Width,topPanel.Height);
             //supplier1.Width = widthPanel;
@@ -88,7 +86,7 @@ namespace Apps
             //pengaturan1.Width = widthPanel;
             //pengaturan1.Height = heightPanel;
             //panel yang ditampilkan
-            supplier1.BringToFront();
+            supplier2.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,7 +101,7 @@ namespace Apps
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            supplier1.BringToFront();
+            supplier2.BringToFront();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -118,7 +116,7 @@ namespace Apps
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            customer1.BringToFront();
+            customer2.BringToFront();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -133,7 +131,7 @@ namespace Apps
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            inventori1.BringToFront();
+            inventori2.BringToFront();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -148,7 +146,7 @@ namespace Apps
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            beliPanel.BringToFront();
+            pembelian3.BringToFront();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -163,12 +161,7 @@ namespace Apps
             pembelian.BackColor = Color.FromArgb(255, 30, 30, 30);
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            penjualan1.BringToFront();
-        }
-
-        private void Home_Load(object sender, EventArgs e)
-        {
-
+            penjualan2.BringToFront();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -183,7 +176,7 @@ namespace Apps
             pembelian.BackColor = Color.FromArgb(255, 30, 30, 30);
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
-            pengaturan1.BringToFront();
+            pengaturan2.BringToFront();
         }
 
     }

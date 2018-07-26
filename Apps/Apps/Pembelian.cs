@@ -14,13 +14,13 @@ namespace Apps
     public partial class Pembelian : UserControl
     {
 
-       
+
 
         public Pembelian()
         {
+            InitializeComponent();
             this.Width = Home.widthPanel;
             this.Height = Home.heightPanel;
-            InitializeComponent();
             InitializeDesign();
             initData();
         }
@@ -43,32 +43,6 @@ namespace Apps
             //tabelPembelian.Location = new Point(15, Convert.ToInt32(buttonSearch.Height) + 30);
         }
 
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            if (search.Text.Length == 0)
-            {
-                refreshData();
-                MessageBox.Show("Harus mengisi field pencarian !!");
-                search.Focus();
-            }
-            else
-            {
-
-            }
-        }
-
-        private void buttonAddPembelian_Click(object sender, EventArgs e)
-        {
-            Add_Pembelian FormAddPembelian = new Add_Pembelian();
-            FormAddPembelian.ShowDialog();
-        }
-
-        private void Pembelian_Load(object sender, EventArgs e)
-        {
-            
-
-        }
-
         public void refreshData()
         {
             LoadSupplierData();
@@ -78,7 +52,7 @@ namespace Apps
 
         private void LoadSupplierData()
         {
-            
+
             Database database = Database.getInstance();
             DataSet dataSet = database.GetAllPurchase();
 
@@ -90,7 +64,8 @@ namespace Apps
             dataSet.Tables[0].Columns.Add("Diskon");
             dataSet.Tables[0].Columns.Add("Jumlah");
 
-            for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++) {
+            for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
+            {
                 DataSet newDataSet = database.GetAllRelatedProductPurchase(dataSet.Tables[0].Rows[i][0].ToString());
                 string nl = Environment.NewLine;
                 string productList = "";
@@ -99,7 +74,8 @@ namespace Apps
                 string satuanList = "";
                 string diskonList = "";
                 string jlhList = "";
-                for (int j = 0; j < newDataSet.Tables[0].Rows.Count; j++) {
+                for (int j = 0; j < newDataSet.Tables[0].Rows.Count; j++)
+                {
                     if (j == newDataSet.Tables[0].Rows.Count - 1)
                     {
                         productList += newDataSet.Tables[0].Rows[j][0].ToString();
@@ -134,7 +110,7 @@ namespace Apps
             col.Text = "View Details";
             col.Name = "Details";
             tabelPembelian.Columns.Add(col);
-           
+
         }
 
         private void SetColumnWidth()
@@ -150,6 +126,26 @@ namespace Apps
             tabelPembelian.Columns[8].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
             tabelPembelian.Columns[9].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
             tabelPembelian.Columns[10].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            if (search.Text.Length == 0)
+            {
+                refreshData();
+                MessageBox.Show("Harus mengisi field pencarian !!");
+                search.Focus();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void buttonAddPembelian_Click(object sender, EventArgs e)
+        {
+            Add_Pembelian FormAddPembelian = new Add_Pembelian();
+            FormAddPembelian.ShowDialog();
         }
     }
 }

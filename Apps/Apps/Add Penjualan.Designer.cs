@@ -95,6 +95,7 @@
             this.buttonAddBarang.TabIndex = 63;
             this.buttonAddBarang.Text = "+ ADD BARANG";
             this.buttonAddBarang.UseVisualStyleBackColor = false;
+            this.buttonAddBarang.Click += new System.EventHandler(this.buttonAddBarang_Click);
             // 
             // total
             // 
