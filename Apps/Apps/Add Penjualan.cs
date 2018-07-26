@@ -25,13 +25,6 @@ namespace Apps
         private void retrieveData()
         {
             DataSet custDs = Database.getInstance().getAllSupplierData();
-            for (int i = 0; i < custDs.Tables[0].Rows.Count; i++)
-            {
-                Models.Customer supplier_ = new Models.Customer(custDs.Tables[0].Rows[i][0].ToString(), custDs.Tables[0].Rows[i][1].ToString(), custDs.Tables[0].Rows[i][2].ToString(), custDs.Tables[0].Rows[i][3].ToString());
-                customerList.Add(supplier_);
-            }
-            BindingSource bindingSource = new BindingSource();
-            bindingSource.DataSource = (customerList);
             comboBox1.DataSource = custDs.Tables[0];
             comboBox1.DisplayMember = "Nama";
             comboBox1.ValueMember = "ID";
