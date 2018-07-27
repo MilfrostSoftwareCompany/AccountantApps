@@ -146,7 +146,7 @@ namespace Apps
         public DataSet GetAllProducts()
         {
             sqlConnection.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From produk", sqlConnection);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_produk as ID, nama_produk as [Nama Produk], jumlah as Stock, jenis_satuan as Satuan, harga as Harga From produk", sqlConnection);
 
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
@@ -234,12 +234,11 @@ namespace Apps
             sqlConnection.Open();
 
             //command to insert to table pembelian
-            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO pembelian (invoice_no,tujuan, tgl_invoice, deskripsi, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@deskripsi,@biaya_kirim,@created_by,@creation_time)", sqlConnection);
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO pembelian (invoice_no,tujuan, tgl_invoice, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@biaya_kirim,@created_by,@creation_date)", sqlConnection);
             insertSQL.CommandType = CommandType.Text;
             insertSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
             insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan);
             insertSQL.Parameters.AddWithValue("@tgl_invoice", transaction.tgl_invoice);
-            insertSQL.Parameters.AddWithValue("@deskripsi", transaction.deskripsi);
             insertSQL.Parameters.AddWithValue("@biaya_kirim", transaction.biaya_kirim);
             insertSQL.Parameters.AddWithValue("@created_by", transaction.createdBy);
             insertSQL.Parameters.AddWithValue("@creation_date", transaction.creationTime);
@@ -264,7 +263,7 @@ namespace Apps
 
                 try
                 {
-                    res += insertSQL.ExecuteNonQuery();
+                    res += insertInnerSQL.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {

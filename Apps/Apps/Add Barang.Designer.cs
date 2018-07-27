@@ -35,9 +35,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.search = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Result.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,28 +47,32 @@
             this.buttonAddBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBarang.Location = new System.Drawing.Point(198, 197);
+            this.buttonAddBarang.Location = new System.Drawing.Point(264, 242);
+            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddBarang.Name = "buttonAddBarang";
-            this.buttonAddBarang.Size = new System.Drawing.Size(140, 31);
+            this.buttonAddBarang.Size = new System.Drawing.Size(187, 38);
             this.buttonAddBarang.TabIndex = 143;
             this.buttonAddBarang.Text = "Add Barang";
             this.buttonAddBarang.UseVisualStyleBackColor = false;
+            this.buttonAddBarang.Click += new System.EventHandler(this.buttonAddBarang_Click);
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(80, 199);
+            this.textBox1.Location = new System.Drawing.Point(107, 245);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(42, 26);
+            this.textBox1.Size = new System.Drawing.Size(55, 30);
             this.textBox1.TabIndex = 142;
             // 
             // jumlah
             // 
             this.jumlah.AutoSize = true;
             this.jumlah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jumlah.Location = new System.Drawing.Point(12, 202);
+            this.jumlah.Location = new System.Drawing.Point(16, 249);
+            this.jumlah.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.jumlah.Name = "jumlah";
-            this.jumlah.Size = new System.Drawing.Size(60, 20);
+            this.jumlah.Size = new System.Drawing.Size(76, 25);
             this.jumlah.TabIndex = 141;
             this.jumlah.Text = "Jumlah";
             // 
@@ -79,9 +82,11 @@
             this.Result.Controls.Add(this.label3);
             this.Result.Controls.Add(this.label2);
             this.Result.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Result.Location = new System.Drawing.Point(46, 59);
+            this.Result.Location = new System.Drawing.Point(61, 73);
+            this.Result.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(265, 118);
+            this.Result.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Result.Size = new System.Drawing.Size(353, 145);
             this.Result.TabIndex = 140;
             this.Result.TabStop = false;
             this.Result.Text = "Result";
@@ -90,9 +95,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(24, 84);
+            this.label4.Location = new System.Drawing.Point(32, 103);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 20);
+            this.label4.Size = new System.Drawing.Size(125, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Stock : 0 pcs";
             // 
@@ -100,9 +106,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 53);
+            this.label3.Location = new System.Drawing.Point(32, 65);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 20);
+            this.label3.Size = new System.Drawing.Size(57, 25);
             this.label3.TabIndex = 1;
             this.label3.Text = "Rp. 0";
             // 
@@ -110,54 +117,42 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(24, 22);
+            this.label2.Location = new System.Drawing.Point(32, 27);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 20);
+            this.label2.Size = new System.Drawing.Size(132, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama Barang";
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
-            this.buttonSearch.FlatAppearance.BorderSize = 0;
-            this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(198, 22);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(140, 31);
-            this.buttonSearch.TabIndex = 139;
-            this.buttonSearch.Text = "SEARCH";
-            this.buttonSearch.UseVisualStyleBackColor = false;
-            // 
-            // search
-            // 
-            this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(12, 24);
-            this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(180, 26);
-            this.search.TabIndex = 138;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 24);
+            this.label1.Location = new System.Drawing.Point(41, 30);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(0, 17);
             this.label1.TabIndex = 137;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(61, 30);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(353, 24);
+            this.comboBox1.TabIndex = 144;
             // 
             // Add_Barang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 243);
+            this.ClientSize = new System.Drawing.Size(475, 299);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonAddBarang);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.jumlah);
             this.Controls.Add(this.Result);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.search);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Add_Barang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Barang";
@@ -177,8 +172,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
