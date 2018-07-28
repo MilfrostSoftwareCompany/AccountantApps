@@ -67,7 +67,8 @@ namespace Apps
                 add_Pembelian.AddProdukToTable(selectedProduct);
             }
             else if (caller is Add_Penjualan) {
-
+                Add_Penjualan add_Penjualan = (Add_Penjualan)caller;
+                add_Penjualan.AddProdukToTable(selectedProduct);
             }
         }
     }

@@ -199,6 +199,19 @@ namespace Apps
 
         }
 
+        public int UpdateProductStock(int stock,string idProduk) {
+            int result;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "update Example set jumlah = :jumlah where id_produk=:id";
+            command.Parameters.Add("jumlah", DbType.String).Value = stock;
+            command.Parameters.Add("id_produk", DbType.String).Value = idProduk;
+            result = command.ExecuteNonQuery();
+            return result;
+
+        }
+
         //Purchase related functions
 
         public DataSet GetAllPurchase()
@@ -261,6 +274,13 @@ namespace Apps
                 insertInnerSQL.Parameters.AddWithValue("@kuantitas", p.jumlah);
                 insertInnerSQL.Parameters.AddWithValue("@diskon", p.diskon);
 
+                SQLiteCommand command = new SQLiteCommand(sqlConnection);
+                command.CommandText =
+                "update produk set jumlah = jumlah+@jumlah where id_produk=@id";
+                command.Parameters.Add("@jumlah", DbType.String).Value = p.jumlah;
+                command.Parameters.Add("@id", DbType.String).Value = p.idProduk;
+                res = command.ExecuteNonQuery();
+
                 try
                 {
                     res += insertInnerSQL.ExecuteNonQuery();
@@ -273,7 +293,7 @@ namespace Apps
             }
 
             sqlConnection.Close();
-            return res==(1+transaction.produkList.Count);
+            return res==(1+(transaction.produkList.Count*2));
         }
 
         //Purchase related functions
@@ -312,7 +332,7 @@ namespace Apps
             sqlConnection.Open();
 
             //command to insert to table penjualan
-            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO penjualan (invoice_no,supplier, tgl_invoice, deskripsi, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@deskripsi,@biaya_kirim,@created_by,@creation_time)", sqlConnection);
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO penjualan (invoice_no,supplier, tgl_invoice, deskripsi, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@deskripsi,@biaya_kirim,@created_by,@creation_date)", sqlConnection);
             insertSQL.CommandType = CommandType.Text;
             insertSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
             insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan);
@@ -330,7 +350,7 @@ namespace Apps
             {
                 throw new Exception(ex.Message);
             }
-            //command to insert to table detail pembelian
+            //command to insert to table detail penjualan
             foreach (Apps.Models.Product p in transaction.produkList)
             {
                 SQLiteCommand insertInnerSQL = new SQLiteCommand("INSERT INTO detail_penjualan (invoice_no,id_produk, harga_produk, kuantitas, diskon) VALUES (@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)", sqlConnection);
@@ -341,9 +361,16 @@ namespace Apps
                 insertInnerSQL.Parameters.AddWithValue("@kuantitas", p.jumlah);
                 insertInnerSQL.Parameters.AddWithValue("@diskon", p.diskon);
 
+                SQLiteCommand command = new SQLiteCommand(sqlConnection);
+                command.CommandText =
+                "update produk set jumlah = jumlah-@jumlah where id_produk=@id";
+                command.Parameters.Add("@jumlah", DbType.String).Value = p.jumlah;
+                command.Parameters.Add("@id", DbType.String).Value = p.idProduk;
+                res = command.ExecuteNonQuery();
+
                 try
                 {
-                    res += insertSQL.ExecuteNonQuery();
+                    res += insertInnerSQL.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {
@@ -353,7 +380,7 @@ namespace Apps
             }
 
             sqlConnection.Close();
-            return res == (1 + transaction.produkList.Count);
+            return res == (1 + (transaction.produkList.Count * 2));
         }
 
 

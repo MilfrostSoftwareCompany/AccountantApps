@@ -156,13 +156,13 @@ namespace Apps
 
         private void buttonAddPembelian_Click(object sender, EventArgs e)
         {
-            Add_Pembelian FormAddPembelian = new Add_Pembelian();
+            Add_Pembelian FormAddPembelian = new Add_Pembelian(this);
             FormAddPembelian.ShowDialog();
         }
 
         private void buttonAddPembelian_Click_1(object sender, EventArgs e)
         {
-            Add_Pembelian FormAddPembelian = new Add_Pembelian();
+            Add_Pembelian FormAddPembelian = new Add_Pembelian(this);
             FormAddPembelian.ShowDialog();
         }
     }

@@ -43,7 +43,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label12 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.jatuhTempo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,8 +50,9 @@
             this.namaToko = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.noFaktur = new System.Windows.Forms.TextBox();
-            this.tanggal = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tglInvoice = new System.Windows.Forms.DateTimePicker();
+            this.tglJatuhTempo = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -208,6 +208,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1421, 282);
             this.dataGridView1.TabIndex = 51;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label12
             // 
@@ -230,16 +231,6 @@
             this.label8.Size = new System.Drawing.Size(105, 22);
             this.label8.TabIndex = 47;
             this.label8.Text = "No. Faktur :";
-            // 
-            // jatuhTempo
-            // 
-            this.jatuhTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jatuhTempo.Location = new System.Drawing.Point(1241, 208);
-            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4);
-            this.jatuhTempo.Name = "jatuhTempo";
-            this.jatuhTempo.Size = new System.Drawing.Size(228, 30);
-            this.jatuhTempo.TabIndex = 46;
-            this.jatuhTempo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jatuhTempo_KeyDown);
             // 
             // label7
             // 
@@ -313,15 +304,6 @@
             this.noFaktur.Size = new System.Drawing.Size(228, 30);
             this.noFaktur.TabIndex = 66;
             // 
-            // tanggal
-            // 
-            this.tanggal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tanggal.Location = new System.Drawing.Point(1241, 166);
-            this.tanggal.Margin = new System.Windows.Forms.Padding(4);
-            this.tanggal.Name = "tanggal";
-            this.tanggal.Size = new System.Drawing.Size(228, 30);
-            this.tanggal.TabIndex = 67;
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(150, 604);
@@ -330,13 +312,28 @@
             this.richTextBox1.TabIndex = 68;
             this.richTextBox1.Text = "";
             // 
+            // tglInvoice
+            // 
+            this.tglInvoice.Location = new System.Drawing.Point(1241, 166);
+            this.tglInvoice.Name = "tglInvoice";
+            this.tglInvoice.Size = new System.Drawing.Size(228, 22);
+            this.tglInvoice.TabIndex = 69;
+            // 
+            // tglJatuhTempo
+            // 
+            this.tglJatuhTempo.Location = new System.Drawing.Point(1242, 213);
+            this.tglJatuhTempo.Name = "tglJatuhTempo";
+            this.tglJatuhTempo.Size = new System.Drawing.Size(228, 22);
+            this.tglJatuhTempo.TabIndex = 70;
+            // 
             // Add_Penjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1513, 798);
+            this.Controls.Add(this.tglJatuhTempo);
+            this.Controls.Add(this.tglInvoice);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.tanggal);
             this.Controls.Add(this.noFaktur);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonNext);
@@ -354,7 +351,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.jatuhTempo);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -389,7 +385,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox jatuhTempo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -397,7 +392,8 @@
         private System.Windows.Forms.Label namaToko;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox noFaktur;
-        private System.Windows.Forms.TextBox tanggal;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DateTimePicker tglInvoice;
+        private System.Windows.Forms.DateTimePicker tglJatuhTempo;
     }
 }

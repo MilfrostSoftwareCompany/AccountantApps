@@ -29,7 +29,7 @@ namespace Apps
         }
         private void button2_Click(object sender, EventArgs e)
         {       
-            Add_Penjualan FormAddPenjualan = new Add_Penjualan();
+            Add_Penjualan FormAddPenjualan = new Add_Penjualan(this);
             FormAddPenjualan.ShowDialog();
             
         }

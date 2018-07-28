@@ -12,14 +12,15 @@ namespace Apps
 {
     public partial class Add_Pembelian : Form
     {
-
+        Pembelian pembelian;
         DataSet ds;
 
         Apps.Models.Supplier idCustomer;
         List<Apps.Models.Product> produkList = new List<Models.Product>();
-        public Add_Pembelian()
+        public Add_Pembelian(Pembelian pembelian)
         {
             InitializeComponent();
+            this.pembelian = pembelian;
             retrieveData();
             ds = new DataSet();
             initDataSource();
@@ -195,7 +196,9 @@ namespace Apps
                 if (Database.getInstance().CreateNewPurchase(transaction))
                 {
                     MessageBox.Show("Data Pembelian telah ditambahkan");
+                    
                 }
+                pembelian.refreshData();
                 this.Close();
             }
             else if (string.IsNullOrWhiteSpace(invoiceNo.Text))
