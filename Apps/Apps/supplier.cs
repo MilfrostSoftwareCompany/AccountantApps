@@ -21,6 +21,9 @@ namespace Apps
             this.Width = Home.widthPanel;
             //this.Height = Home.heightPanel;
             InitializeDesign();
+            tabelSupplier.RowHeadersVisible = false;
+            LoadSupplierData();
+            SetColumnWidth();
         }
 
         public void InitializeDesign()
@@ -36,9 +39,7 @@ namespace Apps
 
         private void Supplier_Load(object sender, EventArgs e)
         {
-            tabelSupplier.RowHeadersVisible = false;
-            LoadSupplierData();
-            SetColumnWidth();
+            
 
         }
 
@@ -58,11 +59,8 @@ namespace Apps
 
         private void SetColumnWidth()
         {
-            //set Weight percentage for each column.
-            tabelSupplier.Columns[0].Width = tabelSupplier.Width / 10;
-            tabelSupplier.Columns[1].Width = tabelSupplier.Width / 5;
-            tabelSupplier.Columns[2].Width = tabelSupplier.Width / 2;
-            tabelSupplier.Columns[3].Width = tabelSupplier.Width / 5;
+            tabelSupplier.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tabelSupplier.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
 

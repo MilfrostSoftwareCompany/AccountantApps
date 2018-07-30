@@ -19,6 +19,9 @@ namespace Apps
             InitializeComponent();
             InitializeDesign();
             search.Focus();
+            tabelCustomer.RowHeadersVisible = false;
+            LoadCustomerData();
+            SetColumnWidth();
         }
 
         public void InitializeDesign()
@@ -75,10 +78,8 @@ namespace Apps
         private void SetColumnWidth()
         {
             //set Weight percentage for each column.
-            tabelCustomer.Columns[0].Width = tabelCustomer.Width / 10;
-            tabelCustomer.Columns[1].Width = tabelCustomer.Width / 5;
-            tabelCustomer.Columns[2].Width = tabelCustomer.Width / 2;
-            tabelCustomer.Columns[3].Width = tabelCustomer.Width / 5;
+            tabelCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tabelCustomer.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
     }
 }

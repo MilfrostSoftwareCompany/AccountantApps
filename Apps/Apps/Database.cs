@@ -19,6 +19,9 @@ namespace Apps
         public Database()
         {
             sqlConnection = new SQLiteConnection("Data Source = " + Environment.CurrentDirectory + "\\Database\\acc_app.sqlite");
+            sqlConnection.Open();
+            CreateTableIfNotExist();
+            sqlConnection.Close();
         }
 
         public static Database getInstance()
@@ -28,6 +31,208 @@ namespace Apps
                 database = new Database();
             }
             return database;
+        }
+
+        private void CreateActivityTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'activity'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "activity")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'activity' ('id' INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL , 'created_by' TEXT, 'creation_time' DATETIME DEFAULT CURRENT_TIMESTAMP, 'activity_type' TEXT, 'activity_id' TEXT)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateCustomerTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'customers'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "customers")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'customers' ('id_customer' INTEGER PRIMARY KEY  NOT NULL  DEFAULT (null) ,'nama' TEXT,'alamat' TEXT,'telepon' TEXT,'creation_date' TEXT,'created_by' TEXT)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateDetailOpnameTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_opname'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "detail_opname")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'detail_opname' ('id_detail' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'id_produk' INTEGER, 'id_opname' INTEGER, 'jumlah' INTEGER)";
+                command.ExecuteNonQuery();
+            }
+        }
+        private void CreateDetailPembelianTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_pembelian'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "detail_pembelian")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'detail_pembelian' ('id_detail' INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL  UNIQUE , 'invoice_no' TEXT, 'id_produk' INTEGER, 'harga_produk' INTEGER, 'kuantitas' INTEGER DEFAULT 1, 'diskon' FLOAT DEFAULT 0)";
+                command.ExecuteNonQuery();
+            }
+        }
+        private void CreateDetailPenjualan()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_penjualan'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "detail_penjualan")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'detail_penjualan' ('id_detail' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'invoice_no' TEXT, 'id_produk' INTEGER, 'harga_produk' INTEGER, 'kuantitas' INTEGER, 'diskon' FLOAT)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateOpnameStockTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'opname_stock'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "opname_stock")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'opname_stock' ('id_opname' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'done_by' TEXT, 'created_by' TEXT, 'dari' DATETIME, 'hingga' DATETIME, 'creation_time' DATETIME DEFAULT CURRENT_TIMESTAMP)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreatePembelianTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'pembelian'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "pembelian")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'pembelian' ('invoice_no' TEXT PRIMARY KEY  NOT NULL  DEFAULT (null) ,'tujuan' INTEGER,'tgl_invoice' DATETIME DEFAULT (CURRENT_DATE) ,'deskripsi' TEXT,'biaya_kirim' INTEGER DEFAULT (0) , 'created_by' TEXT, 'creation_time' DATETIME)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreatePenjualanTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'penjualan'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "penjualan")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'penjualan' ('invoice_no' TEXT PRIMARY KEY  NOT NULL  UNIQUE , 'supplier' TEXT, 'tgl_invoice' DATETIME, 'deskripsi' TEXT, 'biaya_kirim' INTEGER, 'created_by' TEXT, 'creation_time' DATETIME)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        private void CreateProdukTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'produk'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "produk")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'produk' ('id_produk' INTEGER PRIMARY KEY  NOT NULL  DEFAULT (null) ,'nama_produk' TEXT,'jumlah' NUMERIC DEFAULT (0) ,'jenis_barang' TEXT,'harga' FLOAT,'created_by' TEXT,'creation_date' TEXT,'jenis_satuan' TEXT)";
+                command.ExecuteNonQuery();
+            }
+        }
+        private void CreateSupplierTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'suppliers'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "suppliers")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'suppliers' ('id_supplier' INTEGER PRIMARY KEY  NOT NULL  DEFAULT (null) ,'nama' TEXT,'alamat' TEXT,'telepon' TEXT,'creation_date' TEXT,'created_by' TEXT)";
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+
+        private void CreateUsersTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'users'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "users")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'users' ('username' TEXT PRIMARY KEY  NOT NULL  UNIQUE , 'password' TEXT, 'permission_lvl' INTEGER)";
+                command.ExecuteNonQuery();
+
+                command.CommandText = "INSERT INTO users (username, password,permission_lvl) VALUES ('admin01', '$MYHASH$V1$10000$H3j+M3V7uXuqaiPU78tNZFNWDpqD6byI7ArZY0ZuyaMGkmqm','1')";
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void CreateTableIfNotExist() {
+            CreateUsersTable();
+            CreateActivityTable();
+            CreateCustomerTable();
+            CreateDetailOpnameTable();
+            CreatePembelianTable();
+            CreatePenjualanTable();
+            CreateProdukTable();
+            CreateSupplierTable();
+            CreateUsersTable();
+
+
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'customers'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_opname'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_pembelian'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_penjualan'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'opname_stock'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'pembelian'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'penjualan'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'produk'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'suppliers'";
+            //command.CommandText = "Select name FROM sqlite_master WHERE name = 'users'";
         }
 
 
@@ -350,7 +555,7 @@ namespace Apps
             {
                 throw new Exception(ex.Message);
             }
-            //command to insert to table detail penjualan
+            //command to insert to table detail penjualan 
             foreach (Apps.Models.Product p in transaction.produkList)
             {
                 SQLiteCommand insertInnerSQL = new SQLiteCommand("INSERT INTO detail_penjualan (invoice_no,id_produk, harga_produk, kuantitas, diskon) VALUES (@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)", sqlConnection);
