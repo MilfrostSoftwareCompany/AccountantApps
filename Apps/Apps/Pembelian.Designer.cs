@@ -34,9 +34,11 @@
             this.search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.tabelPembelian)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabelPembelian
@@ -45,16 +47,14 @@
             this.tabelPembelian.AllowUserToDeleteRows = false;
             this.tabelPembelian.AllowUserToResizeColumns = false;
             this.tabelPembelian.AllowUserToResizeRows = false;
-            this.tabelPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabelPembelian.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelPembelian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelPembelian.Location = new System.Drawing.Point(3, 86);
-            this.tabelPembelian.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabelPembelian.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabelPembelian.Location = new System.Drawing.Point(2, 77);
+            this.tabelPembelian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabelPembelian.Name = "tabelPembelian";
             this.tabelPembelian.ReadOnly = true;
-            this.tabelPembelian.Size = new System.Drawing.Size(1529, 758);
+            this.tabelPembelian.Size = new System.Drawing.Size(1147, 314);
             this.tabelPembelian.TabIndex = 23;
             this.tabelPembelian.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelPembelian_CellContentClick);
             // 
@@ -66,10 +66,10 @@
             this.buttonAddPembelian.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddPembelian.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddPembelian.ForeColor = System.Drawing.Color.White;
-            this.buttonAddPembelian.Location = new System.Drawing.Point(1272, 30);
-            this.buttonAddPembelian.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonAddPembelian.Location = new System.Drawing.Point(954, 24);
+            this.buttonAddPembelian.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonAddPembelian.Name = "buttonAddPembelian";
-            this.buttonAddPembelian.Size = new System.Drawing.Size(261, 41);
+            this.buttonAddPembelian.Size = new System.Drawing.Size(196, 33);
             this.buttonAddPembelian.TabIndex = 22;
             this.buttonAddPembelian.Text = "+ ADD PEMBELIAN";
             this.buttonAddPembelian.UseVisualStyleBackColor = false;
@@ -82,10 +82,10 @@
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(493, 26);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSearch.Location = new System.Drawing.Point(370, 21);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(125, 41);
+            this.buttonSearch.Size = new System.Drawing.Size(94, 33);
             this.buttonSearch.TabIndex = 21;
             this.buttonSearch.Text = "SEARCH";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -93,10 +93,9 @@
             // search
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4);
+            this.search.Location = new System.Drawing.Point(3, 25);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(463, 30);
+            this.search.Size = new System.Drawing.Size(348, 26);
             this.search.TabIndex = 20;
             // 
             // panel1
@@ -105,10 +104,10 @@
             this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Controls.Add(this.buttonAddPembelian);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1529, 80);
+            this.panel1.Size = new System.Drawing.Size(1147, 71);
             this.panel1.TabIndex = 24;
             // 
             // tableLayoutPanel1
@@ -117,28 +116,39 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabelPembelian, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1535, 846);
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 19.08397F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.91603F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 293F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1151, 687);
             this.tableLayoutPanel1.TabIndex = 25;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 396);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1145, 288);
+            this.dataGridView1.TabIndex = 25;
             // 
             // Pembelian
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pembelian";
-            this.Size = new System.Drawing.Size(1535, 846);
+            this.Size = new System.Drawing.Size(1151, 687);
             ((System.ComponentModel.ISupportInitialize)(this.tabelPembelian)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,5 +161,6 @@
         private System.Windows.Forms.TextBox search;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
