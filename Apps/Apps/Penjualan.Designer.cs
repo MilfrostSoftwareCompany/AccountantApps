@@ -48,9 +48,10 @@
             this.tabelPenjualan.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabelPenjualan.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelPenjualan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelPenjualan.Location = new System.Drawing.Point(4, 88);
-            this.tabelPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabelPenjualan.Margin = new System.Windows.Forms.Padding(4);
             this.tabelPenjualan.Name = "tabelPenjualan";
             this.tabelPenjualan.ReadOnly = true;
             this.tabelPenjualan.Size = new System.Drawing.Size(1527, 754);
@@ -65,7 +66,7 @@
             this.buttonAddPenjualan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddPenjualan.ForeColor = System.Drawing.Color.White;
             this.buttonAddPenjualan.Location = new System.Drawing.Point(1272, 30);
-            this.buttonAddPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddPenjualan.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddPenjualan.Name = "buttonAddPenjualan";
             this.buttonAddPenjualan.Size = new System.Drawing.Size(261, 41);
             this.buttonAddPenjualan.TabIndex = 18;
@@ -81,7 +82,7 @@
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
             this.buttonSearch.Location = new System.Drawing.Point(493, 26);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(125, 41);
             this.buttonSearch.TabIndex = 17;
@@ -93,7 +94,7 @@
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 16;
@@ -131,7 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Penjualan";
             this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelPenjualan)).EndInit();

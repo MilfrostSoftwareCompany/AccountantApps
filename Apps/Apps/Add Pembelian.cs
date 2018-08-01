@@ -33,6 +33,7 @@ namespace Apps
             comboBox1.DataSource= custDs.Tables[0];
             comboBox1.DisplayMember = "nama";
             comboBox1.ValueMember = "id";
+            
         }
 
         private void initDataGrid()
@@ -163,7 +164,7 @@ namespace Apps
 
 
             DataRow dr = ds.Tables[0].NewRow();
-            dr[0] = ds.Tables[0].Rows.Count;
+            dr[0] = ds.Tables[0].Rows.Count+1;
             dr[1] = product.idProduk;
             dr[2] = product.jumlah;
             dr[3] = product.jenisSatuan;
@@ -192,13 +193,14 @@ namespace Apps
             if (!string.IsNullOrWhiteSpace(invoiceNo.Text) && !string.IsNullOrWhiteSpace(dateTimePicker1.Text) && produkList.Count != 0)
             {
                 string dbDate = DateTime.Parse(dateTimePicker1.Text).ToString("yyyy-MM-dd");
+                idCustomer = new Models.Supplier(ds.Tables[0].Rows[comboBox1.SelectedIndex]);
                 Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text, idCustomer, dbDate, produkList);
                 if (Database.getInstance().CreateNewPurchase(transaction))
                 {
                     MessageBox.Show("Data Pembelian telah ditambahkan");
                     
                 }
-                pembelian.refreshData();
+                pembelian.addData(transaction);
                 this.Close();
             }
             else if (string.IsNullOrWhiteSpace(invoiceNo.Text))

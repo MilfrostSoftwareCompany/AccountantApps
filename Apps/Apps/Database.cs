@@ -216,6 +216,9 @@ namespace Apps
             CreateActivityTable();
             CreateCustomerTable();
             CreateDetailOpnameTable();
+            CreateDetailPembelianTable();
+            CreateDetailPenjualan();
+            CreateOpnameStockTable();
             CreatePembelianTable();
             CreatePenjualanTable();
             CreateProdukTable();
@@ -360,6 +363,39 @@ namespace Apps
 
         }
 
+        public void OpnameBaru(Models.Opname opname, bool isUpdate) {
+
+            sqlConnection.Open();
+
+            SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO opname_stock (done_by, dari, hingga, created_by, creation_time) VALUES (@done_by,@dari,@hingga,@created_by,@creation_time)", sqlConnection);
+            insertSQL.CommandType = CommandType.Text;
+            insertSQL.Parameters.AddWithValue("@done_by", opname.doneBy);
+            insertSQL.Parameters.AddWithValue("@dari", opname.startDate);
+            insertSQL.Parameters.AddWithValue("@hingga", opname.endDate);
+            insertSQL.Parameters.AddWithValue("@created_by", opname.createdBy);
+            insertSQL.Parameters.AddWithValue("@creation_time", opname.creationTime);
+        
+            insertSQL.ExecuteNonQuery();
+            int id = Convert.ToInt32(sqlConnection.LastInsertRowId);
+            for (int i = 0; i < opname.product.Count; i++) {
+                SQLiteCommand innerCmd = new SQLiteCommand("INSERT INTO detail_opname (id_produk, id_opname, jumlah) VALUES (@id_produk,@id_opname,@jumlah)", sqlConnection);
+                innerCmd.CommandType = CommandType.Text;
+                innerCmd.Parameters.AddWithValue("@id_produk", opname.product[i].idProduk);
+                innerCmd.Parameters.AddWithValue("@id_opname", id);
+                innerCmd.Parameters.AddWithValue("@jumlah", opname.jumlah[i]);
+                innerCmd.ExecuteNonQuery();
+
+                if (isUpdate) {
+                    SQLiteCommand command = new SQLiteCommand(sqlConnection);
+                    command.CommandText =
+                    "update produk set jumlah = :jumlah where id_produk=:id";
+                    command.Parameters.Add("jumlah", DbType.String).Value = opname.jumlah[i];
+                    command.Parameters.Add("id_produk", DbType.String).Value = opname.product[i].idProduk;
+                }
+            }
+
+            sqlConnection.Close();
+        }
 
         public int CreateNewProduct(Apps.Models.Product product)
         {
@@ -409,10 +445,11 @@ namespace Apps
             sqlConnection.Open();
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText =
-            "update Example set jumlah = :jumlah where id_produk=:id";
+            "update produk set jumlah = :jumlah where id_produk=:id";
             command.Parameters.Add("jumlah", DbType.String).Value = stock;
             command.Parameters.Add("id_produk", DbType.String).Value = idProduk;
             result = command.ExecuteNonQuery();
+            sqlConnection.Close();
             return result;
 
         }

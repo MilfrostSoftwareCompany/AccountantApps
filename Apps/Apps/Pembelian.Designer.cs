@@ -48,6 +48,7 @@
             this.tabelPembelian.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabelPembelian.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelPembelian.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelPembelian.Location = new System.Drawing.Point(3, 86);
             this.tabelPembelian.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -55,6 +56,7 @@
             this.tabelPembelian.ReadOnly = true;
             this.tabelPembelian.Size = new System.Drawing.Size(1529, 758);
             this.tabelPembelian.TabIndex = 23;
+            this.tabelPembelian.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelPembelian_CellContentClick);
             // 
             // buttonAddPembelian
             // 
@@ -92,7 +94,7 @@
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 20;
@@ -130,7 +132,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Pembelian";
             this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelPembelian)).EndInit();

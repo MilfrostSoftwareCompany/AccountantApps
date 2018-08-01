@@ -23,6 +23,8 @@ namespace Apps.Models
             this.jumlah = jumlah;
             this.jenisSatuan = jenisSatuan;
             this.harga = harga;
+            this.createdBy = Login.loggedUser;
+            this.creationTime = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
 
         }
 
@@ -31,11 +33,18 @@ namespace Apps.Models
             this.jumlah = jumlah;
             this.jenisSatuan = jenisSatuan;
             this.harga = harga;
-            
+            this.createdBy = Login.loggedUser;
+            this.creationTime = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+
         }
 
         public void setDiskon(int d) {
             diskon = d;
+        }
+
+        public int getTotal()
+        {
+            return (harga * jumlah) - diskon;
         }
     }
 }

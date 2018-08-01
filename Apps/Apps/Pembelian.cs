@@ -14,8 +14,8 @@ namespace Apps
     public partial class Pembelian : UserControl
     {
 
-
-
+        int detailBtn = 0;
+        DataSet dataSet;
         public Pembelian()
         {
             InitializeComponent();
@@ -45,15 +45,62 @@ namespace Apps
         public void refreshData()
         {
             LoadSupplierData();
+            //tabelPembelian.Update();
+            //tabelPembelian.Refresh();
+            SetColumnWidth();
+        }
+        public void addData(Models.Transaction pembelian) {
+            DataRow dr = dataSet.Tables[0].NewRow();
+            string nl = Environment.NewLine;
+            string productList = "";
+            string hargaList = "";
+            string kuantitasList = "";
+            string satuanList = "";
+            string diskonList = "";
+            string jlhList = "";
+            dr[0] = pembelian.invoice_no;
+            dr[1] = pembelian.tujuan.nama;
+            dr[2] = pembelian.tgl_invoice;
+            for (int i = 0; i < pembelian.produkList.Count; i++) {
+                if (i == pembelian.produkList.Count - 1)
+                {
+                    productList += pembelian.produkList[i].namaProduk;
+                    hargaList += pembelian.produkList[i].harga;
+                    kuantitasList += pembelian.produkList[i].jumlah;
+                    satuanList += pembelian.produkList[i].jenisSatuan;
+                    diskonList += pembelian.produkList[i].diskon;
+                    jlhList += pembelian.produkList[i].getTotal();
+                }
+                else
+                {
+                    productList += pembelian.produkList[i].namaProduk + nl;
+                    hargaList += pembelian.produkList[i].harga + nl;
+                    kuantitasList += pembelian.produkList[i].jumlah + nl;
+                    satuanList += pembelian.produkList[i].jenisSatuan + nl;
+                    diskonList += pembelian.produkList[i].diskon + nl;
+                    jlhList += pembelian.produkList[i].getTotal() + nl;
+                }
+            }
+            dr[3] = productList;
+            dr[4] = hargaList;
+            dr[5] = kuantitasList;
+            dr[6] = satuanList;
+            dr[7] = diskonList;
+            dr[8] = jlhList;
+            dataSet.Tables[0].Rows.Add(dr);
             tabelPembelian.Update();
             tabelPembelian.Refresh();
+            MessageBox.Show("Data Pembelian telah ditambahkan");
+        }
+        private void setDataGrid() {
+
         }
 
         private void LoadSupplierData()
         {
 
             Database database = Database.getInstance();
-            DataSet dataSet = database.GetAllPurchase();
+             dataSet = database.GetAllPurchase();
 
             tabelPembelian.DataSource = dataSet.Tables[0];
             dataSet.Tables[0].Columns.Add("Produk");
@@ -104,17 +151,20 @@ namespace Apps
             tabelPembelian.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             tabelPembelian.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "View Details";
-            col.Name = "Details";
-            tabelPembelian.Columns.Add(col);
+            
 
         }
 
         private void SetColumnWidth()
         {
-
+            if (detailBtn == 0) { 
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "View Details";
+                col.Name = "Actions";
+                tabelPembelian.Columns.Add(col);
+                detailBtn += 1;
+            }
             tabelPembelian.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -164,6 +214,13 @@ namespace Apps
         {
             Add_Pembelian FormAddPembelian = new Add_Pembelian(this);
             FormAddPembelian.ShowDialog();
+        }
+
+        private void tabelPembelian_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) {
+                MessageBox.Show("Hello");
+            }
         }
     }
 }

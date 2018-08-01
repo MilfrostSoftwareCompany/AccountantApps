@@ -28,7 +28,6 @@ namespace Apps
 
         private void RetrieveData()
         {
-            textBox1.Text = "0";
             ds = Database.getInstance().GetAllProducts();
             comboBox1.DataSource = ds.Tables[0];
             comboBox1.DisplayMember = "Nama Produk";
@@ -43,7 +42,7 @@ namespace Apps
                     label2.Text = ds.Tables[0].Rows[i][1].ToString();
                     label3.Text = "Rp. " +ds.Tables[0].Rows[i][4].ToString();
                     label4.Text = "Stock = " + ds.Tables[0].Rows[i][2].ToString();
-                    selectedProduct = new Models.Product(id, label2.Text, Convert.ToInt32(textBox1.Text), ds.Tables[0].Rows[i][3].ToString(), Convert.ToInt32(ds.Tables[0].Rows[i][4].ToString()));
+                    selectedProduct = new Models.Product(id, label2.Text, Convert.ToInt32(jlhBarang.Text), ds.Tables[0].Rows[i][3].ToString(), Convert.ToInt32(ds.Tables[0].Rows[i][4].ToString()));
                     break;
                 }
             }

@@ -25,6 +25,8 @@ namespace Apps.Models
             this.produkList = produkList;
             this.biaya_kirim = 0;
             this.deskripsi = "";
+            this.createdBy = Login.loggedUser;
+            this.creationTime = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
         }
 
         public Transaction(string invoice_no, Supplier tujuan, string tgl_invoice, List<Product> produkList) {
@@ -34,6 +36,8 @@ namespace Apps.Models
             this.produkList = produkList;
             this.biaya_kirim = 0;
             this.deskripsi = "";
+            this.createdBy = Login.loggedUser;
+            this.creationTime = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
         }
     }
 }

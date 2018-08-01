@@ -12,13 +12,36 @@ namespace Apps
 {
     public partial class Inventori : UserControl
     {
+        DataSet ds;
         public Inventori()
         {
             this.Width = Home.widthPanel;
             this.Height = Home.heightPanel;
             InitializeComponent();
+            RetrieveData();
+            InitDataGrid();
+            
             //InitializeDesign();
             search.Focus();
+        }
+
+        private void InitDataGrid()
+        {
+            tabelInventori.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            tabelInventori.RowHeadersVisible = false;
+        }
+
+        private void RetrieveData() {
+            ds = Database.getInstance().GetAllProducts();
+            tabelInventori.DataSource = ds.Tables[0];
+        }
+
+        public void RefreshData()
+        {
+            RetrieveData();
+            tabelInventori.Update();
+            tabelInventori.Refresh();
+
         }
 
         public void InitializeDesign()
@@ -46,7 +69,7 @@ namespace Apps
 
         private void buttonAddProduk_Click(object sender, EventArgs e)
         {
-            Add_Produk FormAddProduk = new Add_Produk();
+            Add_Produk FormAddProduk = new Add_Produk(this);
             FormAddProduk.ShowDialog();
         }
 

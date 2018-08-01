@@ -49,7 +49,7 @@
             this.buttonAddProduk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddProduk.ForeColor = System.Drawing.Color.White;
             this.buttonAddProduk.Location = new System.Drawing.Point(1237, 49);
-            this.buttonAddProduk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddProduk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddProduk.Name = "buttonAddProduk";
             this.buttonAddProduk.Size = new System.Drawing.Size(261, 41);
             this.buttonAddProduk.TabIndex = 25;
@@ -65,7 +65,7 @@
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
             this.buttonSearch.Location = new System.Drawing.Point(488, 49);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(125, 41);
             this.buttonSearch.TabIndex = 24;
@@ -77,7 +77,7 @@
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 52);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 23;
@@ -91,7 +91,7 @@
             this.buttonOpnameStock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOpnameStock.ForeColor = System.Drawing.Color.White;
             this.buttonOpnameStock.Location = new System.Drawing.Point(1237, 109);
-            this.buttonOpnameStock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonOpnameStock.Margin = new System.Windows.Forms.Padding(4);
             this.buttonOpnameStock.Name = "buttonOpnameStock";
             this.buttonOpnameStock.Size = new System.Drawing.Size(261, 41);
             this.buttonOpnameStock.TabIndex = 26;
@@ -101,13 +101,16 @@
             // 
             // tabelInventori
             // 
+            this.tabelInventori.AllowUserToAddRows = false;
+            this.tabelInventori.AllowUserToDeleteRows = false;
             this.tabelInventori.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabelInventori.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelInventori.Location = new System.Drawing.Point(4, 173);
-            this.tabelInventori.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabelInventori.Margin = new System.Windows.Forms.Padding(4);
             this.tabelInventori.Name = "tabelInventori";
+            this.tabelInventori.ReadOnly = true;
             this.tabelInventori.Size = new System.Drawing.Size(1527, 669);
             this.tabelInventori.TabIndex = 27;
             // 
@@ -145,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Inventori";
             this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelInventori)).EndInit();

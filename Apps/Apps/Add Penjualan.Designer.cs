@@ -289,10 +289,12 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(237, 147);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 24);
+            this.comboBox1.Size = new System.Drawing.Size(228, 28);
             this.comboBox1.TabIndex = 65;
             // 
             // noFaktur
@@ -314,6 +316,7 @@
             // 
             // tglInvoice
             // 
+            this.tglInvoice.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tglInvoice.Location = new System.Drawing.Point(1241, 166);
             this.tglInvoice.Name = "tglInvoice";
             this.tglInvoice.Size = new System.Drawing.Size(228, 22);
@@ -321,6 +324,7 @@
             // 
             // tglJatuhTempo
             // 
+            this.tglJatuhTempo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tglJatuhTempo.Location = new System.Drawing.Point(1242, 213);
             this.tglJatuhTempo.Name = "tglJatuhTempo";
             this.tglJatuhTempo.Size = new System.Drawing.Size(228, 22);

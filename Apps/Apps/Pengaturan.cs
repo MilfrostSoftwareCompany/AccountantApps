@@ -46,5 +46,11 @@ namespace Apps
 
             }
         }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+        }
     }
 }
