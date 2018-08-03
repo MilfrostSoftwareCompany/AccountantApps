@@ -16,6 +16,7 @@ namespace Apps
 
         int detailBtn = 0;
         DataSet dataSet;
+        DataSet dataSet2;
         public Pembelian()
         {
             InitializeComponent();
@@ -96,6 +97,31 @@ namespace Apps
 
         }
 
+        private void LoadReturData()
+        {
+            dataSet2 = Database.getInstance().GetAllPurchaseReturn();
+            dataGridView1.DataSource = dataSet2.Tables[0];
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "View Details";
+            col.Name = "Actions";
+            tabelPembelian.Columns.Add(col);
+        }
+
+        public void AddRetur(Apps.Models.ReturTransaksi returTransaksi)
+        {
+            DataRow dr = dataSet2.Tables[0].NewRow();
+            dr[0] = returTransaksi.idRetur;
+            dr[1] = returTransaksi.idTransaksi;
+            dr[2] = returTransaksi.tglRetur;
+            dr[3] = returTransaksi.supplier.nama;
+            dr[4] = returTransaksi.GetTotalPrice();
+            dataSet2.Tables[0].Rows.Add(dr);
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+            MessageBox.Show("Retur telah ditambahkan");
+        }
+
         private void LoadSupplierData()
         {
 
@@ -174,20 +200,6 @@ namespace Apps
             tabelPembelian.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            //Console.WriteLine("table pembelian width = " + Convert.ToInt32(tabelPembelian.Width));
-            //Console.WriteLine("table pembelian width = " + Convert.ToInt32(tabelPembelian.Width * 0.125));
-            //Console.WriteLine("table pembelian width = " + Convert.ToInt32(tabelPembelian.Width * 0.10));
-            //tabelPembelian.Columns[0].Width = Convert.ToInt32(tabelPembelian.Width * 0.08);
-            //tabelPembelian.Columns[1].Width = Convert.ToInt32(tabelPembelian.Width * 0.125);
-            //tabelPembelian.Columns[2].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
-            //tabelPembelian.Columns[3].Width = Convert.ToInt32(tabelPembelian.Width * 0.16);
-            //tabelPembelian.Columns[4].Width = Convert.ToInt32(tabelPembelian.Width * 0.18);
-            //tabelPembelian.Columns[5].Width = Convert.ToInt32(tabelPembelian.Width * 0.05);
-            //tabelPembelian.Columns[6].Width = Convert.ToInt32(tabelPembelian.Width * 0.05);
-            //tabelPembelian.Columns[7].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
-            //tabelPembelian.Columns[8].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
-            //tabelPembelian.Columns[9].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
-            //tabelPembelian.Columns[10].Width = Convert.ToInt32(tabelPembelian.Width * 0.10);
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -220,6 +232,13 @@ namespace Apps
         {
             if (e.ColumnIndex == 0) {
                 MessageBox.Show("Hello");
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) {
+
             }
         }
     }

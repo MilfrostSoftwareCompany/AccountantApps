@@ -18,7 +18,7 @@ namespace Apps
 
         public Database()
         {
-            sqlConnection = new SQLiteConnection("Data Source = " + Environment.CurrentDirectory + "\\Database\\acc_app.sqlite");
+            sqlConnection = new SQLiteConnection("Data Source = " + Environment.CurrentDirectory + "\\acc_app.sqlite");
             sqlConnection.Open();
             CreateTableIfNotExist();
             sqlConnection.Close();
@@ -211,6 +211,74 @@ namespace Apps
             }
         }
 
+        private void CreateDetailReturPembelianTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_retur_pembelian'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "detail_retur_pembelian")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'detail_retur_pembelian' ('id' INTEGER UNIQUE , 'id_retur' TEXT, 'id_produk' TEXT, 'jumlah' INTEGER, 'harga' INTEGER, 'diskon' INTEGER)";
+                command.ExecuteNonQuery();
+                
+            }
+        }
+
+        private void CreateDetailReturPenjualanTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'detail_retur_penjualan'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "detail_retur_penjualan")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'detail_retur_penjualan' ('id' INTEGER UNIQUE , 'id_retur' TEXT, 'id_produk' TEXT, 'jumlah' INTEGER, 'harga' INTEGER, 'diskon' INTEGER)";
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        private void CreateReturPenjualanTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'retur_penjualan'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "retur_penjualan")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'retur_penjualan' ('id_retur' TEXT PRIMARY KEY  NOT NULL  UNIQUE , 'invoice_no' TEXT NOT NULL , 'tgl_retur' DATETIME, 'deskripsi' TEXT, 'created_by' TEXT, 'creation_date' DATETIME)";
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        private void CreateReturPembelianTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'retur_pembelian'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "retur_pembelian")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'retur_pembelian' ('id_retur' TEXT PRIMARY KEY  NOT NULL  UNIQUE , 'invoice_no' TEXT NOT NULL , 'tgl_retur' DATETIME, 'deskripsi' TEXT, 'created_by' TEXT, 'creation_date' DATETIME)";
+                command.ExecuteNonQuery();
+
+            }
+        }
+
         public void CreateTableIfNotExist() {
             CreateUsersTable();
             CreateActivityTable();
@@ -224,6 +292,10 @@ namespace Apps
             CreateProdukTable();
             CreateSupplierTable();
             CreateUsersTable();
+            CreateReturPembelianTable();
+            CreateReturPenjualanTable();
+            CreateDetailReturPembelianTable();
+            CreateDetailReturPenjualanTable();
 
 
             //command.CommandText = "Select name FROM sqlite_master WHERE name = 'customers'";
@@ -492,7 +564,7 @@ namespace Apps
             SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO pembelian (invoice_no,tujuan, tgl_invoice, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@biaya_kirim,@created_by,@creation_date)", sqlConnection);
             insertSQL.CommandType = CommandType.Text;
             insertSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
-            insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan);
+            insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan.id);
             insertSQL.Parameters.AddWithValue("@tgl_invoice", transaction.tgl_invoice);
             insertSQL.Parameters.AddWithValue("@biaya_kirim", transaction.biaya_kirim);
             insertSQL.Parameters.AddWithValue("@created_by", transaction.createdBy);
@@ -577,7 +649,7 @@ namespace Apps
             SQLiteCommand insertSQL = new SQLiteCommand("INSERT INTO penjualan (invoice_no,supplier, tgl_invoice, deskripsi, biaya_kirim, created_by, creation_time) VALUES (@invoice_no,@tujuan,@tgl_invoice,@deskripsi,@biaya_kirim,@created_by,@creation_date)", sqlConnection);
             insertSQL.CommandType = CommandType.Text;
             insertSQL.Parameters.AddWithValue("@invoice_no", transaction.invoice_no);
-            insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan);
+            insertSQL.Parameters.AddWithValue("@tujuan", transaction.tujuan.id);
             insertSQL.Parameters.AddWithValue("@tgl_invoice", transaction.tgl_invoice);
             insertSQL.Parameters.AddWithValue("@deskripsi", transaction.deskripsi);
             insertSQL.Parameters.AddWithValue("@biaya_kirim", transaction.biaya_kirim);
@@ -623,6 +695,34 @@ namespace Apps
 
             sqlConnection.Close();
             return res == (1 + (transaction.produkList.Count * 2));
+        }
+
+        //Return Purchase related function
+        public DataSet GetAllPurchaseReturn() {
+            sqlConnection.Open();
+            string sqlString = "SELECT retur_pembelian.id_retur as [No Retur], pembelian.invoice_no as [No Invoice], retur_pembelian.tgl_retur as Tanggal, suppliers.nama as Supplier,sum(detail_retur_pembelian.harga*detail_retur_pembelian.jumlah) FROM retur_pembelian INNER JOIN pembelian ON retur_pembelian.invoice_no = pembelian.invoice_no INNER JOIN suppliers ON suppliers.id_supplier = pembelian.tujuan INNER JOIN detail_retur_pembelian ON detail_retur_pembelian.id_retur = retur_pembelian.id_retur";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public DataSet GetTotalRelatedPurchaseReturnProduct(string idRetur)
+        {
+            sqlConnection.Open();
+            string sqlString = "SELECT produk.nama_produk as [Nama Produk], detail_retur_pembelian.jumlah as [@],detail_retur_pembelian.harga as Harga, diskon as Diskon, detail_retur_pembelian.harga * detail_retur_pembelian.jumlah as Subtotal from detail_retur_pembelian INNER JOIN produk ON produk.id_produk = detail_retur_pembelian.id_produk WHERE detail_retur_pembelian.id_retur ='"+idRetur+"'";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
         }
 
 
