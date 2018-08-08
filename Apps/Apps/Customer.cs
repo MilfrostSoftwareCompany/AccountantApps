@@ -81,5 +81,10 @@ namespace Apps
             tabelCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelCustomer.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
+
+        private void tabelCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

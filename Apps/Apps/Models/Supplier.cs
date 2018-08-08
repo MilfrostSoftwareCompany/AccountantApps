@@ -21,6 +21,16 @@ namespace Apps.Models
             this.telepon = dataRow[3].ToString();
         }
 
+        public Supplier(string id,string nama)
+        {
+            this.id = id;
+            this.nama = nama;
+        }
+
+        public Supplier(string nama) {
+            this.nama = nama;
+        }
+
         public Supplier(string id,string nama, string alamat, string telepon)
         {
             this.id = id;

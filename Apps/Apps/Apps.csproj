@@ -156,6 +156,7 @@
     <Compile Include="Models\BasicServerModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Opname.cs" />
+    <Compile Include="Models\ReturTransaksi.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
@@ -267,6 +268,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Retur Pembelian.resx">
+      <DependentUpon>Retur Pembelian.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Supplier.resx">
       <DependentUpon>Supplier.cs</DependentUpon>
     </EmbeddedResource>

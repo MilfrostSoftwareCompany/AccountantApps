@@ -50,13 +50,14 @@
             this.buttonAddPenjualan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddPenjualan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddPenjualan.ForeColor = System.Drawing.Color.White;
-            this.buttonAddPenjualan.Location = new System.Drawing.Point(954, 24);
+            this.buttonAddPenjualan.Location = new System.Drawing.Point(1272, 30);
+            this.buttonAddPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonAddPenjualan.Name = "buttonAddPenjualan";
-            this.buttonAddPenjualan.Size = new System.Drawing.Size(196, 33);
+            this.buttonAddPenjualan.Size = new System.Drawing.Size(261, 41);
             this.buttonAddPenjualan.TabIndex = 18;
             this.buttonAddPenjualan.Text = "+ ADD PENJUALAN";
             this.buttonAddPenjualan.UseVisualStyleBackColor = false;
-            this.buttonAddPenjualan.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddPenjualan.Click += new System.EventHandler(this.buttonAddPembelian_Click);
             // 
             // buttonSearch
             // 
@@ -65,20 +66,22 @@
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(370, 21);
+            this.buttonSearch.Location = new System.Drawing.Point(493, 26);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(94, 33);
+            this.buttonSearch.Size = new System.Drawing.Size(125, 41);
             this.buttonSearch.TabIndex = 17;
             this.buttonSearch.Text = "SEARCH";
             this.buttonSearch.UseVisualStyleBackColor = false;
-            this.buttonSearch.Click += new System.EventHandler(this.button1_Click);
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // search
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(3, 25);
+            this.search.Location = new System.Drawing.Point(4, 31);
+            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(348, 26);
+            this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 16;
             // 
             // panel1
@@ -87,10 +90,10 @@
             this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Controls.Add(this.buttonAddPenjualan);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1147, 70);
+            this.panel1.Size = new System.Drawing.Size(1529, 87);
             this.panel1.TabIndex = 20;
             // 
             // tableLayoutPanel1
@@ -103,14 +106,14 @@
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.3125F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 79.6875F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 294F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1151, 687);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 362F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1535, 846);
             this.tableLayoutPanel1.TabIndex = 21;
             // 
             // tabelPenjualan
@@ -122,38 +125,44 @@
             this.tabelPenjualan.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelPenjualan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelPenjualan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabelPenjualan.Location = new System.Drawing.Point(3, 77);
+            this.tabelPenjualan.Location = new System.Drawing.Point(4, 95);
+            this.tabelPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.tabelPenjualan.Name = "tabelPenjualan";
             this.tabelPenjualan.ReadOnly = true;
-            this.tabelPenjualan.Size = new System.Drawing.Size(1145, 284);
+            this.tabelPenjualan.Size = new System.Drawing.Size(1527, 350);
             this.tabelPenjualan.TabIndex = 19;
+            this.tabelPenjualan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelPenjualan_CellContentClick);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 395);
+            this.dataGridView1.Location = new System.Drawing.Point(4, 487);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1145, 289);
+            this.dataGridView1.Size = new System.Drawing.Size(1527, 355);
             this.dataGridView1.TabIndex = 21;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 364);
+            this.label1.Location = new System.Drawing.Point(4, 449);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 25);
+            this.label1.Size = new System.Drawing.Size(292, 31);
             this.label1.TabIndex = 22;
             this.label1.Text = "RETUR PENJUALAN";
             // 
             // Penjualan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Penjualan";
-            this.Size = new System.Drawing.Size(1151, 687);
+            this.Size = new System.Drawing.Size(1535, 846);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

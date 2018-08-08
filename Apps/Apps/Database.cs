@@ -65,6 +65,8 @@ namespace Apps
             }
         }
 
+        
+
         private void CreateDetailOpnameTable()
         {
             SQLiteCommand command = sqlConnection.CreateCommand();
@@ -324,6 +326,34 @@ namespace Apps
 
         }
 
+        public Models.Supplier GetSupplierFromId(string id) {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE id_supplier = "+id, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return new Models.Supplier(ds.Tables[0].Rows[0]);
+        }
+
+        public int UpdateSupplier(Models.Supplier supplier)
+        {
+            int result;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "update suppliers set nama = :nama , alamat = :alamat , telepon = :telepon where id_supplier=:id";
+            command.Parameters.Add("jumlah", DbType.String).Value = supplier.nama;
+            command.Parameters.Add("id_produk", DbType.String).Value = supplier.alamat;
+            command.Parameters.Add("id_produk", DbType.String).Value = supplier.telepon;
+            command.Parameters.Add("id", DbType.String).Value = supplier.id;
+            result = command.ExecuteNonQuery();
+            sqlConnection.Close();
+            return result;
+
+        }
+
         public DataSet getSupplierQuery(string query)
         {
 
@@ -402,6 +432,23 @@ namespace Apps
             }
             sqlConnection.Close();
             return res;
+        }
+
+        public int UpdateCustomer(Models.Customer customer)
+        {
+            int result;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "update customers set nama = :nama , alamat = :alamat , telepon = :telepon where id_customer=:id";
+            command.Parameters.Add("jumlah", DbType.String).Value = customer.nama;
+            command.Parameters.Add("id_produk", DbType.String).Value = customer.alamat;
+            command.Parameters.Add("id_produk", DbType.String).Value = customer.telepon;
+            command.Parameters.Add("id", DbType.String).Value = customer.id;
+            result = command.ExecuteNonQuery();
+            sqlConnection.Close();
+            return result;
+
         }
 
         public DataSet getQueryCustomer(string query)
@@ -531,7 +578,7 @@ namespace Apps
         public DataSet GetAllPurchase()
         {
             sqlConnection.Open();
-            string sqlString = "select invoice_no as [Invoice No], tujuan as Supplier, tgl_invoice as [Tgl Pembelian] from pembelian";
+            string sqlString = "select invoice_no as [Invoice No], suppliers.nama as Supplier, tgl_invoice as [Tgl Pembelian], tujuan from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -544,7 +591,7 @@ namespace Apps
 
         public DataSet GetAllRelatedProductPurchase(string invoiceNo) {
             sqlConnection.Open();
-            string sqlStr = "select produk.nama_produk  as [Nama Produk], detail_pembelian.kuantitas as Qty, produk.jenis_satuan as Satuan, detail_pembelian.harga_produk as [@], detail_pembelian.diskon as Diskon,(detail_pembelian.kuantitas * detail_pembelian.harga_produk )- detail_pembelian.diskon as Jumlah from detail_pembelian  INNER JOIN produk ON detail_pembelian.id_produk = produk.id_produk WHERE detail_pembelian.invoice_no = '" + invoiceNo + "'";
+            string sqlStr = "select produk.nama_produk  as [Nama Produk], detail_pembelian.kuantitas as Qty, produk.jenis_satuan as Satuan, detail_pembelian.harga_produk as [@], detail_pembelian.diskon as Diskon,(detail_pembelian.kuantitas * detail_pembelian.harga_produk )- detail_pembelian.diskon as Jumlah,detail_pembelian.id_produk as  ID from detail_pembelian  INNER JOIN produk ON detail_pembelian.id_produk = produk.id_produk WHERE detail_pembelian.invoice_no = '" + invoiceNo + "'";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlStr, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -554,6 +601,8 @@ namespace Apps
             sqlConnection.Close();
             return ds;
         }
+
+     
 
         public bool CreateNewPurchase(Apps.Models.Transaction transaction)
         {
@@ -709,6 +758,53 @@ namespace Apps
             DataSet newDs = new DataSet();
             sqlConnection.Close();
             return ds;
+        }
+
+        public int UpdatePurchase(Models.Transaction transaction, List<string> deletedProduct, List<Models.Product> addedProduct)
+        {
+            int res = 0;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "update pembelian set  tgl_invoice = @tanggal where invoice_no=@invoice";
+            command.Parameters.Add("@tanggal", DbType.String).Value = transaction.tgl_invoice;
+            command.Parameters.Add("@invoice", DbType.String).Value = transaction.invoice_no;
+            res += command.ExecuteNonQuery();
+
+            for (int i = 0; i < transaction.produkList.Count; i++) {
+                int inRes;
+                SQLiteCommand command2 = new SQLiteCommand(sqlConnection);
+                command2.CommandText = "update detail_pembelian set  harga_produk = @harga, kuantitas = @jumlah, diskon = @diskon where invoice_no=@invoice AND id_produk=@productId";
+                command2.Parameters.Add("@harga", DbType.String).Value = transaction.produkList[i].harga;
+                command2.Parameters.Add("@jumlah", DbType.String).Value = transaction.produkList[i].jumlah;
+                command2.Parameters.Add("@diskon", DbType.Int32).Value = transaction.produkList[i].diskon;
+                command2.Parameters.Add("@invoice", DbType.String).Value = transaction.invoice_no;
+                command2.Parameters.Add("@productId", DbType.String).Value = transaction.produkList[i].idProduk;
+                inRes = command2.ExecuteNonQuery();
+
+            }
+
+            for (int i = 0; i < deletedProduct.Count; i++) {
+                SQLiteCommand delCommand = new SQLiteCommand(sqlConnection);
+                delCommand.CommandText = "DELETE FROM detail_pembelian WHERE id_produk=@id_produk";
+                delCommand.Parameters.Add("@id_produk", DbType.Int32).Value = deletedProduct[i];
+                delCommand.ExecuteNonQuery();
+            }
+
+            for (int i = 0; i < addedProduct.Count; i++)
+            {
+                SQLiteCommand insCommand = new SQLiteCommand(sqlConnection);
+                insCommand.CommandText = "INSERT INTO detail_pembelian (invoice_no,id_produk,harga_produk,kuantitas,diskon)values(@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)";
+                insCommand.Parameters.Add("@invoice_no", DbType.String).Value = transaction.invoice_no;
+                insCommand.Parameters.Add("@id_produk", DbType.Int32).Value = addedProduct[i].idProduk;
+                insCommand.Parameters.Add("@harga_produk", DbType.Int32).Value = addedProduct[i].harga;
+                insCommand.Parameters.Add("@kuantitas", DbType.Int32).Value = addedProduct[i].jumlah;
+                insCommand.Parameters.Add("@diskon", DbType.Int32).Value = addedProduct[i].diskon;
+                insCommand.ExecuteNonQuery();
+            }
+
+            sqlConnection.Close();
+
+            return res;
         }
 
         public DataSet GetTotalRelatedPurchaseReturnProduct(string idRetur)

@@ -17,6 +17,7 @@ namespace Apps
         int detailBtn = 0;
         DataSet dataSet;
         DataSet dataSet2;
+        List<Models.Transaction> transList = new List<Models.Transaction>();
         public Pembelian()
         {
             InitializeComponent();
@@ -28,13 +29,16 @@ namespace Apps
 
         private void initData()
         {
+
             refreshData();
+            dataGridView1.RowHeadersVisible = false;
             tabelPembelian.RowHeadersVisible = false;
             SetColumnWidth();
         }
 
         public void InitializeDesign()
         {
+            
             //search.Location = new Point(15, 13);
             //buttonSearch.Location = new Point(Convert.ToInt32(search.Width) + 30, 10);
             //buttonAddPembelian.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddPembelian.Width) - 15, 10);
@@ -46,6 +50,7 @@ namespace Apps
         public void refreshData()
         {
             LoadSupplierData();
+            LoadReturData();
             //tabelPembelian.Update();
             //tabelPembelian.Refresh();
             SetColumnWidth();
@@ -101,11 +106,7 @@ namespace Apps
         {
             dataSet2 = Database.getInstance().GetAllPurchaseReturn();
             dataGridView1.DataSource = dataSet2.Tables[0];
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "View Details";
-            col.Name = "Actions";
-            tabelPembelian.Columns.Add(col);
+            
         }
 
         public void AddRetur(Apps.Models.ReturTransaksi returTransaksi)
@@ -126,9 +127,10 @@ namespace Apps
         {
 
             Database database = Database.getInstance();
-             dataSet = database.GetAllPurchase();
+            dataSet = database.GetAllPurchase();
 
-            tabelPembelian.DataSource = dataSet.Tables[0];
+            
+            
             dataSet.Tables[0].Columns.Add("Produk");
             dataSet.Tables[0].Columns.Add("Qty");
             dataSet.Tables[0].Columns.Add("Satuan");
@@ -146,8 +148,17 @@ namespace Apps
                 string satuanList = "";
                 string diskonList = "";
                 string jlhList = "";
+
+                string idTransaksi = dataSet.Tables[0].Rows[i][0].ToString();
+                string tujuan = dataSet.Tables[0].Rows[i][1].ToString();
+                string id = dataSet.Tables[0].Rows[i][3].ToString();
+                string tgl_invoice = dataSet.Tables[0].Rows[i][2].ToString();
+                List<Models.Product> list = new List<Models.Product>();
+
                 for (int j = 0; j < newDataSet.Tables[0].Rows.Count; j++)
                 {
+                    list.Add(new Models.Product(Convert.ToInt32(newDataSet.Tables[0].Rows[j][6].ToString()),newDataSet.Tables[0].Rows[j][0].ToString(), Convert.ToInt32(newDataSet.Tables[0].Rows[j][1].ToString()),newDataSet.Tables[0].Rows[j][2].ToString(),Convert.ToInt32(newDataSet.Tables[0].Rows[j][3].ToString())));
+
                     if (j == newDataSet.Tables[0].Rows.Count - 1)
                     {
                         productList += newDataSet.Tables[0].Rows[j][0].ToString();
@@ -167,13 +178,18 @@ namespace Apps
                         jlhList += newDataSet.Tables[0].Rows[j][5].ToString() + nl;
                     }
                 }
-                dataSet.Tables[0].Rows[i][3] = productList;
-                dataSet.Tables[0].Rows[i][4] = kuantitasList;
-                dataSet.Tables[0].Rows[i][5] = satuanList;
-                dataSet.Tables[0].Rows[i][6] = hargaList;
-                dataSet.Tables[0].Rows[i][7] = diskonList;
-                dataSet.Tables[0].Rows[i][8] = jlhList;
+                dataSet.Tables[0].Rows[i][4] = productList;
+                dataSet.Tables[0].Rows[i][5] = kuantitasList;
+                dataSet.Tables[0].Rows[i][6] = satuanList;
+                dataSet.Tables[0].Rows[i][7] = hargaList;
+                dataSet.Tables[0].Rows[i][8] = diskonList;
+                dataSet.Tables[0].Rows[i][9] = jlhList;
+                
+                
+                transList.Add(new Models.Transaction(idTransaksi, new Models.Supplier(id,tujuan), tgl_invoice, list));
+
             }
+            dataSet.Tables[0].Columns.RemoveAt(3);
             tabelPembelian.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             tabelPembelian.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
@@ -181,14 +197,61 @@ namespace Apps
 
         }
 
+        public void UpdatePembelian(int row,Models.Transaction transaction) {
+            
+            
+            string nl = Environment.NewLine;
+            string productList = "";
+            string hargaList = "";
+            string kuantitasList = "";
+            string satuanList = "";
+            string diskonList = "";
+            string jlhList = "";
+            for (int j = 0; j < transaction.produkList.Count; j++)
+            {
+                transList[row] = transaction;
+                if (j == transaction.produkList.Count - 1)
+                {
+                    productList += transaction.produkList[j].namaProduk;
+                    hargaList += transaction.produkList[j].harga;
+                    kuantitasList += transaction.produkList[j].jumlah;
+                    diskonList += transaction.produkList[j].diskon;
+                    jlhList += transaction.produkList[j].jumlah;
+                }
+                else
+                {
+                    productList += transaction.produkList[j].namaProduk + nl;
+                    hargaList += transaction.produkList[j].harga + nl;
+                    kuantitasList += transaction.produkList[j].jumlah + nl;
+                    diskonList += transaction.produkList[j].diskon + nl;
+                    jlhList += transaction.produkList[j].jumlah + nl;
+                }
+            }
+            dataSet.Tables[0].Rows[row][3] = productList;
+            dataSet.Tables[0].Rows[row][2] = transaction.tgl_invoice;
+            dataSet.Tables[0].Rows[row][4] = kuantitasList;
+            dataSet.Tables[0].Rows[row][6] = hargaList;
+            dataSet.Tables[0].Rows[row][7] = diskonList;
+            dataSet.Tables[0].Rows[row][8] = jlhList;
+            
+        }
+
         private void SetColumnWidth()
         {
-            if (detailBtn == 0) { 
+            tabelPembelian.DataSource = dataSet.Tables[0];
+            if (detailBtn == 0) {
                 DataGridViewButtonColumn col = new DataGridViewButtonColumn();
                 col.UseColumnTextForButtonValue = true;
                 col.Text = "View Details";
                 col.Name = "Actions";
                 tabelPembelian.Columns.Add(col);
+                detailBtn += 1;
+
+                DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
+                col1.UseColumnTextForButtonValue = true;
+                col1.Text = "View Details";
+                col1.Name = "Actions";
+                dataGridView1.Columns.Add(col1);
                 detailBtn += 1;
             }
             tabelPembelian.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -200,13 +263,18 @@ namespace Apps
             tabelPembelian.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (search.Text.Length == 0)
             {
-                refreshData();
+                //refreshData();
                 MessageBox.Show("Harus mengisi field pencarian !!");
                 search.Focus();
             }
@@ -231,7 +299,14 @@ namespace Apps
         private void tabelPembelian_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0) {
-                MessageBox.Show("Hello");
+                if (e.RowIndex < 0)
+                {
+                }
+                else
+                {
+                    View_Detail_Pembelian view_Detail_Pembelian = new View_Detail_Pembelian(e.RowIndex,transList[e.RowIndex], this);
+                    view_Detail_Pembelian.ShowDialog();
+                }
             }
         }
 
