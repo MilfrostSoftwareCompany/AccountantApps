@@ -39,31 +39,20 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.terbilang = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
-            this.tanggal = new System.Windows.Forms.Label();
-            this.noFaktur = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.jatuhTempo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.alamatCustomer = new System.Windows.Forms.RichTextBox();
-            this.wilayah = new System.Windows.Forms.TextBox();
-            this.namaCustomer = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.wilayahToko = new System.Windows.Forms.Label();
             this.namaToko = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.noFaktur = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tglInvoice = new System.Windows.Forms.DateTimePicker();
+            this.tglJatuhTempo = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -74,7 +63,7 @@
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNext.ForeColor = System.Drawing.Color.White;
-            this.buttonNext.Location = new System.Drawing.Point(963, 583);
+            this.buttonNext.Location = new System.Drawing.Point(962, 593);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(140, 31);
             this.buttonNext.TabIndex = 64;
@@ -89,12 +78,13 @@
             this.buttonAddBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBarang.Location = new System.Drawing.Point(963, 201);
+            this.buttonAddBarang.Location = new System.Drawing.Point(36, 173);
             this.buttonAddBarang.Name = "buttonAddBarang";
             this.buttonAddBarang.Size = new System.Drawing.Size(140, 31);
             this.buttonAddBarang.TabIndex = 63;
             this.buttonAddBarang.Text = "+ ADD BARANG";
             this.buttonAddBarang.UseVisualStyleBackColor = false;
+            this.buttonAddBarang.Click += new System.EventHandler(this.buttonAddBarang_Click);
             // 
             // total
             // 
@@ -160,7 +150,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(92, 539);
+            this.label14.Location = new System.Drawing.Point(92, 593);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(411, 19);
             this.label14.TabIndex = 56;
@@ -170,7 +160,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(92, 520);
+            this.label10.Location = new System.Drawing.Point(92, 574);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(329, 19);
             this.label10.TabIndex = 55;
@@ -180,21 +170,11 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(34, 520);
+            this.label9.Location = new System.Drawing.Point(34, 574);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 19);
             this.label9.TabIndex = 54;
             this.label9.Text = "NB :";
-            // 
-            // terbilang
-            // 
-            this.terbilang.AutoSize = true;
-            this.terbilang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.terbilang.Location = new System.Drawing.Point(130, 491);
-            this.terbilang.Name = "terbilang";
-            this.terbilang.Size = new System.Drawing.Size(56, 19);
-            this.terbilang.TabIndex = 53;
-            this.terbilang.Text = "[sistem]";
             // 
             // label13
             // 
@@ -208,65 +188,14 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
             this.dataGridView1.Location = new System.Drawing.Point(37, 245);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1066, 229);
             this.dataGridView1.TabIndex = 51;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "No.";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 40;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Kode";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Qty.";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 80;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Satuan";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Nama Barang";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 400;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Harga @";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Disc.";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Jumlah";
-            this.Column8.Name = "Column8";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label12
             // 
@@ -278,26 +207,6 @@
             this.label12.TabIndex = 50;
             this.label12.Text = "Jatuh Tempo :";
             // 
-            // tanggal
-            // 
-            this.tanggal.AutoSize = true;
-            this.tanggal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tanggal.Location = new System.Drawing.Point(927, 135);
-            this.tanggal.Name = "tanggal";
-            this.tanggal.Size = new System.Drawing.Size(56, 19);
-            this.tanggal.TabIndex = 49;
-            this.tanggal.Text = "[sistem]";
-            // 
-            // noFaktur
-            // 
-            this.noFaktur.AutoSize = true;
-            this.noFaktur.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noFaktur.Location = new System.Drawing.Point(927, 101);
-            this.noFaktur.Name = "noFaktur";
-            this.noFaktur.Size = new System.Drawing.Size(56, 19);
-            this.noFaktur.TabIndex = 48;
-            this.noFaktur.Text = "[sistem]";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -307,15 +216,6 @@
             this.label8.Size = new System.Drawing.Size(84, 19);
             this.label8.TabIndex = 47;
             this.label8.Text = "No. Faktur :";
-            // 
-            // jatuhTempo
-            // 
-            this.jatuhTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jatuhTempo.Location = new System.Drawing.Point(931, 169);
-            this.jatuhTempo.Name = "jatuhTempo";
-            this.jatuhTempo.Size = new System.Drawing.Size(172, 26);
-            this.jatuhTempo.TabIndex = 46;
-            this.jatuhTempo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jatuhTempo_KeyDown);
             // 
             // label7
             // 
@@ -327,48 +227,11 @@
             this.label7.TabIndex = 45;
             this.label7.Text = "Tanggal :";
             // 
-            // alamatCustomer
-            // 
-            this.alamatCustomer.Location = new System.Drawing.Point(176, 135);
-            this.alamatCustomer.Name = "alamatCustomer";
-            this.alamatCustomer.Size = new System.Drawing.Size(172, 53);
-            this.alamatCustomer.TabIndex = 44;
-            this.alamatCustomer.Text = "";
-            this.alamatCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.alamatCustomer_KeyDown);
-            // 
-            // wilayah
-            // 
-            this.wilayah.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wilayah.Location = new System.Drawing.Point(176, 194);
-            this.wilayah.Name = "wilayah";
-            this.wilayah.Size = new System.Drawing.Size(172, 26);
-            this.wilayah.TabIndex = 43;
-            this.wilayah.KeyDown += new System.Windows.Forms.KeyEventHandler(this.wilayah_KeyDown);
-            // 
-            // namaCustomer
-            // 
-            this.namaCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaCustomer.Location = new System.Drawing.Point(176, 102);
-            this.namaCustomer.Name = "namaCustomer";
-            this.namaCustomer.Size = new System.Drawing.Size(172, 26);
-            this.namaCustomer.TabIndex = 42;
-            this.namaCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.namaCustomer_KeyDown);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(33, 198);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 19);
-            this.label5.TabIndex = 41;
-            this.label5.Text = "Wilayah :";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(33, 105);
+            this.label4.Location = new System.Drawing.Point(34, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 19);
             this.label4.TabIndex = 40;
@@ -378,17 +241,17 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(527, 45);
+            this.label3.Location = new System.Drawing.Point(471, 50);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 26);
+            this.label3.Size = new System.Drawing.Size(178, 26);
             this.label3.TabIndex = 39;
-            this.label3.Text = "FAKTUR";
+            this.label3.Text = "FAKTUR JUAL";
             // 
             // wilayahToko
             // 
             this.wilayahToko.AutoSize = true;
             this.wilayahToko.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wilayahToko.Location = new System.Drawing.Point(48, 50);
+            this.wilayahToko.Location = new System.Drawing.Point(62, 61);
             this.wilayahToko.Name = "wilayahToko";
             this.wilayahToko.Size = new System.Drawing.Size(114, 26);
             this.wilayahToko.TabIndex = 38;
@@ -398,17 +261,68 @@
             // 
             this.namaToko.AutoSize = true;
             this.namaToko.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaToko.Location = new System.Drawing.Point(33, 24);
+            this.namaToko.Location = new System.Drawing.Point(47, 35);
             this.namaToko.Name = "namaToko";
             this.namaToko.Size = new System.Drawing.Size(139, 26);
             this.namaToko.TabIndex = 37;
             this.namaToko.Text = "[Nama toko]";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(178, 119);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(172, 25);
+            this.comboBox1.TabIndex = 65;
+            // 
+            // noFaktur
+            // 
+            this.noFaktur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noFaktur.Location = new System.Drawing.Point(931, 96);
+            this.noFaktur.Name = "noFaktur";
+            this.noFaktur.Size = new System.Drawing.Size(172, 26);
+            this.noFaktur.TabIndex = 66;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(112, 491);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(645, 79);
+            this.richTextBox1.TabIndex = 68;
+            this.richTextBox1.Text = "";
+            // 
+            // tglInvoice
+            // 
+            this.tglInvoice.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tglInvoice.Location = new System.Drawing.Point(931, 135);
+            this.tglInvoice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tglInvoice.Name = "tglInvoice";
+            this.tglInvoice.Size = new System.Drawing.Size(172, 20);
+            this.tglInvoice.TabIndex = 69;
+            // 
+            // tglJatuhTempo
+            // 
+            this.tglJatuhTempo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tglJatuhTempo.Location = new System.Drawing.Point(932, 173);
+            this.tglJatuhTempo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tglJatuhTempo.Name = "tglJatuhTempo";
+            this.tglJatuhTempo.Size = new System.Drawing.Size(172, 20);
+            this.tglJatuhTempo.TabIndex = 70;
+            // 
             // Add_Penjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 648);
+            this.ClientSize = new System.Drawing.Size(1135, 647);
+            this.Controls.Add(this.tglJatuhTempo);
+            this.Controls.Add(this.tglInvoice);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.noFaktur);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonAddBarang);
             this.Controls.Add(this.total);
@@ -420,19 +334,11 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.terbilang);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.tanggal);
-            this.Controls.Add(this.noFaktur);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.jatuhTempo);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.alamatCustomer);
-            this.Controls.Add(this.wilayah);
-            this.Controls.Add(this.namaCustomer);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.wilayahToko);
@@ -461,30 +367,19 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label terbilang;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label tanggal;
-        private System.Windows.Forms.Label noFaktur;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox jatuhTempo;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.RichTextBox alamatCustomer;
-        private System.Windows.Forms.TextBox wilayah;
-        private System.Windows.Forms.TextBox namaCustomer;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label wilayahToko;
         private System.Windows.Forms.Label namaToko;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox noFaktur;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DateTimePicker tglInvoice;
+        private System.Windows.Forms.DateTimePicker tglJatuhTempo;
     }
 }

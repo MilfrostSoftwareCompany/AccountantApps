@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.buttonPrint = new System.Windows.Forms.Button();
-            this.jatuhTempo = new System.Windows.Forms.Label();
             this.alamatCustomer = new System.Windows.Forms.Label();
             this.telpCustomer = new System.Windows.Forms.Label();
             this.namaCustomer = new System.Windows.Forms.Label();
@@ -46,18 +45,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.terbilang = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label12 = new System.Windows.Forms.Label();
             this.tanggal = new System.Windows.Forms.Label();
             this.noFaktur = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,24 +65,13 @@
             this.buttonPrint.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
             this.buttonPrint.Location = new System.Drawing.Point(1344, 718);
-            this.buttonPrint.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPrint.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(127, 42);
             this.buttonPrint.TabIndex = 106;
             this.buttonPrint.Text = "PRINT";
             this.buttonPrint.UseVisualStyleBackColor = false;
             this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
-            // 
-            // jatuhTempo
-            // 
-            this.jatuhTempo.AutoSize = true;
-            this.jatuhTempo.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.jatuhTempo.Location = new System.Drawing.Point(1236, 197);
-            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.jatuhTempo.Name = "jatuhTempo";
-            this.jatuhTempo.Size = new System.Drawing.Size(74, 22);
-            this.jatuhTempo.TabIndex = 105;
-            this.jatuhTempo.Text = "[sistem]";
             // 
             // alamatCustomer
             // 
@@ -166,7 +143,7 @@
             // 
             this.tot.AutoSize = true;
             this.tot.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tot.Location = new System.Drawing.Point(1284, 650);
+            this.tot.Location = new System.Drawing.Point(1334, 650);
             this.tot.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.tot.Name = "tot";
             this.tot.Size = new System.Drawing.Size(74, 22);
@@ -177,7 +154,7 @@
             // 
             this.disc.AutoSize = true;
             this.disc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disc.Location = new System.Drawing.Point(1284, 612);
+            this.disc.Location = new System.Drawing.Point(1334, 612);
             this.disc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.disc.Name = "disc";
             this.disc.Size = new System.Drawing.Size(74, 22);
@@ -188,7 +165,7 @@
             // 
             this.subtotal.AutoSize = true;
             this.subtotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtotal.Location = new System.Drawing.Point(1284, 576);
+            this.subtotal.Location = new System.Drawing.Point(1334, 576);
             this.subtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.subtotal.Name = "subtotal";
             this.subtotal.Size = new System.Drawing.Size(74, 22);
@@ -199,7 +176,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1161, 650);
+            this.label18.Location = new System.Drawing.Point(1211, 650);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(51, 22);
@@ -210,7 +187,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1161, 612);
+            this.label17.Location = new System.Drawing.Point(1211, 612);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(47, 22);
@@ -221,7 +198,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1161, 576);
+            this.label16.Location = new System.Drawing.Point(1211, 576);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 22);
@@ -243,18 +220,19 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(123, 638);
+            this.label14.Location = new System.Drawing.Point(128, 623);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(532, 22);
             this.label14.TabIndex = 91;
             this.label14.Text = "- Pembayaran dengan giro/cheque dianggap sah setelah diuangkan.";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(123, 614);
+            this.label10.Location = new System.Drawing.Point(128, 599);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(429, 22);
@@ -265,108 +243,25 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(45, 614);
+            this.label9.Location = new System.Drawing.Point(50, 599);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 22);
             this.label9.TabIndex = 89;
             this.label9.Text = "NB :";
-            // 
-            // terbilang
-            // 
-            this.terbilang.AutoSize = true;
-            this.terbilang.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.terbilang.Location = new System.Drawing.Point(173, 578);
-            this.terbilang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.terbilang.Name = "terbilang";
-            this.terbilang.Size = new System.Drawing.Size(74, 22);
-            this.terbilang.TabIndex = 88;
-            this.terbilang.Text = "[sistem]";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(45, 578);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 22);
-            this.label13.TabIndex = 87;
-            this.label13.Text = "Terbilang :";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
             this.dataGridView1.Location = new System.Drawing.Point(49, 267);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1421, 282);
             this.dataGridView1.TabIndex = 86;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "No.";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 40;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Kode";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Qty.";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 80;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Satuan";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Nama Barang";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 400;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Harga @";
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Disc.";
-            this.Column7.Name = "Column7";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Jumlah";
-            this.Column8.Name = "Column8";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1083, 197);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(120, 22);
-            this.label12.TabIndex = 85;
-            this.label12.Text = "Jatuh Tempo :";
             // 
             // tanggal
             // 
@@ -462,7 +357,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1513, 780);
             this.Controls.Add(this.buttonPrint);
-            this.Controls.Add(this.jatuhTempo);
             this.Controls.Add(this.alamatCustomer);
             this.Controls.Add(this.telpCustomer);
             this.Controls.Add(this.namaCustomer);
@@ -479,10 +373,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.terbilang);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.tanggal);
             this.Controls.Add(this.noFaktur);
             this.Controls.Add(this.label8);
@@ -492,7 +383,7 @@
             this.Controls.Add(this.wilayahToko);
             this.Controls.Add(this.namaToko);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Cetak_Bon_Penjualan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -507,7 +398,6 @@
         #endregion
 
         private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Label jatuhTempo;
         private System.Windows.Forms.Label alamatCustomer;
         private System.Windows.Forms.Label telpCustomer;
         private System.Windows.Forms.Label namaCustomer;
@@ -524,18 +414,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label terbilang;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label tanggal;
         private System.Windows.Forms.Label noFaktur;
         private System.Windows.Forms.Label label8;

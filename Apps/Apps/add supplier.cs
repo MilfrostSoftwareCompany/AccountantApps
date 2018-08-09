@@ -34,7 +34,7 @@ namespace Apps
             else
             {
                 int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
-                supplier.refreshData();
+                //supplier.refreshData();
                 if (num == 1)
                 {
                     MessageBox.Show("Data supplier telah di tambahkan");

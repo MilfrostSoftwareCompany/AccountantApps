@@ -12,39 +12,40 @@ namespace Apps
 {
     public partial class Add_Produk : Form
     {
-        public Add_Produk()
-        {         
+        Inventori inventori;
+
+        public Add_Produk(Inventori inventori)
+        {
+            this.inventori = inventori;
             InitializeComponent();
             InitializeDesign();
-            comboBoxIdBarang.Focus();
         }
 
         public void InitializeDesign()
         {
-            labelIdBarang.Location = new Point(15, 15);
-            comboBoxIdBarang.Location = new Point(Convert.ToInt32(labelIdBarang.Width) + 55, 15);
-            labelStokBarang.Location = new Point(15, Convert.ToInt32(labelIdBarang.Height) + 30);
-            StokBarang.Location = new Point(Convert.ToInt32(labelStokBarang.Width) + 30, Convert.ToInt32(labelIdBarang.Height) + 28);
             buttonSave.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonSave.Width) - 30, Convert.ToInt32(this.Height) - Convert.ToInt32(buttonSave.Height) - 60);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (comboBoxIdBarang.Text.Length == 0 || StokBarang.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(namaBarang.Text)||string.IsNullOrWhiteSpace(jumlah.Text)||string.IsNullOrWhiteSpace(jenisSatuan.Text)||string.IsNullOrWhiteSpace(harga.Text))
             {
-                MessageBox.Show("Harus mengisi semua field !!");
+                MessageBox.Show("Semua Data harus diisi");
             }
             else
             {
+                Models.Product product = new Models.Product(namaBarang.Text, Convert.ToInt32(jumlah.Value), jenisSatuan.Text, Convert.ToInt32(harga.Value));
+                Database.getInstance().CreateNewProduct(product);
+                inventori.RefreshData();
                 this.Close();
             }
         }
 
         private void comboBoxIdBarang_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter) 
             {
-                StokBarang.Focus();
+                namaBarang.Focus();
             }
         }
 
@@ -54,6 +55,11 @@ namespace Apps
             {
                 buttonSave.PerformClick();
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

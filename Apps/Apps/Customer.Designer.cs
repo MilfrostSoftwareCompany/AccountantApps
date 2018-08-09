@@ -55,6 +55,7 @@
             this.tabelCustomer.ReadOnly = true;
             this.tabelCustomer.Size = new System.Drawing.Size(1529, 758);
             this.tabelCustomer.TabIndex = 15;
+            this.tabelCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelCustomer_CellContentClick);
             // 
             // buttonAddCustomer
             // 
@@ -93,7 +94,7 @@
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 12;
@@ -129,7 +130,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Customer";
             this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelCustomer)).EndInit();
