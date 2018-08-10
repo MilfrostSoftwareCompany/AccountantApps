@@ -204,6 +204,12 @@
     <Compile Include="View Detail Pembelian.Designer.cs">
       <DependentUpon>View Detail Pembelian.cs</DependentUpon>
     </Compile>
+    <Compile Include="View Detail Penjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View Detail Penjualan.Designer.cs">
+      <DependentUpon>View Detail Penjualan.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Add Barang.resx">
       <DependentUpon>Add Barang.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View Detail Pembelian.resx">
       <DependentUpon>View Detail Pembelian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View Detail Penjualan.resx">
+      <DependentUpon>View Detail Penjualan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\acc_app.sqlite" />
     <None Include="packages.config" />

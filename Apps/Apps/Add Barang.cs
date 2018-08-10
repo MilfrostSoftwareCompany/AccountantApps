@@ -49,7 +49,7 @@ namespace Apps
 
         private void RetrieveData(List<Models.Product> list)
         {
-
+            ds = new DataSet();
             ds.Tables.Add(new DataTable());
             ds.Tables[0].Columns.Add("ID");
             ds.Tables[0].Columns.Add("Nama Produk");
@@ -59,7 +59,7 @@ namespace Apps
             ds.Tables[0].Columns.Add("Diskon");
             ds.Tables[0].Columns.Add("Subtotal");
 
-            for (int i=0;i<ds.Tables[0].Rows.Count;i++) {
+            for (int i=0;i<list.Count;i++) {
 
                 DataRow dataRow = ds.Tables[0].NewRow();
                 dataRow[0] = list[i].idProduk;
@@ -123,9 +123,20 @@ namespace Apps
                 Add_Penjualan add_Penjualan = (Add_Penjualan)caller;
                 add_Penjualan.AddProdukToTable(selectedProduct);
             }
-            else if (caller is View_Detail_Pembelian) {
+            else if (caller is View_Detail_Pembelian)
+            {
                 View_Detail_Pembelian view_Detail = (View_Detail_Pembelian)caller;
                 view_Detail.addProduk(selectedProduct);
+            }
+            else if(caller is View_Detail_Penjualan)
+            {
+                View_Detail_Penjualan view_Detail_Penjualan = (View_Detail_Penjualan)caller;
+                view_Detail_Penjualan.addProduk(selectedProduct);
+
+            }
+            else if (caller is Retur_Pembelian) {
+                Retur_Pembelian retur = (Retur_Pembelian)caller;
+                retur.AddProduct(selectedProduct);
             }
         }
     }

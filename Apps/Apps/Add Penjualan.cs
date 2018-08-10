@@ -12,10 +12,10 @@ namespace Apps
 {
     public partial class Add_Penjualan : Form
     {
-
+        DataSet custDs;
         DataSet ds;
         Penjualan penjualan;
-        Apps.Models.Customer idCustomer;
+        Apps.Models.Supplier idCustomer;
         List<Apps.Models.Product> produkList = new List<Models.Product>();
         List<Apps.Models.Customer> customerList = new List<Models.Customer>();
         public Add_Penjualan(Penjualan penjualan)
@@ -32,7 +32,7 @@ namespace Apps
 
         private void retrieveData()
         {
-            DataSet custDs = Database.getInstance().getAllSupplierData();
+            custDs = Database.getInstance().getAllCustomerData();
             comboBox1.DataSource = custDs.Tables[0];
             comboBox1.DisplayMember = "Nama";
             comboBox1.ValueMember = "ID";
@@ -113,16 +113,27 @@ namespace Apps
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (tglJatuhTempo.Text.Length == 0)
+            if (!string.IsNullOrWhiteSpace(noFaktur.Text) && !string.IsNullOrWhiteSpace(tglInvoice.Text) && produkList.Count != 0)
             {
-                MessageBox.Show("Harus mengisi semua field !!");
-                
-            }
-            else
-            {
-                Cetak_Bon_Penjualan FormCetakBonPenjualan = new Cetak_Bon_Penjualan();
-                FormCetakBonPenjualan.ShowDialog();
+                string dbDate = DateTime.Parse(tglInvoice.Text).ToString("yyyy-MM-dd");
+                idCustomer = new Models.Supplier(custDs.Tables[0].Rows[comboBox1.SelectedIndex]);
+                Apps.Models.Transaction transaction = new Models.Transaction(noFaktur.Text, idCustomer, dbDate, produkList);
+                Console.WriteLine(idCustomer.id);
+                if (Database.getInstance().CreateNewSell(transaction))
+                {
+                    MessageBox.Show("Data Pembelian telah ditambahkan");
+
+                }
+                penjualan.addData(transaction);
                 this.Close();
+            }
+            else if (string.IsNullOrWhiteSpace(noFaktur.Text))
+            {
+                MessageBox.Show("Masukkan Invoice No.");
+            }
+            else if (produkList.Count == 0)
+            {
+                MessageBox.Show("Masukkan Produk");
             }
         }
 
@@ -144,10 +155,7 @@ namespace Apps
 
         private void wilayah_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                tglJatuhTempo.Focus();
-            }
+            
         }
 
         private void jatuhTempo_KeyDown(object sender, KeyEventArgs e)

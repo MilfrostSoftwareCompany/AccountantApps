@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,14 @@ namespace Apps.Models
         public string alamat;
         public string telepon;
         public string id;
+
+        public Customer(DataRow dataRow)
+        {
+            this.id = dataRow[0].ToString(); ;
+            this.nama = dataRow[1].ToString();
+            this.alamat = dataRow[2].ToString();
+            this.telepon = dataRow[3].ToString();
+        }
 
         public Customer(string id,string nama, string alamat, string telepon)
         {

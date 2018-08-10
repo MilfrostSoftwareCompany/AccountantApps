@@ -107,7 +107,7 @@ namespace Apps
 
         private void LoadReturData()
         {
-            dataSet2 = Database.getInstance().GetAllPurchaseReturn();
+            dataSet2 = Database.getInstance().GetAllSellReturn();
             dataGridView1.DataSource = dataSet2.Tables[0];
 
         }
@@ -130,7 +130,7 @@ namespace Apps
         {
 
             Database database = Database.getInstance();
-            dataSet = database.GetAllPurchase();
+            dataSet = database.GetAllSell();
 
 
 
@@ -143,7 +143,7 @@ namespace Apps
 
             for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
             {
-                DataSet newDataSet = database.GetAllRelatedProductPurchase(dataSet.Tables[0].Rows[i][0].ToString());
+                DataSet newDataSet = database.GetAllRelatedProductSell(dataSet.Tables[0].Rows[i][0].ToString());
                 string nl = Environment.NewLine;
                 string productList = "";
                 string hargaList = "";
@@ -314,6 +314,9 @@ namespace Apps
                 }
                 else
                 {
+
+                    View_Detail_Penjualan detail_Penjualan = new View_Detail_Penjualan(e.RowIndex, transList[e.RowIndex], this);
+                    detail_Penjualan.ShowDialog();
                     //View_Detail_Pembelian view_Detail_Pembelian = new View_Detail_Pembelian(e.RowIndex, transList[e.RowIndex], this);
                     //view_Detail_Pembelian.ShowDialog();
                 }

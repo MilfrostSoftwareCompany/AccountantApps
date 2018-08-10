@@ -108,7 +108,7 @@ namespace Apps
                 dr[3] = product.jenisSatuan;
                 dr[4] = product.harga;
                 dr[5] = product.diskon;
-                dr[6] = Convert.ToInt32(product.harga) * Convert.ToInt64(product.jumlah);
+                dr[6] = Convert.ToInt64(product.harga) * Convert.ToInt64(product.jumlah);
                 ds.Tables[0].Rows.Add(dr);
                 dataGridView1.Update();
                 dataGridView1.Refresh();
@@ -183,7 +183,7 @@ namespace Apps
 
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
-            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(transaction);
+            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(transaction,"RETUR PEMBELIAN");
             retur_Pembelian.ShowDialog();
         }
 

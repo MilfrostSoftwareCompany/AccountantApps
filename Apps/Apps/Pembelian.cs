@@ -88,9 +88,9 @@ namespace Apps
                 }
             }
             dr[3] = productList;
-            dr[4] = hargaList;
-            dr[5] = kuantitasList;
-            dr[6] = satuanList;
+            dr[4] = kuantitasList;
+            dr[5] = satuanList;
+            dr[6] = hargaList;
             dr[7] = diskonList;
             dr[8] = jlhList;
             dataSet.Tables[0].Rows.Add(dr);

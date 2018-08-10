@@ -60,12 +60,13 @@
             this.buttonRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetur.ForeColor = System.Drawing.Color.White;
             this.buttonRetur.Location = new System.Drawing.Point(1281, 727);
-            this.buttonRetur.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonRetur.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(187, 38);
             this.buttonRetur.TabIndex = 116;
             this.buttonRetur.Text = "RETUR";
             this.buttonRetur.UseVisualStyleBackColor = false;
+            this.buttonRetur.Click += new System.EventHandler(this.buttonRetur_Click);
             // 
             // total
             // 
@@ -140,11 +141,12 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(47, 221);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(1421, 313);
             this.dataGridView1.TabIndex = 103;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label8
             // 
@@ -307,7 +309,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Retur_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Retur_Pembelian";

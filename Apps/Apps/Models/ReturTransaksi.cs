@@ -17,10 +17,11 @@ namespace Apps.Models
         public int idSupplier;
         public Supplier supplier;
        
-        public ReturTransaksi(string idRetur, string idTransaksi, List<Product> productList, string deskripsi)
+        public ReturTransaksi(string idRetur, string idTransaksi, string tglRetur, List<Product> productList, string deskripsi)
         {
             this.idRetur = idRetur;
             this.idTransaksi = idTransaksi;
+            this.tglRetur = tglRetur;
             this.productList = productList;
             this.deskripsi = deskripsi;
             this.createdBy = Login.loggedUser;

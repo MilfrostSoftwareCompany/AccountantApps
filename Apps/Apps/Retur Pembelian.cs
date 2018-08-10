@@ -14,17 +14,23 @@ namespace Apps
     {
         Models.Transaction transaction;
         DataSet ds;
-        public Retur_Pembelian(Models.Transaction transaction)
+
+        List<Models.Product> addedProduct = new List<Models.Product>();
+        List<Models.Product> removedProduct = new List<Models.Product>();
+
+        public Retur_Pembelian(Models.Transaction transaction,string title)
         {
             this.transaction = transaction;
             InitializeComponent();
+            label3.Text = title;
             GetData();
             SetViews();
+            
         }
 
         private void GetData()
         {
-
+            transaction.tujuan = Database.getInstance().GetSupplierFromId(transaction.tujuan.id);
             ds = new DataSet();
             ds.Tables.Add(new DataTable());
             ds.Tables[0].Columns.Add("ID");
@@ -37,6 +43,7 @@ namespace Apps
 
             for(int i = 0; i < transaction.produkList.Count; i++)
             {
+                addedProduct.Add(transaction.produkList[i]);
                 DataRow dr = ds.Tables[0].NewRow();
                 dr[0] = transaction.produkList[i].idProduk;
                 dr[1] = transaction.produkList[i].namaProduk;
@@ -49,10 +56,22 @@ namespace Apps
                 
             }
             dataGridView1.DataSource = ds.Tables[0];
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "Delete";
+            col.Name = "Actions";
+            dataGridView1.Columns.Add(col);
         }
 
         public void SetViews()
         {
+            if (label3.Text == "RETUR PEMBELIAN")
+            {
+                label4.Text = "Nama Supplier";
+            }
+            else if (label3.Text == "RETUR PENJUALAN") {
+                label4.Text = "Nama Customer";
+            }
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -81,10 +100,62 @@ namespace Apps
             total.Text = Convert.ToString(subtotal_ - diskon_);
         }
 
+        public void AddProduct(Models.Product product) {
+            DataRow dr = ds.Tables[0].NewRow();
+            dr[0] = product.idProduk;
+            dr[1] = product.namaProduk;
+            dr[2] = product.jumlah;
+            dr[3] = product.jenisSatuan;
+            dr[4] = product.harga;
+            dr[5] = product.diskon;
+            dr[6] = Convert.ToInt64(product.harga) * Convert.ToInt64(product.jumlah);
+            ds.Tables[0].Rows.Add(dr);
+            dataGridView1.Update();
+            dataGridView1.Refresh();
+        }
+
         private void tambahProdukBtn_Click(object sender, EventArgs e)
         {
-            Add_Barang add_Barang = new Add_Barang(this,transaction.produkList);
-            add_Barang.ShowDialog();
+            if (removedProduct.Count == 0)
+            {
+                MessageBox.Show("Tidak ada barang yang bisa ditambahkan.");
+            }
+            else
+            {
+                Add_Barang add_Barang = new Add_Barang(this, removedProduct);
+                add_Barang.ShowDialog();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) {
+                removedProduct.Add(addedProduct[e.RowIndex]);
+                addedProduct.RemoveAt(e.RowIndex);
+                ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void buttonRetur_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("Silahkan isi ID Retur");
+            }
+            else
+            {
+                Models.ReturTransaksi retur = new Models.ReturTransaksi(textBox1.Text, transaction.invoice_no, DateTime.Parse(tanggal.Text).ToString("yyyy-MM-dd"), addedProduct, deskripsi.Text);
+
+                if (label3.Text == "RETUR PEMBELIAN")
+                {
+                    Database.getInstance().CreateNewPurchaseReturn(retur);
+                }
+                else if(label3.Text == "RETUR PENJUALAN")
+                {
+                    Database.getInstance().CreateNewSellReturn(retur);
+                }
+                this.Close();
+            }
         }
     }
 }
