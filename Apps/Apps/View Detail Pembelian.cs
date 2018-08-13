@@ -19,6 +19,8 @@ namespace Apps
         DataSet ds;
 
         private PrintDocument printDocument1 = new PrintDocument();
+        PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+
 
         Pembelian pembelian;
         bool isEditing = false;
@@ -29,6 +31,7 @@ namespace Apps
         public View_Detail_Pembelian(int row,Models.Transaction transaction,Pembelian pembelian)
         {
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
+            
             this.rowIndex = row;
             this.pembelian = pembelian;
             this.transaction = transaction;
@@ -243,8 +246,10 @@ namespace Apps
 
         private void print_Click(object sender, EventArgs e)
         {
+            
             CaptureScreen();
-            printDocument1.Print();
+            printPreviewDialog.Document = printDocument1;
+            printPreviewDialog.ShowDialog();
         }
 
 

@@ -224,7 +224,7 @@ namespace Apps
             }
             else
             {
-                command.CommandText = "CREATE TABLE 'company' ('id' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'nama' TEXT, 'alamat' TEXT, 'last_updated' DATETIME, 'updated_by' TEXT, 'telepon' TEXT)";
+                command.CommandText = "CREATE TABLE 'company' ('id' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'nama' TEXT, 'alamat' TEXT, 'last_updated' TEXT, 'updated_by' TEXT, 'telepon' TEXT)";
                 command.ExecuteNonQuery();
 
                 command.CommandText = "INSERT INTO company (nama, alamat,last_updated,telepon) VALUES ('CompanyName', 'Address','13/08/2018','phone')";
