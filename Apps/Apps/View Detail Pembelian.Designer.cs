@@ -87,6 +87,7 @@
             this.buttonHapus.TabIndex = 170;
             this.buttonHapus.Text = "HAPUS";
             this.buttonHapus.UseVisualStyleBackColor = false;
+            this.buttonHapus.Click += new System.EventHandler(this.buttonHapus_Click);
             // 
             // total
             // 

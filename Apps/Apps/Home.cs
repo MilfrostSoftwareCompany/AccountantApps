@@ -14,9 +14,11 @@ namespace Apps
     public partial class Home : Form
     {
         public static int widthPanel,heightPanel;
+        public static string loggedUser_;
 
-        public Home()
+        public Home(string loggedUser)
         {
+            loggedUser_ = loggedUser;
             InitializeComponent();
             InitializeDesign();
         }

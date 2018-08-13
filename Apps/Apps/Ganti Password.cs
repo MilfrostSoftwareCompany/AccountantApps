@@ -30,10 +30,17 @@ namespace Apps
             else if (passBaru.Text != konfirmasiPass.Text)
             {
                 MessageBox.Show("Password Baru dan Konfirmasi Password tidak sama !!");
-                passBaru.Focus();                
+                passBaru.Focus();
             }
             else
             {
+                if (Database.getInstance().GantiPassword(passLama.Text, passBaru.Text))
+                {
+                    MessageBox.Show("Password telah diubah !");
+                }
+                else {
+                    MessageBox.Show("Passord lama tidak sesuai");
+                }
                 this.Close();
             }
         }

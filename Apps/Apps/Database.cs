@@ -326,6 +326,14 @@ namespace Apps
 
         }
 
+        public void DeleteSupplier(string supplierId) {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM suppliers WHERE id_supplier = @idSupplier");
+            command.Parameters.Add("@idSupplier", DbType.String).Value = supplierId;
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
         public Models.Supplier GetSupplierFromId(string id) {
             sqlConnection.Open();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_supplier as ID, nama as Nama, alamat as Alamat, telepon as Telepon From suppliers WHERE id_supplier = "+id, sqlConnection);
@@ -410,6 +418,15 @@ namespace Apps
 
         }
 
+        public void DeleteCustomer(string customerId)
+        {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM customers WHERE id_customer = @idCustomer");
+            command.Parameters.Add("@idCustomer", DbType.String).Value = customerId;
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
         public int CreateNewCustomer(Apps.Models.Customer customer)
         {
             int res;
@@ -482,6 +499,24 @@ namespace Apps
 
         }
 
+        public int UpdateProduct(Models.Product product)
+        {
+            int result;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "update product set nama_produk = :nama , jumlah = :jumlah, harga = :harga, jenis_satuan = :jenis_satuan where id_produk=:id";
+            command.Parameters.Add("nama", DbType.String).Value = product.namaProduk;
+            command.Parameters.Add("jumlah", DbType.String).Value = product.jumlah;
+            command.Parameters.Add("harga", DbType.String).Value = product.harga;
+            command.Parameters.Add("jenis", DbType.String).Value = product.jenisSatuan;
+            command.Parameters.Add("id", DbType.String).Value = product.idProduk;
+            result = command.ExecuteNonQuery();
+            sqlConnection.Close();
+            return result;
+
+        }
+
         public void OpnameBaru(Models.Opname opname, bool isUpdate) {
 
             sqlConnection.Open();
@@ -514,6 +549,26 @@ namespace Apps
             }
 
             sqlConnection.Close();
+        }
+
+        public int DeleteOpname(int opnameId)
+        {
+            int result;
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "DELETE from opname_stock where id_opname=:id";
+            command.Parameters.Add("id", DbType.String).Value = opnameId;
+
+            SQLiteCommand command2 = new SQLiteCommand(sqlConnection);
+            command2.CommandText =
+            "DELETE from detail_opname where id_opname=:id";
+            command2.Parameters.Add("id", DbType.String).Value = opnameId;
+
+            result = command.ExecuteNonQuery();
+            sqlConnection.Close();
+            return result;
+
         }
 
         public int CreateNewProduct(Apps.Models.Product product)
@@ -571,6 +626,15 @@ namespace Apps
             sqlConnection.Close();
             return result;
 
+        }
+
+        public void DeleteProduct(string idProduk)
+        {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM produk WHERE id_produk = @idProduk");
+            command.Parameters.Add("@idProduk", DbType.String).Value = idProduk;
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
         }
 
         //Purchase related functions
@@ -761,6 +825,19 @@ namespace Apps
             return ds;
         }
 
+        public void DeletePurchaseReturn(string idPurchaseReturn)
+        {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand("DELETE FROM retur_pembelian WHERE id_retur = @retur");
+            command.Parameters.Add("@jumlah", DbType.String).Value = idPurchaseReturn;
+            command.ExecuteNonQuery();
+
+            SQLiteCommand command1= new SQLiteCommand("DELETE FROM detail_retur_pembelian WHERE id_retur = @retur");
+            command1.Parameters.Add("@jumlah", DbType.String).Value = idPurchaseReturn;
+            command1.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
         public int UpdatePurchase(Models.Transaction transaction, List<string> deletedProduct, List<Models.Product> addedProduct)
         {
             int res = 0;
@@ -901,6 +978,41 @@ namespace Apps
             return ds;
         }
 
+        public DataSet GetCompanyDetails()
+        {
+            sqlConnection.Open();
+            string sqlString = "SELECT * FROM company where id = 1";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+        public void UpdateCompanyData(string nama, string alamat) {
+
+            sqlConnection.Open();
+            int res = 0;
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText =
+            "update company set nama = @nama, alamat =@alamat  where id=1";
+            command.Parameters.Add("@nama", DbType.String).Value = nama;
+            command.Parameters.Add("@alamat", DbType.String).Value = alamat;
+            
+
+            try
+            {
+                res += command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            sqlConnection.Close();
+        }
+
         public void CreateNewPurchaseReturn(Models.ReturTransaksi returTransaksi) {
             sqlConnection.Open();
             int res = 0;
@@ -952,6 +1064,53 @@ namespace Apps
 
             sqlConnection.Close();
         }
+
+        public DataSet GetAllUsers()
+        {
+            sqlConnection.Open();
+            string sqlString = "SELECT username as Username, last_log_in FROM users";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public bool GantiPassword(string oldPass, string newPass) {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select password FROM users WHERE username = '" + Home.loggedUser_.ToLower() + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                sqlConnection.Close();
+                return false;
+            }
+            else
+            {
+                String pwd = ds.Tables[0].Rows[0][0].ToString();
+                if (PasswordHasher.Verify(oldPass, pwd))
+                {
+                    SQLiteCommand command = new SQLiteCommand(sqlConnection);
+                    command.CommandText =
+                    "update users set password = @password where username=@username";
+                    command.Parameters.Add("@password", DbType.String).Value = PasswordHasher.Hash(newPass);
+                    command.Parameters.Add("@username", DbType.String).Value = Home.loggedUser_.ToLower();
+                    command.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    return true;
+                }
+                else {
+                    sqlConnection.Close();
+                    return false;
+                }
+            }
+        
+    }
 
         
         public bool login(string username, string password)

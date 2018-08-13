@@ -225,5 +225,10 @@ namespace Apps
             Add_Barang add_Barang = new Add_Barang(this);
             add_Barang.ShowDialog();
         }
+
+        private void buttonHapus_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

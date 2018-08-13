@@ -12,6 +12,8 @@ namespace Apps
 {
     public partial class Pengaturan : UserControl
     {
+        DataSet ds;
+        DataSet pemakaiDs;
         public Pengaturan()
         {
             this.Width = Home.widthPanel;
@@ -21,6 +23,15 @@ namespace Apps
         }
         public void InitializeDesign()
         {
+            pemakaiDs = Database.getInstance().GetAllUsers();
+            tabelPemakai.DataSource = pemakaiDs.Tables[0];
+
+            ds = Database.getInstance().GetCompanyDetails();
+            namaToko.Text = ds.Tables[0].Rows[0][1].ToString();
+            richTextBox1.Text = ds.Tables[0].Rows[0][2].ToString();
+            username.Text = Home.loggedUser_;
+            Console.WriteLine(username.Text);
+            Console.WriteLine(Home.loggedUser_);
             //username.Location = new Point(15,15);
             //gantiPassword.Location = new Point(15,username.Height+30);
             //labelNamaToko.Location = new Point(15, gantiPassword.Height + username.Height + 47);
@@ -37,19 +48,25 @@ namespace Apps
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (namaToko.Text.Length == 0)
+            if (namaToko.Text.Length == 0 || richTextBox1.Text.Length ==0)
             {
-                MessageBox.Show("Harus mengisi field Nama Toko !!");
+                MessageBox.Show("Harus mengisi field Nama & Alamat Toko !!");
             }
             else
             {
-
+                Database.getInstance().UpdateCompanyData(namaToko.Text, richTextBox1.Text);
+                MessageBox.Show("Data telah diupdate");
             }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
