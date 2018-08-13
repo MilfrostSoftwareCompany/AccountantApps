@@ -41,6 +41,20 @@ namespace Apps
             buttonAddSupplier.Text = "SAVE";
         }
 
+        private bool validateInt(string text)
+        {
+            bool result = true;
+            for (int i = 0; i < text.Length; i++)
+            {
+                if (!Char.IsDigit(text[i]))
+                {
+                    result = false;
+                    return result;
+                }
+            }
+            return result;
+        }
+
         private void buttonAddSupplier_Click(object sender, EventArgs e)
         {
             if (nama.Text.Length == 0 || alamat.Text.Length == 0 || telp.Text.Length == 0)
@@ -49,6 +63,11 @@ namespace Apps
                 if (nama.Text.Length == 0) { nama.Focus(); }
                 else if (alamat.Text.Length == 0) { alamat.Focus(); }
                 else { telp.Focus(); }
+            }
+            else if (!validateInt(telp.Text))
+            {
+                MessageBox.Show("Field Telepon harus diisi dengan angka !!");
+                telp.Focus();
             }
             else
             {

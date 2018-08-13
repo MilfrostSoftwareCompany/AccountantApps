@@ -45,13 +45,15 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.wilayahToko = new System.Windows.Forms.Label();
             this.namaToko = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.noFaktur = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tglInvoice = new System.Windows.Forms.DateTimePicker();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.wilayahToko = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonNext
@@ -61,10 +63,9 @@
             this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNext.ForeColor = System.Drawing.Color.White;
-            this.buttonNext.Location = new System.Drawing.Point(1283, 730);
-            this.buttonNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNext.Location = new System.Drawing.Point(962, 593);
             this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(187, 38);
+            this.buttonNext.Size = new System.Drawing.Size(140, 31);
             this.buttonNext.TabIndex = 64;
             this.buttonNext.Text = "SAVE";
             this.buttonNext.UseVisualStyleBackColor = false;
@@ -77,10 +78,9 @@
             this.buttonAddBarang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
-            this.buttonAddBarang.Location = new System.Drawing.Point(48, 213);
-            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddBarang.Location = new System.Drawing.Point(36, 195);
             this.buttonAddBarang.Name = "buttonAddBarang";
-            this.buttonAddBarang.Size = new System.Drawing.Size(187, 38);
+            this.buttonAddBarang.Size = new System.Drawing.Size(140, 31);
             this.buttonAddBarang.TabIndex = 63;
             this.buttonAddBarang.Text = "+ ADD BARANG";
             this.buttonAddBarang.UseVisualStyleBackColor = false;
@@ -90,10 +90,9 @@
             // 
             this.total.AutoSize = true;
             this.total.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.total.Location = new System.Drawing.Point(1284, 678);
-            this.total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.total.Location = new System.Drawing.Point(963, 551);
             this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(74, 22);
+            this.total.Size = new System.Drawing.Size(56, 19);
             this.total.TabIndex = 62;
             this.total.Text = "[sistem]";
             // 
@@ -101,10 +100,9 @@
             // 
             this.disc.AutoSize = true;
             this.disc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.disc.Location = new System.Drawing.Point(1284, 640);
-            this.disc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.disc.Location = new System.Drawing.Point(963, 520);
             this.disc.Name = "disc";
-            this.disc.Size = new System.Drawing.Size(74, 22);
+            this.disc.Size = new System.Drawing.Size(56, 19);
             this.disc.TabIndex = 61;
             this.disc.Text = "[sistem]";
             // 
@@ -112,10 +110,9 @@
             // 
             this.subtotal.AutoSize = true;
             this.subtotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtotal.Location = new System.Drawing.Point(1284, 604);
-            this.subtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.subtotal.Location = new System.Drawing.Point(963, 491);
             this.subtotal.Name = "subtotal";
-            this.subtotal.Size = new System.Drawing.Size(74, 22);
+            this.subtotal.Size = new System.Drawing.Size(56, 19);
             this.subtotal.TabIndex = 60;
             this.subtotal.Text = "[sistem]";
             // 
@@ -123,10 +120,9 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1161, 678);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Location = new System.Drawing.Point(871, 551);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(51, 22);
+            this.label18.Size = new System.Drawing.Size(39, 19);
             this.label18.TabIndex = 59;
             this.label18.Text = "Total";
             // 
@@ -134,10 +130,9 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1161, 640);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Location = new System.Drawing.Point(871, 520);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(47, 22);
+            this.label17.Size = new System.Drawing.Size(36, 19);
             this.label17.TabIndex = 58;
             this.label17.Text = "Disc";
             // 
@@ -145,10 +140,9 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1161, 604);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Location = new System.Drawing.Point(871, 491);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(75, 22);
+            this.label16.Size = new System.Drawing.Size(59, 19);
             this.label16.TabIndex = 57;
             this.label16.Text = "Subtotal";
             // 
@@ -156,10 +150,9 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(123, 730);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Location = new System.Drawing.Point(92, 593);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(532, 22);
+            this.label14.Size = new System.Drawing.Size(411, 19);
             this.label14.TabIndex = 56;
             this.label14.Text = "- Pembayaran dengan giro/cheque dianggap sah setelah diuangkan.";
             // 
@@ -167,10 +160,9 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(123, 706);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(92, 574);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(429, 22);
+            this.label10.Size = new System.Drawing.Size(329, 19);
             this.label10.TabIndex = 55;
             this.label10.Text = "- Barang yang sudah dibeli tidak dapat dikembalikan.";
             // 
@@ -178,10 +170,9 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(45, 706);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(34, 574);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 22);
+            this.label9.Size = new System.Drawing.Size(38, 19);
             this.label9.TabIndex = 54;
             this.label9.Text = "NB :";
             // 
@@ -189,10 +180,9 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(45, 604);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Location = new System.Drawing.Point(34, 491);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(97, 22);
+            this.label13.Size = new System.Drawing.Size(71, 19);
             this.label13.TabIndex = 52;
             this.label13.Text = "Terbilang :";
             // 
@@ -202,10 +192,9 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(49, 302);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(37, 245);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1421, 282);
+            this.dataGridView1.Size = new System.Drawing.Size(1066, 229);
             this.dataGridView1.TabIndex = 51;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -213,10 +202,9 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1083, 124);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(812, 101);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 22);
+            this.label8.Size = new System.Drawing.Size(84, 19);
             this.label8.TabIndex = 47;
             this.label8.Text = "No. Faktur :";
             // 
@@ -224,10 +212,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1083, 166);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(812, 135);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(83, 22);
+            this.label7.Size = new System.Drawing.Size(62, 19);
             this.label7.TabIndex = 45;
             this.label7.Text = "Tanggal :";
             // 
@@ -235,10 +222,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(45, 149);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(34, 143);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(147, 22);
+            this.label4.Size = new System.Drawing.Size(116, 19);
             this.label4.TabIndex = 40;
             this.label4.Text = "Nama Customer :";
             // 
@@ -246,32 +232,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(628, 62);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(471, 50);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(227, 35);
+            this.label3.Size = new System.Drawing.Size(178, 26);
             this.label3.TabIndex = 39;
             this.label3.Text = "FAKTUR JUAL";
-            // 
-            // wilayahToko
-            // 
-            this.wilayahToko.AutoSize = true;
-            this.wilayahToko.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.wilayahToko.Location = new System.Drawing.Point(83, 75);
-            this.wilayahToko.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.wilayahToko.Name = "wilayahToko";
-            this.wilayahToko.Size = new System.Drawing.Size(136, 35);
-            this.wilayahToko.TabIndex = 38;
-            this.wilayahToko.Text = "[Wilayah]";
             // 
             // namaToko
             // 
             this.namaToko.AutoSize = true;
-            this.namaToko.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaToko.Location = new System.Drawing.Point(63, 43);
-            this.namaToko.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.namaToko.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namaToko.Location = new System.Drawing.Point(91, 24);
             this.namaToko.Name = "namaToko";
-            this.namaToko.Size = new System.Drawing.Size(172, 35);
+            this.namaToko.Size = new System.Drawing.Size(168, 32);
             this.namaToko.TabIndex = 37;
             this.namaToko.Text = "[Nama toko]";
             // 
@@ -280,44 +253,62 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(237, 146);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Location = new System.Drawing.Point(178, 141);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(228, 28);
+            this.comboBox1.Size = new System.Drawing.Size(172, 25);
             this.comboBox1.TabIndex = 65;
             // 
             // noFaktur
             // 
             this.noFaktur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.noFaktur.Location = new System.Drawing.Point(1241, 118);
-            this.noFaktur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.noFaktur.Location = new System.Drawing.Point(931, 96);
             this.noFaktur.Name = "noFaktur";
-            this.noFaktur.Size = new System.Drawing.Size(228, 30);
+            this.noFaktur.Size = new System.Drawing.Size(172, 26);
             this.noFaktur.TabIndex = 66;
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(149, 604);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.richTextBox1.Location = new System.Drawing.Point(112, 491);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(859, 96);
+            this.richTextBox1.Size = new System.Drawing.Size(645, 79);
             this.richTextBox1.TabIndex = 68;
             this.richTextBox1.Text = "";
             // 
             // tglInvoice
             // 
             this.tglInvoice.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tglInvoice.Location = new System.Drawing.Point(1241, 166);
-            this.tglInvoice.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tglInvoice.Location = new System.Drawing.Point(931, 135);
+            this.tglInvoice.Margin = new System.Windows.Forms.Padding(2);
             this.tglInvoice.Name = "tglInvoice";
-            this.tglInvoice.Size = new System.Drawing.Size(228, 22);
+            this.tglInvoice.Size = new System.Drawing.Size(172, 20);
             this.tglInvoice.TabIndex = 69;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.wilayahToko);
+            this.panel1.Location = new System.Drawing.Point(23, 68);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(327, 68);
+            this.panel1.TabIndex = 71;
+            // 
+            // wilayahToko
+            // 
+            this.wilayahToko.AutoSize = true;
+            this.wilayahToko.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wilayahToko.Location = new System.Drawing.Point(0, 0);
+            this.wilayahToko.Name = "wilayahToko";
+            this.wilayahToko.Size = new System.Drawing.Size(73, 13);
+            this.wilayahToko.TabIndex = 0;
+            this.wilayahToko.Text = "[wilayahToko]";
             // 
             // Add_Penjualan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1513, 796);
+            this.ClientSize = new System.Drawing.Size(1135, 647);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tglInvoice);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.noFaktur);
@@ -339,15 +330,15 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.wilayahToko);
             this.Controls.Add(this.namaToko);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "Add_Penjualan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Penjualan";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -372,11 +363,12 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label wilayahToko;
         private System.Windows.Forms.Label namaToko;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox noFaktur;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DateTimePicker tglInvoice;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label wilayahToko;
     }
 }

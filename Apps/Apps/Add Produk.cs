@@ -49,13 +49,16 @@ namespace Apps
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(namaBarang.Text)||string.IsNullOrWhiteSpace(jumlah.Text)||string.IsNullOrWhiteSpace(jenisSatuan.Text)||string.IsNullOrWhiteSpace(harga.Text))
+            if (string.IsNullOrWhiteSpace(namaBarang.Text) || string.IsNullOrWhiteSpace(jumlah.Text) || string.IsNullOrWhiteSpace(jenisSatuan.Text) || string.IsNullOrWhiteSpace(harga.Text))
             {
                 MessageBox.Show("Semua Data harus diisi");
             }
+            else if (jumlah.Value == 0) {
+                MessageBox.Show("Field Jumlah tidak boleh NOL !!");
+            }
             else
             {
-                
+
                 Models.Product product_ = new Models.Product(namaBarang.Text, Convert.ToInt32(jumlah.Value), jenisSatuan.Text, Convert.ToInt32(harga.Value));
                 if (isEdit)
                 {

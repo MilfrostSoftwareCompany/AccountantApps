@@ -42,6 +42,16 @@ namespace Apps
             buttonAddCustomer.Text = "Save";
         }
 
+        private bool validateInt(string text) {
+            bool result = true;
+            for (int i = 0; i < text.Length; i++) {
+                if (!Char.IsDigit(text[i])) {
+                    result = false;
+                    return result;
+                }
+            }
+            return result;
+        }
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
@@ -51,6 +61,11 @@ namespace Apps
                 if (nama.Text.Length == 0) { nama.Focus(); }
                 else if (alamat.Text.Length == 0) { alamat.Focus(); }
                 else { telp.Focus(); }
+            }
+            else if (!validateInt(telp.Text))
+            {
+                MessageBox.Show("Field Telepon harus diisi dengan angka !!");
+                telp.Focus();
             }
             else
             {
@@ -65,15 +80,15 @@ namespace Apps
 
                     customer__.id = Convert.ToString(num);
                     customer.AddCustomer(customer__);
-                    this.Close();
                 }
+                this.Close();
             }
         }
 
         private void nama_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) {
-                nama.Focus();
+                alamat.Focus();
             }
         }
 
@@ -91,6 +106,11 @@ namespace Apps
             {
                 buttonAddCustomer.PerformClick();
             }
+        }
+
+        private void telp_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

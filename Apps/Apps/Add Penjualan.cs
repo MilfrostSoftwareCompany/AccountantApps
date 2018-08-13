@@ -18,6 +18,10 @@ namespace Apps
         Apps.Models.Supplier idCustomer;
         List<Apps.Models.Product> produkList = new List<Models.Product>();
         List<Apps.Models.Customer> customerList = new List<Models.Customer>();
+
+        
+       
+
         public Add_Penjualan(Penjualan penjualan)
         {
 
@@ -28,6 +32,10 @@ namespace Apps
             initDataSource();
             initDataGrid();
             dataGridView1.RowHeadersVisible = false;
+
+            ds = Database.getInstance().GetCompanyDetails();
+            namaToko.Text = ds.Tables[0].Rows[0][1].ToString();
+            wilayahToko.Text = ds.Tables[0].Rows[0][2].ToString();
         }
 
         private void retrieveData()
