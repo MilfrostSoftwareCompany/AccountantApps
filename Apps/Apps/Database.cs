@@ -208,7 +208,7 @@ namespace Apps
                 command.CommandText = "CREATE TABLE 'users' ('username' TEXT PRIMARY KEY  NOT NULL ,'password' TEXT,'permission_lvl' INTEGER,'last_log_in' TEXT DEFAULT (null) )";
                 command.ExecuteNonQuery();
 
-                command.CommandText = "INSERT INTO users (username, password,permission_lvl) VALUES ('admin01', '$MYHASH$V1$10000$H3j+M3V7uXuqaiPU78tNZFNWDpqD6byI7ArZY0ZuyaMGkmqm','1','13/08/2018 00:00:00')";
+                command.CommandText = "INSERT INTO users (username, password,permission_lvl,last_log_in) VALUES ('admin01', '$MYHASH$V1$10000$H3j+M3V7uXuqaiPU78tNZFNWDpqD6byI7ArZY0ZuyaMGkmqm','1','13/08/2018 00:00:00')";
                 command.ExecuteNonQuery();
             }
         }
