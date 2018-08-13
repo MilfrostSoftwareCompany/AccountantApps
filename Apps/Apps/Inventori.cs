@@ -27,6 +27,19 @@ namespace Apps
 
         private void InitDataGrid()
         {
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "View Details";
+            col.Name = "Actions";
+            tabelInventori.Columns.Add(col);
+            if (Login.permissionlvl == 1)
+            {
+                DataGridViewButtonColumn del = new DataGridViewButtonColumn();
+                del.UseColumnTextForButtonValue = true;
+                del.Text = "Delete";
+                del.Name = "Actions";
+                tabelInventori.Columns.Add(del);
+            }
             tabelInventori.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelInventori.RowHeadersVisible = false;
         }
@@ -75,8 +88,33 @@ namespace Apps
 
         private void buttonOpnameStock_Click(object sender, EventArgs e)
         {
-            Opname_Stock FormOpnameStock = new Opname_Stock();
-            FormOpnameStock.ShowDialog();
+            List_Opname_Stock list = new List_Opname_Stock(this);
+            list.ShowDialog();
+            
+        }
+
+        private void DeleteProduct(int row)
+        {
+            
+            Database.getInstance().DeleteProduct(ds.Tables[0].Rows[row][0].ToString());
+            ds.Tables[0].Rows.RemoveAt(row);
+            tabelInventori.Update();
+            tabelInventori.Refresh();
+        }
+
+        private void tabelInventori_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            
+
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0) {
+                Models.Product product = new Models.Product(ds.Tables[0].Rows[0]);
+                Add_Produk add_Produk = new Add_Produk(this,product);
+                add_Produk.ShowDialog();
+            }
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0) {
+                DeleteProduct(e.RowIndex);
+            }
         }
     }
 }

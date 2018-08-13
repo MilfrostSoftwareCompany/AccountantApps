@@ -32,7 +32,6 @@
             this.labelSampaiTgl = new System.Windows.Forms.Label();
             this.tabelOpname = new System.Windows.Forms.DataGridView();
             this.buttonAddProduk = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.DariTgl = new System.Windows.Forms.DateTimePicker();
             this.SampaiTgl = new System.Windows.Forms.DateTimePicker();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -69,7 +68,7 @@
             this.tabelOpname.AllowUserToDeleteRows = false;
             this.tabelOpname.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelOpname.Location = new System.Drawing.Point(21, 149);
-            this.tabelOpname.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabelOpname.Margin = new System.Windows.Forms.Padding(4);
             this.tabelOpname.Name = "tabelOpname";
             this.tabelOpname.Size = new System.Drawing.Size(835, 295);
             this.tabelOpname.TabIndex = 4;
@@ -83,29 +82,13 @@
             this.buttonAddProduk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddProduk.ForeColor = System.Drawing.Color.White;
             this.buttonAddProduk.Location = new System.Drawing.Point(653, 80);
-            this.buttonAddProduk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddProduk.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddProduk.Name = "buttonAddProduk";
             this.buttonAddProduk.Size = new System.Drawing.Size(203, 37);
             this.buttonAddProduk.TabIndex = 5;
             this.buttonAddProduk.Text = "+ ADD PRODUK";
             this.buttonAddProduk.UseVisualStyleBackColor = false;
             this.buttonAddProduk.Click += new System.EventHandler(this.buttonAddProduk_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
-            this.buttonSave.FlatAppearance.BorderSize = 0;
-            this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(477, 495);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(127, 37);
-            this.buttonSave.TabIndex = 6;
-            this.buttonSave.Text = "SAVE";
-            this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // DariTgl
             // 
@@ -166,13 +149,12 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.SampaiTgl);
             this.Controls.Add(this.DariTgl);
-            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonAddProduk);
             this.Controls.Add(this.tabelOpname);
             this.Controls.Add(this.labelSampaiTgl);
             this.Controls.Add(this.labelDariTgl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Opname_Stock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -190,7 +172,6 @@
         private System.Windows.Forms.Label labelSampaiTgl;
         private System.Windows.Forms.DataGridView tabelOpname;
         private System.Windows.Forms.Button buttonAddProduk;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.DateTimePicker DariTgl;
         private System.Windows.Forms.DateTimePicker SampaiTgl;
         private System.Windows.Forms.TextBox textBox1;

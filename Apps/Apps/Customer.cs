@@ -82,11 +82,14 @@ namespace Apps
         private void SetColumnWidth()
         {
             //set Weight percentage for each column.
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "Edit";
-            col.Name = "Actions";
-            tabelCustomer.Columns.Add(col);
+            if (Login.permissionlvl == 1)
+            {
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "Edit";
+                col.Name = "Actions";
+                tabelCustomer.Columns.Add(col);
+            }
             tabelCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelCustomer.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }

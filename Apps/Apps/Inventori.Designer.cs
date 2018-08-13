@@ -113,6 +113,7 @@
             this.tabelInventori.ReadOnly = true;
             this.tabelInventori.Size = new System.Drawing.Size(1527, 669);
             this.tabelInventori.TabIndex = 27;
+            this.tabelInventori.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelInventori_CellContentClick);
             // 
             // panel2
             // 

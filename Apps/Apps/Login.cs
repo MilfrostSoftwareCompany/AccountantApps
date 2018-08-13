@@ -14,6 +14,7 @@ namespace Apps
     public partial class Login : Form
     {
         public static string loggedUser;
+        public static int permissionlvl;
 
         public Login()
         {
@@ -34,9 +35,11 @@ namespace Apps
                 {
                     this.Hide();
                     Database.getInstance().updateLastLoginForUser(username);
-                    Home home = new Home(username);
-                    home.Show();
+                    permissionlvl = Database.getInstance().GetPermission(username);
                     loggedUser = username;
+                    Home home = new Home(username,Database.getInstance().GetPermission(username));
+                    home.Show();
+                    
 
                 }
                 else {

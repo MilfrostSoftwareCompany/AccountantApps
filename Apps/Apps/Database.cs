@@ -213,6 +213,25 @@ namespace Apps
             }
         }
 
+        private void CreateCompanyTable()
+        {
+            SQLiteCommand command = sqlConnection.CreateCommand();
+            command.CommandText = "Select name FROM sqlite_master WHERE name = 'company'";
+            var acti = command.ExecuteScalar();
+            if (acti != null && acti.ToString() == "company")
+            {
+                return;
+            }
+            else
+            {
+                command.CommandText = "CREATE TABLE 'company' ('id' INTEGER PRIMARY KEY  NOT NULL  UNIQUE , 'nama' TEXT, 'alamat' TEXT, 'last_updated' DATETIME, 'updated_by' TEXT, 'telepon' TEXT)";
+                command.ExecuteNonQuery();
+
+                command.CommandText = "INSERT INTO users (nama, alamat,last_updated,telepon) VALUES ('CompanyName', 'Address','13/08/2018','phone')";
+                command.ExecuteNonQuery();
+            }
+        }
+
         private void CreateDetailReturPembelianTable()
         {
             SQLiteCommand command = sqlConnection.CreateCommand();
@@ -507,19 +526,40 @@ namespace Apps
             sqlConnection.Open();
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText =
-            "update product set nama_produk = :nama , jumlah = :jumlah, harga = :harga, jenis_satuan = :jenis_satuan where id_produk=:id";
+            "update produk set nama_produk = :nama , jumlah = :jumlah, harga = :harga, jenis_satuan = :jenis_satuan where id_produk=:id";
             command.Parameters.Add("nama", DbType.String).Value = product.namaProduk;
             command.Parameters.Add("jumlah", DbType.String).Value = product.jumlah;
             command.Parameters.Add("harga", DbType.String).Value = product.harga;
-            command.Parameters.Add("jenis", DbType.String).Value = product.jenisSatuan;
+            command.Parameters.Add("jenis_satuan", DbType.String).Value = product.jenisSatuan;
             command.Parameters.Add("id", DbType.String).Value = product.idProduk;
             result = command.ExecuteNonQuery();
+            Console.WriteLine(product.namaProduk + " ; " +product.jumlah + " ; " +product.harga + " ; " +product.jenisSatuan + " ; " +product.idProduk);
             sqlConnection.Close();
             return result;
 
         }
 
-        public void OpnameBaru(Models.Opname opname, bool isUpdate) {
+        public DataSet GetOpnameData() {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT id_opname as ID, dari as [Dari Tgl.], hingga as [Hingga Tgl.], done_by as [Pelaksana]  FROM opname_stock", sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            return ds;
+        }
+        public DataSet GetOpnameDetails(string id)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT produk.id_produk as Id, produk.nama_produk as Nama, detail_opname.jumlah as Jumlah from detail_opname inner join produk ON produk.id_produk = detail_opname.id_produk WHERE id_opname = "+id, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public int OpnameBaru(Models.Opname opname, bool isUpdate) {
 
             sqlConnection.Open();
 
@@ -546,11 +586,13 @@ namespace Apps
                     command.CommandText =
                     "update produk set jumlah = :jumlah where id_produk=:id";
                     command.Parameters.Add("jumlah", DbType.String).Value = opname.jumlah[i];
-                    command.Parameters.Add("id_produk", DbType.String).Value = opname.product[i].idProduk;
+                    command.Parameters.Add("id", DbType.String).Value = opname.product[i].idProduk;
+                    command.ExecuteNonQuery();
                 }
             }
 
             sqlConnection.Close();
+            return id;
         }
 
         public int DeleteOpname(int opnameId)
@@ -633,7 +675,8 @@ namespace Apps
         public void DeleteProduct(string idProduk)
         {
             sqlConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("DELETE FROM produk WHERE id_produk = @idProduk");
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM produk WHERE id_produk = @idProduk";
             command.Parameters.Add("@idProduk", DbType.String).Value = idProduk;
             command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -837,6 +880,37 @@ namespace Apps
             SQLiteCommand command1= new SQLiteCommand("DELETE FROM detail_retur_pembelian WHERE id_retur = @retur");
             command1.Parameters.Add("@jumlah", DbType.String).Value = idPurchaseReturn;
             command1.ExecuteNonQuery();
+            sqlConnection.Close();
+        }
+
+        public void DeletePurchase(string purchaseId) {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM pembelian WHERE invoice_no = @id";
+            command.Parameters.Add("@id", DbType.String).Value = purchaseId;
+            command.ExecuteNonQuery();
+
+            SQLiteCommand retur = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM retur_pembelian WHERE invoice_no = @id";
+            command.Parameters.Add("@id", DbType.String).Value = purchaseId;
+            command.ExecuteNonQuery();
+
+            sqlConnection.Close();
+        }
+
+        public void DeleteSell(string purchaseId)
+        {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM penjualan WHERE invoice_no = @id";
+            command.Parameters.Add("@id", DbType.String).Value = purchaseId;
+            command.ExecuteNonQuery();
+
+            SQLiteCommand retur = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM retur_penjualan WHERE invoice_no = @id";
+            command.Parameters.Add("@id", DbType.String).Value = purchaseId;
+            command.ExecuteNonQuery();
+
             sqlConnection.Close();
         }
 
@@ -1141,6 +1215,17 @@ namespace Apps
             command.Parameters.Add("@username", DbType.String).Value = username;
             command.ExecuteNonQuery();
             sqlConnection.Close();
+        }
+
+        public int GetPermission(string username)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select permission_lvl FROM users WHERE username = '" + username.ToLower() + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return Convert.ToInt32(ds.Tables[0].Rows[0][0]);
         }
     }
 }

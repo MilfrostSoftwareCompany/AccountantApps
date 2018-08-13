@@ -51,7 +51,7 @@
             this.buttonAddPenjualan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddPenjualan.ForeColor = System.Drawing.Color.White;
             this.buttonAddPenjualan.Location = new System.Drawing.Point(1272, 30);
-            this.buttonAddPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddPenjualan.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddPenjualan.Name = "buttonAddPenjualan";
             this.buttonAddPenjualan.Size = new System.Drawing.Size(261, 41);
             this.buttonAddPenjualan.TabIndex = 18;
@@ -67,7 +67,7 @@
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
             this.buttonSearch.Location = new System.Drawing.Point(493, 26);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(125, 41);
             this.buttonSearch.TabIndex = 17;
@@ -79,7 +79,7 @@
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 16;
@@ -126,7 +126,7 @@
             this.tabelPenjualan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelPenjualan.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabelPenjualan.Location = new System.Drawing.Point(4, 95);
-            this.tabelPenjualan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabelPenjualan.Margin = new System.Windows.Forms.Padding(4);
             this.tabelPenjualan.Name = "tabelPenjualan";
             this.tabelPenjualan.ReadOnly = true;
             this.tabelPenjualan.Size = new System.Drawing.Size(1527, 350);
@@ -135,11 +135,15 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(4, 487);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1527, 355);
             this.dataGridView1.TabIndex = 21;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
@@ -160,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Penjualan";
             this.Size = new System.Drawing.Size(1535, 846);
             this.panel1.ResumeLayout(false);

@@ -270,6 +270,13 @@ namespace Apps
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
+        public void deleteData(int row) {
+            transList.RemoveAt(row);
+            dataSet.Tables[0].Rows.RemoveAt(row);
+            tabelPembelian.Update();
+            tabelPembelian.Refresh();
+        }
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (search.Text.Length == 0)

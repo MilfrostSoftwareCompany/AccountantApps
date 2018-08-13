@@ -13,12 +13,33 @@ namespace Apps
     public partial class Add_Produk : Form
     {
         Inventori inventori;
+        Models.Product product;
+
+        bool isEdit = false;
 
         public Add_Produk(Inventori inventori)
         {
             this.inventori = inventori;
             InitializeComponent();
             InitializeDesign();
+        }
+
+        public Add_Produk(Inventori inventori,Models.Product product)
+        {
+            this.inventori = inventori;
+            this.product = product;
+            isEdit = true;
+            InitializeComponent();
+            InitializeDesign();
+            setViews();
+        }
+
+        private void setViews()
+        {
+            namaBarang.Text = product.namaProduk;
+            jumlah.Value = product.jumlah;
+            jenisSatuan.Text = product.jenisSatuan;
+            harga.Value = product.harga;
         }
 
         public void InitializeDesign()
@@ -34,9 +55,20 @@ namespace Apps
             }
             else
             {
-                Models.Product product = new Models.Product(namaBarang.Text, Convert.ToInt32(jumlah.Value), jenisSatuan.Text, Convert.ToInt32(harga.Value));
-                Database.getInstance().CreateNewProduct(product);
-                inventori.RefreshData();
+                
+                Models.Product product_ = new Models.Product(namaBarang.Text, Convert.ToInt32(jumlah.Value), jenisSatuan.Text, Convert.ToInt32(harga.Value));
+                if (isEdit)
+                {
+                    product_.idProduk = product.idProduk;
+                    Database.getInstance().UpdateProduct(product_);
+                    inventori.RefreshData();
+
+                }
+                else
+                {
+                    Database.getInstance().CreateNewProduct(product_);
+                    inventori.RefreshData();
+                }
                 this.Close();
             }
         }

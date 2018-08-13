@@ -15,10 +15,12 @@ namespace Apps
     {
         public static int widthPanel,heightPanel;
         public static string loggedUser_;
+        public static int permLvl;
 
-        public Home(string loggedUser)
+        public Home(string loggedUser,int permissionLvl)
         {
             loggedUser_ = loggedUser;
+            permLvl = permissionLvl;
             InitializeComponent();
             InitializeDesign();
         }

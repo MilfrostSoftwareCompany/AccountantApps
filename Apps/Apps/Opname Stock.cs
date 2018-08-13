@@ -12,11 +12,13 @@ namespace Apps
 {
     public partial class Opname_Stock : Form
     {
+        List_Opname_Stock list_Opname_Stock;
         List<Models.Product> productList = new List<Models.Product>();
         List<int> jumlah = new List<int>();
         DataSet ds = new DataSet();
-        public Opname_Stock()
+        public Opname_Stock(List_Opname_Stock list_Opname_Stock)
         {
+            this.list_Opname_Stock = list_Opname_Stock;
             InitializeComponent();
             //InitializeDesign();
             InitDataGridView();
@@ -48,9 +50,9 @@ namespace Apps
             labelSampaiTgl.Location = new Point(15, Convert.ToInt32(labelDariTgl.Height)+30);
             SampaiTgl.Location = new Point(Convert.ToInt32(labelSampaiTgl.Width) + 30, Convert.ToInt32(labelDariTgl.Height) + 30);
             buttonAddProduk.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddProduk.Width) - 30, Convert.ToInt32(labelDariTgl.Height) + 30);
-            buttonSave.Location = new Point(Convert.ToInt32(this.Width)-Convert.ToInt32(buttonSave.Width)-30,Convert.ToInt32(this.Height)-Convert.ToInt32(buttonSave.Height)-45);
+            //buttonSave.Location = new Point(Convert.ToInt32(this.Width)-Convert.ToInt32(buttonSave.Width)-30,Convert.ToInt32(this.Height)-Convert.ToInt32(buttonSave.Height)-45);
             tabelOpname.Width = Convert.ToInt32(this.Width) - 45;
-            tabelOpname.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(labelDariTgl.Height) - Convert.ToInt32(labelSampaiTgl.Height)-Convert.ToInt32(buttonSave.Height) - 105;
+            //tabelOpname.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(labelDariTgl.Height) - Convert.ToInt32(labelSampaiTgl.Height)-Convert.ToInt32(buttonSave.Height) - 105;
             tabelOpname.Location = new Point(15, Convert.ToInt32(labelDariTgl.Height) + Convert.ToInt32(labelSampaiTgl.Height)+ 45);
         }
 
@@ -123,7 +125,9 @@ namespace Apps
                 string startDate = DateTime.Parse(DariTgl.Text).ToString("yyyy-MM-dd");
                 string endDate = DateTime.Parse(SampaiTgl.Text).ToString("yyyy-MM-dd");
                 Models.Opname opname = new Models.Opname(startDate, endDate, productList, jumlah, textBox1.Text);
-                Database.getInstance().OpnameBaru(opname, true);
+                int idOpname = Database.getInstance().OpnameBaru(opname, true);
+                opname.idOpname = idOpname;
+                list_Opname_Stock.AddOpname(opname);
                 this.Close();
             }
         }

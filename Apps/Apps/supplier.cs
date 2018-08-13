@@ -60,11 +60,14 @@ namespace Apps
 
         private void SetColumnWidth()
         {
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "Edit";
-            col.Name = "Actions";
-            tabelSupplier.Columns.Add(col);
+            if (Login.permissionlvl == 1)
+            {
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "Edit";
+                col.Name = "Actions";
+                tabelSupplier.Columns.Add(col);
+            }
             tabelSupplier.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelSupplier.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 

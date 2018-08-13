@@ -35,6 +35,10 @@ namespace Apps
 
         private void getData()
         {
+            if (Login.permissionlvl != 1) {
+                buttonEdit.Hide();
+            }
+
             transaction.tgl_invoice = DateTime.Parse(transaction.tgl_invoice).ToString("yyyy-MM-dd");
             supplier = Database.getInstance().GetSupplierFromId(transaction.tujuan.id);
             ds = new DataSet();
@@ -228,7 +232,9 @@ namespace Apps
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-
+            Database.getInstance().DeletePurchase(transaction.invoice_no);
+            pembelian.deleteData(rowIndex);
+            this.Close();
         }
     }
 }
