@@ -397,7 +397,6 @@
             this.Controls.Add(this.label3);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "View_Detail_Pembelian";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View_Detail_Pembelian";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
