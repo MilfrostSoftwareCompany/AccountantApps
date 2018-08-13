@@ -304,6 +304,7 @@ namespace Apps
             CreateUsersTable();
             CreateActivityTable();
             CreateCustomerTable();
+            CreateCompanyTable();
             CreateDetailOpnameTable();
             CreateDetailPembelianTable();
             CreateDetailPenjualan();
