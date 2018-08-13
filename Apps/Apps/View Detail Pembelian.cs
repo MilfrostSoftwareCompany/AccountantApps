@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace Apps
         Models.Supplier supplier;
         DataSet ds;
 
+        private PrintDocument printDocument1 = new PrintDocument();
+
         Pembelian pembelian;
         bool isEditing = false;
 
@@ -25,6 +28,7 @@ namespace Apps
 
         public View_Detail_Pembelian(int row,Models.Transaction transaction,Pembelian pembelian)
         {
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             this.rowIndex = row;
             this.pembelian = pembelian;
             this.transaction = transaction;
@@ -236,5 +240,30 @@ namespace Apps
             pembelian.deleteData(rowIndex);
             this.Close();
         }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            CaptureScreen();
+            printDocument1.Print();
+        }
+
+
+        Bitmap memoryImage;
+
+        private void CaptureScreen()
+        {
+            Graphics myGraphics = this.CreateGraphics();
+            Size s = this.Size;
+            memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+            Graphics memoryGraphics = Graphics.FromImage(memoryImage);
+            memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
+        }
+
+        private void printDocument1_PrintPage(System.Object sender,
+               System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(memoryImage, 0, 0);
+        }
+
     }
 }
