@@ -14,6 +14,9 @@ namespace Apps
     {
         DataSet ds;
         DataSet pemakaiDs;
+
+        public static string namaToko1, alamatToko1;
+
         public Pengaturan()
         {
             this.Width = Home.widthPanel;
@@ -28,7 +31,9 @@ namespace Apps
 
             ds = Database.getInstance().GetCompanyDetails();
             namaToko.Text = ds.Tables[0].Rows[0][1].ToString();
+            namaToko1 = namaToko.Text;
             richTextBox1.Text = ds.Tables[0].Rows[0][2].ToString();
+            alamatToko1 = richTextBox1.Text;
             username.Text = Home.loggedUser_;
             Console.WriteLine(username.Text);
             Console.WriteLine(Home.loggedUser_);

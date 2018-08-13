@@ -59,6 +59,7 @@
             this.telp.Name = "telp";
             this.telp.Size = new System.Drawing.Size(388, 26);
             this.telp.TabIndex = 33;
+            this.telp.TextChanged += new System.EventHandler(this.telp_TextChanged);
             this.telp.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telp_KeyDown);
             // 
             // label3
