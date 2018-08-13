@@ -12,14 +12,33 @@ namespace Apps
 {
     public partial class Add_Supplier : Form
     {
+        Models.Supplier supplier_;
         Supplier supplier;
-
+        bool isEdit = false;
         public Add_Supplier(Supplier supplier)
         {
             InitializeComponent();
             this.supplier = supplier;
 
             nama.Focus();
+        }
+        public Add_Supplier(Supplier supplier,Models.Supplier supplier_)
+        {
+            
+            InitializeComponent();
+            this.supplier = supplier;
+            this.supplier_ = supplier_;
+            setView();
+            isEdit = true;
+            nama.Focus();
+        }
+
+        private void setView()
+        {
+            nama.Text = supplier_.nama;
+            alamat.Text = supplier_.alamat;
+            telp.Text = supplier_.telepon;
+            buttonAddSupplier.Text = "SAVE";
         }
 
         private void buttonAddSupplier_Click(object sender, EventArgs e)
@@ -33,15 +52,21 @@ namespace Apps
             }
             else
             {
-                int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
-                //supplier.refreshData();
-                if (num == 1)
-                {
-                    MessageBox.Show("Data supplier telah di tambahkan");
+                
+                if (isEdit) {
+                    Models.Supplier supplier__ = new Models.Supplier(supplier_.id, nama.Text, alamat.Text, telp.Text);
+                    Database.getInstance().UpdateSupplier(supplier__);
+                    supplier.EditSupplier(supplier__);
                 }
                 else
                 {
-                    MessageBox.Show("Gagal menambahkan data supplier");
+                    int num = Database.getInstance().CreateNewSupplier(new Apps.Models.Supplier(nama.Text, alamat.Text, telp.Text));
+                    //supplier.refreshData();
+                    
+                        MessageBox.Show("Data supplier telah di tambahkan");
+                        supplier.AddSupplier(new Models.Supplier(Convert.ToString(num),nama.Text, alamat.Text, telp.Text));
+                   
+                    
                 }
                 this.Close();
             }

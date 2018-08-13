@@ -14,7 +14,8 @@ namespace Apps
     public partial class Supplier : UserControl
     {
 
-
+        DataSet read;
+        int selectedRow = -1;
         public Supplier()
         {
             InitializeComponent();
@@ -53,12 +54,17 @@ namespace Apps
         private void LoadSupplierData()
         {
             Database database = Database.getInstance();
-            DataSet read = database.getAllSupplierData();
+            read = database.getAllSupplierData();
             tabelSupplier.DataSource = read.Tables[0];
         }
 
         private void SetColumnWidth()
         {
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "Edit";
+            col.Name = "Actions";
+            tabelSupplier.Columns.Add(col);
             tabelSupplier.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelSupplier.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -68,7 +74,10 @@ namespace Apps
         {
             if (search.Text.Length == 0)
             {
-                MessageBox.Show("Harus mengisi field pencarian !!");
+                DataSet ds = Database.getInstance().getAllSupplierData();
+                tabelSupplier.DataSource = ds.Tables[0];
+                tabelSupplier.Update();
+                tabelSupplier.Refresh();
             }
             else
             {
@@ -83,6 +92,37 @@ namespace Apps
         {
             Add_Supplier FormAddSupplier = new Add_Supplier(this);
             FormAddSupplier.ShowDialog();
+        }
+
+        private void tabelSupplier_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0) {
+                if (e.RowIndex >= 0) {
+                    selectedRow = e.RowIndex;
+                    Models.Supplier supplier = new Models.Supplier(read.Tables[0].Rows[e.RowIndex][0].ToString(), read.Tables[0].Rows[e.RowIndex][1].ToString(), read.Tables[0].Rows[e.RowIndex][2].ToString(), read.Tables[0].Rows[e.RowIndex][3].ToString());
+                    Add_Supplier add_Supplier = new Add_Supplier(this,supplier);
+                    add_Supplier.ShowDialog();
+                }
+            }
+        }
+
+        public void AddSupplier(Models.Supplier supplier) {
+            DataRow dr = read.Tables[0].NewRow();
+            dr[0] = supplier.id;
+            dr[1] = supplier.nama;
+            dr[2] = supplier.alamat;
+            dr[3] = supplier.telepon;
+
+            read.Tables[0].Rows.Add(dr);
+            tabelSupplier.Update();
+            tabelSupplier.Refresh();
+        }
+        public void EditSupplier(Models.Supplier supplier) {
+            read.Tables[0].Rows[selectedRow][1] = supplier.nama;
+            read.Tables[0].Rows[selectedRow][2] = supplier.alamat;
+            read.Tables[0].Rows[selectedRow][3] = supplier.telepon;
+            tabelSupplier.Update();
+            tabelSupplier.Refresh();
         }
     }
 }

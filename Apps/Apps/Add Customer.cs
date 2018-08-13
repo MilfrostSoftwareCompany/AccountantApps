@@ -13,6 +13,8 @@ namespace Apps
     public partial class Add_Customer : Form
     {
         Customer customer;
+        Models.Customer customer_;
+        bool isEdit = false;
         public Add_Customer( Customer customer)
         {
             InitializeComponent();
@@ -20,6 +22,26 @@ namespace Apps
 
             nama.Focus();
         }
+
+        public Add_Customer(Customer customer,Models.Customer customer_)
+        {
+            InitializeComponent();
+            this.customer = customer;
+            this.customer_ = customer_;
+            isEdit = true;
+            nama.Focus();
+            SetViews();
+            
+        }
+
+        private void SetViews()
+        {
+            nama.Text = customer_.nama;
+            alamat.Text = customer_.alamat;
+            telp.Text = customer_.telepon;
+            buttonAddCustomer.Text = "Save";
+        }
+
 
         private void buttonAddCustomer_Click(object sender, EventArgs e)
         {
@@ -32,17 +54,19 @@ namespace Apps
             }
             else
             {
-                int num = Database.getInstance().CreateNewCustomer(new Apps.Models.Customer(nama.Text, alamat.Text, telp.Text));
-                customer.refreshData();
-                if (num == 1)
-                {
-                    MessageBox.Show("Data supplier telah di tambahkan");
+                if (isEdit) {
+                    Models.Customer customer__ = new Models.Customer(customer_.id, nama.Text, alamat.Text, telp.Text);
+                    Database.getInstance().UpdateCustomer(customer__);
+                    customer.EditCustomer(customer__);
                 }
-                else
-                {
-                    MessageBox.Show("Gagal menambahkan data supplier");
+                else {
+                    Models.Customer customer__ = new Apps.Models.Customer(nama.Text, alamat.Text, telp.Text);
+                    int num = Database.getInstance().CreateNewCustomer(customer__);
+
+                    customer__.id = Convert.ToString(num);
+                    customer.AddCustomer(customer__);
+                    this.Close();
                 }
-                this.Close();
             }
         }
 

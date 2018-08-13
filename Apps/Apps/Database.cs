@@ -205,10 +205,10 @@ namespace Apps
             }
             else
             {
-                command.CommandText = "CREATE TABLE 'users' ('username' TEXT PRIMARY KEY  NOT NULL  UNIQUE , 'password' TEXT, 'permission_lvl' INTEGER)";
+                command.CommandText = "CREATE TABLE 'users' ('username' TEXT PRIMARY KEY  NOT NULL ,'password' TEXT,'permission_lvl' INTEGER,'last_log_in' TEXT DEFAULT (null) )";
                 command.ExecuteNonQuery();
 
-                command.CommandText = "INSERT INTO users (username, password,permission_lvl) VALUES ('admin01', '$MYHASH$V1$10000$H3j+M3V7uXuqaiPU78tNZFNWDpqD6byI7ArZY0ZuyaMGkmqm','1')";
+                command.CommandText = "INSERT INTO users (username, password,permission_lvl) VALUES ('admin01', '$MYHASH$V1$10000$H3j+M3V7uXuqaiPU78tNZFNWDpqD6byI7ArZY0ZuyaMGkmqm','1','13/08/2018 00:00:00')";
                 command.ExecuteNonQuery();
             }
         }
@@ -352,9 +352,9 @@ namespace Apps
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText =
             "update suppliers set nama = :nama , alamat = :alamat , telepon = :telepon where id_supplier=:id";
-            command.Parameters.Add("jumlah", DbType.String).Value = supplier.nama;
-            command.Parameters.Add("id_produk", DbType.String).Value = supplier.alamat;
-            command.Parameters.Add("id_produk", DbType.String).Value = supplier.telepon;
+            command.Parameters.Add("nama", DbType.String).Value = supplier.nama;
+            command.Parameters.Add("alamat", DbType.String).Value = supplier.alamat;
+            command.Parameters.Add("telepon", DbType.String).Value = supplier.telepon;
             command.Parameters.Add("id", DbType.String).Value = supplier.id;
             result = command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -394,7 +394,8 @@ namespace Apps
 
             try
             {
-                res = insertSQL.ExecuteNonQuery();
+                 insertSQL.ExecuteNonQuery();
+                res = Convert.ToInt32(sqlConnection.LastInsertRowId);
             }
             catch (Exception ex)
             {
@@ -441,7 +442,8 @@ namespace Apps
 
             try
             {
-                res = insertSQL.ExecuteNonQuery();
+               insertSQL.ExecuteNonQuery();
+                res = Convert.ToInt32(sqlConnection.LastInsertRowId);
             }
             catch (Exception ex)
             {
@@ -458,9 +460,9 @@ namespace Apps
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
             command.CommandText =
             "update customers set nama = :nama , alamat = :alamat , telepon = :telepon where id_customer=:id";
-            command.Parameters.Add("jumlah", DbType.String).Value = customer.nama;
-            command.Parameters.Add("id_produk", DbType.String).Value = customer.alamat;
-            command.Parameters.Add("id_produk", DbType.String).Value = customer.telepon;
+            command.Parameters.Add("nama", DbType.String).Value = customer.nama;
+            command.Parameters.Add("alamat", DbType.String).Value = customer.alamat;
+            command.Parameters.Add("telepon", DbType.String).Value = customer.telepon;
             command.Parameters.Add("id", DbType.String).Value = customer.id;
             result = command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -1129,6 +1131,16 @@ namespace Apps
                 String pwd = ds.Tables[0].Rows[0][0].ToString();
                 return PasswordHasher.Verify(password, pwd);
             }
+        }
+
+        public void updateLastLoginForUser(string username) {
+            sqlConnection.Open();
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "UPDATE users set last_log_in = @last where username= @username";
+            command.Parameters.Add("@last", DbType.String).Value = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+            command.Parameters.Add("@username", DbType.String).Value = username;
+            command.ExecuteNonQuery();
+            sqlConnection.Close();
         }
     }
 }

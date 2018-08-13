@@ -12,6 +12,10 @@ namespace Apps
 {
     public partial class Customer : UserControl
     {
+
+        DataSet read;
+        int selectedRow = -1;
+
         public Customer()
         {
             this.Width = Home.widthPanel;
@@ -71,20 +75,56 @@ namespace Apps
         private void LoadCustomerData()
         {
             Database database = Database.getInstance();
-            DataSet read = database.getAllCustomerData();
+            read = database.getAllCustomerData();
             tabelCustomer.DataSource = read.Tables[0];
         }
 
         private void SetColumnWidth()
         {
             //set Weight percentage for each column.
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "Edit";
+            col.Name = "Actions";
+            tabelCustomer.Columns.Add(col);
             tabelCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelCustomer.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void tabelCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == 0)
+            {
+                if (e.RowIndex >= 0)
+                {
+                    selectedRow = e.RowIndex;
+                    Models.Customer customer = new Models.Customer(read.Tables[0].Rows[e.RowIndex][0].ToString(), read.Tables[0].Rows[e.RowIndex][1].ToString(), read.Tables[0].Rows[e.RowIndex][2].ToString(), read.Tables[0].Rows[e.RowIndex][3].ToString());
+                    Add_Customer addCust = new Add_Customer(this, customer);
+                    addCust.ShowDialog();
+                }
+            }
         }
+
+        public void AddCustomer(Models.Customer cust)
+        {
+            DataRow dr = read.Tables[0].NewRow();
+            dr[0] = cust.id;
+            dr[1] = cust.nama;
+            dr[2] = cust.alamat;
+            dr[3] = cust.telepon;
+
+            read.Tables[0].Rows.Add(dr);
+            tabelCustomer.Update();
+            tabelCustomer.Refresh();
+        }
+        public void EditCustomer(Models.Customer cust)
+        {
+            read.Tables[0].Rows[selectedRow][1] = cust.nama;
+            read.Tables[0].Rows[selectedRow][2] = cust.alamat;
+            read.Tables[0].Rows[selectedRow][3] = cust.telepon;
+            tabelCustomer.Update();
+            tabelCustomer.Refresh();
+        }
+
     }
 }

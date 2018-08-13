@@ -33,6 +33,7 @@ namespace Apps
                 if (Database.getInstance().login(username, password))
                 {
                     this.Hide();
+                    Database.getInstance().updateLastLoginForUser(username);
                     Home home = new Home(username);
                     home.Show();
                     loggedUser = username;

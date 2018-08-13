@@ -48,6 +48,7 @@
             this.tabelCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabelCustomer.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelCustomer.Location = new System.Drawing.Point(3, 86);
             this.tabelCustomer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

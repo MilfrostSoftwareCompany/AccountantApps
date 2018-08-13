@@ -49,12 +49,13 @@ namespace Apps
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabelSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tabelSupplier.Location = new System.Drawing.Point(2, 70);
-            this.tabelSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.tabelSupplier.Location = new System.Drawing.Point(3, 86);
+            this.tabelSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabelSupplier.Name = "tabelSupplier";
             this.tabelSupplier.ReadOnly = true;
-            this.tabelSupplier.Size = new System.Drawing.Size(1147, 615);
+            this.tabelSupplier.Size = new System.Drawing.Size(1529, 758);
             this.tabelSupplier.TabIndex = 11;
+            this.tabelSupplier.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.tabelSupplier_CellContentClick);
             // 
             // buttonAddSupplier
             // 
@@ -64,10 +65,10 @@ namespace Apps
             this.buttonAddSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddSupplier.ForeColor = System.Drawing.Color.White;
-            this.buttonAddSupplier.Location = new System.Drawing.Point(954, 24);
-            this.buttonAddSupplier.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonAddSupplier.Location = new System.Drawing.Point(1272, 30);
+            this.buttonAddSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonAddSupplier.Name = "buttonAddSupplier";
-            this.buttonAddSupplier.Size = new System.Drawing.Size(196, 33);
+            this.buttonAddSupplier.Size = new System.Drawing.Size(261, 41);
             this.buttonAddSupplier.TabIndex = 10;
             this.buttonAddSupplier.Text = "+ ADD SUPPLIER";
             this.buttonAddSupplier.UseVisualStyleBackColor = false;
@@ -80,10 +81,10 @@ namespace Apps
             this.buttonSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSearch.ForeColor = System.Drawing.Color.White;
-            this.buttonSearch.Location = new System.Drawing.Point(370, 21);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearch.Location = new System.Drawing.Point(493, 26);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(94, 33);
+            this.buttonSearch.Size = new System.Drawing.Size(125, 41);
             this.buttonSearch.TabIndex = 9;
             this.buttonSearch.Text = "SEARCH";
             this.buttonSearch.UseVisualStyleBackColor = false;
@@ -92,9 +93,10 @@ namespace Apps
             // search
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.search.Location = new System.Drawing.Point(3, 25);
+            this.search.Location = new System.Drawing.Point(4, 31);
+            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.search.Name = "search";
-            this.search.Size = new System.Drawing.Size(348, 26);
+            this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 8;
             // 
             // tableLayoutPanel1
@@ -105,12 +107,12 @@ namespace Apps
             this.tableLayoutPanel1.Controls.Add(this.tabelSupplier, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1151, 687);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1535, 846);
             this.tableLayoutPanel1.TabIndex = 12;
             // 
             // panel1
@@ -119,20 +121,21 @@ namespace Apps
             this.panel1.Controls.Add(this.buttonAddSupplier);
             this.panel1.Controls.Add(this.buttonSearch);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1147, 64);
+            this.panel1.Size = new System.Drawing.Size(1529, 80);
             this.panel1.TabIndex = 0;
             // 
             // Supplier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Supplier";
-            this.Size = new System.Drawing.Size(1151, 687);
+            this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelSupplier)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
