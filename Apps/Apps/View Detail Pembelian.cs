@@ -300,6 +300,9 @@ namespace Apps
 
             
             Font f = new Font("Courier New", 10);
+            offset = offset + (int)fontHeight + 10; //make the spacing consistent
+            graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+
             foreach (Models.Product product in transaction.produkList)
             {
                
@@ -308,9 +311,7 @@ namespace Apps
                 string harga = product.harga.ToString();
                 string diskon = product.diskon.ToString();
                 string subtotal = product.getTotal().ToString();
-                string productListing = id.PadRight(11 - id.Length) + product.namaProduk.PadRight(38 - product.namaProduk.Length) + jumlah.PadRight(12 - jumlah.Length) + product.jenisSatuan.PadRight(12 - product.jenisSatuan.Length) + harga.PadRight(15 - harga.Length) + diskon.PadRight(11 - diskon.Length) + subtotal;
-                offset = offset + (int)fontHeight + 10; //make the spacing consistent
-                graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+                string productListing = id.PadRight(10) + product.namaProduk.PadRight(30) + jumlah.PadRight(10) + product.jenisSatuan.PadRight(9) + harga.PadRight(13) + diskon + subtotal.PadLeft(14);
                 offset = offset + (int)fontHeight + 5;
                 graphic.DrawString(productListing, f, new SolidBrush(Color.Black), startX, startY + offset);
 
@@ -323,32 +324,15 @@ namespace Apps
             }
             graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
-            string bottom = "Subtotal".PadLeft(60) + " : " + subtotal.Text;
-            string bottom2 = "Diskon".PadLeft(60) + " : " + disc.Text;
-            string bottom3 = "Total".PadLeft(60) + " : " + total.Text;
+            string bottom = "Subtotal".PadLeft(55) + " : Rp." + subtotal.Text;
+            string bottom2 = "Diskon".PadLeft(55) + " : Rp." + disc.Text;
+            string bottom3 = "Total".PadLeft(55) + " : Rp." + total.Text;
 
             graphic.DrawString(bottom, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
             graphic.DrawString(bottom2, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
             graphic.DrawString(bottom3, font, new SolidBrush(Color.Black), startX, startY + offset);
-
-            //change = (cash - totalprice);
-
-            ////when we have drawn all of the items add the total
-
-            //offset = offset + 20; //make some room so that the total stands out.
-
-            //graphic.DrawString("Total to pay ".PadRight(30) + String.Format("{0:c}", totalprice), new Font("Courier New", 12, FontStyle.Bold), new SolidBrush(Color.Black), startX, startY + offset);
-
-            //offset = offset + 30; //make some room so that the total stands out.
-            //graphic.DrawString("CASH ".PadRight(30) + String.Format("{0:c}", cash), font, new SolidBrush(Color.Black), startX, startY + offset);
-            //offset = offset + 15;
-            //graphic.DrawString("CHANGE ".PadRight(30) + String.Format("{0:c}", change), font, new SolidBrush(Color.Black), startX, startY + offset);
-            //offset = offset + 30; //make some room so that the total stands out.
-            //graphic.DrawString("     Thank-you for your custom,", font, new SolidBrush(Color.Black), startX, startY + offset);
-            //offset = offset + 15;
-            //graphic.DrawString("       please come back soon!", font, new SolidBrush(Color.Black), startX, startY + offset);
         }
 
     }

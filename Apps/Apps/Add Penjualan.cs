@@ -14,6 +14,7 @@ namespace Apps
     {
         DataSet custDs;
         DataSet ds;
+        DataSet companyDs;
         Penjualan penjualan;
         Apps.Models.Supplier idCustomer;
         List<Apps.Models.Product> produkList = new List<Models.Product>();
@@ -33,9 +34,11 @@ namespace Apps
             initDataGrid();
             dataGridView1.RowHeadersVisible = false;
 
-            ds = Database.getInstance().GetCompanyDetails();
-            namaToko.Text = ds.Tables[0].Rows[0][1].ToString();
-            wilayahToko.Text = ds.Tables[0].Rows[0][2].ToString();
+            companyDs = Database.getInstance().GetCompanyDetails();
+            namaToko.Text = companyDs.Tables[0].Rows[0][1].ToString();
+            wilayahToko.Text = companyDs.Tables[0].Rows[0][2].ToString();
+
+            
         }
 
         private void retrieveData()

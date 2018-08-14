@@ -176,6 +176,7 @@ namespace Apps
             ds.Tables[0].Rows.Add(dr);
             dataGridView1.Update();
             dataGridView1.Refresh();
+            
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -56,6 +56,7 @@ namespace Apps
             SetColumnWidth();
         }
         public void addData(Models.Transaction pembelian) {
+            transList.Add(pembelian);
             DataRow dr = dataSet.Tables[0].NewRow();
             string nl = Environment.NewLine;
             string productList = "";

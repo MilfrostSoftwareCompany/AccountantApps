@@ -57,6 +57,7 @@ namespace Apps
         }
         public void addData(Models.Transaction pembelian)
         {
+            transList.Add(pembelian);
             DataRow dr = dataSet.Tables[0].NewRow();
             string nl = Environment.NewLine;
             string productList = "";
@@ -99,6 +100,7 @@ namespace Apps
             tabelPenjualan.Update();
             tabelPenjualan.Refresh();
             MessageBox.Show("Data Pembelian telah ditambahkan");
+            
         }
         private void setDataGrid()
         {
