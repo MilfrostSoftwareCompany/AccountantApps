@@ -282,7 +282,7 @@ namespace Apps
             int offset = 40;
 
             graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
-            string top = "Nama Customer".PadRight(5) + ": " + transaction.tujuan.nama + "No. Faktur".PadRight(5).PadLeft(50) + ": " + transaction.invoice_no;
+            string top = "Nama Supplier".PadRight(5) + ": " + transaction.tujuan.nama + "No. Faktur".PadRight(5).PadLeft(50) + ": " + transaction.invoice_no;
             string second = "Alamat".PadRight(5) + ": " + supplier.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(50) + ": " + transaction.tgl_invoice;
             string third = "      ".PadRight(5) + "  " + supplier.alamat.Split('\n')[1];
 
