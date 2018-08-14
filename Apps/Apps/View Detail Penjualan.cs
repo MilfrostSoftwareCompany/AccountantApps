@@ -360,5 +360,11 @@ namespace Apps
             offset = offset + (int)fontHeight + 5;
             graphic.DrawString(bottom6, font, new SolidBrush(Color.Black), startX, startY + offset);
         }
+
+        private void print_Click_1(object sender, EventArgs e)
+        {
+            printPreviewDialog.Document = printDocument1;
+            printPreviewDialog.ShowDialog();
+        }
     }
 }
