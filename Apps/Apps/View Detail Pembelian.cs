@@ -269,70 +269,110 @@ namespace Apps
                System.Drawing.Printing.PrintPageEventArgs e)
         {
             DataSet ds = Database.getInstance().GetCompanyDetails();
+            string title = "PEMBELIAN".PadLeft(35);
             string compName = ds.Tables[0].Rows[0][1].ToString();
             string address = ds.Tables[0].Rows[0][2].ToString();
 
             Graphics graphic = e.Graphics;
-            Font font = new Font("Courier New", 12);
+            Font font = new Font("Courier New", 10);
             float fontHeight = font.GetHeight();
 
             int startX = 20;
             int startY = 20;
             int offset = 40;
-            
-            graphic.DrawString(compName, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
-            string top = "Nama Supplier".PadRight(5) + ": "+ transaction.tujuan.nama+"No. Faktur".PadRight(5).PadLeft(45-transaction.tujuan.nama.Length)+": "+transaction.invoice_no;
-            string second = "Alamat".PadRight(5) + ": " + supplier.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(49-supplier.alamat.Split('\n')[0].Length) + ": " + transaction.tgl_invoice;
+
+            graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
+            string top = "Nama Customer".PadRight(5) + ": " + transaction.tujuan.nama + "No. Faktur".PadRight(5).PadLeft(50) + ": " + transaction.invoice_no;
+            string second = "Alamat".PadRight(5) + ": " + supplier.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(50) + ": " + transaction.tgl_invoice;
             string third = "      ".PadRight(5) + "  " + supplier.alamat.Split('\n')[1];
+
+            graphic.DrawString(compName, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
             graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 10; //make the spacing consistent
-            graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset );
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+            graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight; //make the spacing consistent
             graphic.DrawString(third, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight +10; //make the spacing consistent
-            graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5; //make the spacing consistent
 
-            string fourth = "ID".PadRight(8) + "Nama Produk".PadRight(25) + "Jumlah".PadRight(8) + "Satuan".PadRight(8)+"Harga".PadRight(8)+"Diskon".PadRight(8)+"Subtotal";
+            string fourth = "No".PadRight(8) + "Nama Produk".PadRight(32) + "Jumlah".PadRight(9) + "Satuan".PadRight(6) + "Harga".PadLeft(10) + "Diskon".PadLeft(10) + "Subtotal".PadLeft(15);
             graphic.DrawString(fourth, font, new SolidBrush(Color.Black), startX, startY + offset);
             float totalprice = 0.00f;
 
 
-            
+
             Font f = new Font("Courier New", 10);
             offset = offset + (int)fontHeight + 10; //make the spacing consistent
-            graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+
+            int lineNum = 0;
 
             foreach (Models.Product product in transaction.produkList)
             {
-               
+                lineNum += 1;
                 string id = product.idProduk.ToString();
                 string jumlah = product.jumlah.ToString();
                 string harga = product.harga.ToString();
                 string diskon = product.diskon.ToString();
                 string subtotal = product.getTotal().ToString();
-                string productListing = id.PadRight(10) + product.namaProduk.PadRight(30) + jumlah.PadRight(10) + product.jenisSatuan.PadRight(9) + harga.PadRight(13) + diskon + subtotal.PadLeft(14);
+                string productName = "";
+                string secondLine = "";
+                if (product.namaProduk.Length > 30)
+                {
+                    productName = product.namaProduk.Substring(0, 30);
+                    secondLine = product.namaProduk.Substring(30, product.namaProduk.Length - 30);
+                }
+                else
+                {
+                    productName = product.namaProduk;
+                }
+
+                string productListing = id.PadRight(8) + productName.PadRight(32) + jumlah.PadRight(9) + product.jenisSatuan.PadRight(6) + harga.PadLeft(10) + diskon.PadLeft(10) + subtotal.PadLeft(15);
                 offset = offset + (int)fontHeight + 5;
                 graphic.DrawString(productListing, f, new SolidBrush(Color.Black), startX, startY + offset);
 
-              
+                if (secondLine != "")
+                {
+                    lineNum += 1;
+                    offset = offset + (int)fontHeight;
+                    graphic.DrawString(secondLine.PadLeft(10), f, new SolidBrush(Color.Black), startX, startY + offset);
+                }
+
 
             }
-
-            for (int i = 0; i < (7 - transaction.produkList.Count); i++) {
-                offset = offset + (int)fontHeight+5;
+            if (lineNum < 7)
+            {
+                for (int i = 0; i < (7 - transaction.produkList.Count); i++)
+                {
+                    offset = offset + (int)fontHeight + 5;
+                }
             }
-            graphic.DrawString("-------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
-            string bottom = "Subtotal".PadLeft(55) + " : Rp." + subtotal.Text;
-            string bottom2 = "Diskon".PadLeft(55) + " : Rp." + disc.Text;
-            string bottom3 = "Total".PadLeft(55) + " : Rp." + total.Text;
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+
+            //Pen blackPen = new Pen(Color.Black, 1);
+            //Rectangle rect = new Rectangle(20, 380, 450, 40);
+            //graphic.DrawRectangle(blackPen, rect);
+
+            string bottom = "Subtotal".PadLeft(70) + ":" + (" Rp." + subtotal.Text).PadLeft(18);
+            string bottom2 = "Diskon".PadLeft(70) + ":" + (" Rp." + disc.Text).PadLeft(18);
+            string bottom3 = "Total".PadLeft(70) + ":" + (" Rp." + total.Text).PadLeft(18);
 
             graphic.DrawString(bottom, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
             graphic.DrawString(bottom2, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
             graphic.DrawString(bottom3, font, new SolidBrush(Color.Black), startX, startY + offset);
+
+            //string bottom5 = "Hormat Kami".PadLeft(15) + "Diterima Oleh".PadLeft(35) + "Diketahui Oleh".PadLeft(35);
+            //string bottom6 = "(         )".PadLeft(15) + "(           )".PadLeft(35) + "(            )".PadLeft(35);
+            //offset = offset + (int)fontHeight + 15;
+            //graphic.DrawString(bottom5, font, new SolidBrush(Color.Black), startX, startY + offset);
+            //offset = offset + (int)fontHeight + 5;
+            //graphic.DrawString(bottom6, font, new SolidBrush(Color.Black), startX, startY + offset);
         }
 
     }
