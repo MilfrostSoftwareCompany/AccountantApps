@@ -348,7 +348,8 @@ namespace Apps
 
         public void DeleteSupplier(string supplierId) {
             sqlConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("DELETE FROM suppliers WHERE id_supplier = @idSupplier");
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM suppliers WHERE id_supplier = @idSupplier"; 
             command.Parameters.Add("@idSupplier", DbType.String).Value = supplierId;
             command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -442,7 +443,8 @@ namespace Apps
         public void DeleteCustomer(string customerId)
         {
             sqlConnection.Open();
-            SQLiteCommand command = new SQLiteCommand("DELETE FROM customers WHERE id_customer = @idCustomer");
+            SQLiteCommand command = new SQLiteCommand(sqlConnection);
+            command.CommandText = "DELETE FROM customers WHERE id_customer = @idCustomer";
             command.Parameters.Add("@idCustomer", DbType.String).Value = customerId;
             command.ExecuteNonQuery();
             sqlConnection.Close();
@@ -699,6 +701,20 @@ namespace Apps
             return ds;
         }
 
+        public DataSet GetPurchase(string id)
+        {
+            sqlConnection.Open();
+            string sqlString = "select invoice_no as [Invoice No], suppliers.nama as Supplier, tgl_invoice as [Tgl Pembelian], tujuan from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier WHERE invoice_no="+id;
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
         public DataSet GetAllRelatedProductPurchase(string invoiceNo) {
             sqlConnection.Open();
             string sqlStr = "select produk.nama_produk  as [Nama Produk], detail_pembelian.kuantitas as Qty, produk.jenis_satuan as Satuan, detail_pembelian.harga_produk as [@], detail_pembelian.diskon as Diskon,(detail_pembelian.kuantitas * detail_pembelian.harga_produk )- detail_pembelian.diskon as Jumlah,detail_pembelian.id_produk as  ID from detail_pembelian  INNER JOIN produk ON detail_pembelian.id_produk = produk.id_produk WHERE detail_pembelian.invoice_no = '" + invoiceNo + "'";
@@ -786,6 +802,21 @@ namespace Apps
             return ds;
         }
 
+        public DataSet GetSell(string id)
+        {
+            sqlConnection.Open();
+
+            string sqlString = "select invoice_no as [Invoice No], customers.nama as Customer, tgl_invoice as [Tgl Penjualan],  supplier from penjualan INNER JOIN customers ON penjualan.supplier = customers.id_customer WHERE invoice_no = '"+id+"'";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
         public DataSet GetAllRelatedProductSell(string invoiceNo)
         {
             sqlConnection.Open();
@@ -860,7 +891,7 @@ namespace Apps
         //Return Purchase related function
         public DataSet GetAllPurchaseReturn() {
             sqlConnection.Open();
-            string sqlString = "SELECT retur_pembelian.id_retur as [No Retur], pembelian.invoice_no as [No Invoice], retur_pembelian.tgl_retur as Tanggal, suppliers.nama as Supplier,sum(detail_retur_pembelian.harga*detail_retur_pembelian.jumlah) FROM retur_pembelian INNER JOIN pembelian ON retur_pembelian.invoice_no = pembelian.invoice_no INNER JOIN suppliers ON suppliers.id_supplier = pembelian.tujuan INNER JOIN detail_retur_pembelian ON detail_retur_pembelian.id_retur = retur_pembelian.id_retur";
+            string sqlString = "SELECT retur_pembelian.id_retur as [No Retur], pembelian.invoice_no as [No Invoice], retur_pembelian.tgl_retur as Tanggal, suppliers.nama as Supplier, retur_pembelian.deskripsi as Deskripsi,sum(detail_retur_pembelian.harga*detail_retur_pembelian.jumlah) as [Subtotal] FROM retur_pembelian INNER JOIN pembelian ON retur_pembelian.invoice_no = pembelian.invoice_no INNER JOIN suppliers ON suppliers.id_supplier = pembelian.tujuan INNER JOIN detail_retur_pembelian ON detail_retur_pembelian.id_retur = retur_pembelian.id_retur";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -965,7 +996,7 @@ namespace Apps
         public DataSet GetTotalRelatedPurchaseReturnProduct(string idRetur)
         {
             sqlConnection.Open();
-            string sqlString = "SELECT produk.nama_produk as [Nama Produk], detail_retur_pembelian.jumlah as [@],detail_retur_pembelian.harga as Harga, diskon as Diskon, detail_retur_pembelian.harga * detail_retur_pembelian.jumlah as Subtotal from detail_retur_pembelian INNER JOIN produk ON produk.id_produk = detail_retur_pembelian.id_produk WHERE detail_retur_pembelian.id_retur ='"+idRetur+"'";
+            string sqlString = "SELECT detail_retur_pembelian.id_produk as ID, produk.nama_produk as [Nama Produk], detail_retur_pembelian.jumlah as [@], produk.jenis_satuan as Satuan,detail_retur_pembelian.harga as Harga, diskon as Diskon, detail_retur_pembelian.harga * detail_retur_pembelian.jumlah as Subtotal from detail_retur_pembelian INNER JOIN produk ON produk.id_produk = detail_retur_pembelian.id_produk WHERE detail_retur_pembelian.id_retur ='" + idRetur+"'";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -1030,7 +1061,7 @@ namespace Apps
 
         public DataSet GetAllSellReturn() {
             sqlConnection.Open();
-            string sqlString = "SELECT retur_penjualan.id_retur as [No Retur], penjualan.invoice_no as [No Invoice], retur_penjualan.tgl_retur as Tanggal, customers.nama as Supplier,sum(detail_retur_penjualan.harga*detail_retur_penjualan.jumlah-detail_retur_penjualan.diskon) as Total FROM retur_penjualan INNER JOIN penjualan ON retur_penjualan.invoice_no = penjualan.invoice_no INNER JOIN customers ON customers.id_customer = penjualan.supplier INNER JOIN detail_retur_penjualan ON detail_retur_penjualan.id_retur = retur_penjualan.id_retur";
+            string sqlString = "SELECT retur_penjualan.id_retur as [No Retur], penjualan.invoice_no as [No Invoice], retur_penjualan.tgl_retur as Tanggal, customers.nama as Supplier, retur_penjualan.deskripsi as Deskripsi,sum(detail_retur_penjualan.harga*detail_retur_penjualan.jumlah-detail_retur_penjualan.diskon) as Total FROM retur_penjualan INNER JOIN penjualan ON retur_penjualan.invoice_no = penjualan.invoice_no INNER JOIN customers ON customers.id_customer = penjualan.supplier INNER JOIN detail_retur_penjualan ON detail_retur_penjualan.id_retur = retur_penjualan.id_retur";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -1044,7 +1075,7 @@ namespace Apps
         public DataSet GetTotalRelatedSellReturnProduct(string idRetur)
         {
             sqlConnection.Open();
-            string sqlString = "SELECT produk.nama_produk as [Nama Produk], detail_retur_penjualan.jumlah as [@],detail_retur_penjualan.harga as Harga, diskon as Diskon, detail_retur_penjualan.harga * detail_retur_penjualan.jumlah as Subtotal from detail_retur_penjualan INNER JOIN produk ON produk.id_produk = detail_retur_penjualan.id_produk WHERE detail_retur_penjualan.id_retur ='" + idRetur + "'";
+            string sqlString = "SELECT detail_retur_penjualan.id_produk as ID, produk.nama_produk as [Nama Produk], detail_retur_penjualan.jumlah as [@],produk.jenis_satuan as Satuan,detail_retur_penjualan.harga as Harga, diskon as Diskon, detail_retur_penjualan.harga * detail_retur_penjualan.jumlah as Subtotal from detail_retur_penjualan INNER JOIN produk ON produk.id_produk = detail_retur_penjualan.id_produk WHERE detail_retur_penjualan.id_retur ='" + idRetur + "'";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();

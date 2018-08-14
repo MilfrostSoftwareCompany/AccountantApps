@@ -18,6 +18,72 @@ namespace Apps
         List<Models.Product> addedProduct = new List<Models.Product>();
         List<Models.Product> removedProduct = new List<Models.Product>();
 
+        Models.ReturTransaksi returTransaksi;
+        bool isEdit = false;
+
+        public Retur_Pembelian(Models.ReturTransaksi transaksi, string title) {
+            isEdit = true;
+            this.returTransaksi = transaksi;
+            InitializeComponent();
+            label3.Text = title;
+            if (title == "RETUR PEMBELIAN")
+            {
+                returTransaksi.type = 0;
+                transaction = returTransaksi.GetTransaction();
+                returTransaksi.setProdukList(Database.getInstance().GetTotalRelatedPurchaseReturnProduct(returTransaksi.idRetur).Tables[0]);
+            }
+            else {
+                returTransaksi.type = 1;
+                transaction = returTransaksi.GetTransaction();
+                returTransaksi.setProdukList(Database.getInstance().GetTotalRelatedSellReturnProduct(returTransaksi.idRetur).Tables[0]);
+            }
+            SetTransData();
+        }
+
+        private void SetTransData() {
+
+            ds = new DataSet();
+            ds.Tables.Add(new DataTable());
+            ds.Tables[0].Columns.Add("ID");
+            ds.Tables[0].Columns.Add("Nama Produk");
+            ds.Tables[0].Columns.Add("Jumlah");
+            ds.Tables[0].Columns.Add("Satuan");
+            ds.Tables[0].Columns.Add("Harga");
+            ds.Tables[0].Columns.Add("Diskon");
+            ds.Tables[0].Columns.Add("Subtotal");
+
+            for (int i = 0; i < returTransaksi.productList.Count; i++)
+            {
+                addedProduct.Add(returTransaksi.productList[i]);
+                DataRow dr = ds.Tables[0].NewRow();
+                dr[0] = returTransaksi.productList[i].idProduk;
+                dr[1] = returTransaksi.productList[i].namaProduk;
+                dr[2] = returTransaksi.productList[i].jumlah;
+                dr[3] = returTransaksi.productList[i].jenisSatuan;
+                dr[4] = returTransaksi.productList[i].harga;
+                dr[5] = returTransaksi.productList[i].diskon;
+                dr[6] = Convert.ToInt64(returTransaksi.productList[i].harga) * Convert.ToInt64(returTransaksi.productList[i].jumlah);
+                ds.Tables[0].Rows.Add(dr);
+
+            }
+            dataGridView1.DataSource = ds.Tables[0];
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "Delete";
+            col.Name = "Actions";
+            dataGridView1.Columns.Add(col);
+
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            namasupplier.Text = transaction.tujuan.nama;
+            alamat.Text = transaction.tujuan.alamat;
+            noFaktur.Text = transaction.invoice_no;
+
+            UpdateCalculation();
+
+        }
+
         public Retur_Pembelian(Models.Transaction transaction,string title)
         {
             this.transaction = transaction;
@@ -61,10 +127,15 @@ namespace Apps
             col.Text = "Delete";
             col.Name = "Actions";
             dataGridView1.Columns.Add(col);
+
         }
 
         public void SetViews()
         {
+            if (isEdit) {
+
+            }
+
             if (label3.Text == "RETUR PEMBELIAN")
             {
                 label4.Text = "Nama Supplier";
@@ -88,12 +159,26 @@ namespace Apps
             int diskon_ = 0;
             int total_ = 0;
 
-            for (int i = 0; i < transaction.produkList.Count; i++)
+            if (isEdit)
             {
-                subtotal_ += (transaction.produkList[i].harga * transaction.produkList[i].jumlah);
-                diskon_ += (transaction.produkList[i].diskon);
+                for (int i = 0; i < returTransaksi.productList.Count; i++)
+                {
+                    subtotal_ += (returTransaksi.productList[i].harga * returTransaksi.productList[i].jumlah);
+                    diskon_ += (returTransaksi.productList[i].diskon);
+
+                }
+            }
+            else {
+                for (int i = 0; i < transaction.produkList.Count; i++)
+                {
+                    subtotal_ += (transaction.produkList[i].harga * transaction.produkList[i].jumlah);
+                    diskon_ += (transaction.produkList[i].diskon);
+
+                }
 
             }
+
+            
 
             subtotal.Text = Convert.ToString(subtotal_);
             disc.Text = Convert.ToString(diskon_);
@@ -110,8 +195,19 @@ namespace Apps
             dr[5] = product.diskon;
             dr[6] = Convert.ToInt64(product.harga) * Convert.ToInt64(product.jumlah);
             ds.Tables[0].Rows.Add(dr);
+            addedProduct.Add(product);
+            removeFromRemovedList(product.idProduk);
             dataGridView1.Update();
             dataGridView1.Refresh();
+        }
+
+        private void removeFromRemovedList(int id) {
+            for (int i = 0; i < removedProduct.Count; i++) {
+                if (removedProduct[i].idProduk == id) {
+                    removedProduct.RemoveAt(i);
+                    break;
+                }
+            }
         }
 
         private void tambahProdukBtn_Click(object sender, EventArgs e)

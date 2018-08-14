@@ -89,6 +89,12 @@ namespace Apps
                 col.Text = "Edit";
                 col.Name = "Actions";
                 tabelCustomer.Columns.Add(col);
+
+                DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
+                col1.UseColumnTextForButtonValue = true;
+                col1.Text = "Delete";
+                col1.Name = "Actions";
+                tabelCustomer.Columns.Add(col1);
             }
             tabelCustomer.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelCustomer.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -105,6 +111,14 @@ namespace Apps
                     Add_Customer addCust = new Add_Customer(this, customer);
                     addCust.ShowDialog();
                 }
+            }
+
+            else if (e.ColumnIndex == 1)
+            {
+                Database.getInstance().DeleteSupplier(read.Tables[0].Rows[e.RowIndex][0].ToString());
+                read.Tables[0].Rows.RemoveAt(e.RowIndex);
+                tabelCustomer.Update();
+                tabelCustomer.Refresh();
             }
         }
 

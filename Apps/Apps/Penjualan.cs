@@ -329,7 +329,13 @@ namespace Apps
         {
             if (e.ColumnIndex == 0)
             {
-
+                if (e.RowIndex >= 0)
+                {
+                    DataRow dr = dataSet2.Tables[0].Rows[e.RowIndex];
+                    Models.ReturTransaksi retur_ = new Models.ReturTransaksi(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[4].ToString());
+                    Retur_Pembelian retur = new Retur_Pembelian(retur_, "RETUR PENJUALAN");
+                    retur.ShowDialog();
+                }
             }
         }
     }

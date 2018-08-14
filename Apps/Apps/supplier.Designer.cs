@@ -48,6 +48,7 @@ namespace Apps
             this.tabelSupplier.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabelSupplier.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelSupplier.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelSupplier.Location = new System.Drawing.Point(3, 86);
             this.tabelSupplier.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -94,7 +95,7 @@ namespace Apps
             // 
             this.search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.search.Location = new System.Drawing.Point(4, 31);
-            this.search.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.search.Margin = new System.Windows.Forms.Padding(4);
             this.search.Name = "search";
             this.search.Size = new System.Drawing.Size(463, 30);
             this.search.TabIndex = 8;
@@ -133,7 +134,7 @@ namespace Apps
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Supplier";
             this.Size = new System.Drawing.Size(1535, 846);
             ((System.ComponentModel.ISupportInitialize)(this.tabelSupplier)).EndInit();

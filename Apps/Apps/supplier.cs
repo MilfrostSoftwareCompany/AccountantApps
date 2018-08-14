@@ -67,6 +67,12 @@ namespace Apps
                 col.Text = "Edit";
                 col.Name = "Actions";
                 tabelSupplier.Columns.Add(col);
+
+                DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
+                col1.UseColumnTextForButtonValue = true;
+                col1.Text = "Delete";
+                col1.Name = "Actions";
+                tabelSupplier.Columns.Add(col1);
             }
             tabelSupplier.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             tabelSupplier.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -84,8 +90,8 @@ namespace Apps
             }
             else
             {
-                DataSet ds = Database.getInstance().getSupplierQuery(search.Text);
-                tabelSupplier.DataSource = ds.Tables[0];
+                read = Database.getInstance().getSupplierQuery(search.Text);
+                tabelSupplier.DataSource = read.Tables[0];
                 tabelSupplier.Update();
                 tabelSupplier.Refresh();
             }
@@ -100,12 +106,21 @@ namespace Apps
         private void tabelSupplier_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0) {
-                if (e.RowIndex >= 0) {
+                if (e.RowIndex >= 0)
+                {
                     selectedRow = e.RowIndex;
                     Models.Supplier supplier = new Models.Supplier(read.Tables[0].Rows[e.RowIndex][0].ToString(), read.Tables[0].Rows[e.RowIndex][1].ToString(), read.Tables[0].Rows[e.RowIndex][2].ToString(), read.Tables[0].Rows[e.RowIndex][3].ToString());
-                    Add_Supplier add_Supplier = new Add_Supplier(this,supplier);
+                    Add_Supplier add_Supplier = new Add_Supplier(this, supplier);
                     add_Supplier.ShowDialog();
                 }
+                
+            }
+            else if (e.ColumnIndex == 1)
+            {
+                Database.getInstance().DeleteSupplier(read.Tables[0].Rows[e.RowIndex][0].ToString());
+                read.Tables[0].Rows.RemoveAt(e.RowIndex);
+                tabelSupplier.Update();
+                tabelSupplier.Refresh();
             }
         }
 
