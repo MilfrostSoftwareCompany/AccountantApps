@@ -51,9 +51,10 @@ namespace Apps
         {
             LoadSupplierData();
             LoadReturData();
+            SetReturWidth();
             //tabelPembelian.Update();
             //tabelPembelian.Refresh();
-            SetColumnWidth();
+            //SetColumnWidth();
         }
         public void addData(Models.Transaction pembelian) {
             transList.Add(pembelian);
@@ -122,6 +123,120 @@ namespace Apps
             dataGridView1.Update();
             dataGridView1.Refresh();
             MessageBox.Show("Retur telah ditambahkan");
+        }
+
+        public void RefreshPurchaseData()
+        {
+            tabelPembelian.Columns.RemoveAt(9);
+            tabelPembelian.Columns.RemoveAt(8);
+            tabelPembelian.Columns.RemoveAt(7);
+            tabelPembelian.Columns.RemoveAt(6);
+            tabelPembelian.Columns.RemoveAt(5);
+            tabelPembelian.Columns.RemoveAt(4);
+            tabelPembelian.Columns.RemoveAt(3);
+            tabelPembelian.Columns.RemoveAt(2);
+            tabelPembelian.Columns.RemoveAt(1);
+            tabelPembelian.Columns.RemoveAt(0);
+            LoadSupplierData();
+            
+            tabelPembelian.Update();
+            tabelPembelian.Refresh();
+
+            SetColumnWidth();
+        }
+
+        public void SearchPurchase(string query)
+        {
+            tabelPembelian.Columns.RemoveAt(9);
+            tabelPembelian.Columns.RemoveAt(8);
+            tabelPembelian.Columns.RemoveAt(7);
+            tabelPembelian.Columns.RemoveAt(6);
+            tabelPembelian.Columns.RemoveAt(5);
+            tabelPembelian.Columns.RemoveAt(4);
+            tabelPembelian.Columns.RemoveAt(3);
+            tabelPembelian.Columns.RemoveAt(2);
+            tabelPembelian.Columns.RemoveAt(1);
+            tabelPembelian.Columns.RemoveAt(0);
+            LoadQueryPurchase(query);
+
+            tabelPembelian.Update();
+            tabelPembelian.Refresh();
+
+            SetColumnWidth();
+        }
+
+        private void LoadQueryPurchase(string query)
+        {
+
+            Database database = Database.getInstance();
+            dataSet = database.GetPurchaseQuery(query.ToLower());
+
+
+
+            dataSet.Tables[0].Columns.Add("Produk");
+            dataSet.Tables[0].Columns.Add("Qty");
+            dataSet.Tables[0].Columns.Add("Satuan");
+            dataSet.Tables[0].Columns.Add("Harga");
+            dataSet.Tables[0].Columns.Add("Diskon");
+            dataSet.Tables[0].Columns.Add("Jumlah");
+
+            for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
+            {
+                DataSet newDataSet = database.GetAllRelatedProductPurchase(dataSet.Tables[0].Rows[i][0].ToString());
+                string nl = Environment.NewLine;
+                string productList = "";
+                string hargaList = "";
+                string kuantitasList = "";
+                string satuanList = "";
+                string diskonList = "";
+                string jlhList = "";
+
+                string idTransaksi = dataSet.Tables[0].Rows[i][0].ToString();
+                string tujuan = dataSet.Tables[0].Rows[i][1].ToString();
+                string id = dataSet.Tables[0].Rows[i][3].ToString();
+                string tgl_invoice = dataSet.Tables[0].Rows[i][2].ToString();
+                List<Models.Product> list = new List<Models.Product>();
+
+                for (int j = 0; j < newDataSet.Tables[0].Rows.Count; j++)
+                {
+                    list.Add(new Models.Product(Convert.ToInt32(newDataSet.Tables[0].Rows[j][6].ToString()), newDataSet.Tables[0].Rows[j][0].ToString(), Convert.ToInt32(newDataSet.Tables[0].Rows[j][1].ToString()), newDataSet.Tables[0].Rows[j][2].ToString(), Convert.ToInt32(newDataSet.Tables[0].Rows[j][3].ToString())));
+
+                    if (j == newDataSet.Tables[0].Rows.Count - 1)
+                    {
+                        productList += newDataSet.Tables[0].Rows[j][0].ToString();
+                        hargaList += newDataSet.Tables[0].Rows[j][3].ToString();
+                        kuantitasList += newDataSet.Tables[0].Rows[j][1].ToString();
+                        satuanList += newDataSet.Tables[0].Rows[j][2].ToString();
+                        diskonList += newDataSet.Tables[0].Rows[j][4].ToString();
+                        jlhList += newDataSet.Tables[0].Rows[j][5].ToString();
+                    }
+                    else
+                    {
+                        productList += newDataSet.Tables[0].Rows[j][0].ToString() + nl;
+                        hargaList += newDataSet.Tables[0].Rows[j][3].ToString() + nl;
+                        kuantitasList += newDataSet.Tables[0].Rows[j][1].ToString() + nl;
+                        satuanList += newDataSet.Tables[0].Rows[j][2].ToString() + nl;
+                        diskonList += newDataSet.Tables[0].Rows[j][4].ToString() + nl;
+                        jlhList += newDataSet.Tables[0].Rows[j][5].ToString() + nl;
+                    }
+                }
+                dataSet.Tables[0].Rows[i][4] = productList;
+                dataSet.Tables[0].Rows[i][5] = kuantitasList;
+                dataSet.Tables[0].Rows[i][6] = satuanList;
+                dataSet.Tables[0].Rows[i][7] = hargaList;
+                dataSet.Tables[0].Rows[i][8] = diskonList;
+                dataSet.Tables[0].Rows[i][9] = jlhList;
+
+
+                transList.Add(new Models.Transaction(idTransaksi, new Models.Supplier(id, tujuan), tgl_invoice, list));
+
+            }
+            dataSet.Tables[0].Columns.RemoveAt(3);
+            tabelPembelian.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            tabelPembelian.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            tabelPembelian.DataSource = dataSet.Tables[0];
+
         }
 
         private void LoadSupplierData()
@@ -194,7 +309,7 @@ namespace Apps
             tabelPembelian.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             tabelPembelian.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-            
+            tabelPembelian.DataSource = dataSet.Tables[0];
 
         }
 
@@ -237,24 +352,35 @@ namespace Apps
             
         }
 
+        private void SetReturWidth()
+        {
+            DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
+            col1.UseColumnTextForButtonValue = true;
+            col1.Text = "View Details";
+            col1.Name = "Actions";
+            dataGridView1.Columns.Add(col1);
+            detailBtn += 1;
+
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void SetColumnWidth()
         {
-            tabelPembelian.DataSource = dataSet.Tables[0];
-            if (detailBtn == 0) {
-                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-                col.UseColumnTextForButtonValue = true;
-                col.Text = "View Details";
-                col.Name = "Actions";
-                tabelPembelian.Columns.Add(col);
-                detailBtn += 1;
 
-                DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
-                col1.UseColumnTextForButtonValue = true;
-                col1.Text = "View Details";
-                col1.Name = "Actions";
-                dataGridView1.Columns.Add(col1);
-                detailBtn += 1;
-            }
+
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "View Details";
+            col.Name = "Actions";
+            tabelPembelian.Columns.Add(col);
+            detailBtn += 1;
+
+                
+            
             tabelPembelian.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -264,11 +390,7 @@ namespace Apps
             tabelPembelian.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPembelian.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
         }
 
         public void deleteData(int row) {
@@ -328,6 +450,17 @@ namespace Apps
                     Retur_Pembelian retur = new Retur_Pembelian(retur_, "RETUR PEMBELIAN");
                     retur.ShowDialog();
                 }
+            }
+        }
+
+        private void buttonSearch_Click_1(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(search.Text))
+            {
+                RefreshPurchaseData();
+            }
+            else {
+                SearchPurchase(search.Text);
             }
         }
     }

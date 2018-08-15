@@ -16,6 +16,9 @@ namespace Apps
         Models.Product selectedProduct;
         Form caller;
         DataSet ds;
+        bool isEditDetail = false;
+        List<Models.Product> addedList = new List<Models.Product>();
+        List<Models.Product> removedList = new List<Models.Product>();
 
         public Add_Barang(Form caller,List<Models.Product> productList)
         {
@@ -25,6 +28,19 @@ namespace Apps
             this.comboBox1.SelectedIndexChanged +=
             new System.EventHandler(ComboBox1_SelectedIndexChanged);
             RetrieveData(productList);
+        }
+
+        public Add_Barang(Form caller, List<Models.Product> addedProduct, List<Models.Product> deletedProduct) {
+            this.caller = caller;
+            this.addedList = addedProduct;
+            this.removedList = deletedProduct;
+            InitializeComponent();
+
+            isEditDetail = true;
+
+            this.comboBox1.SelectedIndexChanged +=
+            new System.EventHandler(ComboBox1_SelectedIndexChanged);
+            RetrieveData();
         }
 
         public Add_Barang(Form caller)
@@ -39,8 +55,66 @@ namespace Apps
 
         private void RetrieveData()
         {
+            
             ds = Database.getInstance().GetAllProducts();
             comboBox1.DataSource = ds.Tables[0];
+            if (isEditDetail) {
+                if (caller is View_Detail_Pembelian)
+                {
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < addedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) - addedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < removedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) + removedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+                else if (caller is View_Detail_Penjualan) {
+
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < addedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) + addedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < removedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) - removedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+            }
             comboBox1.DisplayMember = "Nama Produk";
             comboBox1.ValueMember = "ID";
             setView(Convert.ToInt32(ds.Tables[0].Rows[0][0].ToString()));
@@ -138,6 +212,7 @@ namespace Apps
                 Retur_Pembelian retur = (Retur_Pembelian)caller;
                 retur.AddProduct(selectedProduct);
             }
+            this.Close();
         }
     }
 }

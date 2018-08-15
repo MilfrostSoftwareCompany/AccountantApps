@@ -20,6 +20,9 @@ namespace Apps
 
         Models.ReturTransaksi returTransaksi;
         bool isEdit = false;
+        bool isEditing = false;
+
+        bool isPembelian = false;
 
         public Retur_Pembelian(Models.ReturTransaksi transaksi, string title) {
             isEdit = true;
@@ -28,6 +31,7 @@ namespace Apps
             label3.Text = title;
             if (title == "RETUR PEMBELIAN")
             {
+                isPembelian = true;
                 returTransaksi.type = 0;
                 transaction = returTransaksi.GetTransaction();
                 returTransaksi.setProdukList(Database.getInstance().GetTotalRelatedPurchaseReturnProduct(returTransaksi.idRetur).Tables[0]);
@@ -122,12 +126,45 @@ namespace Apps
                 
             }
             dataGridView1.DataSource = ds.Tables[0];
+            if (isEdit)
+            {
+                edit_btn.Show();
+            }
+            else
+            {
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "Delete";
+                col.Name = "Actions";
+                dataGridView1.Columns.Add(col);
+                edit_btn.Hide();
+            }
+
+        }
+
+        private void AllowEdit(bool b)
+        {
+            if (b)
+            {
+                AddDeleteBtn();
+            }
+            else {
+                RemoveDeleteBtn();
+            }
+        }
+
+        private void AddDeleteBtn()
+        {
             DataGridViewButtonColumn col = new DataGridViewButtonColumn();
             col.UseColumnTextForButtonValue = true;
             col.Text = "Delete";
             col.Name = "Actions";
             dataGridView1.Columns.Add(col);
+        }
 
+        private void RemoveDeleteBtn()
+        {
+            dataGridView1.Columns.RemoveAt(7);
         }
 
         public void SetViews()
@@ -251,6 +288,27 @@ namespace Apps
                     Database.getInstance().CreateNewSellReturn(retur);
                 }
                 this.Close();
+            }
+        }
+
+        private void edit_btn_Click(object sender, EventArgs e)
+        {
+            if (isEditing)
+            {
+                AllowEdit(false);
+                isEditing = true;
+                //code update to database
+                if (isPembelian)
+                {
+                    
+                }
+                else {
+
+                }
+            }
+            else {
+                AllowEdit(true);
+                isEditing = false;
             }
         }
     }

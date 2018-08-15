@@ -201,6 +201,7 @@ namespace Apps
                     MessageBox.Show("Data Pembelian telah ditambahkan");
                     
                 }
+                //pembelian.RefreshPurchaseData();
                 pembelian.addData(transaction);
                 this.Close();
             }

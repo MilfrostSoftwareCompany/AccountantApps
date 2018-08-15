@@ -25,6 +25,7 @@ namespace Apps
         Pembelian pembelian;
         bool isEditing = false;
 
+        List<Models.Product> removedProduct = new List<Models.Product>();
         List<Models.Product> addedProduct = new List<Models.Product>();
         List<string> deletedProduct = new List<string>();
 
@@ -128,6 +129,7 @@ namespace Apps
             }
             else {
                 transaction.produkList[found].jumlah += product.jumlah;
+
                 ds.Tables[0].Rows[found][2] = transaction.produkList[found].jumlah;
             }
             
@@ -204,6 +206,7 @@ namespace Apps
             if (e.ColumnIndex == 7) {
                 if (e.RowIndex >= 0) {
 
+                    removedProduct.Add(transaction.produkList[e.RowIndex]);
                     deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
                     transaction.produkList.RemoveAt(e.RowIndex);
                     ds.Tables[0].Rows.RemoveAt(e.RowIndex);
@@ -222,7 +225,9 @@ namespace Apps
                 allowEdit(false);
                 Database.getInstance().UpdatePurchase(transaction,deletedProduct,addedProduct);
                 pembelian.UpdatePembelian(rowIndex,transaction);
-
+                addedProduct.Clear();
+                removedProduct.Clear();
+                this.Close();
             }
             else {
                 buttonEdit.Text = "SAVE";
@@ -233,7 +238,7 @@ namespace Apps
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Add_Barang add_Barang = new Add_Barang(this);
+            Add_Barang add_Barang = new Add_Barang(this,addedProduct,removedProduct);
             add_Barang.ShowDialog();
         }
 
@@ -374,6 +379,12 @@ namespace Apps
             //offset = offset + (int)fontHeight + 5;
             //graphic.DrawString(bottom6, font, new SolidBrush(Color.Black), startX, startY + offset);
         }
-
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            for (int i = 0; i < removedProduct.Count; i++) {
+                transaction.produkList.Add(removedProduct[i]);
+            }
+            Console.WriteLine("Fuck");
+        }
     }
 }

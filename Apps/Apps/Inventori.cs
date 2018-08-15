@@ -68,15 +68,48 @@ namespace Apps
             tabelInventori.Location = new Point(15, Convert.ToInt32(buttonAddProduk.Height)+Convert.ToInt32(buttonOpnameStock.Height) + 45);
         }
 
+        private void RemoveColumns()
+        {
+            tabelInventori.Columns.RemoveAt(6);
+            tabelInventori.Columns.RemoveAt(5);
+            tabelInventori.Columns.RemoveAt(4);
+            tabelInventori.Columns.RemoveAt(3);
+            tabelInventori.Columns.RemoveAt(2);
+            tabelInventori.Columns.RemoveAt(1);
+            tabelInventori.Columns.RemoveAt(0);
+        }
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (search.Text.Length == 0)
             {
-                MessageBox.Show("Harus mengisi field pencarian !!");
+                RemoveColumns();
+                RefreshData();
+
             }
             else
             {
+                RemoveColumns();
+                ds = Database.getInstance().GetQueryProduct(search.Text);
+                tabelInventori.DataSource = ds.Tables[0];
+                tabelInventori.Update();
+                tabelInventori.Refresh();
+            }
 
+            tabelInventori.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "View Details";
+            col.Name = "Actions";
+            tabelInventori.Columns.Add(col);
+            if (Login.permissionlvl == 1)
+            {
+                DataGridViewButtonColumn del = new DataGridViewButtonColumn();
+                del.UseColumnTextForButtonValue = true;
+                del.Text = "Delete";
+                del.Name = "Actions";
+                tabelInventori.Columns.Add(del);
             }
         }
 
@@ -108,7 +141,7 @@ namespace Apps
             
 
             if (e.ColumnIndex == 0 && e.RowIndex >= 0) {
-                Models.Product product = new Models.Product(ds.Tables[0].Rows[0]);
+                Models.Product product = new Models.Product(ds.Tables[0].Rows[e.RowIndex]);
                 Add_Produk add_Produk = new Add_Produk(this,product);
                 add_Produk.ShowDialog();
             }

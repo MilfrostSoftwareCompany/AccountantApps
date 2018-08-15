@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tanggal = new System.Windows.Forms.DateTimePicker();
+            this.edit_btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -283,11 +284,28 @@
             this.tanggal.Size = new System.Drawing.Size(230, 22);
             this.tanggal.TabIndex = 124;
             // 
+            // edit_btn
+            // 
+            this.edit_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.edit_btn.FlatAppearance.BorderSize = 0;
+            this.edit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.edit_btn.ForeColor = System.Drawing.Color.White;
+            this.edit_btn.Location = new System.Drawing.Point(1064, 727);
+            this.edit_btn.Margin = new System.Windows.Forms.Padding(5);
+            this.edit_btn.Name = "edit_btn";
+            this.edit_btn.Size = new System.Drawing.Size(187, 38);
+            this.edit_btn.TabIndex = 125;
+            this.edit_btn.Text = "EDIT";
+            this.edit_btn.UseVisualStyleBackColor = false;
+            this.edit_btn.Click += new System.EventHandler(this.edit_btn_Click);
+            // 
             // Retur_Pembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1513, 796);
+            this.Controls.Add(this.edit_btn);
             this.Controls.Add(this.tanggal);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
@@ -342,5 +360,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DateTimePicker tanggal;
+        private System.Windows.Forms.Button edit_btn;
     }
 }

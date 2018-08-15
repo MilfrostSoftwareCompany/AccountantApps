@@ -34,6 +34,7 @@ namespace Apps
             dataGridView1.RowHeadersVisible = false;
             tabelPenjualan.RowHeadersVisible = false;
             SetColumnWidth();
+            SetReturData();
         }
 
         public void InitializeDesign()
@@ -53,7 +54,6 @@ namespace Apps
             LoadReturData();
             //tabelPembelian.Update();
             //tabelPembelian.Refresh();
-            SetColumnWidth();
         }
         public void addData(Models.Transaction pembelian)
         {
@@ -99,9 +99,125 @@ namespace Apps
             dataSet.Tables[0].Rows.Add(dr);
             tabelPenjualan.Update();
             tabelPenjualan.Refresh();
-            MessageBox.Show("Data Pembelian telah ditambahkan");
+            MessageBox.Show("Data penjualan telah ditambahkan");
             
         }
+        public void RefreshSellData()
+        {
+            tabelPenjualan.Columns.RemoveAt(9);
+            tabelPenjualan.Columns.RemoveAt(8);
+            tabelPenjualan.Columns.RemoveAt(7);
+            tabelPenjualan.Columns.RemoveAt(6);
+            tabelPenjualan.Columns.RemoveAt(5);
+            tabelPenjualan.Columns.RemoveAt(4);
+            tabelPenjualan.Columns.RemoveAt(3);
+            tabelPenjualan.Columns.RemoveAt(2);
+            tabelPenjualan.Columns.RemoveAt(1);
+            tabelPenjualan.Columns.RemoveAt(0);
+            LoadSupplierData();
+
+            tabelPenjualan.Update();
+            tabelPenjualan.Refresh();
+
+            SetColumnWidth();
+        }
+
+
+        public void SearchPurchase(string query)
+        {
+            tabelPenjualan.Columns.RemoveAt(9);
+            tabelPenjualan.Columns.RemoveAt(8);
+            tabelPenjualan.Columns.RemoveAt(7);
+            tabelPenjualan.Columns.RemoveAt(6);
+            tabelPenjualan.Columns.RemoveAt(5);
+            tabelPenjualan.Columns.RemoveAt(4);
+            tabelPenjualan.Columns.RemoveAt(3);
+            tabelPenjualan.Columns.RemoveAt(2);
+            tabelPenjualan.Columns.RemoveAt(1);
+            tabelPenjualan.Columns.RemoveAt(0);
+            LoadQuerySell(query);
+
+            tabelPenjualan.Update();
+            tabelPenjualan.Refresh();
+
+            SetColumnWidth();
+        }
+
+        private void LoadQuerySell(string query)
+        {
+
+            Database database = Database.getInstance();
+            dataSet = database.GetQuerySell(query.ToLower());
+
+
+
+            dataSet.Tables[0].Columns.Add("Produk");
+            dataSet.Tables[0].Columns.Add("Qty");
+            dataSet.Tables[0].Columns.Add("Satuan");
+            dataSet.Tables[0].Columns.Add("Harga");
+            dataSet.Tables[0].Columns.Add("Diskon");
+            dataSet.Tables[0].Columns.Add("Jumlah");
+
+            for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
+            {
+                DataSet newDataSet = database.GetAllRelatedProductSell(dataSet.Tables[0].Rows[i][0].ToString());
+                string nl = Environment.NewLine;
+                string productList = "";
+                string hargaList = "";
+                string kuantitasList = "";
+                string satuanList = "";
+                string diskonList = "";
+                string jlhList = "";
+
+                string idTransaksi = dataSet.Tables[0].Rows[i][0].ToString();
+                string tujuan = dataSet.Tables[0].Rows[i][1].ToString();
+                string id = dataSet.Tables[0].Rows[i][3].ToString();
+                string tgl_invoice = dataSet.Tables[0].Rows[i][2].ToString();
+                List<Models.Product> list = new List<Models.Product>();
+
+                for (int j = 0; j < newDataSet.Tables[0].Rows.Count; j++)
+                {
+                    list.Add(new Models.Product(Convert.ToInt32(newDataSet.Tables[0].Rows[j][6].ToString()), newDataSet.Tables[0].Rows[j][0].ToString(), Convert.ToInt32(newDataSet.Tables[0].Rows[j][1].ToString()), newDataSet.Tables[0].Rows[j][2].ToString(), Convert.ToInt32(newDataSet.Tables[0].Rows[j][3].ToString())));
+
+                    if (j == newDataSet.Tables[0].Rows.Count - 1)
+                    {
+                        productList += newDataSet.Tables[0].Rows[j][0].ToString();
+                        hargaList += newDataSet.Tables[0].Rows[j][3].ToString();
+                        kuantitasList += newDataSet.Tables[0].Rows[j][1].ToString();
+                        satuanList += newDataSet.Tables[0].Rows[j][2].ToString();
+                        diskonList += newDataSet.Tables[0].Rows[j][4].ToString();
+                        jlhList += newDataSet.Tables[0].Rows[j][5].ToString();
+                    }
+                    else
+                    {
+                        productList += newDataSet.Tables[0].Rows[j][0].ToString() + nl;
+                        hargaList += newDataSet.Tables[0].Rows[j][3].ToString() + nl;
+                        kuantitasList += newDataSet.Tables[0].Rows[j][1].ToString() + nl;
+                        satuanList += newDataSet.Tables[0].Rows[j][2].ToString() + nl;
+                        diskonList += newDataSet.Tables[0].Rows[j][4].ToString() + nl;
+                        jlhList += newDataSet.Tables[0].Rows[j][5].ToString() + nl;
+                    }
+                }
+                dataSet.Tables[0].Rows[i][4] = productList;
+                dataSet.Tables[0].Rows[i][5] = kuantitasList;
+                dataSet.Tables[0].Rows[i][6] = satuanList;
+                dataSet.Tables[0].Rows[i][7] = hargaList;
+                dataSet.Tables[0].Rows[i][8] = diskonList;
+                dataSet.Tables[0].Rows[i][9] = jlhList;
+
+
+                transList.Add(new Models.Transaction(idTransaksi, new Models.Supplier(id, tujuan), tgl_invoice, list));
+
+            }
+            dataSet.Tables[0].Columns.RemoveAt(3);
+            tabelPenjualan.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            tabelPenjualan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+            tabelPenjualan.DataSource = dataSet.Tables[0];
+
+        }
+
+
         private void setDataGrid()
         {
 
@@ -198,7 +314,7 @@ namespace Apps
             tabelPenjualan.RowsDefaultCellStyle.WrapMode = DataGridViewTriState.True;
             tabelPenjualan.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
-
+            tabelPenjualan.DataSource = dataSet.Tables[0];
 
         }
 
@@ -242,25 +358,35 @@ namespace Apps
 
         }
 
+        private void SetReturData()
+        {
+            DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
+            col1.UseColumnTextForButtonValue = true;
+            col1.Text = "View Details";
+            col1.Name = "Actions";
+            dataGridView1.Columns.Add(col1);
+            detailBtn += 1;
+
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+
         private void SetColumnWidth()
         {
-            tabelPenjualan.DataSource = dataSet.Tables[0];
-            if (detailBtn == 0)
-            {
+            
+           
                 DataGridViewButtonColumn col = new DataGridViewButtonColumn();
                 col.UseColumnTextForButtonValue = true;
                 col.Text = "View Details";
                 col.Name = "Actions";
                 tabelPenjualan.Columns.Add(col);
                 detailBtn += 1;
-
-                DataGridViewButtonColumn col1 = new DataGridViewButtonColumn();
-                col1.UseColumnTextForButtonValue = true;
-                col1.Text = "View Details";
-                col1.Name = "Actions";
-                dataGridView1.Columns.Add(col1);
-                detailBtn += 1;
-            }
+        
+                
+           
             tabelPenjualan.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPenjualan.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPenjualan.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -270,24 +396,18 @@ namespace Apps
             tabelPenjualan.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPenjualan.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             tabelPenjualan.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            if (search.Text.Length == 0)
+            if (string.IsNullOrWhiteSpace(search.Text))
             {
-                //refreshData();
-                MessageBox.Show("Harus mengisi field pencarian !!");
-                search.Focus();
+                RefreshSellData();
             }
             else
             {
-
+                SearchPurchase(search.Text);
             }
         }
 

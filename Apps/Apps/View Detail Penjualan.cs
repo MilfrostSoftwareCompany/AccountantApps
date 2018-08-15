@@ -24,6 +24,7 @@ namespace Apps
         private PrintDocument printDocument1 = new PrintDocument();
         PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
 
+        List<Models.Product> removedProduct = new List<Models.Product>();
         List<Models.Product> addedProduct = new List<Models.Product>();
         List<string> deletedProduct = new List<string>();
 
@@ -227,7 +228,7 @@ namespace Apps
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Add_Barang add_Barang = new Add_Barang(this);
+            Add_Barang add_Barang = new Add_Barang(this,addedProduct,removedProduct);
             add_Barang.ShowDialog();
         }
 
@@ -238,7 +239,7 @@ namespace Apps
             {
                 if (e.RowIndex >= 0)
                 {
-
+                    removedProduct.Add(transaction.produkList[e.RowIndex]);
                     deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
                     transaction.produkList.RemoveAt(e.RowIndex);
                     ds.Tables[0].Rows.RemoveAt(e.RowIndex);
@@ -365,6 +366,15 @@ namespace Apps
         {
             printPreviewDialog.Document = printDocument1;
             printPreviewDialog.ShowDialog();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            for (int i = 0; i < removedProduct.Count; i++)
+            {
+                transaction.produkList.Add(removedProduct[i]);
+            }
+            Console.WriteLine("Fuck");
         }
     }
 }

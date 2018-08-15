@@ -647,8 +647,8 @@ namespace Apps
         {
 
             sqlConnection.Open();
-            Console.WriteLine("Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From products WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
-            string queryString = "Select id_produk as ID, nama_produk as Nama Produk, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From products WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'";
+            Console.WriteLine("Select id_produk as ID, nama_produk as Nama, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From produk WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'");
+            string queryString = "Select id_produk as ID, nama_produk as Nama, jumlah as Stock, jenis_satuan as Satuan, harga as Harga From produk WHERE ID = '" + query + "' OR Nama LIKE '%" + query + "%'";
 
 
 
@@ -701,10 +701,23 @@ namespace Apps
             return ds;
         }
 
+        public DataSet GetPurchaseQuery(string query) {
+            sqlConnection.Open();
+            string sqlString = "select invoice_no as [Invoice No], suppliers.nama as Supplier, tgl_invoice as [Tgl Pembelian], tujuan from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier WHERE invoice_no LIKE '%"+query+"%'";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
         public DataSet GetPurchase(string id)
         {
             sqlConnection.Open();
-            string sqlString = "select invoice_no as [Invoice No], suppliers.nama as Supplier, tgl_invoice as [Tgl Pembelian], tujuan from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier WHERE invoice_no="+id;
+            string sqlString = "select invoice_no as [Invoice No], suppliers.nama as Supplier, tgl_invoice as [Tgl Pembelian], tujuan from pembelian INNER JOIN suppliers ON pembelian.tujuan = suppliers.id_supplier WHERE invoice_no='"+id+"'";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -792,6 +805,21 @@ namespace Apps
             sqlConnection.Open();
            
             string sqlString = "select invoice_no as [Invoice No], customers.nama as Customer, tgl_invoice as [Tgl Penjualan],  supplier from penjualan INNER JOIN customers ON penjualan.supplier = customers.id_customer";
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+
+            DataSet newDs = new DataSet();
+            sqlConnection.Close();
+            return ds;
+        }
+
+        public DataSet GetQuerySell(string query)
+        {
+            sqlConnection.Open();
+
+            string sqlString = "select invoice_no as [Invoice No], customers.nama as Customer, tgl_invoice as [Tgl Penjualan],  supplier from penjualan INNER JOIN customers ON penjualan.supplier = customers.id_customer WHERE invoice_no LIKE '%" + query + "%'";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
