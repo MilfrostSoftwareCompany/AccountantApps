@@ -247,11 +247,13 @@ namespace Apps
             {
                 if (e.RowIndex >= 0)
                 {
-
-                    deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
-                    transaction.produkList.RemoveAt(e.RowIndex);
-                    ds.Tables[0].Rows.RemoveAt(e.RowIndex);
-
+                    DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.Yes)
+                    {
+                        deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
+                        transaction.produkList.RemoveAt(e.RowIndex);
+                        ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
         }
@@ -374,6 +376,17 @@ namespace Apps
         {
             printPreviewDialog.Document = printDocument1;
             printPreviewDialog.ShowDialog();
+        }
+
+        private void buttonHapus_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                Database.getInstance().DeletePurchase(transaction.invoice_no);
+                penjualan.deleteData(rowIndex);
+                this.Close();
+            }
         }
     }
 }

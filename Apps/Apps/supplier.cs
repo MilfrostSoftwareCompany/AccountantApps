@@ -105,7 +105,8 @@ namespace Apps
 
         private void tabelSupplier_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0) {
+            if (e.ColumnIndex == 0)
+            {
                 if (e.RowIndex >= 0)
                 {
                     selectedRow = e.RowIndex;
@@ -113,14 +114,18 @@ namespace Apps
                     Add_Supplier add_Supplier = new Add_Supplier(this, supplier);
                     add_Supplier.ShowDialog();
                 }
-                
+
             }
             else if (e.ColumnIndex == 1)
             {
-                Database.getInstance().DeleteSupplier(read.Tables[0].Rows[e.RowIndex][0].ToString());
-                read.Tables[0].Rows.RemoveAt(e.RowIndex);
-                tabelSupplier.Update();
-                tabelSupplier.Refresh();
+                DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialog == DialogResult.Yes)
+                {
+                    Database.getInstance().DeleteSupplier(read.Tables[0].Rows[e.RowIndex][0].ToString());
+                    read.Tables[0].Rows.RemoveAt(e.RowIndex);
+                    tabelSupplier.Update();
+                    tabelSupplier.Refresh();
+                }
             }
         }
 

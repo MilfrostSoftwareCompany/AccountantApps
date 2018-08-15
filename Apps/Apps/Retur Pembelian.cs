@@ -234,10 +234,15 @@ namespace Apps
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0) {
-                removedProduct.Add(addedProduct[e.RowIndex]);
-                addedProduct.RemoveAt(e.RowIndex);
-                ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+            DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    removedProduct.Add(addedProduct[e.RowIndex]);
+                    addedProduct.RemoveAt(e.RowIndex);
+                    ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+                }
             }
         }
 

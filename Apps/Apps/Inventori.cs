@@ -13,6 +13,7 @@ namespace Apps
     public partial class Inventori : UserControl
     {
         DataSet ds;
+
         public Inventori()
         {
             this.Width = Home.widthPanel;
@@ -112,8 +113,13 @@ namespace Apps
                 Add_Produk add_Produk = new Add_Produk(this,product);
                 add_Produk.ShowDialog();
             }
-            if (e.ColumnIndex == 1 && e.RowIndex >= 0) {
-                DeleteProduct(e.RowIndex);
+            if (e.ColumnIndex == 1 && e.RowIndex >= 0)
+            {
+                DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialog == DialogResult.Yes)
+                {
+                    DeleteProduct(e.RowIndex);
+                }
             }
         }
     }
