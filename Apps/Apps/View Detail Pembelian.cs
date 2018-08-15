@@ -249,7 +249,7 @@ namespace Apps
                 {
                     buttonAddBarang.Visible = false;
                 }
-                Add_Barang FormAddBarang = new Add_Barang(this);
+                Add_Barang FormAddBarang = new Add_Barang(this,addedProduct,removedProduct);
                 FormAddBarang.ShowDialog();
                 countItem++;
             }
