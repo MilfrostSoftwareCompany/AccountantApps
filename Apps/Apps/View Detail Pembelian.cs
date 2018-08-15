@@ -206,11 +206,14 @@ namespace Apps
             if (e.ColumnIndex == 7) {
                 if (e.RowIndex >= 0) {
 
-                    removedProduct.Add(transaction.produkList[e.RowIndex]);
-                    deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
-                    transaction.produkList.RemoveAt(e.RowIndex);
-                    ds.Tables[0].Rows.RemoveAt(e.RowIndex);
-                    
+                    DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.Yes)
+                    {
+                        removedProduct.Add(transaction.produkList[e.RowIndex]);
+                        deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
+                        transaction.produkList.RemoveAt(e.RowIndex);
+                        ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
         }
@@ -236,17 +239,31 @@ namespace Apps
             }
         }
 
+        int countItem = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            Add_Barang add_Barang = new Add_Barang(this,addedProduct,removedProduct);
-            add_Barang.ShowDialog();
+
+            if (countItem < 7)
+            {
+                if (countItem == 6)
+                {
+                    buttonAddBarang.Visible = false;
+                }
+                Add_Barang FormAddBarang = new Add_Barang(this);
+                FormAddBarang.ShowDialog();
+                countItem++;
+            }
         }
 
         private void buttonHapus_Click(object sender, EventArgs e)
         {
-            Database.getInstance().DeletePurchase(transaction.invoice_no);
-            pembelian.deleteData(rowIndex);
-            this.Close();
+            DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                Database.getInstance().DeletePurchase(transaction.invoice_no);
+                pembelian.deleteData(rowIndex);
+                this.Close();
+            }
         }
 
         private void print_Click(object sender, EventArgs e)

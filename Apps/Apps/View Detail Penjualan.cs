@@ -226,10 +226,20 @@ namespace Apps
             retur_Pembelian.ShowDialog();
         }
 
+        int countItem = 0;
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Add_Barang add_Barang = new Add_Barang(this,addedProduct,removedProduct);
-            add_Barang.ShowDialog();
+
+            if (countItem < 7)
+            {
+                if (countItem == 6)
+                {
+                    buttonAddBarang.Visible = false;
+                }
+                Add_Barang FormAddBarang = new Add_Barang(this,addedProduct,removedProduct);
+                FormAddBarang.ShowDialog();
+                countItem++;
+            }
         }
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -239,11 +249,15 @@ namespace Apps
             {
                 if (e.RowIndex >= 0)
                 {
-                    removedProduct.Add(transaction.produkList[e.RowIndex]);
-                    deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
-                    transaction.produkList.RemoveAt(e.RowIndex);
-                    ds.Tables[0].Rows.RemoveAt(e.RowIndex);
 
+                    DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialog == DialogResult.Yes)
+                    {
+                        removedProduct.Add(transaction.produkList[e.RowIndex]);
+                        deletedProduct.Add(Convert.ToString(transaction.produkList[e.RowIndex].idProduk));
+                        transaction.produkList.RemoveAt(e.RowIndex);
+                        ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
         }
@@ -368,6 +382,7 @@ namespace Apps
             printPreviewDialog.ShowDialog();
         }
 
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             for (int i = 0; i < removedProduct.Count; i++)
@@ -375,6 +390,16 @@ namespace Apps
                 transaction.produkList.Add(removedProduct[i]);
             }
             Console.WriteLine("Fuck");
+        }
+        private void buttonHapus_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                Database.getInstance().DeletePurchase(transaction.invoice_no);
+                penjualan.deleteData(rowIndex);
+                this.Close();
+            }
         }
     }
 }

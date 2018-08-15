@@ -399,6 +399,14 @@ namespace Apps
             
         }
 
+        public void deleteData(int row)
+        {
+            transList.RemoveAt(row);
+            dataSet.Tables[0].Rows.RemoveAt(row);
+            tabelPenjualan.Update();
+            tabelPenjualan.Refresh();
+        }
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(search.Text))

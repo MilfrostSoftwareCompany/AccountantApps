@@ -247,25 +247,39 @@ namespace Apps
             }
         }
 
+        int countItem = 0;
         private void tambahProdukBtn_Click(object sender, EventArgs e)
         {
-            if (removedProduct.Count == 0)
+            if (countItem < 7)
             {
-                MessageBox.Show("Tidak ada barang yang bisa ditambahkan.");
-            }
-            else
-            {
-                Add_Barang add_Barang = new Add_Barang(this, removedProduct);
-                add_Barang.ShowDialog();
+                if (countItem == 6)
+                {
+                    tambahProdukBtn.Visible = false;
+                }
+                if (removedProduct.Count == 0)
+                {
+                    MessageBox.Show("Tidak ada barang yang bisa ditambahkan.");
+                }
+                else
+                {
+                    Add_Barang add_Barang = new Add_Barang(this, removedProduct);
+                    add_Barang.ShowDialog();
+                    countItem++;
+                }
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0) {
-                removedProduct.Add(addedProduct[e.RowIndex]);
-                addedProduct.RemoveAt(e.RowIndex);
-                ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+            DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialog == DialogResult.Yes)
+            {
+                if (e.ColumnIndex == 0)
+                {
+                    removedProduct.Add(addedProduct[e.RowIndex]);
+                    addedProduct.RemoveAt(e.RowIndex);
+                    ds.Tables[0].Rows.RemoveAt(e.RowIndex);
+                }
             }
         }
 

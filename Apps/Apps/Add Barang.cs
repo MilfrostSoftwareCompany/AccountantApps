@@ -19,6 +19,7 @@ namespace Apps
         bool isEditDetail = false;
         List<Models.Product> addedList = new List<Models.Product>();
         List<Models.Product> removedList = new List<Models.Product>();
+        int stok;
 
         public Add_Barang(Form caller,List<Models.Product> productList)
         {
@@ -61,33 +62,7 @@ namespace Apps
             if (isEditDetail) {
                 if (caller is View_Detail_Pembelian)
                 {
-
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                    {
-                        for (int j = 0; j < addedList.Count; i++)
-                        {
-                            if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
-                            {
-                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) - addedList[j].jumlah;
-                                break;
-                            }
-                        }
-
-                    }
-                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-                    {
-                        for (int j = 0; j < removedList.Count; i++)
-                        {
-                            if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
-                            {
-                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) + removedList[j].jumlah;
-                                break;
-                            }
-                        }
-
-                    }
-                }
-                else if (caller is View_Detail_Penjualan) {
+                    Console.WriteLine("View Detail Beli");
 
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
@@ -108,6 +83,33 @@ namespace Apps
                             if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
                             {
                                 ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) - removedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                }
+                else if (caller is View_Detail_Penjualan) {
+                    Console.WriteLine("View Detail Beli");
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < addedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) - addedList[j].jumlah;
+                                break;
+                            }
+                        }
+
+                    }
+                    for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+                    {
+                        for (int j = 0; j < removedList.Count; i++)
+                        {
+                            if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
+                            {
+                                ds.Tables[0].Rows[i][2] = Convert.ToInt32(ds.Tables[0].Rows[i][2]) + removedList[j].jumlah;
                                 break;
                             }
                         }
@@ -162,12 +164,13 @@ namespace Apps
                     label2.Text = ds.Tables[0].Rows[i][1].ToString();
                     label3.Text = "Rp. " +ds.Tables[0].Rows[i][4].ToString();
                     label4.Text = "Stock = " + ds.Tables[0].Rows[i][2].ToString();
+                    stok = Convert.ToInt32(ds.Tables[0].Rows[i][2]);
 
-                    if (jlhBarang.Value > Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString())) {
-                        jlhBarang.Value = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
+                    //if (jlhBarang.Value > Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString())) {
+                        //jlhBarang.Value = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
                         
-                    }
-                    jlhBarang.Maximum = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
+                    //}
+                    //jlhBarang.Maximum = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
 
                     break;
                 }
@@ -180,7 +183,7 @@ namespace Apps
 
             ComboBox comboBox = (ComboBox)sender;
 
-            int id = Convert.ToInt32 (comboBox1.SelectedValue);
+            int id = Convert.ToInt32(comboBox.SelectedValue);
             setView(id);
         }
 
@@ -213,6 +216,19 @@ namespace Apps
                 retur.AddProduct(selectedProduct);
             }
             this.Close();
+
+        }
+
+        private void jlhBarang_ValueChanged(object sender, EventArgs e)
+        {
+            if (caller is Add_Penjualan || caller is View_Detail_Pembelian || caller is View_Detail_Penjualan || caller is Retur_Pembelian)
+            {
+                jlhBarang.Maximum = stok;
+            }
+            else
+            {
+                jlhBarang.Maximum = 1000000;
+            }
         }
     }
 }

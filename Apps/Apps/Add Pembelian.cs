@@ -95,6 +95,13 @@ namespace Apps
             return sub;
         }
 
+        private void refreshCalculation()
+        {
+            subtotal.Text = "Rp. " + calculateSubtotal();
+            disc.Text = "Rp. " + calculateDisc();
+            total.Text = "Rp. " + calculateTotal();
+        }
+
         private void initDataSource()
         {
             ds.Tables.Add(new DataTable());
@@ -152,10 +159,20 @@ namespace Apps
             }
         }
 
+        int countItem = 0;
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
-            Add_Barang FormAddBarang = new Add_Barang(this);
-            FormAddBarang.ShowDialog();
+            if (countItem < 7)
+            {
+                if (countItem == 6)
+                {
+                    buttonAddBarang.Visible = false;
+                }
+                Add_Barang FormAddBarang = new Add_Barang(this);
+                FormAddBarang.ShowDialog();
+                countItem++;
+                refreshCalculation();
+            }
         }
 
         public void AddProdukToTable(Models.Product product) {
