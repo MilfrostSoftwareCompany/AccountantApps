@@ -123,7 +123,7 @@
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(49, 47);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(266, 21);
             this.comboBox1.TabIndex = 144;
@@ -132,7 +132,7 @@
             // 
             this.jlhBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jlhBarang.Location = new System.Drawing.Point(76, 235);
-            this.jlhBarang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.jlhBarang.Margin = new System.Windows.Forms.Padding(2);
             this.jlhBarang.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -141,6 +141,7 @@
             this.jlhBarang.Name = "jlhBarang";
             this.jlhBarang.Size = new System.Drawing.Size(51, 26);
             this.jlhBarang.TabIndex = 145;
+            this.jlhBarang.ValueChanged += new System.EventHandler(this.jlhBarang_ValueChanged);
             // 
             // label5
             // 

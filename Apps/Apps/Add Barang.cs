@@ -16,6 +16,7 @@ namespace Apps
         Models.Product selectedProduct;
         Form caller;
         DataSet ds;
+        int stok;
 
         public Add_Barang(Form caller,List<Models.Product> productList)
         {
@@ -88,12 +89,13 @@ namespace Apps
                     label2.Text = ds.Tables[0].Rows[i][1].ToString();
                     label3.Text = "Rp. " +ds.Tables[0].Rows[i][4].ToString();
                     label4.Text = "Stock = " + ds.Tables[0].Rows[i][2].ToString();
+                    stok = Convert.ToInt32(ds.Tables[0].Rows[i][2]);
 
-                    if (jlhBarang.Value > Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString())) {
-                        jlhBarang.Value = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
+                    //if (jlhBarang.Value > Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString())) {
+                        //jlhBarang.Value = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
                         
-                    }
-                    jlhBarang.Maximum = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
+                    //}
+                    //jlhBarang.Maximum = Convert.ToInt32(ds.Tables[0].Rows[i][2].ToString());
 
                     break;
                 }
@@ -106,7 +108,7 @@ namespace Apps
 
             ComboBox comboBox = (ComboBox)sender;
 
-            int id = Convert.ToInt32 (comboBox1.SelectedValue);
+            int id = Convert.ToInt32(((DataRowView)comboBox1.SelectedValue)["ID"]);
             setView(id);
         }
 
@@ -137,6 +139,19 @@ namespace Apps
             else if (caller is Retur_Pembelian) {
                 Retur_Pembelian retur = (Retur_Pembelian)caller;
                 retur.AddProduct(selectedProduct);
+            }
+            this.Close();
+        }
+
+        private void jlhBarang_ValueChanged(object sender, EventArgs e)
+        {
+            if (caller is Add_Penjualan || caller is View_Detail_Pembelian || caller is View_Detail_Penjualan || caller is Retur_Pembelian)
+            {
+                jlhBarang.Maximum = stok;
+            }
+            else
+            {
+                jlhBarang.Maximum = 1000000;
             }
         }
     }
