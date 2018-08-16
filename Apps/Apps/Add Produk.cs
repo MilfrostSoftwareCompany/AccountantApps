@@ -22,6 +22,8 @@ namespace Apps
             this.inventori = inventori;
             InitializeComponent();
             InitializeDesign();
+
+            namaBarang.Focus();
         }
 
         public Add_Produk(Inventori inventori,Models.Product product)
@@ -32,6 +34,8 @@ namespace Apps
             InitializeComponent();
             InitializeDesign();
             setViews();
+
+            namaBarang.Focus();
         }
 
         private void setViews()
@@ -69,6 +73,7 @@ namespace Apps
                 }
                 else
                 {
+                    MessageBox.Show("Data Produk telah di tambahkan");
                     Database.getInstance().CreateNewProduct(product_);
                     inventori.RefreshData();
                 }

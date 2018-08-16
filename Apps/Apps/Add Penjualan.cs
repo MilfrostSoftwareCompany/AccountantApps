@@ -143,6 +143,7 @@ namespace Apps
 
                 }
                 penjualan.addData(transaction);
+                MessageBox.Show("Data Penjualan telah di tambahkan");
                 this.Close();
             }
             else if (string.IsNullOrWhiteSpace(noFaktur.Text))
@@ -152,35 +153,6 @@ namespace Apps
             else if (produkList.Count == 0)
             {
                 MessageBox.Show("Masukkan Produk");
-            }
-        }
-
-        private void namaCustomer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //alamatCustomer.Focus();
-            }
-        }
-
-        private void alamatCustomer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //wilayah.Focus();
-            }
-        }
-
-        private void wilayah_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void jatuhTempo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAddBarang.PerformClick();
             }
         }
 
@@ -198,6 +170,7 @@ namespace Apps
                 countItem++;
                 refreshCalculation();
             }
+            MessageBox.Show("Data Barang telah di tambahkan");
         }
 
         public void AddProdukToTable(Models.Product product)
@@ -229,6 +202,30 @@ namespace Apps
                 MessageBox.Show("Produk telah dihapus");
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
                 produkList.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void noFaktur_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBox1.Focus();
+            }
+        }
+
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tglInvoice.Focus();
+            }
+        }
+
+        private void tglInvoice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBarang.Focus();
             }
         }
     }

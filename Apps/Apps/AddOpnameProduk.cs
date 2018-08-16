@@ -19,6 +19,8 @@ namespace Apps
             this.opname = opname;
             InitializeComponent();
             RetrieveData();
+
+            produkList.Focus();
         }
 
         private void RetrieveData()
@@ -30,18 +32,37 @@ namespace Apps
             produkList.ValueMember = "ID";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonTambahProduk_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++) {
-                if (ds.Tables[0].Rows[i][0].ToString() == produkList.SelectedValue.ToString()) {
-                    
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                if (ds.Tables[0].Rows[i][0].ToString() == produkList.SelectedValue.ToString())
+                {
+
                     DataRow dataRow = ds.Tables[0].Rows[i];
                     Models.Product product = new Models.Product(Convert.ToInt32(dataRow[0].ToString()), dataRow[1].ToString(), Convert.ToInt32(dataRow["Stock"].ToString()), dataRow[3].ToString(), Convert.ToInt32(dataRow[4].ToString()));
                     opname.AddProduct(product, Convert.ToInt32(jlhBarang.Value));
 
                 }
             }
-            
+            MessageBox.Show("Data produk telah di tambahkan");
+            this.Close();
+        }
+
+        private void produkList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                jlhBarang.Focus();
+            }
+        }
+
+        private void jlhBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonTambahProduk.PerformClick();
+            }
         }
     }
 }

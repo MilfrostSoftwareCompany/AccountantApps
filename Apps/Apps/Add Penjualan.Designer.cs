@@ -92,9 +92,9 @@
             this.total.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.total.Location = new System.Drawing.Point(963, 551);
             this.total.Name = "total";
-            this.total.Size = new System.Drawing.Size(56, 19);
+            this.total.Size = new System.Drawing.Size(53, 19);
             this.total.TabIndex = 62;
-            this.total.Text = "[sistem]";
+            this.total.Text = "Rp. 0,-";
             // 
             // disc
             // 
@@ -102,9 +102,9 @@
             this.disc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.disc.Location = new System.Drawing.Point(963, 520);
             this.disc.Name = "disc";
-            this.disc.Size = new System.Drawing.Size(56, 19);
+            this.disc.Size = new System.Drawing.Size(53, 19);
             this.disc.TabIndex = 61;
-            this.disc.Text = "[sistem]";
+            this.disc.Text = "Rp. 0,-";
             // 
             // subtotal
             // 
@@ -112,9 +112,9 @@
             this.subtotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subtotal.Location = new System.Drawing.Point(963, 491);
             this.subtotal.Name = "subtotal";
-            this.subtotal.Size = new System.Drawing.Size(56, 19);
+            this.subtotal.Size = new System.Drawing.Size(53, 19);
             this.subtotal.TabIndex = 60;
-            this.subtotal.Text = "[sistem]";
+            this.subtotal.Text = "Rp. 0,-";
             // 
             // label18
             // 
@@ -258,6 +258,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(172, 25);
             this.comboBox1.TabIndex = 65;
+            this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
             // 
             // noFaktur
             // 
@@ -266,6 +267,7 @@
             this.noFaktur.Name = "noFaktur";
             this.noFaktur.Size = new System.Drawing.Size(172, 26);
             this.noFaktur.TabIndex = 66;
+            this.noFaktur.KeyDown += new System.Windows.Forms.KeyEventHandler(this.noFaktur_KeyDown);
             // 
             // richTextBox1
             // 
@@ -284,6 +286,7 @@
             this.tglInvoice.Name = "tglInvoice";
             this.tglInvoice.Size = new System.Drawing.Size(172, 20);
             this.tglInvoice.TabIndex = 69;
+            this.tglInvoice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tglInvoice_KeyDown);
             // 
             // panel1
             // 

@@ -42,6 +42,8 @@ namespace Apps
                 returTransaksi.setProdukList(Database.getInstance().GetTotalRelatedSellReturnProduct(returTransaksi.idRetur).Tables[0]);
             }
             SetTransData();
+
+            textBox1.Focus();
         }
 
         private void SetTransData() {
@@ -323,6 +325,14 @@ namespace Apps
             else {
                 AllowEdit(true);
                 isEditing = false;
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tanggal.Focus();
             }
         }
     }
