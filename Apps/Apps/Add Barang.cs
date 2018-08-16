@@ -12,11 +12,12 @@ namespace Apps
 {
     public partial class Add_Barang : Form
     {
-
+        
         Models.Product selectedProduct;
         Form caller;
         DataSet ds;
         bool isEditDetail = false;
+        bool start = true;
         List<Models.Product> addedList = new List<Models.Product>();
         List<Models.Product> removedList = new List<Models.Product>();
         int stok;
@@ -182,8 +183,16 @@ namespace Apps
         {
 
             ComboBox comboBox = (ComboBox)sender;
-
-            int id = Convert.ToInt32(comboBox.SelectedValue);
+            int id;
+            if (start)
+            {
+                id = Convert.ToInt32(((DataRowView)comboBox1.SelectedValue)["ID"]);
+                    start = false;
+            }
+            else
+            {
+                id = Convert.ToInt32(comboBox.SelectedValue);
+            }
             setView(id);
         }
 

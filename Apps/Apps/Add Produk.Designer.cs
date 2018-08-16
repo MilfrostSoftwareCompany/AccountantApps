@@ -59,7 +59,7 @@
             this.namaBarang.Name = "namaBarang";
             this.namaBarang.Size = new System.Drawing.Size(235, 26);
             this.namaBarang.TabIndex = 3;
-            this.namaBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StokBarang_KeyDown);
+            this.namaBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.namaBarang_KeyDown);
             // 
             // buttonSave
             // 
@@ -83,6 +83,7 @@
             this.jenisSatuan.Name = "jenisSatuan";
             this.jenisSatuan.Size = new System.Drawing.Size(235, 26);
             this.jenisSatuan.TabIndex = 10;
+            this.jenisSatuan.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jenisSatuan_KeyDown);
             // 
             // label1
             // 
@@ -103,7 +104,6 @@
             this.label2.Size = new System.Drawing.Size(53, 20);
             this.label2.TabIndex = 11;
             this.label2.Text = "Harga";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -125,10 +125,21 @@
             0,
             0,
             0});
+            this.jumlah.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.jumlah.Name = "jumlah";
             this.jumlah.Size = new System.Drawing.Size(234, 26);
             this.jumlah.TabIndex = 15;
             this.jumlah.ThousandsSeparator = true;
+            this.jumlah.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.jumlah.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jumlah_KeyDown);
             // 
             // label4
             // 
@@ -159,6 +170,7 @@
             this.harga.Size = new System.Drawing.Size(202, 26);
             this.harga.TabIndex = 17;
             this.harga.ThousandsSeparator = true;
+            this.harga.KeyDown += new System.Windows.Forms.KeyEventHandler(this.harga_KeyDown);
             // 
             // Add_Produk
             // 

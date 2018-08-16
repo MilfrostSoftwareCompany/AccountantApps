@@ -138,9 +138,19 @@
             0,
             0,
             0});
+            this.jlhBarang.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.jlhBarang.Name = "jlhBarang";
             this.jlhBarang.Size = new System.Drawing.Size(51, 26);
             this.jlhBarang.TabIndex = 145;
+            this.jlhBarang.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.jlhBarang.ValueChanged += new System.EventHandler(this.jlhBarang_ValueChanged);
             // 
             // label5
