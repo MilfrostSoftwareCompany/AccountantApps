@@ -1107,16 +1107,16 @@ namespace Apps
             int res = 0;
             sqlConnection.Open();
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
-            command.CommandText = "update retur_pembelian set  tgl_invoice = @tanggal where invoice_no=@invoice";
+            command.CommandText = "update retur_pembelian set  tgl_retur = @tanggal where id_retur=@invoice";
             command.Parameters.Add("@tanggal", DbType.String).Value = retur.tglRetur;
-            command.Parameters.Add("@invoice", DbType.String).Value = retur.idTransaksi;
+            command.Parameters.Add("@invoice", DbType.String).Value = retur.idRetur;
             res += command.ExecuteNonQuery();
 
             for (int i = 0; i < retur.productList.Count; i++)
             {
                 int inRes;
                 SQLiteCommand command2 = new SQLiteCommand(sqlConnection);
-                command2.CommandText = "update detail_retur_pembelian set  harga_produk = @harga, kuantitas = @jumlah, diskon = @diskon where id_retur=@id_retur AND id_produk=@productId";
+                command2.CommandText = "update detail_retur_pembelian set  harga = @harga, jumlah = @jumlah, diskon = @diskon where id_retur=@id_retur AND id_produk=@productId";
                 command2.Parameters.Add("@harga", DbType.String).Value = retur.productList[i].harga;
                 command2.Parameters.Add("@jumlah", DbType.String).Value = retur.productList[i].jumlah;
                 command2.Parameters.Add("@diskon", DbType.Int32).Value = retur.productList[i].diskon;
@@ -1137,7 +1137,7 @@ namespace Apps
             for (int i = 0; i < addedProduct.Count; i++)
             {
                 SQLiteCommand insCommand = new SQLiteCommand(sqlConnection);
-                insCommand.CommandText = "INSERT INTO detail_retur_pembelian (id_retur,id_produk,harga_produk,kuantitas,diskon)values(@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)";
+                insCommand.CommandText = "INSERT INTO detail_retur_pembelian (id_retur,id_produk,harga,jumlah,diskon)values(@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)";
                 insCommand.Parameters.Add("@invoice_no", DbType.String).Value = retur.idRetur;
                 insCommand.Parameters.Add("@id_produk", DbType.Int32).Value = addedProduct[i].idProduk;
                 insCommand.Parameters.Add("@harga_produk", DbType.Int32).Value = addedProduct[i].harga;
@@ -1155,16 +1155,16 @@ namespace Apps
             int res = 0;
             sqlConnection.Open();
             SQLiteCommand command = new SQLiteCommand(sqlConnection);
-            command.CommandText = "update retur_penjualan set  tgl_invoice = @tanggal where invoice_no=@invoice";
+            command.CommandText = "update retur_penjualan set  tgl_retur = @tanggal where id_retur=@invoice";
             command.Parameters.Add("@tanggal", DbType.String).Value = retur.tglRetur;
-            command.Parameters.Add("@invoice", DbType.String).Value = retur.idTransaksi;
+            command.Parameters.Add("@invoice", DbType.String).Value = retur.idRetur;
             res += command.ExecuteNonQuery();
 
             for (int i = 0; i < retur.productList.Count; i++)
             {
                 int inRes;
                 SQLiteCommand command2 = new SQLiteCommand(sqlConnection);
-                command2.CommandText = "update detail_retur_penjualan set  harga_produk = @harga, kuantitas = @jumlah, diskon = @diskon where id_retur=@id_retur AND id_produk=@productId";
+                command2.CommandText = "update detail_retur_penjualan set  harga = @harga, jumlah = @jumlah, diskon = @diskon where id_retur=@id_retur AND id_produk=@productId";
                 command2.Parameters.Add("@harga", DbType.String).Value = retur.productList[i].harga;
                 command2.Parameters.Add("@jumlah", DbType.String).Value = retur.productList[i].jumlah;
                 command2.Parameters.Add("@diskon", DbType.Int32).Value = retur.productList[i].diskon;
@@ -1185,7 +1185,7 @@ namespace Apps
             for (int i = 0; i < addedProduct.Count; i++)
             {
                 SQLiteCommand insCommand = new SQLiteCommand(sqlConnection);
-                insCommand.CommandText = "INSERT INTO detail_retur_penjualan (id_retur,id_produk,harga_produk,kuantitas,diskon)values(@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)";
+                insCommand.CommandText = "INSERT INTO detail_retur_penjualan (id_retur,id_produk,harga,jumlah,diskon)values(@invoice_no,@id_produk,@harga_produk,@kuantitas,@diskon)";
                 insCommand.Parameters.Add("@invoice_no", DbType.String).Value = retur.idRetur;
                 insCommand.Parameters.Add("@id_produk", DbType.Int32).Value = addedProduct[i].idProduk;
                 insCommand.Parameters.Add("@harga_produk", DbType.Int32).Value = addedProduct[i].harga;
