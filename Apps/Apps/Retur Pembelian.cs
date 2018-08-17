@@ -29,6 +29,8 @@ namespace Apps
             this.returTransaksi = transaksi;
             InitializeComponent();
             label3.Text = title;
+            textBox1.Text = transaksi.idRetur;
+            textBox1.ReadOnly = true;
             if (title == "RETUR PEMBELIAN")
             {
                 isPembelian = true;
@@ -148,10 +150,21 @@ namespace Apps
         {
             if (b)
             {
+                dataGridView1.ReadOnly = false;
+                dataGridView1.Columns[1].ReadOnly = true;
+                dataGridView1.Columns[2].ReadOnly = false;
+                dataGridView1.Columns[3].ReadOnly = true;
+                dataGridView1.Columns[4].ReadOnly = false;
+                dataGridView1.Columns[5].ReadOnly = false;
+                dataGridView1.Columns[6].ReadOnly = true;
                 AddDeleteBtn();
             }
             else {
                 RemoveDeleteBtn();
+                dataGridView1.ReadOnly = true;
+                dataGridView1.Columns[2].ReadOnly = false;
+                dataGridView1.Columns[4].ReadOnly = false;
+                dataGridView1.Columns[5].ReadOnly = false;
             }
         }
 

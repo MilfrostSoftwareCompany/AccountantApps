@@ -62,7 +62,7 @@
             this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonNext.ForeColor = System.Drawing.Color.White;
             this.buttonNext.Location = new System.Drawing.Point(1283, 730);
-            this.buttonNext.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNext.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(187, 38);
             this.buttonNext.TabIndex = 64;
@@ -78,7 +78,7 @@
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
             this.buttonAddBarang.Location = new System.Drawing.Point(48, 240);
-            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddBarang.Name = "buttonAddBarang";
             this.buttonAddBarang.Size = new System.Drawing.Size(187, 38);
             this.buttonAddBarang.TabIndex = 63;
@@ -203,7 +203,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(49, 302);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1421, 282);
             this.dataGridView1.TabIndex = 51;
@@ -256,7 +256,6 @@
             // namaToko
             // 
             this.namaToko.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-
             this.namaToko.Location = new System.Drawing.Point(32, 22);
             this.namaToko.Name = "namaToko";
             this.namaToko.Size = new System.Drawing.Size(318, 32);
@@ -280,7 +279,7 @@
             // 
             this.noFaktur.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noFaktur.Location = new System.Drawing.Point(1241, 118);
-            this.noFaktur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.noFaktur.Margin = new System.Windows.Forms.Padding(4);
             this.noFaktur.Name = "noFaktur";
             this.noFaktur.Size = new System.Drawing.Size(228, 30);
             this.noFaktur.TabIndex = 66;
@@ -305,7 +304,6 @@
             this.tglInvoice.TabIndex = 69;
             this.tglInvoice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tglInvoice_KeyDown);
             // 
-
             // wilayahToko
             // 
             this.wilayahToko.Location = new System.Drawing.Point(32, 64);
@@ -319,7 +317,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
             this.ClientSize = new System.Drawing.Size(1135, 647);
             this.Controls.Add(this.wilayahToko);
             this.Controls.Add(this.tglInvoice);
@@ -345,7 +342,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.namaToko);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Add_Penjualan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

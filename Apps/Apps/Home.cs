@@ -152,6 +152,7 @@ namespace Apps
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
             pembelian3.BringToFront();
+            pembelian3.RefreshPurchaseData();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -167,6 +168,7 @@ namespace Apps
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
             penjualan2.BringToFront();
+            penjualan2.RefreshSellData();
         }
 
         private void button6_Click(object sender, EventArgs e)

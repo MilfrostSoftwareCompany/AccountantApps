@@ -14,7 +14,7 @@ namespace Apps
     {
         Pembelian pembelian;
         DataSet ds;
-
+        DataSet custDs;
         Apps.Models.Supplier idCustomer;
         List<Apps.Models.Product> produkList = new List<Models.Product>();
         public Add_Pembelian(Pembelian pembelian)
@@ -30,7 +30,7 @@ namespace Apps
         }
 
         private void retrieveData() {
-            DataSet custDs = Database.getInstance().getAllSupplierData();
+            custDs = Database.getInstance().getAllSupplierData();
             comboBox1.DataSource= custDs.Tables[0];
             comboBox1.DisplayMember = "nama";
             comboBox1.ValueMember = "id";
@@ -188,7 +188,7 @@ namespace Apps
             if (!string.IsNullOrWhiteSpace(invoiceNo.Text) && !string.IsNullOrWhiteSpace(dateTimePicker1.Text) && produkList.Count != 0)
             {
                 string dbDate = DateTime.Parse(dateTimePicker1.Text).ToString("yyyy-MM-dd");
-                idCustomer = new Models.Supplier(ds.Tables[0].Rows[comboBox1.SelectedIndex]);
+                idCustomer = new Models.Supplier(custDs.Tables[0].Rows[comboBox1.SelectedIndex]);
                 Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text, idCustomer, dbDate, produkList);
                 if (Database.getInstance().IsPurchaseExist(transaction.invoice_no) == 0)
                 {

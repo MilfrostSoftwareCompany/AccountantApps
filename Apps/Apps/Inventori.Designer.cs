@@ -106,6 +106,7 @@
             this.tabelInventori.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabelInventori.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.tabelInventori.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tabelInventori.Location = new System.Drawing.Point(4, 173);
             this.tabelInventori.Margin = new System.Windows.Forms.Padding(4);
