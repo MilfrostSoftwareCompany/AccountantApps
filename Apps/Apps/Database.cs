@@ -370,6 +370,18 @@ namespace Apps
             return new Models.Supplier(ds.Tables[0].Rows[0]);
         }
 
+        public Models.Customer GetCustomerFromId(string id)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_customer as ID, nama as Nama, alamat as Alamat, telepon as Telepon From customers WHERE id_customer = " + id, sqlConnection);
+
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return new Models.Customer(ds.Tables[0].Rows[0]);
+        }
+
         public int UpdateSupplier(Models.Supplier supplier)
         {
             int result;

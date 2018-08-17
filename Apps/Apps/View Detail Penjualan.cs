@@ -15,7 +15,7 @@ namespace Apps
     {
         int rowIndex;
         Models.Transaction transaction;
-        Models.Supplier supplier;
+        Models.Customer cust;
         DataSet ds;
 
         Penjualan penjualan;
@@ -34,6 +34,7 @@ namespace Apps
             this.rowIndex = row;
             this.penjualan = penjualan;
             this.transaction = transaction;
+            this.transaction.type = 1;
             InitializeComponent();
             getData();
             setViews();
@@ -42,7 +43,7 @@ namespace Apps
         private void getData()
         {
             transaction.tgl_invoice = DateTime.Parse(transaction.tgl_invoice).ToString("yyyy-MM-dd");
-            supplier = Database.getInstance().GetSupplierFromId(transaction.tujuan.id);
+            cust = Database.getInstance().GetCustomerFromId(Convert.ToString(transaction.tujuan.id));
             ds = new DataSet();
             ds.Tables.Add(new DataTable());
             ds.Tables[0].Columns.Add("ID");
@@ -175,9 +176,9 @@ namespace Apps
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dateTimePicker1.Hide();
             dateTimePicker1.Value = Convert.ToDateTime(transaction.tgl_invoice);
-            namaSupplier.Text = supplier.nama;
-            alamat.Text = supplier.alamat;
-            telepon.Text = supplier.telepon;
+            namaSupplier.Text = cust.nama;
+            alamat.Text = cust.alamat;
+            telepon.Text = cust.telepon;
             noFaktur.Text = transaction.invoice_no;
             tanggal.Text = transaction.tgl_invoice;
             updateCalculation();
@@ -287,8 +288,8 @@ namespace Apps
 
             graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
             string top = "Nama Customer".PadRight(5) + ": " + transaction.tujuan.nama + "No. Faktur".PadRight(5).PadLeft(50) + ": " + transaction.invoice_no;
-            string second = "Alamat".PadRight(5) + ": " + supplier.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(50) + ": " + transaction.tgl_invoice;
-            string third = "      ".PadRight(5) + "  " + supplier.alamat.Split('\n')[1];
+            string second = "Alamat".PadRight(5) + ": " + cust.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(50) + ": " + transaction.tgl_invoice;
+            string third = "      ".PadRight(5) + "  " + cust.alamat.Split('\n')[1];
 
             graphic.DrawString(compName, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;

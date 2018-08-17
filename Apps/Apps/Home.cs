@@ -153,6 +153,7 @@ namespace Apps
 
             pembelian3.BringToFront();
             pembelian3.RefreshPurchaseData();
+            pembelian3.RefreshReturData();
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -169,6 +170,7 @@ namespace Apps
 
             penjualan2.BringToFront();
             penjualan2.RefreshSellData();
+            penjualan2.RefreshReturData();
         }
 
         private void button6_Click(object sender, EventArgs e)

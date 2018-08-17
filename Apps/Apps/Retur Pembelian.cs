@@ -31,6 +31,8 @@ namespace Apps
             label3.Text = title;
             textBox1.Text = transaksi.idRetur;
             textBox1.ReadOnly = true;
+            lblTgl.Text = transaksi.tglRetur;
+            tanggal.Hide();
             if (title == "RETUR PEMBELIAN")
             {
                 isPembelian = true;
@@ -150,6 +152,8 @@ namespace Apps
         {
             if (b)
             {
+                tanggal.Show();
+                lblTgl.Hide();
                 dataGridView1.ReadOnly = false;
                 dataGridView1.Columns[1].ReadOnly = true;
                 dataGridView1.Columns[2].ReadOnly = false;
@@ -160,6 +164,9 @@ namespace Apps
                 AddDeleteBtn();
             }
             else {
+                tanggal.Hide();
+                lblTgl.Text = tanggal.Text;
+
                 RemoveDeleteBtn();
                 dataGridView1.ReadOnly = true;
                 dataGridView1.Columns[2].ReadOnly = false;
@@ -339,6 +346,7 @@ namespace Apps
                 AllowEdit(false);
                 isEditing = false;
                 edit_btn.Text = "EDIT";
+                returTransaksi.tglRetur = DateTime.Parse(tanggal.Text).ToString("yyyy-MM-dd");
                 //code update to database
                 if (isPembelian)
                 {

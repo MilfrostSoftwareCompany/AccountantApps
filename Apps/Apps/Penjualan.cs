@@ -223,9 +223,43 @@ namespace Apps
 
         }
 
+        public void RefreshReturData()
+        {
+            RemoveReturColumn();
+            LoadReturData();
+            SetReturData();
+        }
+
+        private void RemoveReturColumn()
+        {
+            dataGridView1.Columns.Clear();
+
+        }
+
+
         private void LoadReturData()
         {
-            dataSet2 = Database.getInstance().GetAllSellReturn();
+            DataSet ds_ = Database.getInstance().GetAllSellReturn();
+            dataSet2 = new DataSet();
+            dataSet2.Tables.Add(new DataTable());
+            dataSet2.Tables[0].Columns.Add("No Retur");
+            dataSet2.Tables[0].Columns.Add("No Invoice");
+            dataSet2.Tables[0].Columns.Add("Tanggal");
+            dataSet2.Tables[0].Columns.Add("Supplier");
+            dataSet2.Tables[0].Columns.Add("Deskripsi");
+            dataSet2.Tables[0].Columns.Add("Subtotal");
+            for (int i = 0; i < ds_.Tables[0].Rows.Count; i++)
+            {
+                if (ds_.Tables[0].Rows[i][0].ToString().Length != 0)
+                {
+                    DataRow dr_ = dataSet2.Tables[0].NewRow();
+                    for (int j = 0; j < ds_.Tables[0].Columns.Count; j++)
+                    {
+                        dr_[j] = ds_.Tables[0].Rows[i][j];
+                    }
+                    dataSet2.Tables[0].Rows.Add(dr_);
+                }
+            }
             dataGridView1.DataSource = dataSet2.Tables[0];
 
         }
@@ -437,8 +471,10 @@ namespace Apps
 
         private void tabelPenjualan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            Console.WriteLine(e.ColumnIndex);
+            if (e.ColumnIndex == 9)
             {
+                
                 if (e.RowIndex < 0)
                 {
                 }
@@ -455,7 +491,7 @@ namespace Apps
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 5)
             {
                 if (e.RowIndex >= 0)
                 {
