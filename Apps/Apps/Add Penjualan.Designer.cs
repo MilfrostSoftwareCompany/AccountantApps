@@ -50,10 +50,8 @@
             this.noFaktur = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tglInvoice = new System.Windows.Forms.DateTimePicker();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.wilayahToko = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonNext
@@ -257,14 +255,14 @@
             // 
             // namaToko
             // 
-            this.namaToko.AutoSize = true;
             this.namaToko.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaToko.Location = new System.Drawing.Point(121, 30);
-            this.namaToko.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+
+            this.namaToko.Location = new System.Drawing.Point(32, 22);
             this.namaToko.Name = "namaToko";
-            this.namaToko.Size = new System.Drawing.Size(212, 42);
+            this.namaToko.Size = new System.Drawing.Size(318, 32);
             this.namaToko.TabIndex = 37;
             this.namaToko.Text = "[Nama toko]";
+            this.namaToko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // comboBox1
             // 
@@ -307,32 +305,23 @@
             this.tglInvoice.TabIndex = 69;
             this.tglInvoice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tglInvoice_KeyDown);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.wilayahToko);
-            this.panel1.Location = new System.Drawing.Point(31, 84);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(436, 84);
-            this.panel1.TabIndex = 71;
-            // 
+
             // wilayahToko
             // 
-            this.wilayahToko.AutoSize = true;
-            this.wilayahToko.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wilayahToko.Location = new System.Drawing.Point(0, 0);
-            this.wilayahToko.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.wilayahToko.Location = new System.Drawing.Point(32, 64);
             this.wilayahToko.Name = "wilayahToko";
-            this.wilayahToko.Size = new System.Drawing.Size(94, 17);
+            this.wilayahToko.Size = new System.Drawing.Size(318, 32);
             this.wilayahToko.TabIndex = 0;
             this.wilayahToko.Text = "[wilayahToko]";
+            this.wilayahToko.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // Add_Penjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1513, 796);
-            this.Controls.Add(this.panel1);
+
+            this.ClientSize = new System.Drawing.Size(1135, 647);
+            this.Controls.Add(this.wilayahToko);
             this.Controls.Add(this.tglInvoice);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.noFaktur);
@@ -362,8 +351,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Penjualan";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,7 +380,6 @@
         private System.Windows.Forms.TextBox noFaktur;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.DateTimePicker tglInvoice;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label wilayahToko;
     }
 }
