@@ -26,6 +26,7 @@ namespace Apps
             initDataSource();
             initDataGrid();
             dataGridView1.RowHeadersVisible = false;
+            invoiceNo.Focus();
         }
 
         private void retrieveData() {
@@ -117,48 +118,6 @@ namespace Apps
             dataGridView1.DataSource = ds.Tables[0];
         }
 
-
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-
-      
-
-        private void namaSupplier_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-               
-            }
-        }
-
-        private void alamatSupplier_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-               
-            }
-        }
-
-        private void wilayah_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                jatuhTempo.Focus();
-            }
-        }
-
-        private void jatuhTempo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAddBarang.PerformClick();
-            }
-        }
-
         int countItem = 0;
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
@@ -173,26 +132,44 @@ namespace Apps
                 countItem++;
                 refreshCalculation();
             }
+            MessageBox.Show("Data Barang telah di tambahkan");
         }
 
         public void AddProdukToTable(Models.Product product) {
 
-            produkList.Add(product);
+            int found = -1;
+
+            for (int i = 0; i < produkList.Count; i++) {
+                if (produkList[i].idProduk == product.idProduk) {
+                    found = i;
+                    break;
+                }
+            }
+            if (found == -1)
+            {
+                produkList.Add(product);
 
 
-            DataRow dr = ds.Tables[0].NewRow();
-            dr[0] = ds.Tables[0].Rows.Count+1;
-            dr[1] = product.idProduk;
-            dr[2] = product.jumlah;
-            dr[3] = product.jenisSatuan;
-            dr[4] = product.namaProduk;
-            dr[5] = product.harga;
-            dr[6] = product.diskon;
-            dr[7] = (product.harga * product.jumlah)-product.diskon;
 
-            ds.Tables[0].Rows.Add(dr);
+                DataRow dr = ds.Tables[0].NewRow();
+                dr[0] = ds.Tables[0].Rows.Count + 1;
+                dr[1] = product.idProduk;
+                dr[2] = product.jumlah;
+                dr[3] = product.jenisSatuan;
+                dr[4] = product.namaProduk;
+                dr[5] = product.harga;
+                dr[6] = product.diskon;
+                dr[7] = (product.harga * product.jumlah) - product.diskon;
+
+                ds.Tables[0].Rows.Add(dr);
+            }
+            else {
+                produkList[found].jumlah += product.jumlah;
+                ds.Tables[0].Rows[found][2] = produkList[found].jumlah;
+            }
             dataGridView1.Update();
             dataGridView1.Refresh();
+
             
         }
 
@@ -205,7 +182,7 @@ namespace Apps
                 produkList.RemoveAt(e.RowIndex);
             }
         }
-
+        //button Save
         private void button1_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(invoiceNo.Text) && !string.IsNullOrWhiteSpace(dateTimePicker1.Text) && produkList.Count != 0)
@@ -213,14 +190,21 @@ namespace Apps
                 string dbDate = DateTime.Parse(dateTimePicker1.Text).ToString("yyyy-MM-dd");
                 idCustomer = new Models.Supplier(ds.Tables[0].Rows[comboBox1.SelectedIndex]);
                 Apps.Models.Transaction transaction = new Models.Transaction(invoiceNo.Text, idCustomer, dbDate, produkList);
-                if (Database.getInstance().CreateNewPurchase(transaction))
+                if (Database.getInstance().IsPurchaseExist(transaction.invoice_no) == 0)
                 {
-                    MessageBox.Show("Data Pembelian telah ditambahkan");
-                    
+                    if (Database.getInstance().CreateNewPurchase(transaction))
+                    {
+                        MessageBox.Show("Data Pembelian telah ditambahkan");
+
+                    }
+                    //pembelian.RefreshPurchaseData();
+                    pembelian.addData(transaction);
+                    MessageBox.Show("Data pembelian telah di tambahkan");
+                    this.Close();
                 }
-                //pembelian.RefreshPurchaseData();
-                pembelian.addData(transaction);
-                this.Close();
+                else {
+                    MessageBox.Show("Gunakan Invoice No. yang baru");
+                }
             }
             else if (string.IsNullOrWhiteSpace(invoiceNo.Text))
             {
@@ -229,93 +213,30 @@ namespace Apps
             else if (produkList.Count == 0) {
                 MessageBox.Show("Masukkan Produk");
             }
-
-
         }
 
-        private void Add_Pembelian_Load(object sender, EventArgs e)
+        private void invoiceNo_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBox1.Focus();
+            }
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                dateTimePicker1.Focus();
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void dateTimePicker1_KeyDown(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void invoiceNo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void total_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void disc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void subtotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label18_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBarang.Focus();
+            }
         }
     }
 }

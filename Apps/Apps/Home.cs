@@ -136,6 +136,7 @@ namespace Apps
             pengaturan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
             inventori2.BringToFront();
+            inventori2.ReloadData();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -181,6 +182,11 @@ namespace Apps
             penjualan.BackColor = Color.FromArgb(255, 30, 30, 30);
 
             pengaturan2.BringToFront();
+        }
+
+        public void UpdateInventoriTable()
+        {
+            inventori1.RefreshData();
         }
 
     }

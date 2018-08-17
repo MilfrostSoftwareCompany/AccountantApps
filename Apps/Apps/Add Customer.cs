@@ -75,6 +75,7 @@ namespace Apps
                     customer.EditCustomer(customer__);
                 }
                 else {
+                    MessageBox.Show("Data customer telah di tambahkan");
                     Models.Customer customer__ = new Apps.Models.Customer(nama.Text, alamat.Text, telp.Text);
                     int num = Database.getInstance().CreateNewCustomer(customer__);
 

@@ -562,6 +562,8 @@ namespace Apps
             return ds;
         }
 
+
+
         public int OpnameBaru(Models.Opname opname, bool isUpdate) {
 
             sqlConnection.Open();
@@ -1286,6 +1288,50 @@ namespace Apps
             sqlConnection.Close();
 
             return Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+        }
+
+        public int IsPurchaseExist(string invoiceNo)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select invoice_no FROM pembelian WHERE invoice_no = '" + invoiceNo+ "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
+        }
+
+        public int IsSellExist (string invoiceNo)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select invoice_no FROM penjualan WHERE invoice_no = '" + invoiceNo + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
+        }
+
+        public int IsPurchaseReturnExist(string idRetur)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_retur FROM retur_pembelian WHERE id_retur = '" + idRetur + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
+        }
+
+        public int IsSellReturnExist(string idRetur)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_retur FROM retur_penjualan WHERE id_retur = '" + idRetur + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
         }
     }
 }

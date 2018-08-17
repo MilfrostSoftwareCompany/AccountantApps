@@ -223,6 +223,7 @@ namespace Apps
         private void buttonAddBarang_Click_1(object sender, EventArgs e)
         {
             Retur_Pembelian retur_Pembelian = new Retur_Pembelian(transaction, "RETUR PENJUALAN");
+            retur_Pembelian.Text = "RETUR PENJUALAN";
             retur_Pembelian.ShowDialog();
         }
 

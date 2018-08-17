@@ -12,7 +12,7 @@ namespace Apps
 {
     public partial class Add_Barang : Form
     {
-
+        
         Models.Product selectedProduct;
         Form caller;
         DataSet ds;
@@ -30,6 +30,8 @@ namespace Apps
             this.comboBox1.SelectedIndexChanged +=
             new System.EventHandler(ComboBox1_SelectedIndexChanged);
             RetrieveData(productList);
+
+            comboBox1.Focus();
         }
 
         public Add_Barang(Form caller, List<Models.Product> addedProduct, List<Models.Product> deletedProduct) {
@@ -43,6 +45,8 @@ namespace Apps
             this.comboBox1.SelectedIndexChanged +=
             new System.EventHandler(ComboBox1_SelectedIndexChanged);
             RetrieveData();
+
+            comboBox1.Focus();
         }
 
         public Add_Barang(Form caller)
@@ -53,6 +57,8 @@ namespace Apps
             this.comboBox1.SelectedIndexChanged +=
             new System.EventHandler(ComboBox1_SelectedIndexChanged);
             RetrieveData();
+
+            comboBox1.Focus();
         }
 
         private void RetrieveData()
@@ -184,10 +190,14 @@ namespace Apps
             
             ComboBox comboBox = (ComboBox)sender;
             int id;
-            if (start) {
+
+            if (start)
+            {
                 id = Convert.ToInt32(((DataRowView)comboBox1.SelectedValue)["ID"]);
+                    start = false;
             }
-            else {
+            else
+            {
                 id = Convert.ToInt32(comboBox.SelectedValue);
             }
             setView(id);
@@ -234,6 +244,22 @@ namespace Apps
             else
             {
                 jlhBarang.Maximum = 1000000;
+            }
+        }
+
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                jlhBarang.Focus();
+            }
+        }
+
+        private void jlhBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBarang.PerformClick();
             }
         }
     }

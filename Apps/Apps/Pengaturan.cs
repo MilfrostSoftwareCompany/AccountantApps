@@ -37,13 +37,6 @@ namespace Apps
             username.Text = Home.loggedUser_;
             Console.WriteLine(username.Text);
             Console.WriteLine(Home.loggedUser_);
-            //username.Location = new Point(15,15);
-            //gantiPassword.Location = new Point(15,username.Height+30);
-            //labelNamaToko.Location = new Point(15, gantiPassword.Height + username.Height + 47);
-            //namaToko.Location = new Point(labelNamaToko.Width+30, gantiPassword.Height + username.Height + 45);
-            //buttonSave.Location = new Point(labelNamaToko.Width +namaToko.Width+ 45, gantiPassword.Height + username.Height + 43);
-            //labelDaftarPemakai.Location = new Point(15,username.Height+gantiPassword.Height+labelNamaToko.Height+75);
-            //tabelPemakai.Location = new Point(15, username.Height + gantiPassword.Height + labelNamaToko.Height + labelDaftarPemakai.Height + 90);
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -67,11 +60,6 @@ namespace Apps
         private void button2_Click_1(object sender, EventArgs e)
         {
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
 
         }
     }

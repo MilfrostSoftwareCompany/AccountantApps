@@ -96,12 +96,6 @@ namespace Apps
             tabelOpname.Refresh();
 
         }
-
-        private void Opname_Stock_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabelOpname_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
@@ -128,7 +122,32 @@ namespace Apps
                 int idOpname = Database.getInstance().OpnameBaru(opname, true);
                 opname.idOpname = idOpname;
                 list_Opname_Stock.AddOpname(opname);
+                MessageBox.Show("Data Opname Stock telah di tambahkan");
                 this.Close();
+            }
+        }
+
+        private void DariTgl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SampaiTgl.Focus();
+            }
+        }
+
+        private void SampaiTgl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddProduk.PerformClick();
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.PerformClick();
             }
         }
     }

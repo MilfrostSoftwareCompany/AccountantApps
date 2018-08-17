@@ -69,6 +69,27 @@ namespace Apps
             tabelInventori.Location = new Point(15, Convert.ToInt32(buttonAddProduk.Height)+Convert.ToInt32(buttonOpnameStock.Height) + 45);
         }
 
+        public void ReloadData()
+        {
+            RemoveColumns();
+            RefreshData();
+            tabelInventori.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.UseColumnTextForButtonValue = true;
+            col.Text = "View Details";
+            col.Name = "Actions";
+            tabelInventori.Columns.Add(col);
+            if (Login.permissionlvl == 1)
+            {
+                DataGridViewButtonColumn del = new DataGridViewButtonColumn();
+                del.UseColumnTextForButtonValue = true;
+                del.Text = "Delete";
+                del.Name = "Actions";
+                tabelInventori.Columns.Add(del);
+            }
+        }
+
         private void RemoveColumns()
         {
             tabelInventori.Columns.RemoveAt(6);

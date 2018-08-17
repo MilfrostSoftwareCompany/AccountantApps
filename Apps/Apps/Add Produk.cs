@@ -22,6 +22,8 @@ namespace Apps
             this.inventori = inventori;
             InitializeComponent();
             InitializeDesign();
+
+            namaBarang.Focus();
         }
 
         public Add_Produk(Inventori inventori,Models.Product product)
@@ -32,6 +34,8 @@ namespace Apps
             InitializeComponent();
             InitializeDesign();
             setViews();
+
+            namaBarang.Focus();
         }
 
         private void setViews()
@@ -69,6 +73,7 @@ namespace Apps
                 }
                 else
                 {
+                    MessageBox.Show("Data Produk telah di tambahkan");
                     Database.getInstance().CreateNewProduct(product_);
                     inventori.RefreshData();
                 }
@@ -84,17 +89,36 @@ namespace Apps
             }
         }
 
-        private void StokBarang_KeyDown(object sender, KeyEventArgs e)
+        private void namaBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                jenisSatuan.Focus();
+            }
+        }
+
+        private void jenisSatuan_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                harga.Focus();
+            }
+        }
+
+        private void harga_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                jumlah.Focus();
+            }
+        }
+
+        private void jumlah_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 buttonSave.PerformClick();
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

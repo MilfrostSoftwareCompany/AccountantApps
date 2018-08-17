@@ -127,6 +127,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(266, 21);
             this.comboBox1.TabIndex = 144;
+            this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
             // 
             // jlhBarang
             // 
@@ -138,10 +139,21 @@
             0,
             0,
             0});
+            this.jlhBarang.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.jlhBarang.Name = "jlhBarang";
             this.jlhBarang.Size = new System.Drawing.Size(51, 26);
             this.jlhBarang.TabIndex = 145;
+            this.jlhBarang.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.jlhBarang.ValueChanged += new System.EventHandler(this.jlhBarang_ValueChanged);
+            this.jlhBarang.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jlhBarang_KeyDown);
             // 
             // label5
             // 
@@ -165,6 +177,7 @@
             this.Controls.Add(this.jumlah);
             this.Controls.Add(this.Result);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Add_Barang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -42,6 +42,8 @@ namespace Apps
                 returTransaksi.setProdukList(Database.getInstance().GetTotalRelatedSellReturnProduct(returTransaksi.idRetur).Tables[0]);
             }
             SetTransData();
+
+            textBox1.Focus();
         }
 
         private void SetTransData() {
@@ -71,11 +73,11 @@ namespace Apps
 
             }
             dataGridView1.DataSource = ds.Tables[0];
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "Delete";
-            col.Name = "Actions";
-            dataGridView1.Columns.Add(col);
+            //DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            //col.UseColumnTextForButtonValue = true;
+            //col.Text = "Delete";
+            //col.Name = "Actions";
+            //dataGridView1.Columns.Add(col);
 
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -295,11 +297,23 @@ namespace Apps
 
                 if (label3.Text == "RETUR PEMBELIAN")
                 {
-                    Database.getInstance().CreateNewPurchaseReturn(retur);
+                    if (Database.getInstance().IsPurchaseReturnExist(retur.idRetur) == 0)
+                    {
+                        Database.getInstance().CreateNewPurchaseReturn(retur);
+                    }
+                    else {
+                        MessageBox.Show("Gunakan Id retur yang baru");
+                    }
                 }
                 else if(label3.Text == "RETUR PENJUALAN")
                 {
-                    Database.getInstance().CreateNewSellReturn(retur);
+                    if (Database.getInstance().IsSellReturnExist(retur.idRetur) == 0)
+                    {
+                        Database.getInstance().CreateNewSellReturn(retur);
+                    }
+                    else {
+                        MessageBox.Show("Gunakan Id retur yang baru");
+                    }
                 }
                 this.Close();
             }
@@ -310,19 +324,29 @@ namespace Apps
             if (isEditing)
             {
                 AllowEdit(false);
-                isEditing = true;
+                isEditing = false;
+                edit_btn.Text = "EDIT";
                 //code update to database
                 if (isPembelian)
                 {
-                    
+                    Database.getInstance().UpdatePurchaseReturn(returTransaksi,removedProduct,addedProduct);
                 }
                 else {
-
+                    Database.getInstance().UpdateSellReturn(returTransaksi,removedProduct,addedProduct);
                 }
             }
             else {
                 AllowEdit(true);
-                isEditing = false;
+                isEditing = true;
+                edit_btn.Text = "SAVE";
+            }
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tanggal.Focus();
             }
         }
     }

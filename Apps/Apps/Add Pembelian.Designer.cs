@@ -57,13 +57,12 @@
             this.buttonSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
             this.buttonSave.Location = new System.Drawing.Point(1283, 711);
-            this.buttonSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSave.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(140, 31);
             this.buttonSave.TabIndex = 90;
             this.buttonSave.Text = "SAVE";
             this.buttonSave.UseVisualStyleBackColor = false;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonAddBarang
             // 
@@ -73,7 +72,7 @@
             this.buttonAddBarang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAddBarang.ForeColor = System.Drawing.Color.White;
             this.buttonAddBarang.Location = new System.Drawing.Point(38, 132);
-            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddBarang.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddBarang.Name = "buttonAddBarang";
             this.buttonAddBarang.Size = new System.Drawing.Size(140, 31);
             this.buttonAddBarang.TabIndex = 89;
@@ -90,7 +89,6 @@
             this.total.Size = new System.Drawing.Size(53, 19);
             this.total.TabIndex = 88;
             this.total.Text = "Rp. 0,-";
-            this.total.Click += new System.EventHandler(this.total_Click);
             // 
             // disc
             // 
@@ -101,7 +99,6 @@
             this.disc.Size = new System.Drawing.Size(53, 19);
             this.disc.TabIndex = 87;
             this.disc.Text = "Rp. 0,-";
-            this.disc.Click += new System.EventHandler(this.disc_Click);
             // 
             // subtotal
             // 
@@ -112,7 +109,6 @@
             this.subtotal.Size = new System.Drawing.Size(53, 19);
             this.subtotal.TabIndex = 86;
             this.subtotal.Text = "Rp. 0,-";
-            this.subtotal.Click += new System.EventHandler(this.subtotal_Click);
             // 
             // label18
             // 
@@ -123,7 +119,6 @@
             this.label18.Size = new System.Drawing.Size(39, 19);
             this.label18.TabIndex = 85;
             this.label18.Text = "Total";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
             // 
             // label17
             // 
@@ -134,7 +129,6 @@
             this.label17.Size = new System.Drawing.Size(36, 19);
             this.label17.TabIndex = 84;
             this.label17.Text = "Disc";
-            this.label17.Click += new System.EventHandler(this.label17_Click);
             // 
             // label16
             // 
@@ -145,7 +139,6 @@
             this.label16.Size = new System.Drawing.Size(59, 19);
             this.label16.TabIndex = 83;
             this.label16.Text = "Subtotal";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // dataGridView1
             // 
@@ -154,7 +147,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(38, 180);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(1066, 254);
@@ -170,17 +163,15 @@
             this.label8.Size = new System.Drawing.Size(84, 19);
             this.label8.TabIndex = 73;
             this.label8.Text = "No. Faktur :";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // jatuhTempo
             // 
             this.jatuhTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.jatuhTempo.Location = new System.Drawing.Point(1242, 167);
-            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.jatuhTempo.Margin = new System.Windows.Forms.Padding(4);
             this.jatuhTempo.Name = "jatuhTempo";
             this.jatuhTempo.Size = new System.Drawing.Size(172, 26);
             this.jatuhTempo.TabIndex = 72;
-            this.jatuhTempo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.jatuhTempo_KeyDown);
             // 
             // label7
             // 
@@ -191,7 +182,6 @@
             this.label7.Size = new System.Drawing.Size(62, 19);
             this.label7.TabIndex = 71;
             this.label7.Text = "Tanggal :";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label4
             // 
@@ -202,7 +192,6 @@
             this.label4.Size = new System.Drawing.Size(107, 19);
             this.label4.TabIndex = 66;
             this.label4.Text = "Nama  Supplier:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -213,7 +202,6 @@
             this.label3.Size = new System.Drawing.Size(157, 26);
             this.label3.TabIndex = 65;
             this.label3.Text = "PEMBELIAN";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // invoiceNo
             // 
@@ -222,7 +210,7 @@
             this.invoiceNo.Name = "invoiceNo";
             this.invoiceNo.Size = new System.Drawing.Size(172, 26);
             this.invoiceNo.TabIndex = 92;
-            this.invoiceNo.TextChanged += new System.EventHandler(this.invoiceNo_TextChanged);
+            this.invoiceNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.invoiceNo_KeyDown);
             // 
             // comboBox1
             // 
@@ -230,21 +218,21 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(178, 67);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(172, 25);
             this.comboBox1.TabIndex = 93;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox1_KeyDown);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker1.Location = new System.Drawing.Point(932, 102);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(172, 23);
             this.dateTimePicker1.TabIndex = 97;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker1_KeyDown);
             // 
             // button1
             // 
@@ -254,7 +242,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(963, 606);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 31);
             this.button1.TabIndex = 98;
@@ -286,12 +274,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Add_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add_Pembelian";
-            this.Load += new System.EventHandler(this.Add_Pembelian_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

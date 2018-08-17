@@ -137,13 +137,21 @@ namespace Apps
                 idCustomer = new Models.Supplier(custDs.Tables[0].Rows[comboBox1.SelectedIndex]);
                 Apps.Models.Transaction transaction = new Models.Transaction(noFaktur.Text, idCustomer, dbDate, produkList);
                 Console.WriteLine(idCustomer.id);
-                if (Database.getInstance().CreateNewSell(transaction))
+                if (Database.getInstance().IsSellExist(transaction.invoice_no) == 0)
                 {
-                    MessageBox.Show("Data Pembelian telah ditambahkan");
+                    if (Database.getInstance().CreateNewSell(transaction))
+                    {
 
+                        MessageBox.Show("Data Pembelian telah ditambahkan");
+
+                    }
+                    penjualan.addData(transaction);
+                    MessageBox.Show("Data Penjualan telah di tambahkan");
+                    this.Close();
                 }
-                penjualan.addData(transaction);
-                this.Close();
+                else {
+                    MessageBox.Show("Gunakan No.Invoice Baru");
+                }
             }
             else if (string.IsNullOrWhiteSpace(noFaktur.Text))
             {
@@ -152,35 +160,6 @@ namespace Apps
             else if (produkList.Count == 0)
             {
                 MessageBox.Show("Masukkan Produk");
-            }
-        }
-
-        private void namaCustomer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //alamatCustomer.Focus();
-            }
-        }
-
-        private void alamatCustomer_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                //wilayah.Focus();
-            }
-        }
-
-        private void wilayah_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void jatuhTempo_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                buttonAddBarang.PerformClick();
             }
         }
 
@@ -198,25 +177,46 @@ namespace Apps
                 countItem++;
                 refreshCalculation();
             }
+            MessageBox.Show("Data Barang telah di tambahkan");
         }
 
         public void AddProdukToTable(Models.Product product)
         {
 
-            produkList.Add(product);
+            int found = -1;
+
+            for (int i = 0; i < produkList.Count; i++)
+            {
+                if (produkList[i].idProduk == product.idProduk)
+                {
+                    found = i;
+                    break;
+                }
+            }
+
+            if (found == -1)
+            {
+
+                produkList.Add(product);
 
 
-            DataRow dr = ds.Tables[0].NewRow();
-            dr[0] = ds.Tables[0].Rows.Count;
-            dr[1] = product.idProduk;
-            dr[2] = product.jumlah;
-            dr[3] = product.jenisSatuan;
-            dr[4] = product.namaProduk;
-            dr[5] = product.harga;
-            dr[6] = product.diskon;
-            dr[7] = (product.harga * product.jumlah) - product.diskon;
+                DataRow dr = ds.Tables[0].NewRow();
+                dr[0] = ds.Tables[0].Rows.Count;
+                dr[1] = product.idProduk;
+                dr[2] = product.jumlah;
+                dr[3] = product.jenisSatuan;
+                dr[4] = product.namaProduk;
+                dr[5] = product.harga;
+                dr[6] = product.diskon;
+                dr[7] = (product.harga * product.jumlah) - product.diskon;
 
-            ds.Tables[0].Rows.Add(dr);
+                ds.Tables[0].Rows.Add(dr);
+            }
+            else
+            {
+                produkList[found].jumlah += product.jumlah;
+                ds.Tables[0].Rows[found][2] = produkList[found].jumlah;
+            }
             dataGridView1.Update();
             dataGridView1.Refresh();
         }
@@ -229,6 +229,30 @@ namespace Apps
                 MessageBox.Show("Produk telah dihapus");
                 dataGridView1.Rows.RemoveAt(e.RowIndex);
                 produkList.RemoveAt(e.RowIndex);
+            }
+        }
+
+        private void noFaktur_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                comboBox1.Focus();
+            }
+        }
+
+        private void comboBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                tglInvoice.Focus();
+            }
+        }
+
+        private void tglInvoice_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonAddBarang.Focus();
             }
         }
     }

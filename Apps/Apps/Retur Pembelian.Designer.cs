@@ -61,7 +61,7 @@
             this.buttonRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetur.ForeColor = System.Drawing.Color.White;
             this.buttonRetur.Location = new System.Drawing.Point(961, 591);
-            this.buttonRetur.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRetur.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(140, 31);
             this.buttonRetur.TabIndex = 116;
@@ -136,7 +136,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(35, 180);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(1066, 254);
@@ -206,7 +206,7 @@
             // deskripsi
             // 
             this.deskripsi.Location = new System.Drawing.Point(111, 471);
-            this.deskripsi.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.deskripsi.Margin = new System.Windows.Forms.Padding(2);
             this.deskripsi.Name = "deskripsi";
             this.deskripsi.Size = new System.Drawing.Size(645, 79);
             this.deskripsi.TabIndex = 114;
@@ -218,7 +218,7 @@
             this.tambahProdukBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tambahProdukBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.tambahProdukBtn.Location = new System.Drawing.Point(929, 129);
-            this.tambahProdukBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tambahProdukBtn.Margin = new System.Windows.Forms.Padding(2);
             this.tambahProdukBtn.Name = "tambahProdukBtn";
             this.tambahProdukBtn.Size = new System.Drawing.Size(171, 38);
             this.tambahProdukBtn.TabIndex = 119;
@@ -259,15 +259,16 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(928, 34);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(174, 20);
             this.textBox1.TabIndex = 123;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // tanggal
             // 
             this.tanggal.Location = new System.Drawing.Point(928, 101);
-            this.tanggal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tanggal.Margin = new System.Windows.Forms.Padding(2);
             this.tanggal.Name = "tanggal";
             this.tanggal.Size = new System.Drawing.Size(174, 20);
             this.tanggal.TabIndex = 124;
@@ -279,10 +280,10 @@
             this.edit_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.edit_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.edit_btn.ForeColor = System.Drawing.Color.White;
-            this.edit_btn.Location = new System.Drawing.Point(1064, 727);
+            this.edit_btn.Location = new System.Drawing.Point(753, 591);
             this.edit_btn.Margin = new System.Windows.Forms.Padding(5);
             this.edit_btn.Name = "edit_btn";
-            this.edit_btn.Size = new System.Drawing.Size(187, 38);
+            this.edit_btn.Size = new System.Drawing.Size(154, 31);
             this.edit_btn.TabIndex = 125;
             this.edit_btn.Text = "EDIT";
             this.edit_btn.UseVisualStyleBackColor = false;
@@ -292,7 +293,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1513, 796);
+            this.ClientSize = new System.Drawing.Size(1135, 647);
             this.Controls.Add(this.edit_btn);
             this.Controls.Add(this.tanggal);
             this.Controls.Add(this.textBox1);
@@ -315,6 +316,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Retur_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Retur_Pembelian";
