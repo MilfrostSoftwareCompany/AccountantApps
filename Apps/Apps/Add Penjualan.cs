@@ -146,7 +146,6 @@ namespace Apps
 
                     }
                     penjualan.addData(transaction);
-                    MessageBox.Show("Data Penjualan telah di tambahkan");
                     this.Close();
                 }
                 else {
