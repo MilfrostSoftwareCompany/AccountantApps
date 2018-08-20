@@ -37,6 +37,19 @@ namespace Apps
             username.Text = Home.loggedUser_;
             Console.WriteLine(username.Text);
             Console.WriteLine(Home.loggedUser_);
+
+            tabelPemakai.RowHeadersVisible = false;
+            tabelPemakai.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            if (Login.permissionlvl == 1)
+            {
+                label1.Visible = true;
+                tabelPemakai.Visible = true;
+            }
+            else {
+                label1.Visible = false;
+                tabelPemakai.Visible = false;
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {

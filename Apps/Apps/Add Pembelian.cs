@@ -199,7 +199,6 @@ namespace Apps
                     }
                     //pembelian.RefreshPurchaseData();
                     pembelian.addData(transaction);
-                    MessageBox.Show("Data pembelian telah di tambahkan");
                     this.Close();
                 }
                 else {
