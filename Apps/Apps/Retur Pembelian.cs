@@ -419,6 +419,7 @@ namespace Apps
         private void printDocument1_PrintPage(System.Object sender,
                System.Drawing.Printing.PrintPageEventArgs e)
         {
+            bool multipleLine = false;
             DataSet ds = Database.getInstance().GetCompanyDetails();
             string title = "";
             if (isPembelian)
@@ -439,11 +440,15 @@ namespace Apps
 
 
             graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
-            offset = offset + (int)fontHeight + 5;
+            
             graphic.DrawString(compName, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+            
             string top = "Nama Customer".PadRight(15) + ": " + transaction.tujuan.nama.PadRight(40) + "No. Faktur".PadRight(10) + ": " + returTransaksi.idRetur;
+            graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
             if (transaction.tujuan.alamat.Contains("\n"))
             {
+                multipleLine = true;
                 string second = "Alamat".PadRight(15) + ": " + transaction.tujuan.alamat.Split('\n')[0].PadRight(40) + "Tanggal".PadRight(10) + ": " + returTransaksi.tglRetur;
                 string third = "      ".PadRight(15) + "  " + transaction.tujuan.alamat.Split('\n')[1];
                 offset = offset + (int)fontHeight + 5; //make the spacing consistent
@@ -459,9 +464,7 @@ namespace Apps
                 graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
             }
 
-            
-            offset = offset + (int)fontHeight + 5;
-            graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
+           
             
             offset = offset + (int)fontHeight + 5; //make the spacing consistent
             graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
@@ -524,7 +527,12 @@ namespace Apps
             offset = offset + (int)fontHeight + 5;
 
             Pen blackPen = new Pen(Color.Black, 1);
-            Rectangle rect = new Rectangle(20, 380, 450, 40);
+            int yPos = 0;
+            if (multipleLine)
+                yPos = 380;
+            else
+                yPos = 360;
+            Rectangle rect = new Rectangle(20, yPos, 450, 40);
             graphic.DrawRectangle(blackPen, rect);
 
             string bottom = "Description : ".PadRight(20) + "Subtotal".PadLeft(50) + ":" + (" Rp." + subtotal.Text).PadLeft(18);

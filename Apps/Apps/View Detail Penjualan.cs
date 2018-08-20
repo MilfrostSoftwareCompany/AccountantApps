@@ -290,7 +290,7 @@ namespace Apps
                System.Drawing.Printing.PrintPageEventArgs e)
         {
             DataSet ds = Database.getInstance().GetCompanyDetails();
-            string title = "FAKTUR JUAL".PadLeft(35);
+            string title = "PENJUALAN".PadLeft(35);
             string compName = ds.Tables[0].Rows[0][1].ToString();
             string address = ds.Tables[0].Rows[0][2].ToString();
 
@@ -302,18 +302,32 @@ namespace Apps
             int startY = 20;
             int offset = 40;
 
+
+
             graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
-            string top = "Nama Customer".PadRight(5) + ": " + transaction.tujuan.nama + "No. Faktur".PadRight(5).PadLeft(50) + ": " + transaction.invoice_no;
-            string second = "Alamat".PadRight(5) + ": " + cust.alamat.Split('\n')[0] + "Tanggal".PadRight(5).PadLeft(50) + ": " + transaction.tgl_invoice;
-            string third = "      ".PadRight(5) + "  " + cust.alamat.Split('\n')[1];
 
             graphic.DrawString(compName, font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5;
+
+            string top = "Nama Customer".PadRight(15) + ": " + transaction.tujuan.nama.PadRight(40) + "No. Faktur".PadRight(10) + ": " + transaction.invoice_no;
             graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight + 5; //make the spacing consistent
-            graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
-            offset = offset + (int)fontHeight; //make the spacing consistent
-            graphic.DrawString(third, font, new SolidBrush(Color.Black), startX, startY + offset);
+            if (cust.alamat.Contains("\n"))
+            {
+                string second = "Alamat".PadRight(15) + ": " + cust.alamat.Split('\n')[0].PadRight(40) + "Tanggal".PadRight(10) + ": " + transaction.tgl_invoice;
+                string third = "      ".PadRight(15) + "  " + cust.alamat.Split('\n')[1];
+                offset = offset + (int)fontHeight + 5; //make the spacing consistent
+                graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
+                offset = offset + (int)fontHeight; //make the spacing consistent
+                graphic.DrawString(third, font, new SolidBrush(Color.Black), startX, startY + offset);
+            }
+
+            else
+            {
+                string second = "Alamat".PadRight(15) + ": " + cust.alamat.PadRight(35) + "Tanggal".PadRight(5).PadLeft(15) + ": " + transaction.tgl_invoice;
+
+                offset = offset + (int)fontHeight + 5; //make the spacing consistent
+                graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
+            }
             offset = offset + (int)fontHeight + 5; //make the spacing consistent
             graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
             offset = offset + (int)fontHeight + 5; //make the spacing consistent
