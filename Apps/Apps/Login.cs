@@ -20,7 +20,6 @@ namespace Apps
         {
             InitializeComponent();
             textBoxUsername.Focus();
-            MessageBox.Show(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location));
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +37,7 @@ namespace Apps
                     Database.getInstance().updateLastLoginForUser(username);
                     permissionlvl = Database.getInstance().GetPermission(username);
                     loggedUser = username;
-                    Home home = new Home(username,Database.getInstance().GetPermission(username));
+                    Home home = new Home(this,username,Database.getInstance().GetPermission(username));
                     home.Show();
                     
 

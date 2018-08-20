@@ -16,9 +16,12 @@ namespace Apps
         public static int widthPanel,heightPanel;
         public static string loggedUser_;
         public static int permLvl;
+        Form caller;
 
-        public Home(string loggedUser,int permissionLvl)
+
+        public Home(Form caller,string loggedUser,int permissionLvl)
         {
+            this.caller = caller;
             loggedUser_ = loggedUser;
             permLvl = permissionLvl;
             InitializeComponent();
@@ -191,6 +194,12 @@ namespace Apps
         public void UpdateInventoriTable()
         {
             inventori1.RefreshData();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            Login login = (Login)caller;
+            login.Close();
         }
 
     }
