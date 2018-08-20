@@ -62,10 +62,8 @@
             this.buttonRetur.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetur.ForeColor = System.Drawing.Color.White;
-
-            this.buttonRetur.Location = new System.Drawing.Point(1281, 727);
+            this.buttonRetur.Location = new System.Drawing.Point(964, 591);
             this.buttonRetur.Margin = new System.Windows.Forms.Padding(5);
-
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(140, 31);
             this.buttonRetur.TabIndex = 116;
@@ -139,10 +137,8 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-
-            this.dataGridView1.Location = new System.Drawing.Point(47, 222);
+            this.dataGridView1.Location = new System.Drawing.Point(36, 183);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
-
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(1066, 254);
@@ -221,9 +217,11 @@
             // tambahProdukBtn
             // 
             this.tambahProdukBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.tambahProdukBtn.FlatAppearance.BorderSize = 0;
+            this.tambahProdukBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.tambahProdukBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tambahProdukBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.tambahProdukBtn.Location = new System.Drawing.Point(929, 129);
+            this.tambahProdukBtn.Location = new System.Drawing.Point(931, 125);
             this.tambahProdukBtn.Margin = new System.Windows.Forms.Padding(2);
             this.tambahProdukBtn.Name = "tambahProdukBtn";
             this.tambahProdukBtn.Size = new System.Drawing.Size(171, 38);
@@ -312,7 +310,7 @@
             this.print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.print.ForeColor = System.Drawing.Color.White;
-            this.print.Location = new System.Drawing.Point(47, 727);
+            this.print.Location = new System.Drawing.Point(36, 584);
             this.print.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(205, 38);
@@ -325,10 +323,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-            this.ClientSize = new System.Drawing.Size(1513, 796);
+            this.ClientSize = new System.Drawing.Size(1135, 647);
             this.Controls.Add(this.print);
-
             this.Controls.Add(this.lblTgl);
             this.Controls.Add(this.edit_btn);
             this.Controls.Add(this.tanggal);
@@ -353,9 +349,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-
             this.Margin = new System.Windows.Forms.Padding(4);
-
             this.MaximizeBox = false;
             this.Name = "Retur_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -182,8 +182,12 @@ namespace Apps
             noFaktur.Text = transaction.invoice_no;
             tanggal.Text = transaction.tgl_invoice;
             updateCalculation();
-        }
 
+            if (Login.permissionlvl != 1)
+            {
+                buttonEdit.Hide();
+            }
+        }
         private void DataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             updateView(e.RowIndex);

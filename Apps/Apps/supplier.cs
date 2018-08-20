@@ -21,22 +21,11 @@ namespace Apps
             InitializeComponent();
             this.Width = Home.widthPanel;
             //this.Height = Home.heightPanel;
-            InitializeDesign();
             tabelSupplier.RowHeadersVisible = false;
             LoadSupplierData();
             SetColumnWidth();
         }
 
-        public void InitializeDesign()
-        {
-            //tabelSupplier.AutoSize = false;
-            //search.Location = new Point(15,13);
-            //buttonSearch.Location = new Point(Convert.ToInt32(search.Width)+30,10);
-            //buttonAddSupplier.Location = new Point( Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddSupplier.Width)-15,10);
-            //tabelSupplier.Width = Convert.ToInt32(this.Width - 30);
-            //tabelSupplier.Height = Convert.ToInt32(this.Height)-Convert.ToInt32(buttonSearch.Height)- 50;
-            //tabelSupplier.Location = new Point(15,Convert.ToInt32(buttonSearch.Height)+30);
-        }
 
         private void Supplier_Load(object sender, EventArgs e)
         {
