@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Data;
 using System.Windows.Forms;
 using Apps.Classes;
+using System.IO;
 
 namespace Apps
 {
@@ -18,7 +19,13 @@ namespace Apps
 
         public Database()
         {
-            sqlConnection = new SQLiteConnection("Data Source = " + Environment.CurrentDirectory + "\\acc_app.sqlite");
+            string location = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Accountant Apps");
+            if (!Directory.Exists(location))
+            {
+                Directory.CreateDirectory(location);
+            }
+
+            sqlConnection = new SQLiteConnection("Data Source = " + location+ "\\acc_app.sqlite");
             sqlConnection.Open();
             CreateTableIfNotExist();
             sqlConnection.Close();

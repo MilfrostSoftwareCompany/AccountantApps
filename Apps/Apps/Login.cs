@@ -20,6 +20,7 @@ namespace Apps
         {
             InitializeComponent();
             textBoxUsername.Focus();
+            MessageBox.Show(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location));
         }
 
         private void button1_Click(object sender, EventArgs e)
