@@ -51,6 +51,7 @@
             this.tanggal = new System.Windows.Forms.DateTimePicker();
             this.edit_btn = new System.Windows.Forms.Button();
             this.lblTgl = new System.Windows.Forms.Label();
+            this.print = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             this.buttonRetur.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRetur.ForeColor = System.Drawing.Color.White;
             this.buttonRetur.Location = new System.Drawing.Point(1281, 727);
-            this.buttonRetur.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.buttonRetur.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRetur.Name = "buttonRetur";
             this.buttonRetur.Size = new System.Drawing.Size(187, 38);
             this.buttonRetur.TabIndex = 116;
@@ -143,7 +144,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(47, 222);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.Size = new System.Drawing.Size(1421, 313);
@@ -316,11 +317,28 @@
             this.lblTgl.TabIndex = 126;
             this.lblTgl.Text = "Tanggal :";
             // 
+            // print
+            // 
+            this.print.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(196)))), ((int)(((byte)(252)))));
+            this.print.FlatAppearance.BorderSize = 0;
+            this.print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.print.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.print.ForeColor = System.Drawing.Color.White;
+            this.print.Location = new System.Drawing.Point(47, 727);
+            this.print.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.print.Name = "print";
+            this.print.Size = new System.Drawing.Size(205, 38);
+            this.print.TabIndex = 127;
+            this.print.Text = "PRINT";
+            this.print.UseVisualStyleBackColor = false;
+            this.print.Click += new System.EventHandler(this.print_Click);
+            // 
             // Retur_Pembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1513, 796);
+            this.Controls.Add(this.print);
             this.Controls.Add(this.lblTgl);
             this.Controls.Add(this.edit_btn);
             this.Controls.Add(this.tanggal);
@@ -345,7 +363,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Retur_Pembelian";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -381,5 +399,6 @@
         private System.Windows.Forms.DateTimePicker tanggal;
         private System.Windows.Forms.Button edit_btn;
         private System.Windows.Forms.Label lblTgl;
+        private System.Windows.Forms.Button print;
     }
 }

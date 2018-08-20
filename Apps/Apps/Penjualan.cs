@@ -158,6 +158,8 @@ namespace Apps
             dataSet.Tables[0].Columns.Add("Diskon");
             dataSet.Tables[0].Columns.Add("Jumlah");
 
+            transList.Clear();
+
             for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
             {
                 DataSet newDataSet = database.GetAllRelatedProductSell(dataSet.Tables[0].Rows[i][0].ToString());
@@ -293,6 +295,7 @@ namespace Apps
             dataSet.Tables[0].Columns.Add("Diskon");
             dataSet.Tables[0].Columns.Add("Jumlah");
 
+            transList.Clear();
             for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
             {
                 DataSet newDataSet = database.GetAllRelatedProductSell(dataSet.Tables[0].Rows[i][0].ToString());

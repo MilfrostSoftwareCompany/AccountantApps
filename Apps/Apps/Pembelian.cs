@@ -57,7 +57,7 @@ namespace Apps
             //SetColumnWidth();
         }
         public void addData(Models.Transaction pembelian) {
-            transList.Add(pembelian);
+            
             DataRow dr = dataSet.Tables[0].NewRow();
             string nl = Environment.NewLine;
             string productList = "";
@@ -98,6 +98,10 @@ namespace Apps
             dataSet.Tables[0].Rows.Add(dr);
             tabelPembelian.Update();
             tabelPembelian.Refresh();
+            transList.Add(pembelian);
+            Console.WriteLine("Trans List length = " + transList.Count);
+            Console.WriteLine("Added id = "+pembelian.invoice_no);
+            Console.WriteLine("Last index id = " + transList[transList.Count - 1].invoice_no);
             MessageBox.Show("Data Pembelian telah ditambahkan");
         }
         private void setDataGrid() {
@@ -152,6 +156,7 @@ namespace Apps
             dataSet2.Tables[0].Rows.Add(dr);
             dataGridView1.Update();
             dataGridView1.Refresh();
+            
             MessageBox.Show("Retur telah ditambahkan");
         }
 
@@ -209,7 +214,7 @@ namespace Apps
             dataSet.Tables[0].Columns.Add("Harga");
             dataSet.Tables[0].Columns.Add("Diskon");
             dataSet.Tables[0].Columns.Add("Jumlah");
-
+            transList.Clear();
             for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
             {
                 DataSet newDataSet = database.GetAllRelatedProductPurchase(dataSet.Tables[0].Rows[i][0].ToString());
@@ -283,7 +288,7 @@ namespace Apps
             dataSet.Tables[0].Columns.Add("Harga");
             dataSet.Tables[0].Columns.Add("Diskon");
             dataSet.Tables[0].Columns.Add("Jumlah");
-
+            transList.Clear();
             for (int i = 0; i < dataSet.Tables[0].Rows.Count; i++)
             {
                 DataSet newDataSet = database.GetAllRelatedProductPurchase(dataSet.Tables[0].Rows[i][0].ToString());
@@ -464,6 +469,11 @@ namespace Apps
                 }
                 else
                 {
+                    Console.WriteLine("Row Index iis = "+e.RowIndex);
+                    Console.WriteLine("Inside translist = " + transList[e.RowIndex].invoice_no);
+                    for (int i = 0; i < transList.Count; i++) {
+                        Console.WriteLine("index = " + i + "; id= " + transList[i].invoice_no);
+                    }
                     View_Detail_Pembelian view_Detail_Pembelian = new View_Detail_Pembelian(e.RowIndex,transList[e.RowIndex], this);
                     view_Detail_Pembelian.ShowDialog();
                 }

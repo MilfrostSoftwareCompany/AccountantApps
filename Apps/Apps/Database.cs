@@ -1092,6 +1092,7 @@ namespace Apps
         {
             sqlConnection.Open();
             string sqlString = "SELECT detail_retur_pembelian.id_produk as ID, produk.nama_produk as [Nama Produk], detail_retur_pembelian.jumlah as [@], produk.jenis_satuan as Satuan,detail_retur_pembelian.harga as Harga, diskon as Diskon, detail_retur_pembelian.harga * detail_retur_pembelian.jumlah as Subtotal from detail_retur_pembelian INNER JOIN produk ON produk.id_produk = detail_retur_pembelian.id_produk WHERE detail_retur_pembelian.id_retur ='" + idRetur+"'";
+            Console.WriteLine(sqlString);
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();

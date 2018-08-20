@@ -69,6 +69,7 @@ namespace Apps.Models
 
         public void setProdukList(DataTable data) {
             for (int i = 0; i < data.Rows.Count; i++) {
+                Console.WriteLine(i);
                 Product product = new Product(Convert.ToInt32(data.Rows[i][0].ToString()),data.Rows[i][1].ToString(),Convert.ToInt32(data.Rows[i][2].ToString()), data.Rows[i][3].ToString(), Convert.ToInt32(data.Rows[i][4].ToString()));
                 productList.Add(product);
             }

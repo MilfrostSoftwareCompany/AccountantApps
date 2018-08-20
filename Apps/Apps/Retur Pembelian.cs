@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,9 @@ namespace Apps
         List<Models.Product> addedProduct = new List<Models.Product>();
         List<Models.Product> removedProduct = new List<Models.Product>();
 
+        private PrintDocument printDocument1 = new PrintDocument();
+        PrintPreviewDialog printPreviewDialog = new PrintPreviewDialog();
+
         Models.ReturTransaksi returTransaksi;
         bool isEdit = false;
         bool isEditing = false;
@@ -25,6 +29,7 @@ namespace Apps
         bool isPembelian = false;
 
         public Retur_Pembelian(Models.ReturTransaksi transaksi, string title) {
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             isEdit = true;
             this.returTransaksi = transaksi;
             InitializeComponent();
@@ -32,6 +37,7 @@ namespace Apps
             textBox1.Text = transaksi.idRetur;
             textBox1.ReadOnly = true;
             lblTgl.Text = transaksi.tglRetur;
+            tanggal.Text = transaksi.tglRetur;
             tanggal.Hide();
             if (title == "RETUR PEMBELIAN")
             {
@@ -49,7 +55,7 @@ namespace Apps
 
             textBox1.Focus();
         }
-
+        
         private void SetTransData() {
 
             ds = new DataSet();
@@ -152,6 +158,7 @@ namespace Apps
         {
             if (b)
             {
+                tambahProdukBtn.Show();
                 tanggal.Show();
                 lblTgl.Hide();
                 dataGridView1.ReadOnly = false;
@@ -164,9 +171,10 @@ namespace Apps
                 AddDeleteBtn();
             }
             else {
+                tambahProdukBtn.Hide();
                 tanggal.Hide();
                 lblTgl.Text = tanggal.Text;
-
+                lblTgl.Show();
                 RemoveDeleteBtn();
                 dataGridView1.ReadOnly = true;
                 dataGridView1.Columns[2].ReadOnly = false;
@@ -369,6 +377,141 @@ namespace Apps
             {
                 tanggal.Focus();
             }
+        }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            printPreviewDialog.Document = printDocument1;
+            printPreviewDialog.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(System.Object sender,
+               System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            DataSet ds = Database.getInstance().GetCompanyDetails();
+            string title = "";
+            if (isPembelian)
+                title = "RETUR BELI".PadLeft(35);
+            else
+                title = "RETUR JUAL".PadLeft(35);
+            string compName = ds.Tables[0].Rows[0][1].ToString();
+            string address = ds.Tables[0].Rows[0][2].ToString();
+
+            Graphics graphic = e.Graphics;
+            Font font = new Font("Courier New", 10);
+            float fontHeight = font.GetHeight();
+
+            int startX = 20;
+            int startY = 20;
+            int offset = 40;
+
+
+
+            graphic.DrawString(title, new Font("Courier New", 16), new SolidBrush(Color.Black), startX, startY);
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString(compName, font, new SolidBrush(Color.Black), startX, startY + offset);
+            string top = "Nama Customer".PadRight(15) + ": " + transaction.tujuan.nama.PadRight(40) + "No. Faktur".PadRight(10) + ": " + returTransaksi.idRetur;
+            if (transaction.tujuan.alamat.Contains("\n"))
+            {
+                string second = "Alamat".PadRight(15) + ": " + transaction.tujuan.alamat.Split('\n')[0].PadRight(40) + "Tanggal".PadRight(10) + ": " + returTransaksi.tglRetur;
+                string third = "      ".PadRight(15) + "  " + transaction.tujuan.alamat.Split('\n')[1];
+                offset = offset + (int)fontHeight + 5; //make the spacing consistent
+                graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
+                offset = offset + (int)fontHeight; //make the spacing consistent
+                graphic.DrawString(third, font, new SolidBrush(Color.Black), startX, startY + offset);
+            }
+
+            else {
+                string second = "Alamat".PadRight(15) + ": " + transaction.tujuan.alamat.PadRight(35) + "Tanggal".PadRight(5).PadLeft(15) + ": " + returTransaksi.tglRetur;
+                
+                offset = offset + (int)fontHeight + 5; //make the spacing consistent
+                graphic.DrawString(second, font, new SolidBrush(Color.Black), startX, startY + offset);
+            }
+
+            
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString(top, font, new SolidBrush(Color.Black), startX, startY + offset);
+            
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5; //make the spacing consistent
+
+            string fourth = "No".PadRight(8) + "Nama Produk".PadRight(32) + "Jumlah".PadRight(9) + "Satuan".PadRight(6) + "Harga".PadLeft(10) + "Diskon".PadLeft(10) + "Subtotal".PadLeft(15);
+            graphic.DrawString(fourth, font, new SolidBrush(Color.Black), startX, startY + offset);
+            float totalprice = 0.00f;
+
+
+
+            Font f = new Font("Courier New", 10);
+            offset = offset + (int)fontHeight + 10; //make the spacing consistent
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+
+            int lineNum = 0;
+
+            foreach (Models.Product product in returTransaksi.productList)
+            {
+                lineNum += 1;
+                string id = product.idProduk.ToString();
+                string jumlah = product.jumlah.ToString();
+                string harga = product.harga.ToString();
+                string diskon = product.diskon.ToString();
+                string subtotal = product.getTotal().ToString();
+                string productName = "";
+                string secondLine = "";
+                if (product.namaProduk.Length > 30)
+                {
+                    productName = product.namaProduk.Substring(0, 30);
+                    secondLine = product.namaProduk.Substring(30, product.namaProduk.Length - 30);
+                }
+                else
+                {
+                    productName = product.namaProduk;
+                }
+
+                string productListing = id.PadRight(8) + productName.PadRight(32) + jumlah.PadRight(9) + product.jenisSatuan.PadRight(6) + harga.PadLeft(10) + diskon.PadLeft(10) + subtotal.PadLeft(15);
+                offset = offset + (int)fontHeight + 5;
+                graphic.DrawString(productListing, f, new SolidBrush(Color.Black), startX, startY + offset);
+
+                if (secondLine != "")
+                {
+                    lineNum += 1;
+                    offset = offset + (int)fontHeight;
+                    graphic.DrawString(secondLine.PadLeft(10), f, new SolidBrush(Color.Black), startX, startY + offset);
+                }
+
+
+            }
+            if (lineNum < 7)
+            {
+                for (int i = 0; i < (7 - returTransaksi.productList.Count); i++)
+                {
+                    offset = offset + (int)fontHeight + 5;
+                }
+            }
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString("-------------------------------------------------------------------------------------------", font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+
+            Pen blackPen = new Pen(Color.Black, 1);
+            Rectangle rect = new Rectangle(20, 380, 450, 40);
+            graphic.DrawRectangle(blackPen, rect);
+
+            string bottom = "Description : ".PadRight(20) + "Subtotal".PadLeft(50) + ":" + (" Rp." + subtotal.Text).PadLeft(18);
+            string bottom2 = returTransaksi.deskripsi.PadRight(40) + "Diskon".PadLeft(30) + ":" + (" Rp." + disc.Text).PadLeft(18);
+            string bottom3 = "Total".PadLeft(70) + ":" + (" Rp." + total.Text).PadLeft(18);
+
+            graphic.DrawString(bottom, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString(bottom2, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString(bottom3, font, new SolidBrush(Color.Black), startX, startY + offset);
+
+            string bottom5 = "Hormat Kami".PadLeft(15) + "Diterima Oleh".PadLeft(35) + "Diketahui Oleh".PadLeft(35);
+            string bottom6 = "(         )".PadLeft(15) + "(           )".PadLeft(35) + "(            )".PadLeft(35);
+            offset = offset + (int)fontHeight + 15;
+            graphic.DrawString(bottom5, font, new SolidBrush(Color.Black), startX, startY + offset);
+            offset = offset + (int)fontHeight + 5;
+            graphic.DrawString(bottom6, font, new SolidBrush(Color.Black), startX, startY + offset);
         }
     }
 }
