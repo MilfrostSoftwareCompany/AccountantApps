@@ -720,8 +720,7 @@ namespace Apps
 
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
-
-            DataSet newDs = new DataSet();
+            
             sqlConnection.Close();
             return ds;
         }
@@ -944,7 +943,7 @@ namespace Apps
         //Return Purchase related function
         public DataSet GetAllPurchaseReturn() {
             sqlConnection.Open();
-            string sqlString = "SELECT retur_pembelian.id_retur as [No Retur], pembelian.invoice_no as [No Invoice], retur_pembelian.tgl_retur as Tanggal, suppliers.nama as Supplier, retur_pembelian.deskripsi as Deskripsi,sum(detail_retur_pembelian.harga*detail_retur_pembelian.jumlah) as [Subtotal] FROM retur_pembelian INNER JOIN pembelian ON retur_pembelian.invoice_no = pembelian.invoice_no INNER JOIN suppliers ON suppliers.id_supplier = pembelian.tujuan INNER JOIN detail_retur_pembelian ON detail_retur_pembelian.id_retur = retur_pembelian.id_retur";
+            string sqlString = "SELECT retur_pembelian.id_retur as [No Retur], pembelian.invoice_no as [No Invoice], retur_pembelian.tgl_retur as Tanggal, suppliers.nama as Supplier, retur_pembelian.deskripsi as Deskripsi,sum(detail_retur_pembelian.harga*detail_retur_pembelian.jumlah) as [Subtotal] FROM retur_pembelian INNER JOIN pembelian ON retur_pembelian.invoice_no = pembelian.invoice_no INNER JOIN suppliers ON suppliers.id_supplier = pembelian.tujuan INNER JOIN detail_retur_pembelian ON detail_retur_pembelian.id_retur = retur_pembelian.id_retur GROUP BY retur_pembelian.invoice_no";
             SQLiteDataAdapter adapter = new SQLiteDataAdapter(sqlString, sqlConnection);
 
             DataSet ds = new DataSet();
@@ -1494,10 +1493,32 @@ namespace Apps
             return ds.Tables[0].Rows.Count;
         }
 
+        public int IsPurchaseReturnWithSuchTransIdExist(string idRetur)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_retur FROM retur_pembelian WHERE invoice_no = '" + idRetur + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
+        }
+
         public int IsSellReturnExist(string idRetur)
         {
             sqlConnection.Open();
             SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_retur FROM retur_penjualan WHERE id_retur = '" + idRetur + "'", sqlConnection);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Info");
+            sqlConnection.Close();
+
+            return ds.Tables[0].Rows.Count;
+        }
+
+        public int IsSellReturnWithSuchTransIdExist(string idRetur)
+        {
+            sqlConnection.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("Select id_retur FROM retur_penjualan WHERE invoice_no = '" + idRetur + "'", sqlConnection);
             DataSet ds = new DataSet();
             adapter.Fill(ds, "Info");
             sqlConnection.Close();

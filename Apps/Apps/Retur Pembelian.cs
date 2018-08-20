@@ -13,6 +13,9 @@ namespace Apps
 {
     public partial class Retur_Pembelian : Form
     {
+        UserControl userControl;
+        Form caller;
+
         Models.Transaction transaction;
         DataSet ds;
 
@@ -28,7 +31,7 @@ namespace Apps
 
         bool isPembelian = false;
 
-        public Retur_Pembelian(Models.ReturTransaksi transaksi, string title) {
+        public Retur_Pembelian(UserControl userControl, Models.ReturTransaksi transaksi, string title) {
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             isEdit = true;
             this.returTransaksi = transaksi;
@@ -40,6 +43,7 @@ namespace Apps
             tanggal.Text = transaksi.tglRetur;
             tanggal.Hide();
             tambahProdukBtn.Hide();
+            buttonRetur.Hide();
             if (title == "RETUR PEMBELIAN")
             {
                 isPembelian = true;
@@ -59,6 +63,8 @@ namespace Apps
             if (Login.permissionlvl != 1) {
                 edit_btn.Hide();
             }
+
+            this.userControl = userControl;
         }
         
         private void SetTransData() {
@@ -75,7 +81,7 @@ namespace Apps
 
             for (int i = 0; i < returTransaksi.productList.Count; i++)
             {
-                addedProduct.Add(returTransaksi.productList[i]);
+                //addedProduct.Add(returTransaksi.productList[i]);
                 DataRow dr = ds.Tables[0].NewRow();
                 dr[0] = returTransaksi.productList[i].idProduk;
                 dr[1] = returTransaksi.productList[i].namaProduk;
@@ -105,11 +111,13 @@ namespace Apps
 
         }
 
-        public Retur_Pembelian(Models.Transaction transaction,string title)
+        public Retur_Pembelian(Form caller,Models.Transaction transaction,string title)
         {
+            this.caller = caller;
             this.transaction = transaction;
             InitializeComponent();
             label3.Text = title;
+            lblTgl.Hide();
             GetData();
             SetViews();
             
@@ -333,9 +341,12 @@ namespace Apps
                     if (Database.getInstance().IsPurchaseReturnExist(retur.idRetur) == 0)
                     {
                         Database.getInstance().CreateNewPurchaseReturn(retur);
+                        View_Detail_Pembelian view_Detail_Pembelian = (View_Detail_Pembelian)caller;
+                        view_Detail_Pembelian.UpdateReturData();
                     }
                     else {
                         MessageBox.Show("Gunakan Id retur yang baru");
+                        
                     }
                 }
                 else if(label3.Text == "RETUR PENJUALAN")
@@ -343,6 +354,8 @@ namespace Apps
                     if (Database.getInstance().IsSellReturnExist(retur.idRetur) == 0)
                     {
                         Database.getInstance().CreateNewSellReturn(retur);
+                        View_Detail_Penjualan view_Detail_Penjualan = (View_Detail_Penjualan)caller;
+                        view_Detail_Penjualan.UpdateReturData();
                     }
                     else {
                         MessageBox.Show("Gunakan Id retur yang baru");
@@ -365,9 +378,13 @@ namespace Apps
                 if (isPembelian)
                 {
                     Database.getInstance().UpdatePurchaseReturn(returTransaksi,removedProduct,addedProduct);
+                    Pembelian pembelian = (Pembelian)userControl;
+                    pembelian.RefreshReturData();
                 }
                 else {
                     Database.getInstance().UpdateSellReturn(returTransaksi,removedProduct,addedProduct);
+                    Penjualan penjualan = (Penjualan)userControl;
+                    penjualan.RefreshReturData();
                 }
                 this.Close();
             }

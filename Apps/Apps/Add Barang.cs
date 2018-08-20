@@ -73,7 +73,7 @@ namespace Apps
 
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        for (int j = 0; j < addedList.Count; i++)
+                        for (int j = 0; j < addedList.Count; j++)
                         {
                             if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
                             {
@@ -85,7 +85,7 @@ namespace Apps
                     }
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        for (int j = 0; j < removedList.Count; i++)
+                        for (int j = 0; j < removedList.Count; j++)
                         {
                             if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
                             {
@@ -100,7 +100,7 @@ namespace Apps
                     Console.WriteLine("View Detail Beli");
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        for (int j = 0; j < addedList.Count; i++)
+                        for (int j = 0; j < addedList.Count; j++)
                         {
                             if (ds.Tables[0].Rows[i][0].ToString() == addedList[j].idProduk.ToString())
                             {
@@ -112,7 +112,7 @@ namespace Apps
                     }
                     for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
                     {
-                        for (int j = 0; j < removedList.Count; i++)
+                        for (int j = 0; j < removedList.Count; j++)
                         {
                             if (ds.Tables[0].Rows[i][0].ToString() == removedList[j].idProduk.ToString())
                             {
@@ -205,6 +205,7 @@ namespace Apps
 
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
+            
             selectedProduct = new Models.Product(Convert.ToInt32(comboBox1.SelectedValue), label2.Text, Convert.ToInt32(jlhBarang.Text), ds.Tables[0].Rows[comboBox1.SelectedIndex][3].ToString(), Convert.ToInt32(ds.Tables[0].Rows[comboBox1.SelectedIndex][4].ToString()));
             if (caller is Add_Pembelian)
             {
@@ -213,8 +214,16 @@ namespace Apps
             }
             else if (caller is Add_Penjualan)
             {
-                Add_Penjualan add_Penjualan = (Add_Penjualan)caller;
-                add_Penjualan.AddProdukToTable(selectedProduct);
+                if (Convert.ToInt32(ds.Tables[0].Rows[comboBox1.SelectedIndex][2].ToString()) < Convert.ToInt32(label2.Text))
+                {
+                    MessageBox.Show("Jumlah tidak boleh lebih kecil dari stock");
+                }
+                else
+                {
+                    Add_Penjualan add_Penjualan = (Add_Penjualan)caller;
+                    add_Penjualan.AddProdukToTable(selectedProduct);
+                }
+                
             }
             else if (caller is View_Detail_Pembelian)
             {
@@ -223,8 +232,15 @@ namespace Apps
             }
             else if(caller is View_Detail_Penjualan)
             {
-                View_Detail_Penjualan view_Detail_Penjualan = (View_Detail_Penjualan)caller;
-                view_Detail_Penjualan.addProduk(selectedProduct);
+                if (Convert.ToInt32(ds.Tables[0].Rows[comboBox1.SelectedIndex][2].ToString()) < Convert.ToInt32(jlhBarang.Value))
+                {
+                    MessageBox.Show("Jumlah tidak boleh lebih kecil dari stock");
+                }
+                else {
+                    View_Detail_Penjualan view_Detail_Penjualan = (View_Detail_Penjualan)caller;
+                    view_Detail_Penjualan.addProduk(selectedProduct);
+                }
+                
 
             }
             else if (caller is Retur_Pembelian) {

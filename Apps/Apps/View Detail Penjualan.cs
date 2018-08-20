@@ -26,6 +26,7 @@ namespace Apps
 
         List<Models.Product> removedProduct = new List<Models.Product>();
         List<Models.Product> addedProduct = new List<Models.Product>();
+        List<Models.Product> addedProductAll = new List<Models.Product>();
         List<string> deletedProduct = new List<string>();
 
         public View_Detail_Penjualan(int row, Models.Transaction transaction, Penjualan penjualan)
@@ -127,11 +128,13 @@ namespace Apps
                 dataGridView1.Refresh();
                 addedProduct.Add(product);
                 transaction.produkList.Add(product);
+                addedProductAll.Add(product);
             }
             else
             {
                 transaction.produkList[found].jumlah += product.jumlah;
                 ds.Tables[0].Rows[found][2] = transaction.produkList[found].jumlah;
+                addedProductAll.Add(product);
             }
 
         }
@@ -170,6 +173,10 @@ namespace Apps
 
         private void setViews()
         {
+            if (Database.getInstance().IsSellReturnWithSuchTransIdExist(transaction.invoice_no)>0) {
+                buttonAddBarang.Hide();
+            }
+
             button1.Hide();
             dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
             dataGridView1.RowHeadersVisible = false;
@@ -225,9 +232,14 @@ namespace Apps
             }
         }
 
+        public void UpdateReturData()
+        {
+            penjualan.RefreshReturData();
+        }
+
         private void buttonAddBarang_Click_1(object sender, EventArgs e)
         {
-            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(transaction, "RETUR PENJUALAN");
+            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(this,transaction, "RETUR PENJUALAN");
             retur_Pembelian.Text = "RETUR PENJUALAN";
             retur_Pembelian.ShowDialog();
         }
@@ -242,7 +254,7 @@ namespace Apps
                 {
                     buttonAddBarang.Visible = false;
                 }
-                Add_Barang FormAddBarang = new Add_Barang(this,addedProduct,removedProduct);
+                Add_Barang FormAddBarang = new Add_Barang(this,addedProductAll,removedProduct);
                 FormAddBarang.ShowDialog();
                 countItem++;
             }

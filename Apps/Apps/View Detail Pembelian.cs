@@ -168,6 +168,12 @@ namespace Apps
 
         private void setViews()
         {
+
+            
+            if (Database.getInstance().IsPurchaseReturnWithSuchTransIdExist(transaction.invoice_no) > 0)
+            {
+                buttonAddBarang.Hide();
+            }
             button1.Hide();
             dataGridView1.CellValueChanged += DataGridView1_CellValueChanged;
             dataGridView1.RowHeadersVisible = false;
@@ -194,9 +200,14 @@ namespace Apps
             transaction.produkList[row].diskon = Convert.ToInt32(ds.Tables[0].Rows[row][5].ToString());
         }
 
+        public void UpdateReturData()
+        {
+            pembelian.RefreshReturData();
+        }
+
         private void buttonAddBarang_Click(object sender, EventArgs e)
         {
-            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(transaction,"RETUR PEMBELIAN");
+            Retur_Pembelian retur_Pembelian = new Retur_Pembelian(this,transaction,"RETUR PEMBELIAN");
             retur_Pembelian.Text = "RETUR PEMBELIAN";
             retur_Pembelian.ShowDialog();
         }
