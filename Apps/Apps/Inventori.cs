@@ -75,13 +75,15 @@ namespace Apps
             RefreshData();
             tabelInventori.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.UseColumnTextForButtonValue = true;
-            col.Text = "View Details";
-            col.Name = "Actions";
-            tabelInventori.Columns.Add(col);
+            
             if (Login.permissionlvl == 1)
             {
+                DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+                col.UseColumnTextForButtonValue = true;
+                col.Text = "View Details";
+                col.Name = "Actions";
+                tabelInventori.Columns.Add(col);
+
                 DataGridViewButtonColumn del = new DataGridViewButtonColumn();
                 del.UseColumnTextForButtonValue = true;
                 del.Text = "Delete";
@@ -92,13 +94,7 @@ namespace Apps
 
         private void RemoveColumns()
         {
-            tabelInventori.Columns.RemoveAt(6);
-            tabelInventori.Columns.RemoveAt(5);
-            tabelInventori.Columns.RemoveAt(4);
-            tabelInventori.Columns.RemoveAt(3);
-            tabelInventori.Columns.RemoveAt(2);
-            tabelInventori.Columns.RemoveAt(1);
-            tabelInventori.Columns.RemoveAt(0);
+            tabelInventori.Columns.Clear();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)

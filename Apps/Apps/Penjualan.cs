@@ -23,7 +23,6 @@ namespace Apps
             InitializeComponent();
             this.Width = Home.widthPanel;
             this.Height = Home.heightPanel;
-            InitializeDesign();
             initData();
         }
 
@@ -35,17 +34,7 @@ namespace Apps
             tabelPenjualan.RowHeadersVisible = false;
             SetColumnWidth();
             SetReturData();
-        }
 
-        public void InitializeDesign()
-        {
-
-            //search.Location = new Point(15, 13);
-            //buttonSearch.Location = new Point(Convert.ToInt32(search.Width) + 30, 10);
-            //buttonAddPembelian.Location = new Point(Convert.ToInt32(this.Width) - Convert.ToInt32(buttonAddPembelian.Width) - 15, 10);
-            //tabelPembelian.Width = Convert.ToInt32(this.Width - 30);
-            //tabelPembelian.Height = Convert.ToInt32(this.Height) - Convert.ToInt32(buttonSearch.Height) - 50;
-            //tabelPembelian.Location = new Point(15, Convert.ToInt32(buttonSearch.Height) + 30);
         }
 
         public void refreshData()
@@ -104,16 +93,7 @@ namespace Apps
         }
         public void RefreshSellData()
         {
-            tabelPenjualan.Columns.RemoveAt(9);
-            tabelPenjualan.Columns.RemoveAt(8);
-            tabelPenjualan.Columns.RemoveAt(7);
-            tabelPenjualan.Columns.RemoveAt(6);
-            tabelPenjualan.Columns.RemoveAt(5);
-            tabelPenjualan.Columns.RemoveAt(4);
-            tabelPenjualan.Columns.RemoveAt(3);
-            tabelPenjualan.Columns.RemoveAt(2);
-            tabelPenjualan.Columns.RemoveAt(1);
-            tabelPenjualan.Columns.RemoveAt(0);
+            tabelPenjualan.Columns.Clear();
             LoadSupplierData();
 
             tabelPenjualan.Update();
@@ -413,14 +393,15 @@ namespace Apps
 
         private void SetColumnWidth()
         {
+
             
-           
                 DataGridViewButtonColumn col = new DataGridViewButtonColumn();
                 col.UseColumnTextForButtonValue = true;
                 col.Text = "View Details";
                 col.Name = "Actions";
                 tabelPenjualan.Columns.Add(col);
                 detailBtn += 1;
+            
         
                 
            

@@ -118,7 +118,7 @@ namespace Apps
                 DialogResult dialog = MessageBox.Show("Anda yakin ?", "DELETE DATA", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
                 if (dialog == DialogResult.Yes)
                 {
-                    Database.getInstance().DeleteSupplier(read.Tables[0].Rows[e.RowIndex][0].ToString());
+                    Database.getInstance().DeleteCustomer(read.Tables[0].Rows[e.RowIndex][0].ToString());
                     read.Tables[0].Rows.RemoveAt(e.RowIndex);
                     tabelCustomer.Update();
                     tabelCustomer.Refresh();

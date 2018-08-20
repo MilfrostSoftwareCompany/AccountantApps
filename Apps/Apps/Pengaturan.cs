@@ -49,6 +49,9 @@ namespace Apps
             else {
                 label1.Visible = false;
                 tabelPemakai.Visible = false;
+                namaToko.Enabled = false;
+                richTextBox1.Enabled = false;
+                buttonSave.Enabled = false;
             }
         }
         private void button1_Click(object sender, EventArgs e)

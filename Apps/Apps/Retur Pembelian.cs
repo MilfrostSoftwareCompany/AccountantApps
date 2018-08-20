@@ -39,6 +39,7 @@ namespace Apps
             lblTgl.Text = transaksi.tglRetur;
             tanggal.Text = transaksi.tglRetur;
             tanggal.Hide();
+            tambahProdukBtn.Hide();
             if (title == "RETUR PEMBELIAN")
             {
                 isPembelian = true;
@@ -54,6 +55,10 @@ namespace Apps
             SetTransData();
 
             textBox1.Focus();
+
+            if (Login.permissionlvl != 1) {
+                edit_btn.Hide();
+            }
         }
         
         private void SetTransData() {
@@ -218,7 +223,7 @@ namespace Apps
             noFaktur.Text = transaction.invoice_no;
 
             UpdateCalculation();
-            
+
         }
 
         private void UpdateCalculation() {
@@ -353,6 +358,7 @@ namespace Apps
             {
                 AllowEdit(false);
                 isEditing = false;
+                tambahProdukBtn.Hide();
                 edit_btn.Text = "EDIT";
                 returTransaksi.tglRetur = DateTime.Parse(tanggal.Text).ToString("yyyy-MM-dd");
                 //code update to database
@@ -363,11 +369,13 @@ namespace Apps
                 else {
                     Database.getInstance().UpdateSellReturn(returTransaksi,removedProduct,addedProduct);
                 }
+                this.Close();
             }
             else {
                 AllowEdit(true);
                 isEditing = true;
                 edit_btn.Text = "SAVE";
+                tambahProdukBtn.Show();
             }
         }
 
