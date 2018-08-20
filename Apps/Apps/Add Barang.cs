@@ -214,7 +214,7 @@ namespace Apps
             }
             else if (caller is Add_Penjualan)
             {
-                if (Convert.ToInt32(ds.Tables[0].Rows[comboBox1.SelectedIndex][2].ToString()) < Convert.ToInt32(label2.Text))
+                if (Convert.ToInt32(ds.Tables[0].Rows[comboBox1.SelectedIndex][2].ToString()) < Convert.ToInt32(jlhBarang.Value))
                 {
                     MessageBox.Show("Jumlah tidak boleh lebih kecil dari stock");
                 }
