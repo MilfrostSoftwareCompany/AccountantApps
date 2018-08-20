@@ -222,7 +222,7 @@ namespace Apps
                 allowEdit(false);
                 Database.getInstance().UpdatePurchase(transaction, deletedProduct, addedProduct);
                 penjualan.UpdatePembelian(rowIndex, transaction);
-
+                this.Close();
             }
             else
             {
