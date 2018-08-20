@@ -242,10 +242,10 @@
             this.namaToko.Location = new System.Drawing.Point(24, 18);
             this.namaToko.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.namaToko.Name = "namaToko";
-            this.namaToko.Size = new System.Drawing.Size(238, 26);
+            this.namaToko.Size = new System.Drawing.Size(238, 40);
             this.namaToko.TabIndex = 37;
             this.namaToko.Text = "[Nama toko]";
-            this.namaToko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.namaToko.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // comboBox1
             // 
@@ -253,7 +253,7 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(178, 141);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(172, 25);
             this.comboBox1.TabIndex = 65;
@@ -271,7 +271,7 @@
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(112, 491);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(2);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(645, 79);
             this.richTextBox1.TabIndex = 68;
@@ -281,7 +281,7 @@
             // 
             this.tglInvoice.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tglInvoice.Location = new System.Drawing.Point(931, 135);
-            this.tglInvoice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tglInvoice.Margin = new System.Windows.Forms.Padding(2);
             this.tglInvoice.Name = "tglInvoice";
             this.tglInvoice.Size = new System.Drawing.Size(172, 20);
             this.tglInvoice.TabIndex = 69;
@@ -289,7 +289,7 @@
             // 
             // wilayahToko
             // 
-            this.wilayahToko.Location = new System.Drawing.Point(24, 52);
+            this.wilayahToko.Location = new System.Drawing.Point(24, 58);
             this.wilayahToko.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.wilayahToko.Name = "wilayahToko";
             this.wilayahToko.Size = new System.Drawing.Size(238, 26);
