@@ -475,7 +475,7 @@ namespace Apps
 
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
                 if (e.RowIndex >= 0)
                 {

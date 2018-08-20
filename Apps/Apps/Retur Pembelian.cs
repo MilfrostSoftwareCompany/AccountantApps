@@ -32,10 +32,16 @@ namespace Apps
         bool isPembelian = false;
 
         public Retur_Pembelian(UserControl userControl, Models.ReturTransaksi transaksi, string title) {
+            
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             isEdit = true;
             this.returTransaksi = transaksi;
+
+
             InitializeComponent();
+
+
+            dataGridView1.ReadOnly = true;
             label3.Text = title;
             textBox1.Text = transaksi.idRetur;
             textBox1.ReadOnly = true;
@@ -178,8 +184,8 @@ namespace Apps
                 dataGridView1.Columns[1].ReadOnly = true;
                 dataGridView1.Columns[2].ReadOnly = false;
                 dataGridView1.Columns[3].ReadOnly = true;
-                dataGridView1.Columns[4].ReadOnly = false;
-                dataGridView1.Columns[5].ReadOnly = false;
+                dataGridView1.Columns[4].ReadOnly = true;
+                dataGridView1.Columns[5].ReadOnly = true;
                 dataGridView1.Columns[6].ReadOnly = true;
                 AddDeleteBtn();
             }
